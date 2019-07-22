@@ -14,7 +14,7 @@
 \usepackage{amsthm}
 \usepackage{array}
 \usepackage{graphicx}
-\usepackage{natbib}
+%\usepackage{natbib}
 \usepackage{relsize}
 
 % Some other useful packages
@@ -26,6 +26,13 @@
 % plainpages=false fixes the "duplicate ignored" error with page counters
 % Set pdfborder to 0 0 0 to disable colored borders around PDF hyperlinks
 \usepackage[plainpages=false,pdfborder={0 0 0}]{hyperref}
+\usepackage{epigraph}
+\setlength\epigraphrule{0pt}
+
+\usepackage[sorting=none]{biblatex}
+\addbibresource{bib/references.bib}
+
+
 
 % Uncomment the following two lines to use the algorithm package,
 % which provides an algorithm environment similar to figure and table
@@ -75,16 +82,23 @@
 % even for non-included files.
 %\includeonly{chapter1}
 
+
+
 \begin{document}
 
 % Preliminary pages are always loaded (TOC, CV, etc.)
 \preliminarypages
+
+% set the linespacing for the internal text
+\onehalfspacing
 
 % Include the different components of your thesis, in separate files.
 % Using \include allows you to set \includeonly above.
 %\include{chapter1}
 %\include{chapter2}
 % ... and so on
+
+\include{sections/chapter1}
 
 % These commands fix an odd problem in which the bibliography line
 % of the Table of Contents shows the wrong page number.
@@ -93,8 +107,8 @@
 
 % "References should be formatted in style most common in discipline",
 % abbrv is only a suggestion.
-\bibliographystyle{abbrv}
-\bibliography{thesis}
+%\bibliographystyle{abbrv}
+%\bibliography{bib/references.bib}
 
 % The Thesis Manual says not to include appendix figures and tables in
 % the List of Figures and Tables, respectively, so these commands from
@@ -103,7 +117,11 @@
 \captionsetup[figure]{list=no}
 \captionsetup[table]{list=no}
 
+%\bibliography{bib/references.bib}
+\addcontentsline{toc}{chapter}{Bibliography}
+\printbibliography
+
 % If you have an appendix, it should come after the references.
-%\include{appendix}
+\include{appendix/appendix}
 
 \end{document}
