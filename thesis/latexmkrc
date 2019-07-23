@@ -1,0 +1,49 @@
+$TSUserCompileOptions = '';
+#$TSUserCompileOptions = '--shell-escape';
+
+# turn recorder option off (no .fls file generated)
+$recorder=0;
+
+# turn off duplicated missing references
+$silence_logfile_warnings = 1;
+
+$hash_calc_ignore_pattern{'pdf'} = 
+   '^/CreationDate\('
+   .'|^/ModDate\('
+   .'|^/ID \['
+   .'|^<rdf:RDF '
+   .'|^<rdf:Description rdf:about'
+   .'|^<xmp:CreateDate>';
+
+add_cus_dep('glo', 'gls', 0, 'makeglo2gls');
+sub makeglo2gls {
+  system("makeindex -s '$_[0]'.ist -t '$_[0]'.glg -o '$_[0]'.gls '$_[0]'.glo");
+}
+
+add_cus_dep('glo', 'gls', 0, 'run_makeglossaries');
+sub run_makeglossaries {
+  if ( $silent ) {
+    system "makeglossaries -q '$_[0]'";
+  }
+  else {
+    system "makeglossaries '$_[0]'";
+  };
+}
+
+add_cus_dep('acn', 'acr', 0, 'makeacn2acr');
+sub makeacn2acr {
+    system("makeindex -s '$_[0]'.ist -t '$_[0]'.alg -o '$_[0]'.acr '$_[0]'.acn");
+}
+add_cus_dep('acr', 'acn', 0, 'makeacr2acn');
+sub makeacr2acn {
+    system("makeindex -s '$_[0]'.ist -t '$_[0]'.alg -o '$_[0]'.acn '$_[0]'.acr");
+}
+
+sub run_makeindex {
+  if ( $silent ) {
+    system "makeindex -q '$_[0]'";
+  }
+  else {
+    system "makeindex '$_[0]'";
+  };
+}

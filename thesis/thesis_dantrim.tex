@@ -14,7 +14,6 @@
 \usepackage{amsthm}
 \usepackage{array}
 \usepackage{graphicx}
-%\usepackage{natbib}
 \usepackage{relsize}
 
 % Some other useful packages
@@ -29,10 +28,11 @@
 \usepackage{epigraph}
 \setlength\epigraphrule{0pt}
 
-\usepackage[sorting=none]{biblatex}
-\addbibresource{bib/references.bib}
+\usepackage[sorting=none,hyperref,backend=biber,backref,backrefstyle=none]{biblatex}
+\bibliography{bib/references.bib}
 
-
+%\usepackage[sorting=none]{biblatex}
+%\addbibresource{bib/references.bib}
 
 % Uncomment the following two lines to use the algorithm package,
 % which provides an algorithm environment similar to figure and table
@@ -107,8 +107,8 @@
 
 % "References should be formatted in style most common in discipline",
 % abbrv is only a suggestion.
-%\bibliographystyle{abbrv}
-%\bibliography{bib/references.bib}
+
+
 
 % The Thesis Manual says not to include appendix figures and tables in
 % the List of Figures and Tables, respectively, so these commands from
@@ -117,9 +117,12 @@
 \captionsetup[figure]{list=no}
 \captionsetup[table]{list=no}
 
-%\bibliography{bib/references.bib}
-\addcontentsline{toc}{chapter}{Bibliography}
+
+%\addcontentsline{toc}{chapter}{Bibliography}
 \printbibliography
+%\bibliographystyle{unsrt}
+%\bibliography{bib/references.bib}
+
 
 % If you have an appendix, it should come after the references.
 \include{appendix/appendix}
