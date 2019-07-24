@@ -152,10 +152,14 @@
 \newcommand{\fieldPhizero}{$\mathcal{\phi}^0$}
 \newcommand{\fieldH}{$h$}
 
+
 \begin{document}
 
 % Preliminary pages are always loaded (TOC, CV, etc.)
-\preliminarypages
+%\preliminarypages
+
+% if doing minimal compilation just add the table of contents here, otherwise use the "\preliminarypages" command above
+\tableofcontents
 
 % set the linespacing for the internal text
 \onehalfspacing
@@ -166,6 +170,8 @@
 %\include{chapter2}
 % ... and so on
 
+% if doing minimal compilation, set the page counter to start at the document meat -- otherwise use the "\preliminarypages" command above
+\setcounter{page}{0}
 \include{sections/chapter1}
 
 % These commands fix an odd problem in which the bibliography line
@@ -186,13 +192,13 @@
 \captionsetup[table]{list=no}
 
 
-%\addcontentsline{toc}{chapter}{Bibliography}
+\addcontentsline{toc}{chapter}{Bibliography}
 \printbibliography
 %\bibliographystyle{unsrt}
 %\bibliography{bib/references.bib}
 
 
 % If you have an appendix, it should come after the references.
-\include{appendix/appendix}
+%\include{appendix/appendix}
 
 \end{document}
