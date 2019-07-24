@@ -99,7 +99,7 @@ $\varepsilon_{ijk}$, giving for the weak gauge force:
 \begin{equation}
 	\mathbfcal{W}}_{\mu \nu} = \partial_{\mu} \mathbfcal{W}_{\nu} - \partial_{\nu} \mathbfcal{W}_{\mu} - g_2 \mathbfcal{W}_{\mu} \times \mathbfcal{W}_{\nu}
 \end{equation}
-where $\mathbfcal{W}_{\mu}$ is the vector of the three weak gauge fields \fieldWone, \fieldWtwo, and \fieldWthree~and $g_2$ is the weak coupling constant. The non-zero $f^{abc}$ of non-Abelian gauge groups means that the gauge bosons of
+where $\mathbfcal{W}_{\mu}$ is the vector of the three weak gauge fields (\fieldWone, \fieldWtwo, and \fieldWthree) and $g_2$ is the gauge coupling of the weak force. The non-zero $f^{abc}$ of non-Abelian gauge groups means that the gauge bosons of
 the weak and strong interactions can interact with themselves due to terms appearing in Eqn.
 \ref{eq:sm_lagrangian} that contain only the gauge bosons. {\color{red}{add Feynman diagram?}}
 
@@ -115,15 +115,24 @@ given by:
 where $g_1$, $g_2$, and $g_3$ are the gauge coupling constants for \Uone$_{Y}$, \SUtwo$_{L}$, and \SUthree$_{C}$, respectively, that give the overall strength of the associated coupling.
 Summation over repeated indices is implied and the $\tau^i$ ($\lambda^a$) are the three (eight)
 generators of the \SUtwo~(\SUthree)~gauge group, with $i \in [1,2,3]$ ($a \in [1,..,8]$), and
-are typically represented by the Pauli (Gell-Mann) matrices.
+are typically represented by the Pauli (Gell-Mann) matrices. Note that the form of Eqn.~\ref{eq:gauge_derivative} is strictly mandated by the requirement that the theory
+be \textit{gauge invariant}, i.e. that transformations of the fields under the internal symmetries
+of Fig. \ref{fig:sm_forces} leave the action of $\mathcal{L}_{\text{SM}}$ unchanged. This is described in detail
+in {\color{red}{Appendix XXX}}.
 
 The last three terms in Eqn. \ref{eq:sm_lagrangian} are all terms including the Higgs field, $\phi$,
-and will be discussed in detail in \ref{sec:higgs_description}.
+and will be discussed in detail in Section~\ref{sec:higgs_description}.
 
-Inspection of Eqn.~\ref{eq:sm_lagrangian} will reveal two things.
+Inspection of Eqn.~\ref{eq:sm_lagrangian} will reveal two things. The first thing that one
+may notice is that it does not appear to describe electromagnetism as it does not have a
+term representing the photon, the familiar mediator of the electromagnetic interaction.
+The second, and perhaps more immediately obvious, thing is that no mass terms
+appear in $\mathcal{L}_{\text{SM}}$: all fields appear to have zero mass! Both of these
+facts are counter to our everday experience: we know electromagnetism is real and that matter,
+at the very least, is massive. In the next few sections we will see how these apparent
+issues are resolved.
 
 \input{tables/tab_sm_content}
-
 \floatbarrier
 
 
