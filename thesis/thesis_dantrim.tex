@@ -7,7 +7,8 @@
 % Notes: Add short title to figures, sections, via square brackets,
 % e.g. \section[short]{long}.
 %
-\documentclass[12pt,fleqn]{style/ucithesis}
+%\documentclass[12pt,fleqn]{style/ucithesis}
+\documentclass[12pt]{style/ucithesis}
 
 % A few common packages
 \usepackage{amsmath}
@@ -39,6 +40,8 @@
 \usepackage{graphicx}
 \usepackage{arydshln}
 \usepackage{stackengine}
+\usepackage{xcolor}
+\usepackage{amsmath}
 
 %\usepackage[sorting=none]{biblatex}
 %\addbibresource{bib/references.bib}
@@ -112,7 +115,7 @@
 \newcommand{\fieldZ}{$\mathcal{Z}$}
 \newcommand{\fieldZzero}{$\mathcal{Z}^0$}
 \newcommand{\fieldPhoton}{$\gamma$}
-\newcommand{\fieldG}{$g$}
+\newcommand{\fieldG}{$G$}
 \newcommand{\quarkU}{$u$}
 \newcommand{\quarkD}{$d$}
 \newcommand{\quarkC}{$c$}
@@ -152,11 +155,11 @@
 \newcommand{\fieldPhizero}{$\mathcal{\phi}^0$}
 \newcommand{\fieldH}{$h$}
 
+\DeclareMathAlphabet\mathbfcal{OMS}{cmsy}{b}{n}
 
 \begin{document}
-
-% Preliminary pages are always loaded (TOC, CV, etc.)
-%\preliminarypages
+% Preliminary pages are always loaded (TOC, CV, etc.})
+%\preliminarypage}s
 
 % if doing minimal compilation just add the table of contents here, otherwise use the "\preliminarypages" command above
 \tableofcontents
