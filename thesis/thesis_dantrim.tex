@@ -42,6 +42,9 @@
 \usepackage{stackengine}
 \usepackage{xcolor}
 \usepackage{amsmath}
+\usepackage{placeins}
+\usepackage{mathtools}
+
 
 %\usepackage[sorting=none]{biblatex}
 %\addbibresource{bib/references.bib}
@@ -95,27 +98,28 @@
 %\includeonly{chapter1}
 
 %% commands
+\newcommand{\SUewk}{$\mathcal{SU}(2)_{L} \times \mathcal{U}(1)_{Y}$}
 \newcommand*{\Uone}{$\mathcal{U}(1)$}
 \newcommand{\SUtwo}{$\mathcal{SU}(2)$}
 \newcommand{\SUthree}{$\mathcal{SU}(3)$}
-\newcommand{\SUtwoXone}{\ensuremath{\mathcal{SU}(2)_{L}\times\mathcal{U}(1)_{Y}}\xspace}
-\newcommand{\SML}{\ensuremath{\mathcal{L}_{\text{SM}}}\xspace}
+
+\newcommand{\SML}{$\mathcal{L}_{\text{SM}}$}
 \newcommand{\fieldQi}{$Q_i$}
 \newcommand{\fieldUri}{$u_{\text{R},i}$}
 \newcommand{\fieldDri}{$d_{\text{R},i}$}
 \newcommand{\fieldLi}{$L_i$}
 \newcommand{\fieldEri}{$e_{\text{R},i}$}
-\newcommand{\fieldB}{$\mathcal{B}$}
-\newcommand{\fieldW}{$\mathcal{W}$}
-\newcommand{\fieldWone}{$\mathcal{W}_1$}
-\newcommand{\fieldWtwo}{$\mathcal{W}_2$}
-\newcommand{\fieldWthree}{$\mathcal{W}_3$}
-\newcommand{\fieldWp}{$\mathcal{W}^+$}
-\newcommand{\fieldWm}{$\mathcal{W}^-$}
-\newcommand{\fieldWzero}{$\mathcal{W}^0$}
-\newcommand{\fieldWpm}{$\mathcal{W}^{\pm}$}
-\newcommand{\fieldZ}{$\mathcal{Z}$}
-\newcommand{\fieldZzero}{$\mathcal{Z}^0$}
+\newcommand{\fieldB}{$B$}
+\newcommand{\fieldW}{$W$}
+\newcommand{\fieldWone}{$W_1$}
+\newcommand{\fieldWtwo}{$W_2$}
+\newcommand{\fieldWthree}{$W_3$}
+\newcommand{\fieldWp}{$W^+$}
+\newcommand{\fieldWm}{$W^-$}
+\newcommand{\fieldWzero}{$W^0$}
+\newcommand{\fieldWpm}{$W^{\pm}$}
+\newcommand{\fieldZ}{$Z$}
+\newcommand{\fieldZzero}{$Z^0$}
 \newcommand{\fieldPhoton}{$\gamma$}
 \newcommand{\fieldG}{$G$}
 \newcommand{\quarkU}{$u$}

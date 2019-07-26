@@ -2,59 +2,96 @@
 \label{sec:ewk_description}
 
 It was the work of Glashow, Weinberg, and Salam (GWS) that ultimately put forth a
-consistent picture of the chiral weak force and, ultimately,
+consistent picture of the chiral weak force and
 its unification with electromagnetism~\cite{Glashow:1961tr,Weinberg:1967tq,Salam:1968rm}.
-As a result, the theory of particles and fields that respect the \SUtwoXone~gauge
+As a result, the theory of particles and fields that respect the \SUewk~gauge
 invariance of the SM is sometimes referred to as `GWS theory', 
-but is more typically known as the electroweak theory, or interaction. Since all matter particles
-are subject to the electroweak interaction, but only a subset of the particles that
-have color charge are subject to the strong interaction described by QCD, the study of the SM can essentially
+but is more typically known as the electroweak theory. Since all matter particles
+are subject to the electroweak interaction, but only a subset of the particles  that
+have color charge (the quarks) are subject to the strong interaction described by QCD, the study of the SM can essentially
 be partitioned into two parts: the part that deals with the dynamics and interactions of
-colored objects (the `QCD part', $\mathcal{L}_{\text{QCD}}$) and the part that deals solely with electroweak interactions, including the Higgs (the `Electroweak part`, $\mathcal{L}_{\text{Electroweak}}$).
-Given the ubiquity and broad reach into all observable phenomena of the electroweak interaction,
-in the early days the GWS theory was thought of as the heart of the SM and why, ultimately,
+colored objects (the `QCD part', $\mathcal{L}_{\text{QCD}}$) and the part that deals with electroweak
+interactions, including the Higgs (the `Electroweak part`, $\mathcal{L}_{\text{Electroweak}}$).
+Given the broad reach of the electroweak interaction,
+in the early days GWS theory was considered the heart of the SM and why
 GWS were awarded the Nobel prize in 1979.\footnote{Actually, the acceptance of the GWS theory as the
 de-facto SM of the time was not widely held until some years after its publication, when t'Hooft
 proved that it was renormalizable~\cite{tHooft:1971akt,tHooft:1971qjg}.
-Such a complete understanding in the QCD sector would not come until almost a decade later, in the late 1970's{\color{red}{Woijkec etc CITE}}.} In this section, then, we will focus closely on a part of the  \SUtwoXone~portion of \SML.
+Such a complete understanding in the QCD sector would not come until almost a decade later, in the late
+1970's{\color{red}{Woijkec etc CITE}}.}
+In this section we will focus on the \SUewk~portion of \SML.
 
-The first thing to re-iterate is that the electroweak theory is \textit{chiral}, i.e., it distinguishes
-between left- and right-chiral fermion fields. For some conceptual clarity, in the limit of
-a massless fermion, the chirality is the same as the more-familiar \textit{helicity}, which
-is defined by the projection of its spin angular momentum, here labelled as $\vec{\sigma}$, onto its momentum (direction of motion): $\vec{\sigma}\cdot \vec{p}$. If a massless fermion's spin
-is aligned parallel to its momentum ($\vec{\sigma}\cdot \vec{p} >0$), it is said to be right-handed. If otherwise ($\vec{\sigma}\cdot \vec{p} <0$), it is said to be left-handed. One typically defines
-fermion fields without the chiral specification and then defines projections onto the left-
-and right-handed components. For example:
-\begin{equation*}
+The first thing to remember is that the electroweak theory is \textit{chiral}, i.e., it distinguishes
+between left- and right-chiral fermion fields.
+For conceptual clarity, it is sometimes useful to take the massless (relativistic) limit of fermions to
+get an idea of what chirality represents.
+For a massless fermion field, the chirality is equivalent to the perhaps more-famility \textit{helicity},
+defined as the projection of its spin onto its momentum (direction of motion).
+The helicity of left-handed (right-handed) massless fermions is positive (negative), meaning
+that its spin is parallel (anti-parallel) to its momentum.
+Fermion fields, then, are commonly defined inclusive of their handedness, with the left-
+and right-handed components projected out:
+\begin{equation}
 	f_{\text{L}} = P_L f = \frac{1}{2}(1- \gamma_5)f, \hspace{0.6cm} f_{\text{R}} = P_R f = \frac{1}{2}(1+\gamma_5)f
 	\label{eq:chiral_projection}
-\end{equation*}
-First we introduce re-defined \fieldW~ bosons as follows:
-\begin{align}
-	\mathcal{W}^+ &= \frac{1}{\sqrt{2}} ( -\mathcal{W}_1 + i\mathcal{W}_2)\notag \\
-	\mathcal{W}^- &= \frac{1}{\sqrt{2}} ( -\mathcal{W}_2 - i\mathcal{W}_2) \label{eq:w_redefine} \\ 
-	\mathcal{W}^0 &= \mathcal{W}_3 \notag
-    %\fieldW^+ = \frac{1}{\sqrt{2}}(-\fieldWone + i\fieldWtwo)
-\end{align}
-Since the electroweak interaction affects the leptons and quarks similarly, and the same goes for
-fermions across generations (e.g. \fieldEl $\leftrightarrow$ \fieldMul $\leftrightarrow$ \fieldTaul),
-we focus only on the leptons and consider for simplicity only a single generation.
-Taking the associated \Uone~terms of Eqn.~\ref{eq:sm_lagrangian}, we get:
+\end{equation}
+
+Let's focus only on the first generation of the leptons (the reasoning holds equally well
+for the second and third generations, as well as for the quarks). Gathering the
+\Uone terms of Eqn.~\ref{eq:sm_lagrangian} , we get Eqn.~\ref{eq:ferm_L_u1},
 \begin{align}
     -\mathcal{L}_{\text{ferm}}(\mathcal{U}(1), \text{leptons}) &= \bar{L} i \gamma^{\mu} (i g_1 \frac{Y_L}{2} \mathcal{B}_{\mu})L + \bar{e}_R i \gamma^{\mu} (i g_1 \frac{Y_R}{2} B_{\mu}) e_R \nonumber \\
     &= \frac{g_1}{2} [ Y_L ( \bar{\nu}_L \gamma^{\mu} \nu_L + \bar{e}_L \gamma^{\mu} e_L) + Y_R \bar{e}_R \gamma^{\mu} e_R ] B_{\mu}
     \label{eq:ferm_L_u1}
 \end{align}
-Where we use the fact that $L = (\nu_L, e_L)$ in going from the first to second line of Eqn.~\ref{eq:ferm_L_u1}.
-Taking the associated \SUtwo~terms of Eqn.~\ref{eq:sm_lagrangian}, and noting
-that, since the $\tau^i$ are the Pauli matrices, $\tau^i W^i$ is a $2\times2$ matrix, we get:
-\begin{align}
-	-\mathcal{L}_{\text{ferm}}(\mathcal{SU}(2), \text{leptons}) &= \bar{L} i \gamma^{\mu} [i g_2 \frac{\tau^i}{2} \mathcal{W}_{\mu}^i ] L \notag \\
-	&= -\frac{g_2}{2} (\bar{\nu}_L, \bar{e}_L) \gamma^{\mu} \left( \begin{matrix} \mathcal{W}_{\mu}^3 & \mathcal{W}_{\mu}^1 - i\mathcal{W}_{\mu}^2 \\ \mathcal{W}_{\mu}^1 + i \mathcal{W}_{\mu}^2  & - \mathcal{W}_{\mu}^3\end{matrix} \right) \left( \begin{matrix} \nu_L \\ e_L \end{matrix} \right) \notag \\
-	&= -\frac{g_2}{2} \left[ \bar{\nu}_L \gamma^{\mu} \nu_L \mathcal{W}_{\mu}^0 - \sqrt{2}  \bar{\nu}_L \gamma^{\mu} e_L \mathcal{W}_{\mu}^+ - \sqrt{2} \bar{e}_L \gamma^{\mu} \nu_L \mathcal{W}_{\mu}^- - \bar{e}_L \gamma^{\mu} e_L \mathcal{W}_{\mu}^0 \right]
-    \label{eq:ferm_L_su2}
-\end{align}
-Where Eqn.~\ref{eq:w_redefine} has been used in getting to the last line of Eqn.~\ref{eq:ferm_L_su2}.
+Where $L = (\nu_L, e_L)$ is used in going from the first to second line. 
+%Where we use the fact that $L = (\nu_L, e_L)$ in going from the first to second line of
+%Eqn.~\ref{eq:ferm_L_u1}.
+Likewise, gathering the associated \SUtwo~terms and noting that $\tau^i W^i$ is a
+$2\times2$ matrix (the $\tau^i$ are the Pauli matrices),
+%Gathering together the 
+%Taking the associated \SUtwo~terms of Eqn.~\ref{eq:sm_lagrangian}, and noting
+%that, since the $\tau^i$ are the Pauli matrices, $\tau^i W^i$ is a $2\times2$ matrix, we get:
+
+\begin{equation}
+	\begin{multlined}
+		\hspace{-2cm}-\mathcal{L}_{\text{ferm}}(\mathcal{SU}(2), \text{leptons}) =  \bar{L}\, i \gamma^{\mu} [i g_2 \frac{\tau^i}{2} W_{\mu}^i ] \,L \\
+		= -\frac{g_2}{2} \left[ \bar{\nu}_L \gamma^{\mu} \nu_L W_{\mu}^0 - \sqrt{2}  \bar{\nu}_L \gamma^{\mu} e_L W_{\mu}^+ - \sqrt{2} \bar{e}_L \gamma^{\mu} \nu_L W_{\mu}^- - \bar{e}_L \gamma^{\mu} e_L W_{\mu}^0 \right]
+	\end{multlined}
+	\label{eq:ferm_L_su2}
+\end{equation}
+Where we have used the following in Eqn.~\ref{eq:ferm_L_su2},
+\begin{equation}
+	W_{\mu}^+ = \frac{1}{\sqrt{2}} \left( -W_{\mu}^1 + i W_{\mu}^2 \right) \hspace{1cm} W_{\mu}^- = \frac{1}{\sqrt{2}} \left( -W_{\mu}^1 - i W_{\mu}^2 \right) \hspace{1cm} W_{\mu}^0 = W_{\mu}^3
+\end{equation}
+
+%\begin{align}
+%	-\mathcal{L}_{\text{ferm}}(\mathcal{SU}(2), \text{leptons}) &= \bar{L} i \gamma^{\mu} [i g_2 \frac{\tau^i}{2} \mathcal{W}_{\mu}^i ] L \notag \\
+%	&= -\frac{g_2}{2} (\bar{\nu}_L, \bar{e}_L) \gamma^{\mu} \left( \begin{matrix} \mathcal{W}_{\mu}^3 & \mathcal{W}_{\mu}^1 - i\mathcal{W}_{\mu}^2 \\ \mathcal{W}_{\mu}^1 + i \mathcal{W}_{\mu}^2  & - \mathcal{W}_{\mu}^3\end{matrix} \right) \left( \begin{matrix} \nu_L \\ e_L \end{matrix} \right) \notag \\
+%	&= -\frac{g_2}{2} \left[ \bar{\nu}_L \gamma^{\mu} \nu_L \mathcal{W}_{\mu}^0 - \sqrt{2}  \bar{\nu}_L \gamma^{\mu} e_L \mathcal{W}_{\mu}^+ - \sqrt{2} \bar{e}_L \gamma^{\mu} \nu_L \mathcal{W}_{\mu}^- - \bar{e}_L \gamma^{\mu} e_L \mathcal{W}_{\mu}^0 \right]
+%\end{align}
+%Where Eqn.~\ref{eq:w_redefine} has been used in getting to the last line of Eqn.~\ref{eq:ferm_L_su2}.
+
+Equations~\ref{eq:ferm_L_u1} and \ref{eq:ferm_L_su2} in principle describe all electroweak interactions
+between matter and the gauge fields of \SUewk. We would like to make the correspondence
+between these equations and what we know to empirically exist: the electromagnetic interaction
+and the presence of a massive, charged mediator of the weak nuclear force responsible
+for nuclear $\beta$-decay, for example. From the theory of QED, we know that the photon should
+couple to charged objects and conserve electric charge. Inspecting all charge-preserving
+terms of Eqn.~\ref{eq:ferm_L_u1} and \ref{eq:ferm_L_su2}, we note that we can perform
+a field-redefinition,
+\begin{equation}
+	\left( \begin{matrix} A_{\mu} \\ Z_{\mu} \end{matrix} \right) = \left( \begin{matrix} \cos \theta_W & \sin \theta_W \\ -\sin \theta_W & \cos \theta_W \end{matrix} \right) \left( \begin{matrix} B_{\mu} \\ W_{\mu}^0 \end{matrix} \right)
+\end{equation}
+where we have used $Y_L = -1$ and introduce,
+\begin{equation}
+\sin \theta_W = \frac{g_1}{\sqrt{g_1^2 + g_2^2}} \hspace{1cm} \cos \theta_W = \frac{g_2}{\sqrt{g_1^2 + g_2^2}} \hspace{1cm} e = \frac{g_1 g_2}{\sqrt{g_1^2 + g_2^2}}
+\label{eq:weinberg_angles}
+\end{equation}
+The angle $\theta_W$  is known as the \textit{Weinberg angle}. It quantifies the amount of
+\textit{gauge mixing} that occurs between the neutral
+\SUewk~gauge fields, \fieldB$_{\mu}$ and \fieldWzero$_{\mu}$.
+
 Considering only those terms which are charge-neutral in Eqn.~\ref{eq:ferm_L_u1} and Eqn.~\ref{eq:ferm_L_su2}, one can consider performing a second field-redefinition using
 \fieldB~ and \fieldWzero:
 \begin{align}
@@ -77,7 +114,7 @@ Eqn.~\ref{eq:e_charge_coupling} leads one to introduce the following relations,
 \begin{align}
 	\sin \theta_W = \frac{g_1}{\sqrt{g_1^2 + g_2^2}} \hspace{1cm} \cos \theta_W = \frac{g_2}{\sqrt{g_1^2 + g_2^2}}
 \end{align}
-The angle $\theta_W$ is the \textit{Weinberg angle}, and it represents the amount of mixing
+The angle $\theta_W$ is the \textit{Weinberg angle} {\color{red}{What is it's value? -- point to table}}, and it represents the amount of mixing
 occuring between the \SUtwo~and \Uone~gauge fields $\mathcal{W}_{\mu}^0$ and $\mathcal{B}_{\mu}$, respectively. Using Eqn.~\ref{eq:e_charge_coupling} gives,
 \begin{align}
 	g_1 = \frac{e}{\cos \theta_W} \hspace{1cm} g_2 = \frac{e}{\sin \theta_W}
@@ -88,12 +125,23 @@ can in principle be determined once the masses of the $\mathcal{W^{\pm}}$ and $\
 are measured.}
 
 From the above algebra, we can re-write the portion of the electroweak Lagrangian describing the
-interactions of the first-generation fermions with the electroweak gauge bosons as,
-\begin{align}
-	\mathcal{L}_{\text{ferm, first-gen.}} &= \sum_{\limits{f \in \nu_e, e, u, d}} e Q_f \left( \bar{f}\gamma^{\mu} f \right) A_{\mu} \notag \\
-	&+ \sum_{\limits{f \in \nu_e, e, u, d}} \frac{g_2}{\cos \theta_W} \left[ \bar{f}_L \gamma^{\mu} f_L \left( T_f^3 - Q_f \sin^2 \theta_W \right) + \bar{f}_R \gamma^{\mu} f_R \left( - Q_f \sin^2 \theta_W \right) \right] Z_{\mu} \label{eq:ewk_L_za} \\
-	&+ \frac{g_2}{\sqrt{2}} \left[ \left( \bar{u}_L \gamma^{\mu} d_L + \bar{\nu}_L \gamma^{\mu} e_L \right) \mathcal{W}_{\mu}^+ + \text{hermitian conjugate} \right] \notag
-\end{align}
+interactions of the first-generation fermions with the electroweak gauge bosons $A_{\mu}$,
+$Z_{\mu}$, and $W^{\pm}$ as,
+\begin{equation}
+\begin{multlined}
+\hspace{-0.9cm}\mathcal{L}_{\text{ferm, first-gen.}} = \underbrace{\sum\limits_{f \in \nu_e, e, u, d} e Q_f
+\left(\bar{f}\gamma^{\mu} f \right) A_{\mu}}_\text{Neutral, $\sim$ EM}  \\
++ \underbrace{\frac{g_2}{\cos \theta_W} \sum\limits_{f \in \nu_e, e, u, d} \left[ \,\right.\bar{f}_L \gamma^{\mu} f_L
+\left( T_f^3 -  Q_f \sin^2 \theta_W \right)
++ \bar{f}_R \gamma^{\mu} f_R \left(-Q_f \sin^2 \theta_W \right) \left. \right]\, Z_{\mu}}_\text{Neutral weak interaction} \\
++ \underbrace{\frac{g_2}{\sqrt{2}} \left[ \right. \left( \bar{u}_L \gamma^{\mu} d_L + \bar{\nu}_{e,L} \gamma^{\mu} e_L \right) \, W_{\mu}^+ + h.c. \left. \right]}_\text{Charged weak interaction}
+\end{multlined}
+\label{eq:ewk_L_za}
+\end{equation}
+%$\mathcal{L}_{\text{ferm, first-gen.}} = {\mathop{\sum}_\limits{f}} %_\limits{f \in \nu_e, e, u, d}} e Q_f% \left( %\bar{f}\gamma^{\mu} f \right) A_{\mu} \notag \\
+%%	&+ {\mathop{\sum}_\limits{f \in \nu_e, e, u, d}} \frac{g_2}{\cos \theta_W} \left[ \bar{f}_L \gamma^{\mu} f_L \left( T_f^3 - Q_f \sin^2 \theta_W \right) + \bar{f}_R \gamma^{\mu} f_R \left( - Q_f \sin^2 \theta_W \right) \right] Z_{\mu} \label{eq:ewk_L_za} \\
+%%	&+ \frac{g_2}{\sqrt{2}} \left[ \left( \bar{u}_L \gamma^{\mu} d_L + \bar{\nu}_L \gamma^{\mu} e_L \right) \mathcal{W}_{\mu}^+ + \text{hermitian conjugate} \right] \notag
+%\end{multline}
 The related terms for the second and third generations of the fermions,
 ($\nu_{\mu}, \mu, c, s$) and ($\nu_{\tau}, \tau, t, b$), respectively, are identical.
 In Eqn.~\ref{eq:ewk_L_za}, $T_f^3$ ($Q_f$) is the third component of the weak-isospin (electric charge)
@@ -105,14 +153,16 @@ of the fermion species $f$. These last terms are related via the Gell-Mann-Nishi
 which can be deduced by following the algebra above, and our having fixed $Y_L = -1$ for
 the $(\nu_L, e_L)$ \SUtwo~doublet.
 
-Note that the terms involving \fieldWpm~in Eqn.~\ref{eq:ewk_L_za} are of the form $\bar{\nu}_L \gamma^{\mu} e_L$ which, given the chiral projects of Eqn.~\ref{eq:chiral_projection}, can be
+Note that the terms involving \fieldWpm~in Eqn.~\ref{eq:ewk_L_za} are of the form $\bar{\nu}_L \gamma^{\mu} e_L$
+which, given the chiral projects of Eqn.~\ref{eq:chiral_projection}, can be
 re-written as follows,
 \begin{align}
 	\bar{\nu}_L \gamma{\mu} e_L = \frac{1}{2} \bar{\nu} \gamma^{\mu}(1-\gamma_5) e
 	\label{eq:v_minus_a}
 \end{align}
 which shows that the charged weak interactions involving \fieldWpm~are the coherent
-sum of vector ($\gamma^{\mu}$) and axial-vector ($\gamma^{\mu}\gamma_5$) bilinear covariants; this is the famous \textit{V-A} charged-current interaction of Fermi's nuclear $\beta$-decay.
+sum of vector ($\gamma^{\mu}$) and axial-vector ($\gamma^{\mu}\gamma_5$) bilinear covariants; this is the famous
+\textit{V-A} charged-current interaction of Fermi's nuclear $\beta$-decay.
 It is this \textit{V-A} form that results in the charged interactions of the weak force
 not being invariant under chiral transformations ($f_R \leftrightarrow f_L$): it only involves
 the left-chiral fermion fields. For this reason, \textit{parity}
