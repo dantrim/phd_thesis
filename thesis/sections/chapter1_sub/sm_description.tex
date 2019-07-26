@@ -11,7 +11,7 @@ is only described by the classical (i.e. not quantum) theory of geometrodynamics
 relativity.
 The gravitational interaction is incredibly weak in comparison to the others, however, and
 is not relevant to the types of particle interactions that we are currently
-sensitive to in experiments.
+sensitive to in particle physics experiments.
 Electromagnetism is by far the most familiar, as it is the force
 most commonly experienced and is what is at work in our everyday life (reaction forces between
 objects on tables and chairs, friction, wall-plugs, batteries, DNA structure, etc...) and is typically what
@@ -32,12 +32,12 @@ and are either \textit{leptons} or \textit{quarks}; within each class
 there are three generations (or families) that are essentially copies of the first.
 The forces in the SM are interpreted as being mediated by spin-$1$ bosons, referred to as the 
 \textit{gauge bosons}.
-The leptons and quarks all interact via the weak interaction, but only the quarks interact
-via the strong interaction. All electrically charged particles interact with the electromagnetic
+The leptons and quarks all experience the weak force, but only the quarks experience
+the strong interaction. All electrically charged particles interact with the electromagnetic
 interaction.
 
 The particles of the SM are described as quantum fields whose dynamics are
-described by the SM Lagrangian under which the equations of motions can be derived.
+described by the SM Lagrangian from which the equations of motions can be derived.
 The particles, and by extention the SM Lagrangian that descibes them, are found to be invariant under transformations of spacetime 
 (space translations, rotations, Lorentz boosts) and three internal transformations described by unitary transformations: $\mathcal{P} \times$\SUthree$_C \times $ \SUtwo$_L \times$ \Uone$_{Y}$.
 This is illustrated in Figure \ref{fig:sm_forces}. The strong force is described by a
@@ -85,11 +85,13 @@ that the SM does not allow for right-handed neutrinos (a term like \fieldNuR~doe
 The SM Lagrangian is shown in Eqn. \ref{eq:sm_lagrangian} and describes the complete
 content of the SM: encompassing all interactions between the known particles and the
 symmetries that they obey.
-\begin{equation}
-	\mathcal{L}_{\text{SM}} = -\frac{1}{4} \mathop{\sum}\limits{\text{gauge}} \mathit{F}^i_{\mu \nu}\mathit{F}^{i\,\mu \nu} - \mathop{\sum}\limits{f} \bar{f} \gamma^{\mu} \mathit{D}_{\mu} f
-	+ (\mathcal{D}_{\mu} \phi)^{\dagger} (\mathcal{D}^{\mu} \phi) - \mu^2 \phi^{\dagger}\phi - \lambda(\phi^{\dagger}\phi)
+
+\begin{align}
+	\mathcal{L}_{\text{SM}} = -\frac{1}{4} \sum\limits_{\text{gauge}} \mathit{F}_{\mu \nu}^i \mathit{F}^{i\,\mu\nu}
+	- \sum\limits_{f} \bar{f}\gamma^{\mu} \mathit{D}_{\mu} f 
+	+  (\mathit{D}_{\mu} \phi)^{\dagger} (\mathit{D}^{\mu} \phi) - \mu^2 \phi^{\dagger}\phi - \lambda(\phi^{\dagger}\phi)^2
 	\label{eq:sm_lagrangian}
-\end{equation}
+\end{align}
 \noindent
 The first term of Eqn.~\ref{eq:sm_lagrangian} is a sum over the three internal gauge goups,  and $\mathit{F}^a_{\mu \nu} = \partial_{\mu} \mathit{A}_{\nu}^a - \partial_{\nu} \mathit{A}_{\mu}^a + g f^{abc} \mathit{A}_{\mu}^{b}\mathit{A}_{\nu}^{c}$, where $\mathit{A}_{\mu}$ is one of the
 three gauge fields, $g$ is the associated gauge coupling parameter, and a sum over $i$ is implied. The $f^{abc}$ are the so-called
@@ -102,7 +104,7 @@ $\varepsilon_{ijk}$, giving for the weak gauge force:
 \end{equation}
 where $\mathbfcal{W}_{\mu}$ is the vector of the three weak gauge fields (\fieldWone, \fieldWtwo, and \fieldWthree) and $g_2$ is their associated gauge coupling. The non-zero $f^{abc}$ of non-Abelian gauge groups means that the gauge bosons of
 the weak and strong interactions can interact with themselves due to terms appearing in Eqn.
-\ref{eq:sm_lagrangian} that contain only the gauge bosons. {\color{red}{add Feynman diagram?}}
+\ref{eq:sm_lagrangian} that contain only the gauge bosons. {\color{red}{add Feynman diagram? -- showing what the squared term of $W_{\mu \nu}$ representing triple and quartic couplings}}
 
 The second term of Eqn.~\ref{eq:sm_lagrangian} describes the lepton and quark kinetic energies and their interactions with the gauge fields.
 The $f$ refer to the fermion fields (quarks and leptons) and the corresponding sum is over all
