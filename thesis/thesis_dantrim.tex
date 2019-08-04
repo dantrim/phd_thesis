@@ -30,7 +30,8 @@
 \setlength\epigraphrule{0pt}
 
 \usepackage[sorting=none,hyperref,backend=biber,backref,backrefstyle=none]{biblatex}
-\bibliography{bib/references.bib}
+\bibliography{bib/references.bib,
+                bib/chapter2.bib}
 
 \usepackage{tabularx}
 \usepackage{booktabs}
@@ -95,7 +96,6 @@
 % Very handy to speed up compilation if you're working on a certain
 % part of your thesis. It conserves page numbers, references, etc.
 % even for non-included files.
-%\includeonly{chapter1}
 
 %% commands
 \newcommand{\SUewk}{$\mathcal{SU}(2)_{L} \times \mathcal{U}(1)_{Y}$}
@@ -160,6 +160,7 @@
 \newcommand{\fieldPhip}{$\mathcal{\phi}^+$}
 \newcommand{\fieldPhizero}{$\mathcal{\phi}^0$}
 \newcommand{\fieldH}{$h$}
+\newcommand*{\TeV}{\ensuremath{\text{Te\kern -0.1em V}}}
 
 \DeclareMathAlphabet\mathbfcal{OMS}{cmsy}{b}{n}
 
@@ -181,7 +182,8 @@
 
 % if doing minimal compilation, set the page counter to start at the document meat -- otherwise use the "\preliminarypages" command above
 \setcounter{page}{0}
-\include{sections/chapter1}
+%\include{sections/chapter1}
+\include{sections/chapter2}
 
 % These commands fix an odd problem in which the bibliography line
 % of the Table of Contents shows the wrong page number.
