@@ -6,49 +6,35 @@ located at an average distance of 100 meters beneath the surface of the Earth.
 It is nominally used for proton-proton ($pp$) collisions, wherein two counter-rotating
 beams of protons are made to collide head-on at specific interaction points (IP) along the 27~kilometer
 ring, but can also be run in heavy-ion configurations wherein proton-lead ($p$-Pb) or lead-lead (Pb-Pb)
-collisions take place.\footnote{More rarely, the LHC can also be used to circulate gold (Au) ions.
+collisions take place.\footnote{The specific lead (Pb) species used in collisions is $^{208}_{82}$Pb.}\footnote{More rarely, the LHC can also be used to circulate gold (Au) ions.
 There are even plans to have proton-oxygen ($p$-O) runs in the future, which will allow
 for the LHC experiments to provide research that potentially complements dark matter research
 based on cosmic-ray air showers.}
-{\color{red}{what specific Pb ion?}}
+{\color{red}{Multi-year runs of the LHC, in which protons are circulating are referred to as `Runs'. There have been
+two so far, Run-I and Run-II,... See Table... --- perhaps describe this or put table after lumi discussion?}}
 The $pp$ collisions take priority over those of the heavy-ions, with the collisions each year
 consisting of only a few weeks in the winter for the heavy-ion configurations and typically
 six to seven months for the $pp$ configuration. The LHC is designed to accelerate protons to a
 center-of-mass energy of $\sqrt{s} = 14\,\TeV$.
 
-%\subsection{Keeping the Protons In Line}
-\paragraph{Keeping the Protons in Line} \mbox{} \\
-\label{sec:dipole}
+\subsection{Machine Design and Layout}
+\label{sec:lhc_layout}
 
-The LHC was planned as the successor to the Large Electron Positron (LEP) collider, which was in operation
+\paragraph{Machine Composition} \mbox{} \\
+\label{sec:dipole}
+The LHC was planned as the successor to the Large Electron Positron (LEP) collider~\cite{LEPI,LEPII}, which was in operation
 between the years of 1989 to 2000. LEP is still the most powerful lepton collider to date, having maximal electron-positron
 center-of-mass collision energies of 209\,\GeV.
-After LEP, the particle physics community knew that the next collider needed to have multi-\TeV~collision
-energies; either to be able to probe from all angles any new physics discovered at LEP, or
+After LEP, the particle physics community knew that the next collider at CERN needed to have $\mathcal{O}(10)$\,\TeV~collision
+energies; either to be able to probe from all angles any new physics discovered at LEP and/or the Tevatron~\cite{TevatronDesignI}, or
 to provide the necessary power to search for still-elusive hints of BSM physics. At the very least,
-given a non-discovery of the Higgs boson at LEP, the community would need a discovery machine powerful enough
-to produce electroweak-scale Higgs bosons and a multi-\TeV~hadron collider --- as we now know --- is sufficient for this job.
+given a non-discovery of the Higgs boson at LEP and the Tevatron, the community would need a discovery machine powerful enough
+to produce electroweak-scale Higgs bosons and an $\mathcal{O}(10)$ \TeV~hadron collider --- as we now know --- is sufficient for this job.
 
-
-%The LHC~\cite{LHCMachine} is a circular particle accelerator with a 27~kilometer circumference
-%located at an average distance of 100 meters beneath the Earth's surface.
-%It is nominally used for proton-proton ($pp$) collisions, wherein two counter-rotating
-%beams of protons are made to collide head-on at specific interaction points (IP) along the 27~kilometer ring,
-%but can also be run in heavy-ion configurations, such as proton-lead ($p$-Pb) or lead-lead (Pb-Pb)
-%collisions. The $pp$ collisions for the most part take priority over those of the heavy-ions,
-%and the yearly data-taking period only a few weeks in the winter are typically allocated for
-%heavy-ion configurations whereas six to seven months can be allocated for the $pp$ configuration.
-
-%The LHC~\cite{Evans_2008} is a circular particle accelerator with a 27~kilometer ($\approx17$ miles)
-%circumference located, on average, approximately 100 meters beneath the Earth's surface. It is nominally
-%a proton-proton ($pp$) collider
-%but can also be run in heavy-ion configurations: proton-lead ($p$-Pb), lead-lead (Pb-Pb), or even
-%proton-gold ($p$-Au). It is designed to accelerate protons to a center-of-mass
-%energy of $\sqrt{s} = 14\,\TeV$.
 
 In order to increase center-of-mass collisions energies, collider designs can take two routes: they can
-either be larger, that is, have larger circumferences (radii), or they can increase the strength of the magnetic
-fields used to keep the circulating charged particles in orbit. This can be seen by considering the expression
+either increase in size, that is, have larger circumferences (radii), or they can increase the strength of the magnetic
+fields used to keep the circulating charged particles in orbit. This can be seen by first considering the expression
 for the relativistic cyclotron frequency, $\omega$, of a particle moving in a circular orbit,
 \begin{align}
     \omega = \frac{qB}{\gamma m},
@@ -56,9 +42,13 @@ for the relativistic cyclotron frequency, $\omega$, of a particle moving in a ci
 \end{align}
 where $m$ is the particle's rest mass, $B$ is the magnitude of the magnetic field experienced by the
 particle, $q$ is the particle's electric charge, and $\gamma$ is the relativistic Lorentz factor, $\gamma = \sqrt{1 - \beta^2} = \sqrt{1 - (v/c)^2}$,
-with $v$ the particle's velocity and $c$ the speed of light. A particle of higher energy confined
-to a fixed circular orbit necessarily has a higher
-angular velocity, which can be seen by the expression relating the angular velocity to kinetic energy:
+with $v$ the particle's velocity and $c$ the speed of light.
+Using Eqn.~\ref{eq:rel_cyclotron}, it can be seen that a particle of higher energy confined to a fixed
+circular orbit necessarily has a higher angular velocity by relating the particle's angular
+velocity to its kinetic energy:
+%A particle of higher energy confined
+%to a fixed circular orbit necessarily has a higher
+%angular velocity, which can be seen by the expression relating the above angular velocity of the particle to its kinetic energy:
 \begin{align}
     E_{\text{kin}} \propto m v^2 = m(\omega R)^2 = \frac{q^2 B^2 R^2}{m \gamma^2}.
     \label{eq:kinetic_energy_gen}
@@ -67,9 +57,9 @@ In planning the construction of the LHC, the costs in civil engineering and real
 be required to construct a larger tunnel in which to house the LHC ring (increasing $R$) far outweighed
 the costs of research into and development of magnet systems strong enough to bend the
 multi-\TeV~particles along the beam orbit prescribed by the already-existing LEP tunnel (increasing $B$).
-The desired multi-\TeV~center-of-mass collision energy, the fact that the LHC would be a hadron (proton)
+The desired center-of-mass collision energy of $\mathcal{O}(10)$\,\TeV, the fact that the LHC would be a hadron (proton)
 collider, and the fact that the LHC would be using the existing LEP tunnel dictate the required magnetic
-field strength needed to keep the protons in stable orbits. This
+field strength needed to keep the protons in stable orbits at the LHC. This
 is seen by using Eqn.~\ref{eq:kinetic_energy_gen}, solving for $B$, and comparing the LHC and LEP
 design parameters,
 \begin{align}
@@ -82,35 +72,66 @@ design parameters,
 which shows that the strength of the LHC bending magnets must be on the order of $100\times$
 the strength of those used at LEP. The magnetic fields experienced by the electron and positron beams
 at LEP were 0.22 Tesla. By Eqn.~\ref{eq:lhc_mag_field}, the LHC bending magnets should achieve magnetic field
-strengths on the order of 10 Tesla in order to achieve the desired multi-\TeV~center-of-mass collision energies.
+strengths on the order of 10 Tesla in order to achieve the desired collision energies.
 The maximum achievable magnetic field of conventional ferrormagnets is about 2 Tesla.
-To meet the $\sqrt{s}\approx$10\,\TeV~design goal, the entirety of the magnet system used by the LHC to confine the protons to their circular orbits
+To meet the $\sqrt{s}\approx$10\,\TeV~design goal, the magnet system used by the LHC to confine the protons to their circular orbits
 must then be composed of \textit{superconducting} electromagnets. %\footnote{Note that even though
 %the main dipole bending magnets at LEP were not superconducting, its focusing quadrupole magnets
 %\textit{were} superconducting. There are simply fewer quadrupole magnets, as compared to the number of
 %dipole magnets, required for a particle collider.}
-All of the bending and focusing magnets at the LHC, then, are submerged in a bath of superfluid Helium
-at a temperature of $1.9$\,K to keep them in the superconducting state. In total, the LHC contains more than 120 tonnes of superfluid Helium.
+The entire magnet system of LEP was therefore removed and replaced with superconducting
+niobium-titanium (Nb-Ti) alloy based electromagnets which are superconducting
+at temperatures below $10$\,K.
+%All of the magnets at the LHC are constructed with
+%current carrying elements composed of a niobium-titanium (Nb-Ti) alloy that becomes superconducting
+%for temperatures below $10$\,K.
+To reach temperatures below this $10$\,K threshold, the LHC magnets
+are housed in cryostats that allow for the Nb-Ti elements to be fully submerged in a bath
+of superfluid Helium at a temperature of $1.9$\,K~\cite{Casas:1992nf}.
+In total, the LHC contains more than 120 tonnes of superfluid Helium.
+It goes without saying that there is a significant amount of resources and person power at CERN devoted to the refrigeration and cryogenics
+systems that are required for the LHC to run.
 
 Additionally, the fact that LEP was a \textit{particle-antiparticle} collider meant that the counter-rotating
 beams could be made to occupy a single ring: the same magnetic field could produce counter-rotating beams of
 electrons and positrons within the same beam pipe.\footnote{The electrons and positrons at LEP were vertically separated
 within the beam pipe by electrostatic separators placed throughout the LEP ring. Turning off these separators
-is, to first approximation, how the LEP operators would get the electrically attracting electrons and positrons to collide.}
+is, to first approximation, how the LEP operators would get the electrically-attracting electrons and positrons to collide.}
 As a result, the LEP beam tunnel was constructed with only a single ring in mind and is relatively narrow: the LEP tunnel,
-and therefore LHC tunnel, is only $\approx3.7$\,m wide on average.
+and therefore LHC tunnel, is only $\approx$3.7\,m wide on average.
 As the LHC is a \textit{particle-particle} collider, it necessarily requires \textit{two} magnetic fields
 of opposing polarity to circulate one of its beams in the clockwise direction and the other in the
 counter-clockwise direction.
 Given the limited space in the tunnel, however, it is not possible to house two separate rings
-of superconducting bending magnets, with all of the services that they require \textit{in addition} to the requisite
+of superconducting bending magnets with all of the services that they require \textit{in addition} to the requisite
 minimal space needed for personnel and maintenence access.
-This forced the need of the so-called ``2-in-1'' design of the main bending magnets of the LHC, wherein the two
+This forced the need of the so-called `2-in-1' design of the main bending magnets of the LHC, wherein the two
 beam pipes are housed in the same cryostat in which the counter-rotating beams are held in their
 respective orbits by coupled magnetic fields.
-An illustration of this now-iconic design of the LHC magnets is illustrated in Figure~\ref{fig:lhc_dipole_xsec}.
+An illustration of this now-iconic design of the LHC bending (dipole) magnets and surrounding cryostat and containment structure is illustrated in Figure~\ref{fig:lhc_dipole_xsec}.
 Each of the 15\,meter long superconducting dipole electromagnets of the LHC responsible for constraining the protons to their circular
-orbits has currents of $11850$\,Amperes flowing through it and achieves magnetic field strengths of $8.3$\,Tesla.
+orbits has currents of $11850$\,Amperes flowing through it and achieves magnetic field strengths of $8.33$\,Tesla.
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.43\textwidth]{figures/chapter2/lhc_lep_dipole_comp}
+        \includegraphics[width=0.50\textwidth]{figures/chapter2/lhc_lep_dipole_comp_person}
+        \caption{
+            \textit{Left}: Illustration comparing the size of a `2-in-1' LHC dipole configuration to the
+                LEP dipole and how they fit inside of the LEP/LHC tunnel. Note that prior to LHC operation,
+                the LEP magnets will have been removed: the two are shown side-by-side for comparison purposes only.
+            \textit{Right}: Cross-sectional view of the LEP/LHC tunnel with a comparison of the LHC `2-in-1' dipole
+                on top of the LEP dipole. An illustration of an average size person is shown
+                for scale. Also shown is the service crane in use, to give an idea of the size required
+                for potential maintenance access. Clearly, two single-bore, superconducting rings each similar in size
+                to the LEP dipole would not fit comfortably in the tunnel. The LHC `2-in-1' design fits
+                in nearly the same area as the LEP dipoles while additionally being able to contain both
+                particle beams.
+                Figures are taken from Ref.~\cite{ECFALHCinLEP}.
+        }
+        \label{fig:lhc_lep_dipole_comp}
+    \end{center}
+\end{figure}
 
 \begin{figure}[!htb]
     \begin{center}
@@ -120,6 +141,13 @@ orbits has currents of $11850$\,Amperes flowing through it and achieves magnetic
         \end{minipage}
         \caption{
             \textit{Left}: Cross-sectional view of an LHC dipole bending magnet, with relevant parts indicated.
+            The protons orbit inside of the beam pipes, each of which has a diameter of roughly $3$\,cm.
+            It is interesting to note that the non-magnetic steel collars (in green) are of critical import
+            to the success of the magnet systems. They are required
+            to prevent the dipole structure from being deformed or torn apart due to the intense magnetic forces
+            tending to push the two beam-pipes apart as a result of their counter-rotating electromagnetic currents.
+            These forces amount to about 400 tonnes per meter of dipole when in full operation --- almost equivalent in magnitude
+            to the weight of a Boeing 747.
             \textit{Right}: Magnetic field lines of the coupled dipole fields that bend the counter-rotating proton beams
             and keep them in their circular orbits around the LHC ring.
         }
@@ -127,14 +155,41 @@ orbits has currents of $11850$\,Amperes flowing through it and achieves magnetic
     \end{center}
 \end{figure}
 
+
+%\FloatBarrier
 \paragraph{Connecting the Dots} \mbox{} \\
-
-Now that we have an idea of the components that make up the LHC ring itself and how it keeps proton beams in stable
-orbits, we can take a step back and get an idea of the overall layout of the LHC.
-In Figure~\ref{fig:lhc_layout} we see an illustration of the LHC design.
-There are...
-
-As shown in Figure~\ref{fig:lhc_layout}, the LHC is comprised of 8 straight sections and 8 curved sections.
+The LHC is essentially a chain of superconducting magnets of the type described in the previous paragraphs, where
+the the bending (dipole) magnets critical to the LHC design were introduced.
+%There are additional
+%types of magnets that produce fields of higher multipole moments which, in the case of the quadrupole magnets, are
+%necessary for beam \textit{beam focusing}. Conceptually they are very similar to the dipoles and are 
+The chain is laid in a double-hexagonal structure, illustrated in Figure~\ref{fig:lhc_layout}. There are eight
+octants, at the center of which the LHC ring is straight and does not curve.
+The LHC curvature occurs at the
+boundaries of each of the octants and is primarily made up of bending (dipole) magnets.
+The straight sections are where the interaction regions are located and are referred
+to as `Points', numbered 1 to 8.
+Points 1, 2, 5, and 8 are where the four large LHC experiments are located.
+Points 1 and 5 are home to the services and underground areas
+of the general purpose experiments, ATLAS and CMS, respectively.
+The underground experimental caverns associated with Point 1 and 5 were not present for LEP and
+had to be constructed after LEP was retired in 2000.
+Figure~\ref{fig:p1} provides an illustration of how the surface and underground
+areas are situated at Point 1.
+Points 2 and 8 host the services and underground areas of the ALICE and LHCb experiments, respectively.
+At these Points, Points 1, 2, 5, and 8, the counter-rotating beams are
+made to collide. The remaining Points, Points 3, 4, 6, and 7, are host to various beam `services'
+necessary for the operation of the LHC.
+Point 3 and 7 host the beam betatron and momentum cleaning (`beam collimation') systems, respectively.
+Point 4 hosts the superconducting radio-frequency (RF) systems which accelerate the beams to
+their nominal collision energies.
+Point 6 is the location of the beam-abort system --- the so-called `beam dump' --- where
+the LHC beams may be removed very quickly from the LHC ring by using \textit{kicker} magnets~\cite{LHCDesignI}
+that divert the beams out of the LHC ring in a safe manner. The beams may be dumped
+if the LHC wishes to refill with protons (or heavy-ions) and needs to remove any
+remnants of the previous fill, in case of beam instabilities observed in the LHC ring,
+or if one of the experiments signals the need for a beam dump (in case of
+beam stability or detector issues observed at the associated IP).
 
 \begin{figure}[!htb]
     \begin{center}
@@ -152,12 +207,30 @@ As shown in Figure~\ref{fig:lhc_layout}, the LHC is comprised of 8 straight sect
     \end{center}
 \end{figure}
 
-\FloatBarrier
-\subsection{Injection Chain}
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.75\textwidth]{figures/chapter2/point1_illustration}
+        \caption{
+            Diagram showing the surface buildings and services and underground areas of Point 1, where
+            the ATLAS experiment is located. The LHC ring can be seen at the bottom,
+            with its directions indicated by the `VERS PT8 (2)' arrows pointing
+            towards Point 8 (2).
+            The experimental cavern in which the ATLAS detector sits is UX15.
+            The control room for the ATLAS experiment, whereat operators can monitor and
+            control the state of the ATLAS detector, is located 100\,m above
+            UX15 in the building SCX1.
+            Figure taken from Figure 10.1 of Ref.~\cite{LHCDesignII}.
+        }
+        \label{fig:p1}
+    \end{center}
+\end{figure}
+
+%\FloatBarrier
+\subsection{Injection Chain and Bunch Structure}
 \label{sec:lhc_injection}
 
-\subsection{LHC Beam Acceleration and Structure}
-\label{sec:lhc_acceleration}
+%\subsection{LHC Beam Acceleration and Structure}
+%\label{sec:lhc_acceleration}
 
 \subsection{The Concept of Luminosity}
 \label{sec:lhc_luminosity}
