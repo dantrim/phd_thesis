@@ -229,6 +229,87 @@ beam stability or detector issues observed at the associated IP).
 \subsection{Injection Chain and Bunch Structure}
 \label{sec:lhc_injection}
 
+We now have an idea of how the proton beams relevant to the work
+in this thesis are made to circulate in the LHC ring.
+In this section we will briefly describe the initial source of the protons and how
+they are introduced into the LHC ring.
+The LHC relies on a series of pre-acceleration steps that bring the initial
+low-energy protons to energies sufficient enough to begin their journey through the LHC.
+The sum-total of these steps is referred to as the LHC \textit{injection chain}~\cite{LHCDesignIII}.
+The components of the LHC injection chain form the heart of the CERN accelerator
+complex illustrated in Figure~\ref{fig:cern_complex}.
+For $pp$ collisions in the LHC, the protons are initially sourced from Hydrogen atoms that are released
+from a Hydrogen source located near Linac 2.
+The Hydrogen atoms are immediately stripped of their electrons after passing through
+the \textit{duoplasmatron} ion source~\cite{Duoplasma}.
+The protons are then passed through Linac 2, a linear accelerator, which accelerates
+the protons to $50$\,\MeV.
+They then enter the Proton Synchotron Booster (PSB), a circular storage ring
+composed of four stacked rings, which accelerates the protons to $1.4\,\GeV$.
+The PSB injects the protons into the Proton Synchotron (PS) which accelerates
+them to $25$\,\GeV.
+The Super Proton Synchotron (SPS) receives the protons from the PS and
+accelerates them to $450$\,\GeV.
+At this point the protons have sufficient energy to be injected into the LHC.
+There are two injection points into the LHC since, up until this stage,
+the protons are circulating in the same direction: one injection point sends
+protons into the counter-clockwise beamline of the LHC, and the other
+into the clockwise beamline.
+Until all of the protons from a single \textit{fill} make their way into
+the LHC, they will circulate at the injection energy of $450$\,\GeV.
+After the filling completes\footnote{A standard LHC fill takes on the order of 4 minutes per
+ring.}, the superconducting RF cavities located at Point 4 will begin to accelerate the protons
+to their final collision energies.
+The acceleration is achieved by increasing the frequency of the RF oscillations; however,
+given that a $450$\,\GeV~proton is already ultra-relativistic, the adjustment of the frequency
+needed to get to the collision energies is not necessarily large.
+
+The proton beams circulating the LHC are not a continuous stream of protons; rather,
+they are grouped into what are referred to as \textit{bunches}.
+The protons arrive at the LHC in these bunches which are initially prepared
+in the smaller machines that make up the LHC injection chain and then are
+kept in their final \textit{bunch structure} by the RF cavities.
+The accelerating RF cavities provide an accelerating electromagnetic field
+that oscillates longitudinally. The bunches, each composed of roughly $10^{11}$ protons,
+are then made to oscillate longitudinally in so-called \textit{synchotron oscillations}
+around the central node of the RF oscillation.
+The proton bunches are then effectively `shaped' by the oscillating RF field: protons in a bunch
+lagging behind or that are ahead of those particles at the center of the bunches
+will be accelerated or decelerated accordingly so as to be pushed back into the center of the bunch.
+The LHC RF cavities have an oscillation frequency of $400$\,MHz which which
+defines the boundaries in which proton bunches can lie. These boundaries are
+called \textit{RF buckets} and, along with
+the circumference of the LHC, dictate the number of proton bunches that
+can potentially fit in the LHC.
+The relationship between the RF oscillations and the RF bucket and bunch structure
+is illustrated in Figure~\ref{fig:lhc_bunch}.
+In total, approximately 35640 RF buckets exist when the LHC is in operation.
+Not all buckets contain proton bunches, however.
+In fact, at the time of the writing of the present thesis,
+RF buckets filled with proton bunches have a minimal separation of 10 RF buckets, meaning
+that following an RF bucket containing a proton bunch there is at least 9 unfilled RF buckets.
+This corresponds to a minimal time
+time between proton bunches --- the \textit{bunch spacing} --- of $25$\,nanoseconds.
+At the time of the present thesis, the operating conditions of the LHC maximally
+allow for 2808 $25$\,ns-spaced bunches.
+The bunch-spacing and overall bunch structure of an LHC fill is not only decided
+by the operators of the LHC but also by what the detectors at Points 1,2,5, and 8
+can tolerate. This is because shorter bunch spacing means higher intensity and multiplicity
+of collisions occuring at each of these IP. A $25$\,nanosecond bunch spacing
+corresponds to a maximal $pp$ collision rate of $40$\,MHz. The detectors at each
+of the IP have been designed with this collision rate in mind and anything
+higher may push them beyond their design limits.
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.5\textwidth]{figures/chapter2/lhc_bunch}
+        \caption{
+        }
+        \label{fig:lhc_bunch}
+    \end{center}
+\end{figure}
+
+
 %\subsection{LHC Beam Acceleration and Structure}
 %\label{sec:lhc_acceleration}
 

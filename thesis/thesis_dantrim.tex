@@ -8,7 +8,7 @@
 % e.g. \section[short]{long}.
 %
 %\documentclass[12pt,fleqn]{style/ucithesis}
-\documentclass[12pt]{style/ucithesis}
+\documentclass[11pt]{style/ucithesis}
 
 % A few common packages
 \usepackage{amsmath}
@@ -163,6 +163,7 @@
 \newcommand{\fieldH}{$h$}
 \newcommand*{\TeV}{\ensuremath{\text{Te\kern -0.1em V}}}
 \newcommand*{\GeV}{\ensuremath{\text{Ge\kern -0.1em V}}}
+\newcommand*{\MeV}{\ensuremath{\text{Me\kern -0.1em V}}}
 
 \DeclareMathAlphabet\mathbfcal{OMS}{cmsy}{b}{n}
 
@@ -184,7 +185,7 @@
 
 % if doing minimal compilation, set the page counter to start at the document meat -- otherwise use the "\preliminarypages" command above
 \setcounter{page}{0}
-\include{sections/chapter1}
+%\include{sections/chapter1}
 \include{sections/chapter2}
 
 % These commands fix an odd problem in which the bibliography line
