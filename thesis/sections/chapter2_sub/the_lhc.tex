@@ -163,7 +163,7 @@ the the bending (dipole) magnets critical to the LHC design were introduced.
 %There are additional
 %types of magnets that produce fields of higher multipole moments which, in the case of the quadrupole magnets, are
 %necessary for beam \textit{beam focusing}. Conceptually they are very similar to the dipoles and are 
-The chain is laid in a double-hexagonal structure, illustrated in Figure~\ref{fig:lhc_layout}. There are eight
+The chain is laid in a double-octagonal structure, illustrated in Figure~\ref{fig:lhc_layout}. There are eight
 octants, at the center of which the LHC ring is straight and does not curve.
 The LHC curvature occurs at the
 boundaries of each of the octants and is primarily made up of bending (dipole) magnets.
@@ -239,7 +239,7 @@ The sum-total of these steps is referred to as the LHC \textit{injection chain}~
 The components of the LHC injection chain form the heart of the CERN accelerator
 complex illustrated in Figure~\ref{fig:cern_complex}.
 For $pp$ collisions in the LHC, the protons are initially sourced from Hydrogen atoms that are released
-from a Hydrogen source located near Linac 2.
+from a Hydrogen bottle located near Linac 2.
 The Hydrogen atoms are immediately stripped of their electrons after passing through
 the \textit{duoplasmatron} ion source~\cite{Duoplasma}.
 The protons are then passed through Linac 2, a linear accelerator, which accelerates
@@ -259,10 +259,10 @@ Until all of the protons from a single \textit{fill} make their way into
 the LHC, they will circulate at the injection energy of $450$\,\GeV.
 After the filling completes\footnote{A standard LHC fill takes on the order of 4 minutes per
 ring.}, the superconducting RF cavities located at Point 4 will begin to accelerate the protons
-to their final collision energies.
+to their final collision energies.\footnote{If all goes smoothly, this acceleration stage takes roughly 20 minutes.}
 The acceleration is achieved by increasing the frequency of the RF oscillations; however,
 given that a $450$\,\GeV~proton is already ultra-relativistic, the adjustment of the frequency
-needed to get to the collision energies is not necessarily large.
+needed to get to the collision energies is not large.
 
 The proton beams circulating the LHC are not a continuous stream of protons; rather,
 they are grouped into what are referred to as \textit{bunches}.
@@ -272,7 +272,7 @@ kept in their final \textit{bunch structure} by the RF cavities.
 The accelerating RF cavities provide an accelerating electromagnetic field
 that oscillates longitudinally. The bunches, each composed of roughly $10^{11}$ protons,
 are then made to oscillate longitudinally in so-called \textit{synchotron oscillations}
-around the central node of the RF oscillation.
+around the central node of the RF oscillation as they circulate through the LHC ring.
 The proton bunches are then effectively `shaped' by the oscillating RF field: protons in a bunch
 lagging behind or that are ahead of those particles at the center of the bunches
 will be accelerated or decelerated accordingly so as to be pushed back into the center of the bunch.
@@ -288,10 +288,19 @@ Not all buckets contain proton bunches, however.
 In fact, at the time of the writing of the present thesis,
 RF buckets filled with proton bunches have a minimal separation of 10 RF buckets, meaning
 that following an RF bucket containing a proton bunch there is at least 9 unfilled RF buckets.
-This corresponds to a minimal time
+This corresponds to a minimal
 time between proton bunches --- the \textit{bunch spacing} --- of $25$\,nanoseconds.
 At the time of the present thesis, the operating conditions of the LHC maximally
-allow for 2808 $25$\,ns-spaced bunches {\color{red}{this is not 35640/10}}.
+allow for 2808 $25$\,ns-spaced bunches.\footnote{
+The number of allowed bunches is significantly lower than the 35640 RF buckets with $25$\,ns
+bunch-spacing potentially allow for. This is due, in part, to the non-trivial bunch-structure
+typically employed but also in large part to the fact that there is a rather long \textit{abort gap}
+in the LHC ring where no filled RF buckets exist.
+The abort gap is a number of continuous unfilled RF buckets that allows the ramp up of the kicker
+magnets used for the beam dump to occur in the absence of filled buckets.
+In this way, the kicker magnet ramp up does not disturb the structure of the circulating proton beams.
+Only after this ramp up is finished should the kicker magnets disturb the beams.
+}
 The bunch-spacing and overall bunch structure of an LHC fill is not only decided
 by the operators of the LHC but also by what the detectors at Points 1,2,5, and 8
 can tolerate. This is because shorter bunch spacing means higher intensity and multiplicity
@@ -304,16 +313,111 @@ higher may push them beyond their design limits.
     \begin{center}
         \includegraphics[width=0.5\textwidth]{figures/chapter2/lhc_bunch}
         \caption{
+            Illustration of the particle bunch structure in a particle collider such as the LHC.
+            The particles are accelerated by radio-frequency (RF) oscillations whose
+            amplitude is illustrated in the upper plot.
+            The RF bucket's boundary, illustrated in the lower plot, is defined by a full period of the RF oscillation
+            and the particle bunch formation, depicted in grey, occurs at the central node of the oscillation.
+            The area occupied by the particle bunch is related to the beam's longitudinal
+            \textit{emittance}.
         }
         \label{fig:lhc_bunch}
     \end{center}
 \end{figure}
 
-
-%\subsection{LHC Beam Acceleration and Structure}
-%\label{sec:lhc_acceleration}
-
 \subsection{The Concept of Luminosity}
 \label{sec:lhc_luminosity}
 
-{\color{red}{tabulated design parameters of LHC}}
+In designing a particle collider, the collision energy is not the only important parameter.
+Equally important is the value of the instantaneous \textit{luminosity}
+that can be achieved by the collider.
+An expression for the instantaneous luminosity, $\mathcal{L}$, is given by,
+\begin{align}
+    \mathcal{L} = \frac{N^2 n_b f}{4 \pi \sigma_x \sigma_y} \cdot S,
+    \label{eq:luminosity}
+\end{align}
+where $N$ is the number of particles per bunch, $n_b$ is the number of colliding bunches,
+$f$ is the bunch revolution frequency, $\sigma_{x,y}$ are the transverse beam widths in the
+Gaussian approximation, and $S$ is a reduction factor that accounts for geometric factors
+such as the non-zero crossing-angle of the colliding beams~\cite{LHCDesignIII,LumiConcept}.
+The instantaneous luminosity, $\mathcal{L}$, can be seen by Eqn.~\ref{eq:luminosity}
+to have units of cm$^{-2}$s$^{-1}$ and can be conceptually thought of as the
+outgoing flux of particles per unit area and time after a bunch crossing in which successful $pp$
+collisions occur.
+The LHC is designed to deliver collisions to the high luminosity IP (Fig.~\ref{fig:lhc_layout})
+at $\mathcal{L} = 10^{34}$\,cm$^{-2}$s$^{-1}$.
+Accurate knowledge of $\mathcal{L}$ is of the utmost importance for collider design and operation.
+Not only does it parametrise the potential collision rate once the collider beam and bunch
+structure are decided, but it allows for the accurate prediction of the number
+of collision events, $N_{\text{proc}}$, associated with a particular physics process
+with cross-section $\sigma_{\text{proc}}$,
+\begin{align}
+    N_{\text{proc}} = \sigma_{\text{proc}} \int \mathcal{L}\, \mathrm{d}t \equiv \sigma_{\text{proc}} \cdot L,
+    \label{eq:n_exp_lumi}
+\end{align}
+where $L$ is referred to as the \textit{integrated luminosity} and has units of cm$^{-2}$.
+A common unit for integrated luminosity is the \textit{barn}, with symbol `b': one barn is defined as $10^{-24}$\,cm$^{-2}$.
+The datasets collected by the LHC experiments are such that the \textit{femtobarn} (fb), $10^{-39}$\,cm$^{-2}$, is relevant.
+
+\subsection{Operation of the Large Hadron Collider}
+\label{sec:lhc_operation}
+
+The LHC has been in stable operation since 2009.
+It operates in so-called \textit{runs}: multi-year periods of roughly continuous
+data-taking.
+As CERN shuts down during the winter months, each run is segmented each year
+with a several month long shutdown in the winter with a ramp-up period in the spring.
+During these shorter shutdowns, maintenance and upgrades may also take place.
+In between a given run there is a multi-year break, a \textit{long shutdown},
+in which large(er)-scale maintenance and upgrades of both the LHC and the experiments can take place.
+At the time of writing, there has so far been two runs of the LHC, Run-I and Run-II.
+Run-I took place during the years 2009--2012 and Run-II during 2015--2018.
+The integrated luminosities for each of the data taking years between Run-I and Run-II
+is shown in Fig.~\ref{fig:int_lumi_multiyear}.
+The data relevant to the work presented in this thesis were collected in both
+Run-I and Run-II of the LHC, specifically that data collected in the years 2012--2018.
+The luminosities (instantaneous and integrated) for these data-taking periods are
+shown in Table~\ref{tab:lumi_tab}.
+Also shown in Table~\ref{tab:lumi_tab} are the average values of the mean number of interactions per bunch
+crossing, $\langle \mu \rangle$, observed during each data-taking year. The quantity $\langle \mu \rangle$
+is related to the amount of \textit{pileup} observed during data-taking. Pileup is caused
+by overlapping $pp$ interactions within the same (\textit{in-time} pileup) or neighboring (\textit{out-of-time} pileup)
+bunch-crossing(s) at the interaction point. The pileup scales with the instantaneous luminosity.
+Distributions of $\langle \mu \rangle$ are shown in Fig.~\ref{fig:int_lumi_multiyear} for
+the Run-II data-taking period.
+
+
+\begin{table}[!htb]
+    \begin{center}
+        \begin{tabular}{l | c | c c c c }
+        \hline
+        \hline
+        & \textbf{Run-I} & \multicolumn{4}{c}{\textbf{Run-II}} \\
+        \hline
+        Year & 2012 & 2015 & 2016 & 2017 & 2018 \\
+        \hline
+        Peak Luminosity, $\mathcal{L}$ [cm$^{-2}$s$^{-1}$] ($\times10^{34}$) & $0.77$ & $0.5$ & $1.4$ & $2.1$ & $2.1$ \\ 
+        Integrated Luminosity, $L$ [fb$^{-1}$] & 20.2 & 3.2 & 33.0 & 44.3 & 59.9 \\
+        Mean number of of interactions & & & & & \\
+        \hspace{1.7cm} per bunch crossing, $\langle \mu \rangle$ & 20.7 & 13.4 & 25.1 & 37.8 & 36.1 \\
+        \hline
+        \hline
+        \end{tabular}
+        \caption{
+        }
+        \label{tab:lumi_tab}
+    \end{center}
+\end{table}
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.49\textwidth]{figures/chapter2/int_lumi_multiyear}
+        \includegraphics[width=0.49\textwidth]{figures/chapter2/mu_run2}
+        \caption{
+            \textit{Left}: The ATLAS integrated luminosity during the data-taking years 2011--2018.
+            \textit{Right}: The observed average number of $pp$ interactions per bunch-crossing, $\langle \mu \rangle$,
+                observed by ATLAS during the Run-II data-taking years, 2015--2018.
+        }
+        \label{fig:int_lumi_multiyear}
+    \end{center}
+\end{figure}
