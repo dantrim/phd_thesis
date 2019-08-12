@@ -28,13 +28,24 @@ field allows for their momenta to be measured using the curvature of their recon
 
 \begin{figure}[!htb]
     \begin{center}
-        \includegraphics[width=0.6\textwidth]{figures/chapter2/atlas_ID_barrel_exploded}
-        \raisebox{1.4cm}{\includegraphics[width=0.85\textwidth]{figures/chapter2/endcap_ID_exploded}}
+        \includegraphics[width=0.7\textwidth]{figures/chapter2/atlas_ID_barrel_exploded}
+        \raisebox{1.4cm}{\includegraphics[width=0.95\textwidth]{figures/chapter2/endcap_ID_exploded}}
         \caption{
-            Exploded views of the barrel (\textit{left}) and endcap (\textit{right}) portions
-            of the inner-detector.
+            Cut-away views of the barrel (\textit{top}) and end-cap (\textit{bottom}) portions
+            of the ATLAS inner detector, with each of the three subdetectors indicated along with their
+            envelopes in $r$ and in $z$.
         }
         \label{fig:atlas_ID_exploded}
+    \end{center}
+\end{figure}
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.9\textwidth]{figures/chapter2/atlas_ID_plan_view}
+        \caption{
+            From Ref.~\cite{ATLASCollab}.
+        }
+        \label{fig:atlas_ID_plan_view}
     \end{center}
 \end{figure}
 
@@ -53,7 +64,7 @@ the region $\lvert \eta \rvert < 2.5$.
 The pixel detector, being so near the $pp$ collisions, is subject to the highest particle
 fluxes of any other subsystem.
 As a result, it is built to have very fine granularity: its sensing elements consist of
-$250$\,\micron~thick detectors housing pixels of reverse-biased n-type silicon,
+$250$\,\micron~thick detectors housing pixels of reverse-biased n-type silicon semiconductor material,
 each having a nominal size of $50\times400\,\micron^2$.
 In total, there are roughly 80 million channels read out from the pixel detector alone.
 This allows for the pixel detector's fine spatial hit resolution of $10\,\micron$ in
@@ -100,7 +111,7 @@ $80\,\micron$ strip pitch.
 The strips in the barrel section run parallel to the beam-pipe and those in the
 end-caps are perpendicular, extending along the radial direction.\footnote{
 The SCT layers in both the barrel and end-cap sections additionally contain small-angle (40\,mrad) stereo strips to allow for measurement of both
-radial and azimuthal coordinates.}
+$(r-\phi)$ and $z$ information.}
 The spatial hit resolution of the SCT is $17\,\micron$ in $(r-\phi)$ and $580\,\micron$
 along $z$.
 %At a given azimuthal ($\phi$) position, the barrel section two roughly 6\,cm long
@@ -108,3 +119,33 @@ along $z$.
 
 \subsubsection{The Transition Radiation Tracker}
 \label{sec:trt}
+
+The outermost layer of the ATLAS ID, surrounding the SCT, is the transition
+radiation tracker (TRT).
+The TRT is a tracking volume designed around the proportional drift tube concept
+and is composed of polyimide drift tubes (straws) that are 4\,mm in diameter.
+The barrel section of the TRT conains up to 73 layers of 144\,cm-long straws aligned parallel to the
+beam-pipe while the end-cap section has 160 straw planes composed of 37\,cm long straws arranged radially
+into wheels (see Figure~\ref{fig:atlas_ID_exploded}).
+Each straw of the TRT has a 37\,\micron~gold-coated wire at its center which acts as anode
+and is grounded, while the inner walls of each straw are kept at a potential of
+approximately $-1.5$\,kV.
+A track hit in a given straw is the result of the 70\% Xe -- 27\% CO$_2$ -- 3\% O$_2$ gas mixture contained
+in the straw volume being ionised and the resulting electrons (ions) drifting to
+the center wire (inner wall) of the straw. The induced current from the drifting
+charge is converted to an electrical signal and read out.
+
+On average, a single charged-particle track leaves 36 hits in the TRT.
+The TRT only provides $(r-\phi)$ information (no $z$ information),
+for which it has a per-straw hit resolution of $130\,\micron$.
+The relatively poor hit resolution, when compared to the silicon based
+tracking detectors, is compensated by the large number of hits per track which
+lead to very long measured track lengths as compared to the pixel and SCT detectors.
+Additionally, the straws are embedded in and individually separated by
+a polypropelene fiber which induces transition-radiation photons to be produced.
+The amount and pattern of transition radiation depends on the mass of the passing
+particle: the passage of an electron will produce significantly more transition radiation
+than heavier charged particles, such as the copiously-produced pion.
+Information provided by the TRT therefore provides additional discrimination
+power between electrons and pions and enhances the performance of ATLAS' electron identification algorithms
+that primarily depend on information coming from the calorimeter systems ({\color{red}{Section XXX}}).
