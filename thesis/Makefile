@@ -73,10 +73,10 @@ $(DRAFT)_alt.pdf: $(DRAFT)_alt.tex  $(Classes) $(Styles) $(Sources)
 #		cp $(file) $(file:.pdf=)_`date +'%d%m%Y'`_`date +'%H%M'`.pdf;\
 #	)
 
-snapshot: $(DRAFT).pdf 
-	@- $(foreach file, $^, \
-		cp $(file) $(file:.pdf=)_`date +'%d%m%Y'`_`date +'%H%M'`.pdf;\
-	)
+#snapshot: $(DRAFT).pdf 
+#	@- $(foreach file, $^, \
+#		cp $(file) $(file:.pdf=)_`date +'%d%m%Y'`_`date +'%H%M'`.pdf;\
+#	)
 
 # make diff
 # make diff DIFF="master mybranch"
@@ -88,7 +88,3 @@ diff:
 	git-latexdiff $(DIFF) --main $(DRAFT).tex --tmpdirprefix latexdiff --latexmk --no-view
 	mv latexdiff/git-latexdiff.*/$(DRAFT).pdf $(DRAFT)_diff.pdf
 	rm -rf latexdiff
-
-
-
-
