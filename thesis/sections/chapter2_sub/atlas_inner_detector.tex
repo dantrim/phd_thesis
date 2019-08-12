@@ -1,0 +1,89 @@
+\subsection{The Inner Detector}
+\label{sec:inner_detector}
+
+The innermost subdetector of ATLAS is the Inner Detector (ID)~\cite{Haywood:331064}.
+The ID covers the region $\lvert \eta \rvert < 2.5$ and is composed, in order
+of increasing radial distance from the beam-pipe, of the pixel detector,
+semiconductor tracker (SCT), and the transition radiation tracker (TRT).
+These detectors enable the reconstruction of the tracks associated with
+the $\mathcal{O}(1000)$ charged particles emerging from each $pp$ bunch collision, occuring
+every 25\,ns.
+An illustration of the ID and its subdetectors is shown in Figure~\ref{fig:atlas_inner_detector}.
+Additional, more detailed views of the barrel and endcap sections of the ID are shown in Figure~\ref{fig:atlas_ID_exploded}.
+The ID is situated inside of the central solenoid, indicated in Figure~\ref{fig:atlas_magnet_system},
+which provides an axial 2\,T magnetic field and extends over a length of 5.3\,m with a diameter of 2.5\,m.
+The bending of charged particles in the $xy$-plane due to the presence of the solenoidal
+field allows for their momenta to be measured using the curvature of their reconstructed tracks.
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.75\textwidth]{figures/chapter2/atlas_inner_detector}
+        \caption{
+            Cross-sectional view of the ATLAS inner detector. Shown are the barrel
+            and end-cap portions of the pixel, SCT, and TRT detectors.
+        }
+        \label{fig:atlas_inner_detector}
+    \end{center}
+\end{figure}
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.6\textwidth]{figures/chapter2/atlas_ID_barrel_exploded}
+        \raisebox{1.4cm}{\includegraphics[width=0.85\textwidth]{figures/chapter2/endcap_ID_exploded}}
+        \caption{
+            Exploded views of the barrel (\textit{left}) and endcap (\textit{right}) portions
+            of the inner-detector.
+        }
+        \label{fig:atlas_ID_exploded}
+    \end{center}
+\end{figure}
+
+\subsubsection{The Pixel Detector and IBL}
+\label{sec:id_pixel}
+
+The pixel detector is the innermost subdetector of the ID, situated very near to and surrounding
+the beam-pipe.
+It is composed of three separate sections: a barrel section and two end-cap sections.
+The barrel section  of the pixel detector has a cylindrical geometry and the end-cap sections
+are disks centered on the beam-pipe.
+The barrel section has four layers, each with increasing radius, and there are three disks in each
+of the end-caps. This ID geometry, shown in Figure~\ref{fig:atlas_ID_exploded}, covers
+the region $\lvert \eta \rvert < 2.5$.
+
+The pixel detector, being so near the $pp$ collisions, is subject to the highest particle
+fluxes of any other subsystem.
+As a result, it is built to have very fine granularity: its sensing elements consist of
+$250$\,\micron~thick detectors housing pixels of reverse-biased n-type semiconductor material,
+each having a nominal size of $50\times400\,\micron^2$.
+In total, there are roughly 80 million channels read out from the pixel detector alone.
+This allows for the pixel detector's fine spatial hit resolution of $10\,\micron$ in
+$(r-\phi)$ and $115\,\micron$ along $z$.
+
+The innermost layer of the pixel detector's barrel section is referred to as the
+\textit{Insertable B-Layer} (IBL), and was installed at the beginning of the Run-II
+data-taking period~\cite{Capeans:1291633}.
+It corresponds, essentially, to the instrumentation of the ATLAS beam-pipe, as seen in Figure~\ref{fig:pixel_detector_trans},
+and is located at a radial distance of 3.3\,cm.
+It alone accounts for 8 million readout channels of
+the pixel detector --- resulting in an ultra precise spatial hit resolution of $8\,\micron$ in $(r-\phi)$ and
+$40\,\micron$ along $z$.
+Beyond improving the overall measurements and reconstruction of charged particle tracks,
+the IBL was installed in order to improve the performance of secondary vertex
+reconstruction --- an essential ingredient to the algorithms associated with
+the reconstruction and identification of jets originating from the decays
+of $b$-hadrons whose decays occur at radial distances frequently beyond that
+of the IBL.
+
+
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.8\textwidth]{figures/chapter2/pixel_detector_trans}
+        \caption{
+            Transverse view of the barrel section of the pixel detector, showing
+            the innermost layer, the Insertable B-Layer (IBL) (red), and the
+            three surrounding layers (blue). From Ref.~\cite{Backhaus:2016ctq}.
+        }
+        \label{fig:pixel_detector_trans}
+    \end{center}
+\end{figure}

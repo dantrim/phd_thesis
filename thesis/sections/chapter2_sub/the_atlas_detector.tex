@@ -3,14 +3,14 @@
 
 In this section we will extend our focus to the ATLAS detector, the general purpose
 particle detector located at Point 1 of the LHC ring (see Figure~\ref{fig:p1}).
-Roughly cylindrical in shape, coaxial with the colliding proton beams,
+Roughly cylindrical in shape, coaxial with the beam-pipe,
 the ATLAS detector is 44\,m long and 25\,m tall.
 It is by far the largest such detector ever built and,
 generally, is the largest and most complex device ever constructed.
 Being general purpose in scope, the ATLAS detector is hermetic and has
 nearly $4\pi$ radians of solid angle coverage around the $pp$ collision
 point. 
-Such detectors are commonly designed to have various subsystems --- \textit{sub-detectors} ---
+Such detectors are commonly designed to have various subsystems --- \textit{subdetectors} ---
 which are dedicated for the identification of specific types of particles
 and interactions.
 They tend to be layered about the interaction point and cylindrically symmetric
@@ -33,18 +33,18 @@ is referred to as the `A' (`C') side of the detector.\footnote{`A' for `airport'
 since this is the side pointing towards Geneva International Airport, and
 `C' for either `Crozet' or `Charly's', depending on who you ask, since this is the side
 pointing towards the town of Crozet and/or Charly's Pub in the town of Saint-Genis-Pouilly.}
-Due to its cylindrical symmetry, ATLAS also uses the cylindrical coordinates, $(r,\phi)$,
+Due to its cylindrical symmetry, ATLAS also uses the cylindrical coordinates, $(r,\phi, z)$,
 with $\phi$ the azimuthal angle about the $z$-axis and having $\phi = 0$ along the positve $x$-axis.
 The spherical polar angle, $\theta$, is defined with respect to the $z$-axis, having
 $\theta = 0$ parallel to the beam-pipe and $\theta = \pi/2$ in the $xy$-plane transverse
 to the beam-pipe.
 The pseudorapidity, $\eta$, is commonly used when describing systems of particles or locations within
 the detector and is defined as $\eta = - \ln \left[ \tan \left( \theta / 2 \right) \right ]$.
-The relationship between psuedorapidity and polar angle is illustrated in Figure~\ref{fig:eta_desc}.
+The relationship between pseudorapidity and polar angle is illustrated in Figure~\ref{fig:eta_desc}.
 Large (small) values of $\eta$ correspond to the \textit{forward} (\textit{central}) region of the detector.
-The rapidity, $y$, is related to $\eta$ in certain situations and is defined as $y = \frac{1}{2} \ln \left( (E+p_z) / (E-p_z) \right)$.
-The pseudorapidity of a particle traversing the detector is equal to its rapidity of
-the particle is massless or ultra-relativistic; otherwise, they are generally different.
+The rapidity, $y$, is related to $\eta$ and is defined as $y = \frac{1}{2} \ln \left[ (E+p_z) / (E-p_z) \right]$.
+The pseudorapidity of a particle traversing the detector is equal to its rapidity if
+the particle is massless or ultra-relativistic; otherwise, they are different.
 The comparison between a particle's pseudorapidity and rapidity is illustrated in
 Figure~\ref{fig:eta_desc}.
 The coordinates used to describe systems of particles are typically described by their
@@ -53,8 +53,6 @@ A distance metric commonly used to describe the distance between two systems of 
 in the detector is $\Delta R = \sqrt{ (\Delta \eta)^2 + (\Delta \phi)^2 }$. The
 $\Delta R$ quantity using $y$ instead of $\eta$ is also sometimes used and will be
 indicated by $\Delta R_y$.
-
-
 
 \begin{figure}[!htb]
     \begin{center}
@@ -96,3 +94,13 @@ indicated by $\Delta R_y$.
         \label{fig:atlas_magnet_system}
     \end{center}
 \end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% INNER DETECTOR
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{sections/chapter2_sub/atlas_inner_detector}
+
