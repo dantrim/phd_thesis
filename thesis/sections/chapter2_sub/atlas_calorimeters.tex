@@ -31,17 +31,29 @@ on gaps of cooled liquid-argon~\cite{CERN-LHCC-96-041} or on scintillating tiles
 \label{sec:calo_em}
 
 The electromagnetic (EM) calorimeter is a high-granularity lead/liquid-argon (LAr)
-sampling calorimeter situated just beyond the central solenoid.
-It consists of barrel and end-cap sections, covering the entire
+sampling calorimeter situated outside of the ID and sharing the
+same cryostat as the the central solenoid.
+It consists of barrel and end-cap sections that cover the entire
 range within $\lvert \eta \rvert < 3.2$, indicated in Figure~\ref{fig:atlas_calorimeters_cutaway}.
-The calorimeter is designed in an accordian type structure, whose gaps are
-filled with the cooled LAr that acts as the active medium.
 The structure of the barrel and end-cap electromagnetic calorimeter
 is shown in Figure~\ref{fig:em_calo_section}.
+The calorimeter is designed in an accordian type structure to provide full coverage
+in $\phi$.
+The cooled LAr fills the gaps between layers of the
+accordian structure.
+Passing particles from the interaction point undergo scattering and bremsrahlung processes as they pass through
+the lead absorbers. The resulting electrons and photons ionise the LAr, producing
+drift electrons and ions whose signals are read out by the interleaved readout
+electrodes. The 2.1\,mm drift gap has an operating voltage of $\approx 2$\,kV.
 The electromagnetic calorimeter is $>22$ radiation lengths ($X_0$), ensuring
 that the majority of electrons and photons are completely contained within the EM calorimeter.
 The majority of the EM energy, amounting to approximately 16\,$X_0$, is contained
 within the second sampling layer (see Figure~\ref{fig:em_calo_section}).
+
+In the region $\lvert \eta \rvert < 1.8$, a so-called \textit{presampler} detector is used to correct
+for the energy lost by electrons and photons due to material interactions occuring
+upstream of the EM calorimeter.
+It is a single LAr layer, with width 1.1\,cm (0.5\,cm) in the barrel (end-cap).
 
 \begin{figure}[!htb]
     \begin{center}
@@ -51,6 +63,8 @@ within the second sampling layer (see Figure~\ref{fig:em_calo_section}).
             \textit{Left}: Cut-away view of the barrel electromagnetic calorimeter and its accordian
                 structure. Indicated are
                 the geometry and absorption properties of the three sampling layers.
+                Also indicated is the granularity of the electrode readout in $\Delta \phi \times \Delta \eta$
+                in each layer.
             \textit{Right}: Diagram of the electromagnetic end-cap calorimeter accordian wheel structure
                 (only a sub-set of the accordian structure is shown).
         }
