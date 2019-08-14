@@ -27,11 +27,10 @@ drove the original design of all subdetectors discussed in the previous sections
         \caption{
             A view of the ATLAS detector inside the underground experimental area
             UX15.
-            The cut-away view exposes the toroid structure as well as the
+            The cut-away view exposes the toroid structure and
             calorimeter system.
             Notice that the outermost muon stations in the forward regions are located
             at the extreme ends of the cavern.
-            {\color{red}{Should move this figure either above or entirely}}
         }
         \label{fig:atlas_in_cavern}
     \end{center}
@@ -47,15 +46,15 @@ the regions between the coils of the toroid and the small sectors the azimuthal 
 in which the coils sit.
 The detector types can be broken into two classes and are either
 \textit{precision} or \textit{trigger} chambers.
-The precision chambers are composed of Monitored Drift Tube (MDT) and Cathode Strip Chamber (CSC)
+The precision chambers are composed of Monitored Drift Tube (MDT)~\cite{Bauer:2016gyg} and Cathode Strip Chamber (CSC)~\cite{Argyropoulos:2009zz}
 detectors and allow for
 the precise measurement the muon tracks as they traverse the MS, specifically the
 precise measurement in the bending plane of these tracks so as to allow for accurate
 determination of the muon momenta through their curvature.
-The trigger chambers are composed of Resistive Plate Chamber (RPC) and Thin Gap Chamber (TGC)
+The trigger chambers are composed of Resistive Plate Chamber (RPC)~\cite{Aielli:2006hg} and Thin Gap Chamber (TGC)~\cite{Majewski:1984ag}
 detectors and have fast signal formation and readout times, allowing for
 accurate assignment of a passing muon to a specific $pp$ bunch crossing.
-Both types of detectors exist in the barrel and end-cap \textit{stations} of the
+Both types of detectors exist in the barrel and end-cap sections of the
 MS and there are typically at least three layers of precision-type chambers over the
 entire $\lvert \eta \rvert$ range of the MS in order to allow for the sagitta measurement
 of the muon tracks necessary for momentum determination.
@@ -100,7 +99,7 @@ as seen on the right side of Figure~\ref{fig:muon_nchambers_crossed}.
 
 The layout of the muon chambers and the corresponding detector technologies
 in the barrel and end-cap sections shown in Figure~\ref{fig:muon_plan_view_eta}.
-Here we will briefly describe each, starting with the barrel section
+Here we will briefly describe each, starting with the barrel section.
 
 \begin{figure}[!htb]
     \begin{center}
@@ -136,36 +135,7 @@ The MDT chambers are built as multi-layers of many MDT tubes which allows for th
 of the spatial resolution down to $50\,\micron$.
 An MDT double multi-layer chamber is shown in Figure~\ref{fig:mdt_chamber}.
 Also illustrated in this figure is the principle by which the tube hits in a given MDT
-multi-layer are used to form tracklets which aid in the determination
-of the muon track building.
-
-The chambers responsible for constructing muon trigger primitives in the MS barrel
-are the RPC chambers, whose principle of operation is shown on the left of Figure~\ref{fig:muon_trigger_chamber}. 
-The RPC gap is 2\,mm, filled with tetrafluorethane (C$_2$H$_2$F$_4$), and is lined with
-parallel plate electrodes operated at a potential difference of 9.8\,kV. This high operating
-potential and gas mixture allows for a timing resolution of 2\,ns. Readout strips in $x$ and $y$
-collect the induced charge from the ionisation events within the gap and provide
-additional spatial information for track building.
-
-\subsubsection{Muon Spectrometer: End-cap}
-\label{sec:ms_endcap}
-
-
-
-%\begin{figure}[!htb]
-%    \begin{center}
-%        \caption{
-%        }
-%        \label{fig:muon_overlap}
-%    \end{center}
-%\end{figure}
-
-
-
-
-
-\subsubsection{Precision Muon Chambers}
-\label{sec:muon_precision}
+multi-layer are used to form tracklets which aid in the process muon track building.
 
 \begin{figure}[!htb]
     \begin{center}
@@ -180,6 +150,54 @@ additional spatial information for track building.
     \end{center}
 \end{figure}
 
+The chambers responsible for constructing muon trigger primitives in the MS barrel
+are the RPC chambers, whose principle of operation is shown on the left of Figure~\ref{fig:muon_trigger_chamber}. 
+The RPC gap is 2\,mm, filled with tetrafluorethane (C$_2$H$_2$F$_4$), and is lined with
+parallel plate electrodes operated at a potential difference of 9.8\,kV. This high operating
+potential and gas mixture allows for a timing resolution of 2\,ns. Readout strips in $x$ and $y$
+collect the induced charge from the ionisation events within the gap and provide
+additional spatial information for track building.
+
+\subsubsection{Muon Spectrometer: End-cap}
+\label{sec:ms_endcap}
+
+The end-cap muon chambers, located in $1 < \lvert \eta \rvert < 2.7$, are arranged
+in 4 rings --- \textit{wheels} ---  extending radially and concentric with the beam axis at $z \approx 7.5, 10, 14, 22$\,m
+from the $pp$ interaction point.
+The wheel at $z\approx 7.5$\,m, located on the IP-side of the end-cap toroid, is referred to as the `Small Wheel' and those at $z>10$\,m are
+referred to as the `Big Wheels'.
+That at $z\approx 10$\,m, situated above the end-cap toroid, is an intermediate muon station composed of MDT chambers and has generally lower coverage than the
+Small and Big Wheels.
+
+As in the barrel section, the primary precision measurement in the end-caps is provided
+by MDT chambers which are located in all four wheels of the end-cap.
+The MDT tubes are oriented azimuthally in order to obtain precision measurement in $\eta$.
+At the region $2 < \lvert \eta \rvert < 2.7$, in the innermost muon station
+in the end-cap that experiences the highest background rates,
+the precision muon measurement is provided by the CSC chambers at low radii.
+The CSC detectors are multi-wire proportional chambers, illustrated in Figure~\ref{fig:csc_chamber},
+with cathode strips perpendicular to anode wires and operated with Ar/CO$_2$/CF$_4$ gas mixtures.
+Passing MIPs result in ionisation events whose signals along the strips and wires are
+subsequently readout.
+As compared to the MDT chambers, the CSC detectors can resolve spatial information in both $\eta$ and $\phi$
+and, due to their relatively high granularity readout structure, can sustain the higher
+background rates experienced in this very forward region of the detector.
+The CSC sectors are multi-layered (4-layers) and can achieve spatial hit resolutions on the order
+of $60\,\micron$.
+
+The trigger chambers in the end-cap are composed of the TGC detectors.
+Like the CSC, the TGC is a multi-wire proportional chamber with a gas mixture
+of CO$_2$ and $n$-pentante ($n$-C$_5$H$_{12}$).
+An illustration of the operating principles of a TGC detector is shown in Figure~\ref{fig:muon_trigger_chamber}.
+The graphite cathodes and wires, with $1.4$\,mm separation, are held at a potential
+difference of $2.9$\,kV.
+This high potential difference and anode/cathode geometry allows for signals to be readout
+with a timing resolution of 4\,ns.
+Both the signals from the drift electrons, collected along the wires, and the induced
+charge on the strips located behind the G-10 layer are readout and provide additional
+two-dimensional spatial information that can be used in track and trigger-primitive building.
+
+
 \begin{figure}[!htb]
     \begin{center}
         \includegraphics[width=0.55\textwidth]{figures/chapter2/muon_spec/csc_chamber}
@@ -192,8 +210,8 @@ additional spatial information for track building.
     \end{center}
 \end{figure}
 
-\subsubsection{Muon Trigger Chambers}
-\label{sec:muon_trigger}
+%\subsubsection{Muon Trigger Chambers}
+%\label{sec:muon_trigger}
 
 \begin{figure}[!htb]
     \begin{center}
