@@ -106,8 +106,22 @@ def main() :
     #ax.text(0.92 * avg_c_lifetime, 0.2, "D", color = "white", rotation = 90)
 
     levels = [0.1, 0.25, 0.5, 1.0, 1.5, 2.0, 2.43, 2.93, 3.3]
-    cont = ax.contour(X, Y, Z, levels = levels, colors = "k", linestyles = "dashed", linewidths = 1)
+    linestyles = []
+    colors = []
+    for level in levels :
+        if level == 2.43 or level == 2.93 or level == 3.3 :
+            linestyles.append("dashed")
+            colors.append("yellow")
+        else :
+            linestyles.append("dashed")
+            colors.append("black")
+    cont = ax.contour(X, Y, Z, levels = levels, colors = colors, linestyles = linestyles, linewidths = 1)
+    #cont = ax.contour(X, Y, Z, levels = levels, colors = "k", linestyles = "dashed", linewidths = 1)
     ax.clabel(cont, inline = 1, fmt = "%.2f cm", fontsize = 8,  manual = True)
+
+#    levels = [2.43, 2.93, 3.33]
+#    cont_ibl = ax.contour(X, Y, Z, levels = levels, colors = "yellow", linestyles = "solid", linewidths = 4)
+#    #ax.clabel(cont_ibl, inline = 1, fmt = "%.2f") # fmt = { 2.43 : "BP", 2.93 : "IPT", 3.33 : "Stave" })
 
     fig.show()
 
