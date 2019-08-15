@@ -105,7 +105,7 @@ def main() :
     #    ax.text( 1.02 * avg_c_lifetime, pt_m - 8 * pt_m_width, name, size = 9)
     #ax.text(0.92 * avg_c_lifetime, 0.2, "D", color = "white", rotation = 90)
 
-    levels = [0.1, 0.25, 0.5, 1.0, 1.5, 2.0, 2.5, 3, 3.3]
+    levels = [0.1, 0.25, 0.5, 1.0, 1.5, 2.0, 2.43, 2.93, 3.3]
     cont = ax.contour(X, Y, Z, levels = levels, colors = "k", linestyles = "dashed", linewidths = 1)
     ax.clabel(cont, inline = 1, fmt = "%.2f cm", fontsize = 8,  manual = True)
 
