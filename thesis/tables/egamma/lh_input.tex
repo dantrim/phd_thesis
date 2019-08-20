@@ -1,0 +1,59 @@
+\begin{table}[!htb]
+    \caption{
+        From Ref.~\cite{Aad:2019tso}.
+    }
+    \label{tab:egamma_lh_inputs}
+    \begin{scriptsize}
+    \begin{center}
+    \begin{tabularx}{\textwidth}{|X|l|X|}
+    \hline
+    \hline
+    \textbf{Input Type} & \textbf{Name} & \textbf{Description} \\
+    \hline
+    \multirow{2}{*}{Hadronic Leakage} & $R_{\text{had1}}$ & Ratio of $E_T$ in the first layer of the hadronic calorimeter to $E_T$ of the EM cluster \\
+    \cline{2-3}
+                & $R_{\text{had}}$ & Ratio of $E_T$ in the hadronic calorimeter to $E_T$ of the EM cluster \\
+    \hline
+    \multirow{1}{*}{Third layer of EM calorimeter} & $f_3$ & Ratio of the energy in the third layer to the total energy in the
+            EM calorimeter. Only used for $E_T<30\,\GeV$  and $\lvert \eta \rvert \le 2.37$. \\
+    \hline
+    \multirow{3}{*}{Second layer of EM calorimter} & $w_{\eta 2}$ & Lateral shower width,
+            \begin{small}$\sqrt{(\sum E_i \eta_i^2) / (\sum E_i) - ((\sum E_i \eta_i) / (\sum E_i))^2}$\end{small},
+            where $E_i$ is the energy and $\eta_i$ is the pseudorapidity of cell $i$ and the sum
+            is calculated within a window of $3\times5$ cells centered at the electron cluster position. \\ \cline{2-3}
+            & $R_{\phi}$ & Ratio of the energy in $3\times 3$ cells over the energy in $3\times7$ cells
+            centered at the electron cluster position. \\ \cline{2-3}
+            & $R_{\eta}$ & Ratio of the energy in $3\times 7$ cells over the energy in $7\times7$ cells
+            centered at the electron cluster position. \\ \cline{2-3}
+    \hline
+    \multirow{3}{*}{First layer of EM calorimeter} & $w_{stot}$ & Shower width,
+            \begin{small} $\sqrt{ (\sum E_i(i - i_{\text{max}})^2)/(\sum E_i)}$ \end{small}, where $i$ runs
+            over all strips in a window of $\Delta \eta \times \Delta \phi \approx 0.0625 \times 0.2$,
+            corresponding typically to 20 strips in $\eta$, and $i_{\text{max}}$ is the index of the
+            highest-energy strip. Used only for $E_T > 150\,\GeV$.\\ \cline{2-3}
+            & $E_{\text{ratio}}$ & Ratio of the energy difference between the maximum energy deposit and the energy deposit
+            in a secondary maximum in the cluster to the sum of these energies. \\ \cline{2-3}
+            & $f_1$ & Ratio of the energy in the first layer to the total energy in the EM calorimeter.\\
+    \hline
+    \multirow{6}{*}{Track conditions} & $n_{\text{Blayer}}$ & Number of hits in the innermost pixel layer. \\ \cline{2-3}
+            & $n_{\text{Pixel}}$ & Number of hits in the pixel detector. \\ \cline{2-3}
+            & $n_{\text{Si}}$ & Total number of hits in the pixel and SCT detectors.\\ \cline{2-3}
+            & $d_0$ & Transverse impact parameter relative to the beam-spot. \\ \cline{2-3}
+            & $\lvert d_0 / \sigma(d_0) \rvert$ & Significance of transverse impact parameter defined as
+            the ratio of $d_0$ to its uncertainty. \\ \cline{2-3}
+            & $\Delta p / p$ &  Momentum lost by the track between the perigee and the last measurement point
+            divided by the momentum at perigee. \\
+    \hline
+    \multirow{1}{*}{TRT} & eProbabilityHT & Likelihood probability based on transition radiation in the TRT. \\
+    \hline
+    \multirow{3}{*}{Track-cluster matching} & $\Delta \eta_1$  & $\Delta \eta$ between the cluster position in the first layer
+            and the extrapolated track. \\ \cline{2-3}
+            & $\Delta \phi_{\text{res}}$ & $\Delta \phi$ between the cluster position in the second layer of the EM calorimeter
+            and the momentum-rescaled track, extrapolated from the perigee, times the charge $q$. \\ \cline{2-3}
+            & $E/p$ & Ratio of the cluster energy to the track momentum. Used for $E_T>150\,\GeV$.\\
+    \hline
+    \hline
+    \end{tabularx}
+    \end{center}
+    \end{scriptsize}
+\end{table}
