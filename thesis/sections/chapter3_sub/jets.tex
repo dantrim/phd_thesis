@@ -88,7 +88,7 @@ Figure~\ref{fig:calocell_clustering} illustrates the concept of topological cell
 \label{sec:jet_finding}
 
 Once the set of topo-clusters is formed, the process of jet finding begins.
-As there is no single way to define a jet, there is a wide variety of jet finding algorithms whose
+As there is no single unique way to define a jet, there is a wide variety of jet finding algorithms whose
 purpose is to associate jet constituents --- here, the calorimeter-cell topo-clusters --- to form
 the final object representing the jet.
 The default jet finding algorithm used by ATLAS is the
@@ -113,7 +113,7 @@ and computes the quantities,
         d_{iB} = \frac{1}{k_{T,i}^2},
         \label{eq:antikt_1}
 \end{align}
-with $\Delta R_{ij}^2 = (\eta_i - \eta_j)^2 + (\phi_i - \phi_j)^2$, {\color{red}{is it rapidity or pseudorapidity?}} $R$ is a parameter whose value regulates the size of
+with $\Delta R_{ij}^2 = (\eta_i - \eta_j)^2 + (\phi_i - \phi_j)^2$, {\color{red}{its rapidity, right?}} $R$ is a parameter whose value regulates the radial extent of
 the jet, and $k_{T,i}$ is the transverse momentum of the $i^{th}$ constituent.
 The $d_{ij}$ and $d_{iB}$ quantities are `distance' metrics used in the clustering of input topo-cluster constituents.
 The former represents the `distance' between the $i^{th}$ and $j^{th}$ constituent while latter represents the
@@ -121,7 +121,7 @@ The former represents the `distance' between the $i^{th}$ and $j^{th}$ constitue
 originating from the primary hard-scatter vertex and those originating from soft proton interaction remnants.
 The work to be discussed in the present thesis sets $R=0.4$, which is the standard used in ATLAS.
 
-The \antikt proceeds by clustering those constituents whose inter-distance is smallest, thereby tending to cluster
+The \antikt algorithm proceeds by clustering those constituents whose inter-distance is smallest, thereby tending to cluster
 higher-\pT constituents together, which can be seen by inspection of Equation~\ref{eq:antikt_0} and \ref{eq:antikt_1}.
 If, of the set of input constituents, the smallest distance is a $d_{ij}$, the associated constituents indicated by $i$
 and $j$ are recombined to form a single constituent in the list that replaces them both.
@@ -130,8 +130,6 @@ and is considered as a complete jet.
 This process repeats, starting with the now smaller (due to successful constituent recombination or removal) set of constituents,
 until no constituents are left.
 The result of this process is a set of recombined constituents that represent jets, as illustrated in Figure~\ref{fig:antikt_circles}.
-
-
 
 \begin{figure}[!htb]
     \begin{center}
@@ -147,6 +145,94 @@ The result of this process is a set of recombined constituents that represent je
     \end{center}
 \end{figure}
 
+\FloatBarrier
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% CALIBRATION
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \subsection{Jet Calibration}
 \label{sec:jet_calib}
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.8\textwidth]{figures/chapter3/jets/jes_calibration_sequence}
+        \caption{
+            From Ref.~\cite{Aaboud:2017jcu}.
+        }
+        \label{fig:jes_sequence}
+    \end{center}
+\end{figure}
+
+The jets reconstructed following the steps described in Section~\ref{sec:jet_reco} are objects clustered
+at the electromagnetic (EM) scale, which correctly measures the energy of electromagnetic showers but does not
+accurately account for energy depositions arising as a result of hadronic shower growths.
+These jets are therefore referred to as `EM-scale' jets.
+To correctly assign meaningful energy and momentum measurements to the reconstructed jets that correspond
+to the energies and momenta of the initiating, underlying particle-level jets, several \textit{jet energy scale} (JES) calibration steps are taken~\cite{Aaboud:2017jcu}.
+The steps are detailed in the flowchart in Figure~\ref{fig:jes_sequence} and will be briefly described in the following text.
+
+\subsubsection{Jet Origin Correction}
+\label{sec:jet_origin_correction}
+
+The reconstructed EM-scale jets are built with the assumption that they originate from the geometric center
+of the detector, as opposed to the primary hard-scatter vertex from which the initiating partons arise.
+The so-called jet origin corretion, therefore, refers to recalculating the jet four-momentum vector by adjusting it
+in such a way that it points to the primary hard-scatter vertex.
+This correction acts primarily to improve the $\eta$ resolution of jets.
+This procedure is only one hundred percent accurate, of course, under the assumption that all of the jet constituents
+going into the EM-scale jet reconstruction originated from the hard-scatter vertex, as opposed to some fraction having come from
+a pileup vertex, for example.
+
+\subsubsection{Pileup Corrections}
+\label{sec:jet_pileup_correction}
+
+Jets are extended object with relatively large \textit{catchment areas}~\cite{Cacciari:2008gn} that make them susceptible to
+pileup effects.
+Several corrections, therefore, to the jet energy are taken in order to account for contributions to the EM-scale jet reconstruction
+arising from both in-time and out-of-time pileup interactions.
+
+The first pileup correction is an area-based correction which subtracts the per-event pileup contribution to the
+\pT~of each jet based on the jet's area, where the jet area is defined as in Ref.~\cite{Cacciari:2008gn}.
+This pileup contribution is taken as the median \pT~density, $\rho$, of jets in the $\eta-\phi$ plane and
+can be thought of as a baseline `noise' term contributing to a jet's reconstructed energy.
+The quantity $\rho$ depends on the pileup activity in the event and is taken as a function of the number of reconstructed
+primary vertices (\npv) in a given event; for example, the pileup density is expected to be larger for an event
+with $\npv = 25$ as compared to one with $\npv = 5$.
+
+After the area-based pileup correction is made, there still remains residual dependence of the reconstructed jet \pT~on the
+number of reconstructed primary vertices and on the number of interactions, $\mu$.
+These dependences are measured by performing linear fits of the jet \pT~as a function of each quantity, binned as a function of the detector $\eta$, $\eta_{\text{det}}$.
+
+The final, pileup-corrected jet \pT~is given by Equation~\ref{eq:jet_pileup_corr}:
+\begin{align}
+    \pT^{\text{Corr}} = \pT^{\text{Reco}} - \underbrace{\rho \times A}_{\text{Area-based}} - \underbrace{\alpha \times (\npv - 1) - \beta \times \mu}_{\text{Residual}},
+    \label{eq:jet_pileup_corr}
+\end{align}
+where $A$ is the jet area, and the $\alpha$ and $\beta$ terms are derived from the linear fits mentioned above and are $\alpha = \partial \pT / \partial \npv$
+and $\beta = \partial \pT / \partial \mu$, respectively.
+The former accounts for effects arising as a result of in-time pileup and the latter for those due to out-of-time pileup.
+The effect of the pileup corrections is shown in Figure~\ref{fig:jet_pileup_corr}, where it can be seen that the area-based correction
+is an overall offset, as expected, and the residual corrections have a dependence on $\lvert \eta_{\text{det}} \rvert$.
+The residual pileup dependence being largest in the forward regions of the detector where pileup and background activity is largest.
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.4\textwidth]{figures/chapter3/jets/jet_pileup_corr_alpha}
+        \includegraphics[width=0.4\textwidth]{figures/chapter3/jets/jet_pileup_corr_beta}
+        \caption{
+            Dependence of the \pT~of EM-scale reconstructed jets on \npv (in-time pileup) (\textit{left}) and on
+            $\mu$ (out-of-time pileup) (\textit{right}).
+            The blue curves show the dependence prior to any pileup corrections,
+            the purple curves are after the area-based correction,
+            and the red curves are the final dependence after the full pileup correction described in Equation~\ref{eq:jet_pileup_corr}
+            is taken into account.
+            Figures taken from Ref.~\cite{Aaboud:2017jcu}.
+        }
+        \label{fig:jet_pileup_corr}
+    \end{center}
+\end{figure}
