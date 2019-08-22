@@ -1,10 +1,10 @@
 \section{Jets}
 \label{sec:jets}
 
-Due to the confining nature of QCD, color-charged quarks and gluons produced as a result of
+Due to the confining nature of QCD, color-charged quarks and gluons produced in the
 initial $pp$ interactions do not exist as free states for observably meaningful
 timescales and therefore do not leave unambiguous signatures in the detector.
-Instead, their production is characterised by the bremsstrahlung-like radiation of additional
+Instead, their production is characterised by the radiation of additional
 quarks and gluons roughly collinear with the initiating colored particles.
 The radiation pattern of these colored objects is dictated by the color field
 that binds them and eventually results in the production of color-neutral hadrons.
@@ -20,8 +20,133 @@ In Section~\ref{sec:jet_calib}, the steps taken to turn these reconstructed jets
 accurate representations of the initiating quarks and/or gluons, so that they can
 be used meaningfully in physics analyses, will be discussed.
 
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.7\textwidth]{figures/chapter3/jets/jet_formation_cartoon}
+        \caption{
+            Illustration of the jet formation process, beginning with the initiating quark and/or
+            gluons (partons) which hadronise to form particle jets discernible by the tracking detectors
+            in the ID and calorimeter jets defined by energy depositions in the calorimeter systems.
+        }
+        \label{fig:jet_formation}
+    \end{center}
+\end{figure}
+
+\FloatBarrier
 \subsection{Jet Reconstruction}
 \label{sec:jet_reco}
+
+\subsubsection{Topological Cell Clustering}
+\label{sec:jet_topo_cluster}
+
+The process of jet reconstruction begins first with the clustering of the lowest level calorimeter elements,
+\textit{calorimeter cells}, corresponding to the readout channels in the LAr and tile calorimeters.
+Figure~\ref{fig:calocell_granularity} gives an idea of the calorimeter cell granularity across the calorimeter
+system.
+The clustering algorithm used by ATLAS is a three-dimensional \textit{topological clustering} algorithm~\cite{Lampl:2008zz,Aad:2016upy}.
+The highly granular calorimeter system used in ATLAS, with its finely segmented lateral readout and longitudinal sampling layers,
+allows for the subsequent topological clusters (`topo-clusters') to capture in detail the energy-flow details of jets.
+Topo-cluster formation begins by first identifying so-called \textit{seed cells} which have a rather high signal-to-noise ratio ($S/N$),
+$S/N>4$.
+Here, the signal is defined as the absolute value of the calorimter-cell energy measurement, $\lvert E \rvert$,
+and the noise is defined as the sum in quadrature of the RMS of the electronics and expected pileup noise contributions.
+Cells neighboring the seed cells satisfying $S/N>2$ are then collected into the topo-cluster.
+A neighboring cell is defined in three-dimensions as either the calorimeter cells directly adjacent within the same calorimeter layer as
+the seed cell, or, if in adjacent layers or in different calorimeter sub-systems, cells having at least partial overlap
+in the $(\eta,\phi)$ plane with the seed.
+The final set of cells, the perimeter cells, satisfying $S/N\ge0$ are then collected.
+This last threshold essentially collects all those cells surrounding already-collected cells within each layer.
+Figure~\ref{fig:calocell_clustering} illustrates the concept of topological cell clustering as described here.
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.5\textwidth]{figures/chapter3/jets/calocell_granularity}
+        \caption{
+            The blue histogram shows the average calorimeter cell granularity, i.e. number of calorimeter cells per
+            $\Delta \eta = 0.1$, as a function of detector $\eta$. The red points show an approximation of the blue
+            histogram based on calculations of the expected noise per calorimeter cell.
+            From Ref.~\cite{Lampl:2008zz}.
+        }
+        \label{fig:calocell_granularity}
+    \end{center}
+\end{figure}
+
+\begin{figure}[!htb]
+    \begin{center}
+    \includegraphics[width=0.6\textwidth]{figures/chapter3/jets/calocell_clustering_cartoon}
+    \caption{
+        Illustration of calorimeter-cell topological clustering across the three layers of the
+        hadronic calorimeter. Indicated are the cells satisfying the signal-to-noise requirements for
+        the seed (red), neighbor (blue), and perimeter (green) cells that make up the final three-dimensional topo-cluster.
+    }
+    \label{fig:calocell_clustering}
+    \end{center}
+\end{figure}
+\FloatBarrier
+
+\subsubsection{Jet Finding}
+\label{sec:jet_finding}
+
+Once the set of topo-clusters is formed, the process of jet finding begins.
+As there is no single way to define a jet, there is a wide variety of jet finding algorithms whose
+purpose is to associate jet constituents --- here, the calorimeter-cell topo-clusters --- to form
+the final object representing the jet.
+The default jet finding algorithm used by ATLAS is the
+\textit{\antikt} jet clustering algorithm~\cite{Cacciari:2008gp}.
+The \antikt~algorithm belongs to the more general class of sequential recombination algorithms
+and is favored for its infrared and collinear (IRC) safe properties as well as the fact
+that it tends to produce rather simple jets, geometrically, that are circular in the $\eta-\phi$ plane,
+as seen in Figure~\ref{fig:antikt_circles}.
+IRC safety in jet finding algorithms refers to the property that neither additional collinear splitting of jet constituents (e.g. the initiating or radiated partons)
+nor soft emissions should change the clustered jet.
+IRC-safe jets are therefore robust against these divergent regimes of QCD, sensitive to arbitrary
+calculational choices made in perturbation theory, and makes them physically  meaningful observable objects
+with which one can make predictions.
+
+The \antikt algorithm takes as input constituents the topo-clusters described in Section~\ref{sec:jet_topo_cluster}
+and computes the quantities,
+\begin{align}
+        d_{ij} = \min \left( \frac{1}{k^2_{T,i}} , \frac{1}{k^2_{T,j}} \right) \frac{ \Delta R_{ij}^2}{R^2},
+        \label{eq:antikt_0}
+\end{align}
+\begin{align}
+        d_{iB} = \frac{1}{k_{T,i}^2},
+        \label{eq:antikt_1}
+\end{align}
+with $\Delta R_{ij}^2 = (\eta_i - \eta_j)^2 + (\phi_i - \phi_j)^2$, {\color{red}{is it rapidity or pseudorapidity?}} $R$ is a parameter whose value regulates the size of
+the jet, and $k_{T,i}$ is the transverse momentum of the $i^{th}$ constituent.
+The $d_{ij}$ and $d_{iB}$ quantities are `distance' metrics used in the clustering of input topo-cluster constituents.
+The former represents the `distance' between the $i^{th}$ and $j^{th}$ constituent while latter represents the
+`distance' between the $i^{th}$ consituent and the beam-line, introduced to distinguish between constituents
+originating from the primary hard-scatter vertex and those originating from soft proton interaction remnants.
+The work to be discussed in the present thesis sets $R=0.4$, which is the standard used in ATLAS.
+
+The \antikt proceeds by clustering those constituents whose inter-distance is smallest, thereby tending to cluster
+higher-\pT constituents together, which can be seen by inspection of Equation~\ref{eq:antikt_0} and \ref{eq:antikt_1}.
+If, of the set of input constituents, the smallest distance is a $d_{ij}$, the associated constituents indicated by $i$
+and $j$ are recombined to form a single constituent in the list that replaces them both.
+If the smallest distance is a $d_{iB}$, then the constituent indicated by index $i$ is removed from the set of constituents
+and is considered as a complete jet.
+This process repeats, starting with the now smaller (due to successful constituent recombination or removal) set of constituents,
+until no constituents are left.
+The result of this process is a set of recombined constituents that represent jets, as illustrated in Figure~\ref{fig:antikt_circles}.
+
+
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.5\textwidth]{figures/chapter3/jets/antikt_jet_circles}
+        \caption{
+            An illustration of jet constituents clustered by the \antikt~algorithm. Seen
+            are the energetic constituents.
+            The filled and colored circles represent areas populated by soft jet consituents, and represent the jet \textit{catchment area}~\cite{Cacciari:2008gn}
+            whose size is dictated by the $R$ parameter in the \antikt algorithm (Equation~\ref{eq:antikt_0}).
+            Figure taken from Ref.~\cite{Cacciari:2008gp}.
+        }
+        \label{fig:antikt_circles}
+    \end{center}
+\end{figure}
+
 
 \subsection{Jet Calibration}
 \label{sec:jet_calib}
