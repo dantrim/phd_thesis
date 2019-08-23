@@ -175,6 +175,7 @@ These jets are therefore referred to as `EM-scale' jets.
 To correctly assign meaningful energy and momentum measurements to the reconstructed jets that correspond
 to the energies and momenta of the initiating, underlying particle-level jets, several \textit{jet energy scale} (JES) calibration steps are taken~\cite{Aaboud:2017jcu}.
 The steps are detailed in the flowchart in Figure~\ref{fig:jes_sequence} and will be briefly described in the following text.
+{\color{red}{After these steps.. jets are referred to as EM+JES scale jets...}}
 
 \subsubsection{Jet Origin Correction}
 \label{sec:jet_origin_correction}
@@ -199,10 +200,10 @@ arising from both in-time and out-of-time pileup interactions.
 The first pileup correction is an area-based correction which subtracts the per-event pileup contribution to the
 \pT~of each jet based on the jet's area, where the jet area is defined as in Ref.~\cite{Cacciari:2008gn}.
 This pileup contribution is taken as the median \pT~density, $\rho$, of jets in the $\eta-\phi$ plane and
-can be thought of as a baseline `noise' term contributing to a jet's reconstructed energy.
-The quantity $\rho$ depends on the pileup activity in the event and is taken as a function of the number of reconstructed
-primary vertices (\npv) in a given event; for example, the pileup density is expected to be larger for an event
-with $\npv = 25$ as compared to one with $\npv = 5$.
+can be thought of as a baseline `noise' term distributed evenly throught the calorimeter that contributes to a jet's reconstructed energy.
+%The quantity $\rho$ depends on the pileup activity in the event and is taken as a function of the number of reconstructed
+%primary vertices (\npv) in a given event; for example, the pileup density is expected to be larger for an event
+%with $\npv = 25$ as compared to one with $\npv = 5$.
 
 After the area-based pileup correction is made, there still remains residual dependence of the reconstructed jet \pT~on the
 number of reconstructed primary vertices and on the number of interactions, $\mu$.
@@ -217,8 +218,8 @@ where $A$ is the jet area, and the $\alpha$ and $\beta$ terms are derived from t
 and $\beta = \partial \pT / \partial \mu$, respectively.
 The former accounts for effects arising as a result of in-time pileup and the latter for those due to out-of-time pileup.
 The effect of the pileup corrections is shown in Figure~\ref{fig:jet_pileup_corr}, where it can be seen that the area-based correction
-is an overall offset, as expected, and the residual corrections have a dependence on $\lvert \eta_{\text{det}} \rvert$.
-The residual pileup dependence is greater in the forward regions of the detector where pileup and background activity is largest.
+is an overall offset, as expected, after which residual pileup dependencies of the jet \pT~as a function of $\lvert \eta_{\text{det}} \rvert$ are still observed.
+This residual pileup dependence is greater in the forward regions of the detector where pileup and background activity is largest.
 
 \begin{figure}[!htb]
     \begin{center}
@@ -236,3 +237,71 @@ The residual pileup dependence is greater in the forward regions of the detector
         \label{fig:jet_pileup_corr}
     \end{center}
 \end{figure}
+
+\subsubsection{Absolute Jet Energy Scale and $\eta$ Correction}
+\label{sec:jet_eta_corr}
+
+This correction corrects the EM-scale reconstructed jet to the true energy scale based on particle-level
+jets and is therefore purely MC-based.
+Particle-level jets are jets clustered using the \antikt~algorithm but using the generator-level
+particles at the end of the hadronisation step as the input constituents, and therefore represent the reconstructed jet prior to
+its interaction with the calorimeter (see Figure~\ref{fig:jet_formation}).
+The correction accounts for mismodelling of the inactive material within the detector, radiation not accounted for
+in the reconstructed calorimeter-based jet due to the clustering algorithm not accepting it (`out-of-cone radiation`),
+non-compensation of the hadronic calorimeters\footnote{ {\color{red}{Compensating...}}}, and for effects
+related to detector geometry or transitions between calorimeter technologies.
+
+The correction is derived by matching the EM-scale reconstructed jets, in simulation, to the particle-level
+jets and deriving the average energy response, $E^{\text{Reco}} / E^{\text{Truth}}$, where $E^{\text{Truth}}$ is the
+energy of the particle-level jet.
+The inverse of this energy response is taken as a correction to the EM-scale reconstructed calorimeter jets in simulation.
+An additional correction accounts for biases observed in the EM-scale reconstructed jet $\eta$, which is largest
+in regions wherein a jet is likely to encompass two calorimeter regions or technologies which result in different
+energy responses.
+The $\eta$ correction is derived as the difference between the reconstructed and particle-level jet $\eta$ values and
+applied to the EM-scale reconstructed calorimeter jets as in the case of the energy-response correction.
+The average energy response, as a function of EM-scale jet \pT~, and the $\eta$ correction is shown
+in Figure~\ref{fig:abs_jes_response}.
+
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.48\textwidth]{figures/chapter3/jets/abs_jes_response}
+        \includegraphics[width=0.48\textwidth]{figures/chapter3/jets/abs_jes_eta}
+        \caption{
+            \textit{Left}: Average energy response as a function of jet detector $\eta$, $\eta_{\text{det}}$.
+            The colors correspond to different energy regimes for the particle-level jet to which the EM-scale
+            reconstructed jet is matched. The inverse of the response is the final correction and can be seen to be
+            largest for lower-\pT~jets.
+            \textit{Right}: Difference in $\eta$ for the EM-scale reconstructed jet and the particle-level jet to which
+            it is matched. The bias is clearly seen, with values typically negative, and it being largest
+            for $\lvert \eta_{\text{det}} \rvert \sim 1.4$ $(\sim 3.1)$, corresponding to the barrel-endcap (endcap-forward)
+            transition regions.
+        }
+        \label{fig:abs_jes_response}
+    \end{center}
+\end{figure}
+\FloatBarrier
+
+\subsubsection{Global Sequential Calibration}
+\label{sec:jet_gsc}
+
+The so-called Global Sequential Calibration (GSC) is a catch-all correction to account for remaining dependencies
+of the EM-scale reconstructed jets on the jet shower shapes as well as fluctuations in the jet flavor composition and inter-jet energy distribution.
+This correction improves the handling of fluctuations in the composition of the particles that initiate the jet; for example, correcting for the differences expected between quark- and gluon-initiated jets.
+The former (quark-initiated) jets are typically more collimated with fewer, but higher-\pT, hadronic constituents.
+The latter (gluon-initiated) jets typically contain many more, softer-\pT, particles and have wider transverse profiles
+(and therefore do not traverse as far into the calorimeter).
+The GSC has five stages, each following a numerical inversion of a corresponding jet response as in the case(s)
+described in Section~\ref{sec:jet_eta_corr}, but are based on observables sensitive to the jet shower profile and growth
+within the calorimeter as well as on the number and type of tracks associated with the reconstructed jet.
+The use of tracking information from muons in this correction additionally helps with correcting the energy response of jets that
+are not fully contained in the calorimeter, so-called \textit{punch-through jets}, but leak into the MS.
+
+\subsubsection{In-situ Corrections}
+\label{sec:jet_in_situ}
+
+This last stage of the JES correction accounts for differences in jet response between data and simulation.
+%The corrections derived here are applied to data, as opposed to the MC simulated jets as in the case of all previous
+%corrections discussed up until this point.
+
