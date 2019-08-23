@@ -162,6 +162,7 @@ The result of this process is a set of recombined constituents that represent je
     \begin{center}
         \includegraphics[width=0.8\textwidth]{figures/chapter3/jets/jes_calibration_sequence}
         \caption{
+            Flowchart representing the sequence of steps taken in the jet calibration.
             From Ref.~\cite{Aaboud:2017jcu}.
         }
         \label{fig:jes_sequence}
@@ -170,19 +171,18 @@ The result of this process is a set of recombined constituents that represent je
 
 The jets reconstructed following the steps described in Section~\ref{sec:jet_reco} are objects clustered
 at the electromagnetic (EM) scale, which correctly measures the energy of electromagnetic showers but does not
-accurately account for energy depositions arising as a result of hadronic shower growths.
+accurately account for energy depositions characteristic of hardonic particle decays and interactions.
 These jets are therefore referred to as `EM-scale' jets.
 To correctly assign meaningful energy and momentum measurements to the reconstructed jets that correspond
 to the energies and momenta of the initiating, underlying particle-level jets, several \textit{jet energy scale} (JES) calibration steps are taken~\cite{Aaboud:2017jcu}.
 The steps are detailed in the flowchart in Figure~\ref{fig:jes_sequence} and will be briefly described in the following text.
-{\color{red}{After these steps.. jets are referred to as EM+JES scale jets...}}
 
 \subsubsection{Jet Origin Correction}
 \label{sec:jet_origin_correction}
 
 The reconstructed EM-scale jets are built with the assumption that they originate from the geometric center
 of the detector, as opposed to the primary hard-scatter vertex from which the initiating partons arise.
-The so-called jet origin corretion, therefore, refers to recalculating the jet four-momentum vector by adjusting it
+The so-called jet origin correction, therefore, refers to recalculating the jet four-momentum vector by adjusting it
 in such a way that it points to the primary hard-scatter vertex.
 This correction acts primarily to improve the $\eta$ resolution of jets.
 This procedure is only one hundred percent accurate, of course, under the assumption that all of the jet constituents
@@ -243,7 +243,7 @@ This residual pileup dependence is greater in the forward regions of the detecto
 
 This correction corrects the EM-scale reconstructed jet to the true energy scale based on particle-level
 jets and is therefore purely MC-based.
-Particle-level jets are jets clustered using the \antikt~algorithm but using the generator-level
+Particle-level jets are jets clustered using the \antikt~algorithm using the generator-level
 particles at the end of the hadronisation step as the input constituents, and therefore represent the reconstructed jet prior to
 its interaction with the calorimeter (see Figure~\ref{fig:jet_formation}).
 The correction accounts for mismodelling of the inactive material within the detector, radiation not accounted for
@@ -260,9 +260,9 @@ in regions wherein a jet is likely to encompass two calorimeter regions or techn
 energy responses.
 The $\eta$ correction is derived as the difference between the reconstructed and particle-level jet $\eta$ values and
 applied to the EM-scale reconstructed calorimeter jets as in the case of the energy-response correction.
-The average energy response, as a function of EM-scale jet \pT~, and the $\eta$ correction is shown
+The average energy response, as a function of EM-scale jet \pT, and the $\eta$ correction is shown
 in Figure~\ref{fig:abs_jes_response}.
-
+After this correction stage, jets are referred to as being at the EM+JES scale.
 
 \begin{figure}[!htb]
     \begin{center}
@@ -287,7 +287,7 @@ in Figure~\ref{fig:abs_jes_response}.
 \label{sec:jet_gsc}
 
 The so-called Global Sequential Calibration (GSC) is a catch-all correction to account for remaining dependencies
-of the EM-scale reconstructed jets on the jet shower shapes as well as fluctuations in the jet flavor composition and inter-jet energy distribution.
+of the EM+JES-scale jets on the jet shower shapes as well as fluctuations in the jet flavor composition and inter-jet energy distribution.
 This correction improves the handling of fluctuations in the composition of the particles that initiate the jet; for example, correcting for the differences expected between quark- and gluon-initiated jets.
 The former (quark-initiated) jets are typically more collimated with fewer, but higher-\pT, hadronic constituents.
 The latter (gluon-initiated) jets typically contain many more, softer-\pT, particles and have wider transverse profiles
@@ -296,12 +296,57 @@ The GSC has five stages, each following a numerical inversion of a corresponding
 described in Section~\ref{sec:jet_eta_corr}, but are based on observables sensitive to the jet shower profile and growth
 within the calorimeter as well as on the number and type of tracks associated with the reconstructed jet.
 The use of tracking information from muons in this correction additionally helps with correcting the energy response of jets that
-are not fully contained in the calorimeter, so-called \textit{punch-through jets}, but leak into the MS.
+are not fully contained in the calorimeter but leak into the MS, so-called \textit{punch-through jets}.
+Figure~\ref{fig:jet_punch_through} illustrates the concept of jet punch-through.
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.6\textwidth]{figures/chapter3/jets/jet_punch_through}
+        \caption{
+            Illustration of jet punch-through.
+            High momentum particles produced in the shower of an energetic jet within
+            the hadronic calorimeter escape into the muon spectrometer, leaving detectable
+            signatures in the muon chambers.
+            It can be seen that momentum may be left unaccounted for in the final event reconstruction or be assigned to separate muon objects as opposed to the
+            initiating jet from which the punch-through particles arise.
+            Such effects disrupt the proper
+            assignment of energy-momentum to the jet and can spoil the overall momentum balance in the event.
+        }
+        \label{fig:jet_punch_through}
+    \end{center}
+\end{figure}
 
 \subsubsection{In-situ Corrections}
 \label{sec:jet_in_situ}
 
-This last stage of the JES correction accounts for differences in jet response between data and simulation.
-%The corrections derived here are applied to data, as opposed to the MC simulated jets as in the case of all previous
-%corrections discussed up until this point.
+The last stage of the jet calibration accounts for remaining differences in the EM+JES jet response between data and simulation
+and is primarily derived using events from data, as opposed to MC simulation.\footnote{In this case, the term `in-situ' means
+that the corresponding corrections are derived using data, as opposed to using events from Monte-Carlo simulation.}
+There are two classes of correction, the first being the so-called $\eta$-intercalibration step which corrects the
+average response of forward jets ($0.8 < \lvert \eta \rvert < 4.5$) to that of well-measured central jets using dijet events
+in which the two jets (the one in the forward region and the other in the central region) are back-to-back in $\phi$.
+The second class of corrections is based on the method of balancing an EM+JES scale jet against a well-measured reference object.
+The balance methods use only central jets ($\lvert \eta \rvert < 0.8$) and the choice of the reference object
+provides the \pT~scale to which the response correction applies.
+Balance methods using well-measured photons and $Z$ boson decays to leptons ($Z \rightarrow ee$ and $Z\rightarrow \mu \mu$)
+as the reference objects are used to derive the response corrections for jets with \pT~up to 950\,\GeV.
+Response corrections for jets covering \pT~ranges up to $2\,\TeV$ are derived using a multijet balance method
+in which a high-\pT~central jet is balanced against a reference system of lower-\pT~jets.
+The final response correction as a function of jet \pT~derived using these in-situ methods is shown in Figure~\ref{fig:jet_corr_insitu}.
 
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.7\textwidth]{figures/chapter3/jets/jet_corr_insitu}
+        \caption{
+            Ratio of the EM+JES jet response in data to that in MC simulation as a function of jet \pT.
+            The different markers indicate the measurement contributions from the different
+            reference-object used to derive the in-situ response corrections.
+            The final response correction is given by the black line.
+            The total uncertainty on the response is given by the green band and the blue band
+            indicates only the statistical component of the uncertainty.
+            Figure from Ref.~\cite{Aaboud:2017jcu}.
+        }
+        \label{fig:jet_corr_insitu}
+    \end{center}
+\end{figure}
+\FloatBarrier
