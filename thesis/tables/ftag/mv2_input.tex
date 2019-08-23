@@ -1,0 +1,60 @@
+\begin{table}[!htb]
+    \caption{
+        Variables used as input to the high-level tagger MV2c10.
+        From Ref.~\cite{ATL-PHYS-PUB-2015-022}.
+    }
+    \label{tab:egamma_lh_inputs}
+    \begin{scriptsize}
+    \begin{center}
+    \begin{tabularx}{\textwidth}{|X|l|X|}
+    \hline
+    \hline
+    \textbf{Input Source} & \textbf{Input Name} & \textbf{Description} \\
+    \hline
+    \multirow{2}{*}{Kinematics} & $\pT(\text{jet})$ & Jet transverse momentum \\
+    \cline{2-3}
+                & $\eta(\text{jet})$ & Jet pseudorapidity \\
+    \hline
+    \multirow{3}{*}{IP2D, IP3D} & $\log(p_b/p_{\text{light}})$ & Likelihood ratio between the $b$- and light-jet hypotheses \\
+    \cline{2-3}
+                & $\log(p_b / p_c)$ & Likelihood ratio between the $b$- and $c$-jet hypotheses \\
+    \cline{2-3}
+                & $\log(p_c / p_{\text{light}})$ & Likelihood ratio between the $c$- and light-jet hypotheses \\
+    \hline
+    \multirow{8}{*}{Secondary Vertex} & $m_{\text{SV}}$ & Invariant mass of tracks at the secondary vertex assuming pion masses \\
+    \cline{2-3}
+            & $f_E(\text{SV})$ & Fraction of the charged jet energy in the secondary vertex \\
+    \cline{2-3}
+            & $N_{\text{TrkAtVtx}}(\text{SV})$ & Number of tracks used in the secondary vertex \\
+    \cline{2-3}
+            & $N_{\text{2TrkVtx}}(\text{SV})$ & Number of two-track vertex candidates \\
+    \cline{2-3}
+            & $L_{xy}(\text{SV})$ & Transverse distance between the primary and secondary vertices \\
+    \cline{2-3}
+            & $L_{xyz}(\text{SV})$ & Distance between the primary and secondary vertices \\
+    \cline{2-3}
+            & $S_{xyz}(\text{SV})$ & Distance between the primary and secondary vertices divided by its uncertainty \\
+    \cline{2-3}
+            & $\Delta R(\text{jet, SV})$ & $\Delta R$ between the jet axis and the direction of the secondary vertex relative to the primary vertex \\
+    \hline
+    \multirow{8}{*}{JetFitter} & $N_{\text{2TrkVtx}}(\text{JF})$ & Number of two-track vertex candidates (prior to JetFitter decay-chain fit) \\
+    \cline{2-3}
+            & $m(\text{JF})$ & Invariant mass of tracks from displaced vertices assuming pion masses \\
+    \cline{2-3}
+            & $S_{xyz}(\text{JF})$ & Significance of the average distance between the primary and displaced vertices \\
+    \cline{2-3}
+            & $f_E(\text{JF})$ & Fraction of the charged jet energy in the secondary vertices \\
+    \cline{2-3}
+            & $N_{\text{1-trk vertices}}(\text{JF})$ & Number of displaced vertices with one track \\
+    \cline{2-3}
+            & $N_{\ge\text{2-trk vertices}}(\text{JF})$ & Number of displaced vertices with more than one track \\
+    \cline{2-3}
+            & $N_{\text{TrkAtVtx}}(\text{JF})$ & Number of tracks from displaced vertices with at least two tracks \\
+    \cline{2-3}
+            & $\Delta R(\vec{p}_{\text{jet}}, \vec{p}_{\text{vtx}})$ & $\Delta R$ between the jet axis and the vectorial sum of the momentum of all tracks attached to displaced vertices \\
+    \hline
+    \hline
+    \end{tabularx}
+    \end{center}
+    \end{scriptsize}
+\end{table}
