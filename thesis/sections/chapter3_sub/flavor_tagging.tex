@@ -107,7 +107,7 @@ within the jet~\cite{FTAG2019}:
         The inclusive secondary vertex and associated tracks are then used to construct discriminating observables sensitive to the differences
         between $b$, $c-$, and light-flavor jets.
     \item{\textbf{Multi-vertex Finding Algorithm (JetFitter, JF)}} The JetFitter algorithm~\cite{JETFITTER} attempts to reconstruct the full
-        $b$-hadron decay chain using a modified Kalman filter which assumes a common line on which the primary, $b$-hadron,
+        $b$-hadron decay chain using a modified Kalman filter~\cite{KalmanFilter} which assumes a common line on which the primary, $b$-hadron,
         and $c$-hadron decay vertices lie. As with SV1, the construction of many discriminating observables related to the
         reconstructed set of vertices are used to build templates for $b-$, $c-$, and light-flavor jets.
 \end{itemize}
@@ -145,14 +145,26 @@ Data Analysis (TMVA)~\cite{TMVA}.
 In the analyses based on data recorded by ATLAS between 2015--2016, the MV2 algorithm was trained using jets from
 a simulated sample of top-quark pair production events.
 For the analyses based on the full Run-II data recorded by ATLAS, up to and including the year 2018, the MV2
-algorithm was retrained and the training was done using a sample composed of jets both from top-quark
-pair production events as well as events from a simulated events of a BSM physics scenario of a heavy $Z^{\prime}$ decaying to $b\bar{b}$.
-The latter was included in the re-training so as to allow the algorithm to have in its training sample
+algorithm was retrained using a sample composed of jets both from top-quark
+pair production events as well as from simulated events of a BSM physics scenario of a heavy $Z^{\prime}$ decaying to $b\bar{b}$.
+The latter was included in the retraining so as to allow the algorithm to have in its training sample
 high-\pT~jets that are not present in the SM top-quark pair production events, as illustrated in Figure~\ref{fig:ftag_mv2c10_disc}.
+
 Figure~\ref{fig:ftag_mv2c10_disc} shows a distribution of the MV2 algorithm's output.
 The MV2 score is computed on a per-jet basis, using the set of low-level inputs listed in Table~\ref{tab:ftag_mv2_inputs}.
 Working points, defined with different target-efficiencies for accepting $b$-tagged jets, are defined
-based on defining thresholds on the MV2 discriminant.
+by selection thresholds on the MV2 discriminant.
+The standard ATLAS $b$-tagging working points are defined for accepting $b$-jets with $\pT>20\,\GeV$ with
+average efficiencies of 60\%, 70\%, 77\%, and 85\%. 
+The working points are based on selections made on the MV2 output score and are defined in Table~\ref{tab:btag_wp}, along with the rejection factors\footnote{The rejection factor
+is defined as the inverse of the efficiency. A rejection factor of 100 means, therefore, that the associated
+object is accepted --- on average --- 1 out of every 100 times that it appears.}
+for $c$-jets, $\tau$-jets\footnote{Hadronically decaying $\tau$ leptons are accepted by the $b$-tagging algorithms
+at rates higher than light-flavor jets due to the non-negligible decay length of the $\tau$ lepton which give them $b$-like
+characteristics.},
+and light-flavor jets.
+
+
 
 \begin{figure}[!htb]
     \begin{center}
@@ -171,6 +183,74 @@ based on defining thresholds on the MV2 discriminant.
 \end{figure}
 
 \input{tables/ftag/mv2_input}
+
+\begin{table}[!htb]
+    \caption{
+        Working points defined for the MV2 $b$-jet identification algorithm.
+        The cut thresholds on the MV2 discriminant associated with a given $b$-jet efficiency (working point)
+        are given in the second column.
+        The rejection factors for $c$-, $\tau$-, and light-flavor jets are shown in the three right-most columns.
+        The precise MV2 discriminant thresholds are dependent on the calibration, and differ between the
+        analyses based only on the data collected in the years 2015-2016 and the full Run-II dataset
+        including the years 2017 and 2018.
+        The MV2 threshold values shown here are those corresponding to the full Run-II dataset.
+    }
+    \label{tab:btag_wp}
+    \begin{center}
+        \begin{tabularx}{0.7\textwidth}{X|c|c|c|c}
+        \hline
+        \hline
+        \multirow{2}{*}{$b$-jet efficiency} & \multirow{2}{*}{MV2 selection} & \multicolumn{3}{c}{Rejection Factor} \\
+        \cline{3-5}
+                &  & $c$-jet & $\tau$-jet & Light-flavor jet \\
+        \hline
+        60\%    & $>0.94$ & $23$ & $140$ & $1200$ \\
+        70\%    & $>0.83$ & $8.9$ & $36$ & $300$ \\
+        77\%    & $>0.64$ & $4.9$ & $15$ & $110$ \\
+        85\%    & $>0.11$ & $2.7$ & $6.1$ & $25$ \\
+        \hline
+        \hline
+        \end{tabularx}
+    \end{center}
+\end{table}
+
+\subsubsection{$b$-jet Identification Calibration}
+\label{sec:ftag_calib}
+
+As the efficiencies for the MV2 algorithm detailed in Table~\ref{tab:btag_wp} are based entirely
+on MC simulation, a calibration procedure is performed to correct the MC-based efficiencies to
+those observed in data.
+This is necessary to get an accurate prediction in simulation of the rate of $b$-tagged jets occuring in data.
+The efficiencies (and rejection factors) in Table~\ref{tab:btag_wp} are therefore measured in
+data.
+The result of the calibration is a correction scale-factor, applied on a per-jet basis, that is defined as
+$\text{SF} = \varepsilon_{\text{Data}} / \varepsilon_{\text{MC}}$, where $\varepsilon_{\text{Data}(\text{MC})}$
+are the measured efficiencies in data (MC) for a jet to be tagged as a $b$-jet.
+The $b$-tagging SF are derived using a sample enriched in $b$-tagged jets arising from SM top-quark pair production~\cite{FTAG2019}.
+The $b$-tagging efficiencies in MC and data as well as the data-to-MC efficiency SF are shown in Figure~\ref{fig:btag_eff_sf}.
+The rate of $c$-, $\tau$-, and light-flavor jets to be identified as $b$-tagged jets corresponding to the rejection factors
+listed in Table~\ref{tab:btag_wp}, also have corresponding correction scale-factors using events
+in data enriched in $c$-jets and mis-tagged light-flavor jets~\cite{FTAG2019,FTAGCJetCalib,FTAGLightFlavorCalib}.
+These latter scale-factors correct the rate of mis-tagging (i.e. identifiying jets as $b$-jets when they are
+not initiated by $b$-hadrons).
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.48\textwidth]{figures/chapter3/ftag/ftag_eff_70_pt}
+        \includegraphics[width=0.48\textwidth]{figures/chapter3/ftag/ftag_sf_70_pt}
+        \caption{
+            \textit{Left}: $b$-jet tagging efficiency as a function of jet \pT~for the 70\% WP of the MV2 $b$-jet
+                tagging algorithm in MC (top-quark pair production, in red) and data (black points).
+                Efficiency values below and above 70\% occur, but the efficiency averaged over
+                the full range shown is roughly 70\%. 
+            \textit{Right}: $b$-jet tagging efficiency correction scale-factors for the 70\% WP of the MV2 $b$-jet
+                tagging algorithm as a function of jet \pT~for the same
+                samples as on the \textit{left}.
+        }
+        \label{fig:btag_eff_sf}
+    \end{center}
+\end{figure}
+
 
 
 \FloatBarrier
