@@ -171,11 +171,22 @@ The result of this process is a set of recombined constituents that represent je
 
 The jets reconstructed following the steps described in Section~\ref{sec:jet_reco} are objects clustered
 at the electromagnetic (EM) scale, which correctly measures the energy of electromagnetic showers but does not
-accurately account for energy depositions characteristic of hardonic particle decays and interactions.
+accurately account for energy depositions characteristic of hadronic particle decays and interactions.
 These jets are therefore referred to as `EM-scale' jets.
 To correctly assign meaningful energy and momentum measurements to the reconstructed jets that correspond
 to the energies and momenta of the initiating, underlying particle-level jets, several \textit{jet energy scale} (JES) calibration steps are taken~\cite{Aaboud:2017jcu}.
 The steps are detailed in the flowchart in Figure~\ref{fig:jes_sequence} and will be briefly described in the following text.
+The measurements made at each of these steps are subtle and account for many effects not present in the case
+of the reconstruction of electrons and muons, for example, due to the fact that jets are rather complicated collective phenomena
+whose measurements rely primarily on a single subsystem (the calorimeters).
+Not only are electrons and muons generally simpler objects, seeded by comparatively unambiguous tracks within the ID,
+their energy and momentum measurements are the result of a combination of well-defined measurements made by two independent
+subsystems (ID measurements combined with EM calorimeter or the MS) that provide independent cross-checks on the validity
+of the measurements made by each.
+For the most part, this is not the case of the reconstruction of jets within ATLAS and as a result many of the choices made in the calibration
+of EM-scale jets have non-negligible impact in the analyses that will be discussed in this thesis, whereas the analogous
+choices for electrons and muons have minimal impact.
+For this reason the jet calibration procedure outlined in Figure~\ref{fig:jes_sequence} will be outlined briefly in the text that follows.
 
 \subsubsection{Jet Origin Correction}
 \label{sec:jet_origin_correction}
@@ -307,7 +318,7 @@ Figure~\ref{fig:jet_punch_through} illustrates the concept of jet punch-through.
             High momentum particles produced in the shower of an energetic jet within
             the hadronic calorimeter escape into the muon spectrometer, leaving detectable
             signatures in the muon chambers.
-            It can be seen that momentum may be left unaccounted for in the final event reconstruction or be assigned to separate muon objects as opposed to the
+            It can be seen that energy and/or momentum may be left unaccounted for in the final event reconstruction or be assigned to separate muon objects as opposed to the
             initiating jet from which the punch-through particles arise.
             Such effects disrupt the proper
             assignment of energy-momentum to the jet and can spoil the overall momentum balance in the event.

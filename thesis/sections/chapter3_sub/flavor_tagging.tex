@@ -1,20 +1,131 @@
 \subsection{Flavor Tagging of Jets}
 \label{sec:flavor_tagging}
 
-As in Ref.~\cite{ATL-PHYS-PUB-2017-013}.
+The ability to identify jets containing heavy-flavored hadrons, i.e. jets containing
+$b$- and $c$-flavored hadrons, is an important aspect to many of the most critical measurements
+and analyses being done at the large LHC experiments.
+The SM top-quark is the heaviest known elementary particle, the second-most recent elementary particle to be discovered,
+and, given its importance to electroweak and Higgs physics, is an object subjected to high levels
+of precise study at the LHC.
+The top-quark decays before hadronisation timescales and therefore its decay products, which
+are a $W$-boson and a $b$-quark nearly 100\% of the time, carry away information characterising its properties.
+Being able to characterise the jets initiated by the hadronisation of these $b$-quarks, then,
+is of critical import if the physics of the top-quark wish to be understood.
+The recent discovery of an SM-like Higgs boson, with a mass of $m_h = 125\,\GeV$, decays
+to a pair of $b$-quarks nearly 60\% of the time.
+Without question, then, the thorough study of the Higgs boson necessitates the ability to precisely identify
+the presence of the pair of $b$-initiated jets from its decays.
+Additionally, we will see in subsequent chapters that the presence of $b$-quark initiated jets is
+a characteristic signature of many BSM physics scenarios.
+The identification of these types of jets, a process referred to as `flavor tagging', is of the utmost importance
+to analyses performed with the ATLAS detector as well as in the work to be presented in this thesis.
+Jets tagged as having likely arisen as a result of the hadronisation of an initiating $b$-($c$-)quark
+are referred to as `$b$-tagged jets` (`$c$-tagged jets'), or simply as `$b$-jets` (`$c$-jets').
+All other jets then are assumed to have arisen from the decay of light-flavor quarks and are referred to as `light-flavor jets' (`light-jets').
+
+Heavy-flavor tagging of jets relies on the relatively long lifetimes of the $b$- and $c$-hadrons which
+initiate them. The typical $b$-hadron lifetime is $\tau \approx 1.6$\,ps ($c\tau \approx 450\,\micron$),
+which leads to $b$-hadrons traversing typically macroscopic distances away from the primary hard-scatter vertex
+before they decay.
+As seen in Figure~\ref{fig:bhadron_decay_length}, $b$-hadrons with transverse momenta on the order of
+$50\,\GeV$ will travel nearly half a centimeter before decaying.
+Also seen in Figure~\ref{fig:bhadron_decay_length}, those $b$-hadrons with \pT~values nearing $250\,\GeV$ will actually decay
+outside of the beam-pipe within the region of the IBL.
+Given the high spatial resolution of the ID pixel and SCT detectors discussed in Section~\ref{sec:inner_detector}, the presence of these long-lived particles
+should be detectable via the presence of at least one secondary decay vertex corresponding to the point at which
+the heavy-flavored hadron decays.
+Figure~\ref{fig:bjet_decay} illustrates the standard topology of a heavy-flavor initiated jet with a secondary decay vertex that is displaced
+with respect to the primary hard-scatter vertex and is the source of displaced tracks.
+
+The algorithms used to identify heavy-flavor initiated jets, then, rely on information characterising
+the long lifetimes of the initiating particles and on the presence of secondary decay vertices within the jet.
+These high-level algorithms used to identify these jets take as input information provided by taggers that rely on low-level information based on
+the presence of displaced tracks and secondary vertices.
+These low-level taggers will be introduced in Section~\ref{sec:ftag_low_level} and the construction of the
+high-level tagger, used in the analyses to be presented in this thesis, will be presented in Section~\ref{sec:ftag_high_level}.
+
+
+%%%%%
+
+%As in Ref.~\cite{ATL-PHYS-PUB-2017-013}.
+
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.7\textwidth]{figures/bhadron_decay_length_ibl}
+        \caption{
+            Particle decay length as a function of its lifetime and transverse momentum normalised
+            to its rest mass.
+            The white-dashed line indicates the average lifetime of $B$-hadron species, taken
+            as 1.6\,ps, with a mass taken to be 5.5\,GeV.
+            The red-dots along the $B$-hadron line indicate locations for specific transverse momenta
+            for the decaying $B$-hadron.
+            The yellow contours indicate the locations of the IBL (Figure~\ref{fig:pixel_detector_trans}),
+            with 2.43\,cm corresponding to the beam-pipe radius.
+            {\color{red}{Perhaps move this plot elsewhere?}}
+            {\color{red}{Add references to PDG}}
+        }
+        \label{fig:bhadron_decay_length}
+    \end{center}
+\end{figure}
 
 \begin{figure}[!htb]
     \begin{center}
         \includegraphics[width=0.7\textwidth]{figures/chapter3/ftag/bhadron_decayPDF}
         \caption{
+            Topology of a $b$-jet.
+            The $b$-hadron produced near the primary hard-scatter vertex (green dot), initiating the
+            $b$-jet, has a long lifetime and decays a macroscopic distance away from the primary
+            hard-scatter vertex to produce a secondary vertex (red dot) from which additional tracks
+            are produced and subsequently reconstructed.
+            The tracks originating from the secondary vertex will have larger impact parameters relative
+            to the primary hard-scatter vertex as compared to tracks originating from the primary
+            hard-scatter vertex.
         }
         \label{fig:bjet_decay}
     \end{center}
 \end{figure}
 
+%\FloatBarrier
+\subsubsection{Low Level Taggers and Inputs}
+\label{sec:ftag_low_level}
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.32\textwidth]{figures/chapter3/ftag/ftag_track_d0_sig_ip2d}
+        \includegraphics[width=0.32\textwidth]{figures/chapter3/ftag/ftag_ip2d_pb}
+        \includegraphics[width=0.32\textwidth]{figures/chapter3/ftag/ftag_sv1_fE}
+        \caption{
+            Examples of a few low-level quantities used in the ATLAS flavor tagging algorithms.
+            The blue histograms are distributions associated with $b$-jets, green are those of $c$-jets, and red
+            are those of light-flavor jets.
+            \textit{Left}: Two-dimensional (signed) $d_0$ significance for tracks matched to jets.
+            \textit{Middle}: IP2D $b$-jet log-likelihood ratio.
+            \textit{Right}: Energy fraction, defined as the energy of the tracks in the displaced
+                vertex reconstructed by the SV1 algorithm relative to the energy of all tracks in the jet.
+%            Figures taken from Ref.~\ref{ATL-PHYS-PUB-2016-022}.
+        }
+        \label{fig:ftag_low_level_var}
+    \end{center}
+\end{figure}
+
+%\FloatBarrier
+\subsubsection{High Level Tagger: MV2c10}
+\label{sec:ftag_high_level}
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.5\textwidth]{figures/chapter3/ftag/ftag_mv2c10_disc}
+        \caption{
+            Distribution of the BDT-based MV2c10 $b$-tagging algorithm output score, shown for
+            $b$-jets (blue), $c$-jets (green), and light-flavor jets (red).
+%            Figures taken from Ref.~\ref{ATL-PHYS-PUB-2016-012}.
+        }
+        \label{fig:ftag_mv2c10_disc}
+    \end{center}
+\end{figure}
+
 \input{tables/ftag/mv2_input}
-
-
 
 
 \FloatBarrier
