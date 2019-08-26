@@ -90,6 +90,30 @@ high-level tagger, used in the analyses to be presented in this thesis, will be 
 \subsubsection{Low Level Taggers and Inputs}
 \label{sec:ftag_low_level}
 
+The final algorithm used to identifiy $b$-tagged jets take as input the outputs from several low-level
+$b$-tagging algorithms.
+There are two classes of low-level algorithms: those that rely on the impact parameter information of the
+tracks associated with the jets and those that rely on the explicit reconstruction of secondary decay vertices
+within the jet~\cite{FTAG2019}:
+
+\begin{itemize}
+    \item{\textbf{IP2D and IP3D}} The IP2D and IP3D algorithms make use of the signed transverse impact parameter significance of tracks
+        to construct discriminating variables. The IP3D algorithm additionally makes use of the longitudinal impact parameter
+        significance. The algorithms rely on constructing log-likelihood ratios (LLR) taking as inputs probability density functions (PDFs)
+        for $b$-, $c-$, and light-flavor jet probabilities on a per-track basis.
+    \item{\textbf{Secondary Vertex Finding Algorithm (SV1)}} The SV1 algorithm~\cite{SV1} reconstructs a single displaced secondary vertex within
+        a jet, starting from the set of all possible two-track vertices while rejecting tracks likely to be associated with
+        non-heavy-flavored long-lived particles ($K_s$ or $\Lambda$), photon conversions, or vertices due to detector material interactions.
+        The inclusive secondary vertex and associated tracks are then used to construct discriminating observables sensitive to the differences
+        between $b$, $c-$, and light-flavor jets.
+    \item{\textbf{Multi-vertex Finding Algorithm (JetFitter, JF)}} The JetFitter algorithm~\cite{JETFITTER} attempts to reconstruct the full
+        $b$-hadron decay chain using a modified Kalman filter which assumes a common line on which the primary, $b$-hadron,
+        and $c$-hadron decay vertices lie. As with SV1, the construction of many discriminating observables related to the
+        reconstructed set of vertices are used to build templates for $b-$, $c-$, and light-flavor jets.
+\end{itemize}
+
+Figure~\ref{fig:ftag_low_level_var} provides an example of a few observables provided by the low-level tagging algorithms.
+
 \begin{figure}[!htb]
     \begin{center}
         \includegraphics[width=0.32\textwidth]{figures/chapter3/ftag/ftag_track_d0_sig_ip2d}
@@ -110,15 +134,36 @@ high-level tagger, used in the analyses to be presented in this thesis, will be 
 \end{figure}
 
 %\FloatBarrier
-\subsubsection{High Level Tagger: MV2c10}
+\subsubsection{High Level Tagger: MV2}
 \label{sec:ftag_high_level}
+
+The low-level taggers discussed in the previous section provide a set of many useful and complementary observables.
+In an attempt to make the most efficient use of all the information provided by this set of observables,
+a boosted decision tree (BDT) algorithm is used to combine the outputs of these low-level algorithms.
+This algorithm, referred to as the MV2 $b$-tagging algorithm, is trained using the ROOT Toolkit for Multivariate
+Data Analysis (TMVA)~\cite{TMVA}.
+In the analyses based on data recorded by ATLAS between 2015--2016, the MV2 algorithm was trained using jets from
+a simulated sample of top-quark pair production events.
+For the analyses based on the full Run-II data recorded by ATLAS, up to and including the year 2018, the MV2
+algorithm was retrained and the training was done using a sample composed of jets both from top-quark
+pair production events as well as events from a simulated events of a BSM physics scenario of a heavy $Z^{\prime}$ decaying to $b\bar{b}$.
+The latter was included in the re-training so as to allow the algorithm to have in its training sample
+high-\pT~jets that are not present in the SM top-quark pair production events, as illustrated in Figure~\ref{fig:ftag_mv2c10_disc}.
+The set of low-level inputs provided to the MV2 algorithm, per-jet, are listed in Table~\ref{tab:ftag_mv2_inputs}.
+Figure~\ref{fig:ftag_mv2c10_disc} shows the MV2 algorithm's output score, which is provided on a per-jet basis.
+Working points, defined with different target-efficiencies for accepting $b$-tagged jets, are defined
+based on defining thresholds on the MV2 discriminant.
 
 \begin{figure}[!htb]
     \begin{center}
-        \includegraphics[width=0.5\textwidth]{figures/chapter3/ftag/ftag_mv2c10_disc}
+        \raisebox{1.5cm}{\includegraphics[width=0.48\textwidth]{figures/chapter3/ftag/ftag_train_sample}}
+        \includegraphics[width=0.48\textwidth]{figures/chapter3/ftag/ftag_mv2c10_disc}
         \caption{
-            Distribution of the BDT-based MV2c10 $b$-tagging algorithm output score, shown for
-            $b$-jets (blue), $c$-jets (green), and light-flavor jets (red).
+            \textit{Left}: Distribution of jet \pT~for jets used in the training of the MV2 BDT algorithm.
+                The $Z^{\prime}$ sample of jets is only included in the MV2 training relevant to the analyses
+                based on the full Run-II dataset collected by ATLAS.
+            \textit{Right}: Distribution of the BDT-based MV2 $b$-tagging algorithm output score, shown for
+                $b$-jets (blue), $c$-jets (green), and light-flavor jets (red).
 %            Figures taken from Ref.~\ref{ATL-PHYS-PUB-2016-012}.
         }
         \label{fig:ftag_mv2c10_disc}
