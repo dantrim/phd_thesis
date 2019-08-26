@@ -71,8 +71,10 @@ high-level tagger, used in the analyses to be presented in this thesis, will be 
 
 \begin{figure}[!htb]
     \begin{center}
-        \includegraphics[width=0.7\textwidth]{figures/chapter3/ftag/bhadron_decayPDF}
+        \includegraphics[width=0.48\textwidth]{figures/chapter3/ftag/bhadron_decayPDF}
+        \includegraphics[width=0.48\textwidth]{figures/chapter3/ftag/bhadron_signed_d0PDF}
         \caption{
+            \textit{Left}:
             Topology of a $b$-jet.
             The $b$-hadron produced near the primary hard-scatter vertex (green dot), initiating the
             $b$-jet, has a long lifetime and decays a macroscopic distance away from the primary
@@ -81,6 +83,12 @@ high-level tagger, used in the analyses to be presented in this thesis, will be 
             The tracks originating from the secondary vertex will have larger impact parameters relative
             to the primary hard-scatter vertex as compared to tracks originating from the primary
             hard-scatter vertex.
+            \textit{Right}:
+            Illustration of signed impact parameter, specifically the signed transverse impact
+            parameter $d_0$. The blue track has a transverse impact parameter whose projection onto the jet axis
+            is in the direction in which the jet momentum points and is given a positive $d_0$.
+            The red track's transverse impact parameter's projection onto the jet axis points opposite to the jet
+            momentum and is given a negative $d_0$.
         }
         \label{fig:bjet_decay}
     \end{center}
@@ -101,6 +109,10 @@ within the jet~\cite{FTAG2019}:
         to construct discriminating variables. The IP3D algorithm additionally makes use of the longitudinal impact parameter
         significance. The algorithms rely on constructing log-likelihood ratios (LLR) taking as inputs probability density functions (PDFs)
         for $b$-, $c-$, and light-flavor jet probabilities on a per-track basis.
+        See Figure~\ref{fig:bjet_decay} for an illustration of the signed impact parameter.
+        Tracks associated with secondary decay vertices in heavy-flavor jets tend to have positively signed impact parameters since they
+        are produced \textit{within} the jet cone.
+        Signed impact parameter quantities tend to be symmetric for light-flavor jets. See Figure~\ref{fig:ftag_low_level_var}.
     \item{\textbf{Secondary Vertex Finding Algorithm (SV1)}} The SV1 algorithm~\cite{SV1} reconstructs a single displaced secondary vertex within
         a jet, starting from the set of all possible two-track vertices while rejecting tracks likely to be associated with
         non-heavy-flavored long-lived particles ($K_s$ or $\Lambda$), photon conversions, or vertices due to detector material interactions.
@@ -111,6 +123,15 @@ within the jet~\cite{FTAG2019}:
         and $c$-hadron decay vertices lie. As with SV1, the construction of many discriminating observables related to the
         reconstructed set of vertices are used to build templates for $b$-, $c$-, and light-flavor jets.
 \end{itemize}
+
+%\begin{figure}[!htb]
+%    \begin{center}
+%        \includegraphics[width=0.5\textwidth]{figures/chapter3/ftag/bhadron_signed_d0PDF}
+%        \caption{
+%        }
+%        \label{fig:btag_signed_d0}
+%    \end{center}
+%\end{figure}
 
 Figure~\ref{fig:ftag_low_level_var} provides an example of a few observables provided by the low-level tagging algorithms.
 
