@@ -33,11 +33,17 @@ may be simulated.
 
 \begin{figure}[!htb]
     \begin{center}
-        \includegraphics[width=0.6\textwidth]{figures/event_simulation/pp_simulation_steps}
+        \includegraphics[width=0.75\textwidth]{figures/event_simulation/pp_sim_cartoonPDF}
+        %\includegraphics[width=0.6\textwidth]{figures/event_simulation/pp_simulation_steps}
         \caption{
-            Cartoon illustrating the concepts of QCD factorisation and fragmentation as regards
-            the $pp$ interactions at the LHC.
-            {\color{red}{redo this figure}}
+            Cartoon illustration of the Monte-Carlo $pp$ event simulation process.
+            The observable color-neutral hadrons at the end result of hardonisation are shown at the
+            top, indicated by arrows.
+            Example resonance decays could be $K_S \rightarrow \pi^0\,\pi^0$, $\Lambda^+ \rightarrow \pi^+\,n$, or a
+            $B$-hadron decay chain.
+            The gluons emitted from the incident partons constitute the starting point of the initial state radiation (ISR).
+            In order to avoid clutter, the hadronisation of the ISR-emitted gluons and quarks is omitted.
+            The blue ovals indicate the location of hadronisation, simulated by phenomenological models as discussed in the text.
         }
         \label{fig:pp_sim_steps}
     \end{center}
@@ -116,24 +122,25 @@ The remaining elements of the $pp$ event simulation described by Figure~\ref{fig
 and hadronisation steps, the latter being non-perturbative and treated with phenomenological models.
 The PS simulates the successive emission of quarks and gluons from the partons in the final (initial) state of the
 simulated process.
-In the collinear limit, the $n+1$-parton (post-emission) cross-section is related to the $n$-parton (pre-emission) crosss-section
+In the collinear factorisation limit, the $n+1$-parton (post-emission) cross-section is related to the $n$-parton (pre-emission) cross-section
 as:
 \begin{align}
-    \mathrm{d}\sigma_{n+1} \approx \mathrm{d}\sigma_n \mathrm{d}P_i(z, q^2) \approx \mathrm{d}\sigma_n \frac{\alpha_s}{2\pi} \frac{\mathrm{d}q^2}{q^2} \mathrm{d}z P_{ji}(z),
+    \mathrm{d}\sigma_{n+1} \approx \mathrm{d}\sigma_n \mathrm{d}P_a(z, q^2) \approx \mathrm{d}\sigma_n \frac{\alpha_s}{2\pi} \frac{\mathrm{d}q^2}{q^2} \mathrm{d}z \, \mathcal{P}_{ab}(z),
     \label{eq:np1_parton_split}
 \end{align}
-where $\mathrm{d}P_i(z,q^2)$ is the probability that parton $i$ will split into two partons at scale $q^2$, with the parton $j$ carrying the
-fraction $z$ of the momentum of the initial parton $i$.
-The $P_{ji}(z)$ are Altarelli-Parisi splitting functions describing the possible parton branchings: $q \rightarrow gq$, $g \rightarrow gg$, 
-and/or $g \rightarrow q\bar{q}$.
+where $\mathrm{d}P_a(z,q^2)$ is the probability that parton $a$ will split into two partons at scale $q^2$, with the parton $b$ carrying the
+fraction $z$ of the momentum of the initial parton $a$.
+The $\mathcal{P}_{ab}(z)$ are Altarelli-Parisi splitting functions~\cite{Altarelli:1977zs} describing the possible parton branchings: $q \rightarrow gq$, $g \rightarrow gg$, 
+or $g \rightarrow q\bar{q}$.
 %There are three possible splittings describe by the $P_i$ in QCD: $q \rightarrow gq$, $g \rightarrow gg$, and $g \rightarrow q \bar{q}$.
 The PS evolution follows by repeated implmentation of Equation~\ref{eq:np1_parton_split}, leading to arbitrarily many
 parton splittings and therefore potentially arbitrarily many particles in the final state.
 The basic idea, then, is to evolve the partons as above until they are below a certain energy scale, $q^2 = Q_0^2$, which is the scale
 below which the hadronisation process takes place.
-In typical PS MC programs, the PS evolution is performed via the construction of the Sudakov form factor {\color{red}{CHECK INDICES ETC}},
+In typical PS MC programs, the PS evolution is performed via the construction of the Sudakov form factor,
 \begin{align}
-    \Delta_i(q_1^2, q_2^2) = \exp \left ( - \sum\limits_j \int\limits_{q_2^2}^{q_1^2} \int\limits_{z_{\text{min}}}^{z_{\text{max}}} \mathrm{d}P_i(z,q^2) \right),
+    \Delta_{a}(q_1^2, q_2^2) = \exp \left ( - \sum\limits_{b\, \in \{q,g\}} \, \int\limits_{q_2^2}^{q_1^2} \int\limits_{z_{\text{min}}}^{z_{\text{max}}} \frac{\alpha_s}{2\pi} \frac{\mathrm{d}q^2}{q^2} \mathrm{d}z \, \mathcal{P}_{ab}(z) \right),
+    %\Delta_{a}(q_1^2, q_2^2) = \exp \left ( - \sum\limits_{b\, \in \{q,g\}} \, \int\limits_{q_2^2}^{q_1^2} \int\limits_{z_{\text{min}}}^{z_{\text{max}}} \mathrm{d}P_{ab}(z,q^2) \right),
     \label{eq:sudakov_form_factor}
 \end{align}
 which represents the probability that a parton evolves from energy scale $q_1$ to the lower scale $q_2$ \textit{without} splitting.
@@ -141,10 +148,12 @@ which represents the probability that a parton evolves from energy scale $q_1$ t
 The PS simulation of the final-state radiation (FSR) operates by following a \textit{forward evolution} whereby partons initially at scale $Q^2$
 emit radiation at the scale $q_2$ determined by sampling Equation~\ref{eq:sudakov_form_factor}. This process is repeated and if,
 for any of the partons in the final state, the $q_2^2$ value is below $Q_0^2 \approx 1\,\GeV^2$, the shower development is terminated
-and hadronisation takes place {\color{red}{ISR IS THEREFORE SENSITIVE TO THE FACTORISATION SCALE AND PDF}}.
+and hadronisation takes place.
 For the simulation of initial-state radiation (ISR), a \textit{backward evolution} occurs wherein the radiation is emitted
 by the initiating partons. In this case the final low-energy scale is that of the ancestor partons fragmenting from the PDFs, gaining energy to take part
 in the hard-scatter, and the initial energy scale is the high-energy scale of the hard-scatter.
+For this reason, the ISR shower evolution is dependent on the factorisation scale $\mu_F$ through
+its sensitivity to the value of the PDFs.
 
 As the partons reach the hadronisation scale, the confining nature of QCD takes over and the non-perturbative regime of QCD is reached
 once again.
@@ -156,8 +165,95 @@ Lund string model~\cite{Andersson:1983ia} and cluster hadronisation model~\cite{
 Unstable particles produced as a result of the hadronisation process are also decayed at this point;
 in some cases relying on the use of dedicated programs such as \texttt{EvtGen} in the case of $b$-hadron decays~\cite{Lange:2001uf}.
 
-\section{Monte-Carlo Event Generators}
-\label{sec:mc_event_gen}
+The so-called \textit{spectator partons}, indicated by the outgoing lines from the PDFs in Figure~\ref{fig:pp_sim_steps},
+are those partons not directly involved in the $pp$ hard-scatter sub-process.
+They may undergo soft interactions, resulting in the underlying event (UE).
+The physics processes underlying the UE are driven by low-energy phenomena and must therefore
+be simulated using phenomenological modes, in much the same way as the hadronisation simulation.
+These models are characterised by tuneable parameters which are optimised by dedicated measurements
+and comparisons to observed data in the experiments~\cite{UESim}.
+There is also processes of multiple-parton interactions (MPI) in which there are additional,
+relatively soft, parton-parton scattering processes in addition to the hard-scatter subprocess.
+The processes of UE and MPI result in long-distance QCD color connection effects that lead
+to additional radiation of quarks and gluons, also simulated using tuneable phenomenological models
+provided by specific MC generators~\cite{Sjostrand:2006za,Butterworth:1996zw}.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% MC GENERATORS MC GEN mc gen
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\section{Monte-Carlo Event Generators}
+%\label{sec:mc_event_gen}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% DETECTOR SIMULATION
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \section{Simulation of the Detector Response}
 \label{sec:detector_sim}
+
+%Up until the stage of hadronisation, the Monte-Carlo event simulation depends only on the nature of the
+%incident beam (i.e. proton beam and bunch structure) and on the beam energy ($\sqrt{s} = 13\,\TeV$).
+%These are taken as configuration parameters needed for calculating the hard-scatter sub-process
+%and initiating fragmentation.
+The end result of the steps discussed above and outlined in Figure~\ref{fig:pp_sim_steps}
+is a collection of four-vectors of all stable particles after hadronisation.% and that have the potential to leave detectable
+%signatures in the ATLAS detector.
+By itself, this collection of particle four-vectors is useful for studying physics processes at
+the so-called \textit{truth}- or \textit{particle}-level, allowing one to understand specific
+processes without the effects of the ATLAS detector's geometric acceptance and response folded in.
+
+Ultimately, however, one wishes to use the MC simulation to make predictions on the collection of specific physics
+processes being simulated.
+To use the MC simulated events in this way, they need to be compared to the recorded data and therefore must be analyzed after
+the full ATLAS reconstruction process, described in Section~\ref{chap:objects}, so as to ensure meaningful comparisons are made.
+%To compare the MC simulation to data, so that one can make meaningful predictions for specific
+%physics processes, the output of the MC simulated event generation must be analyzed after the
+%full ATLAS reconstruction described in Section~\ref{chap:objects} takes place.
+To accomplish this, a detailed \texttt{GEANT4}~\cite{GEANT4} model of the ATLAS detector is used
+which includes not only the sensing elements of each of the subdetectors but also includes
+simulation of inactive material such as support structures, cabling, and services~\cite{ATLASSim}.
+Custom algorithms are developed for each of the ATLAS subdetectors which convert the simulated \texttt{GEANT4}
+energy depositions into hits on the corresponding detectors, modelling the detailed nature
+of each subdetector's response to incident particles.
+For example, the simulation of the MDT drift tubes (Section~\ref{sec:ms}) includes realistic simulation of signal formation as a result of the ion
+drift and avalanche evolution as well as a realistic simulation of the response
+of the readout electronics that produce the digitized output signals.
+The result of the simulation, then, is a set of simulated digitized output signals which
+may then be treated by the same reconstruction algorithms used during actual data taking, including the trigger.
+The paths of the particle-level and fully reconstructed simulated $pp$ collision events, as well
+as the paths of the data events, through the simulation and reconstruction infrastructure are illustrated in Figure~\ref{fig:atlas_sim_structure}.
+
+{\color{red}{How is pileup simulated?}}
+%{\color{red}{The computing infrastructure needed for simulation is large...}}
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.85\textwidth]{figures/event_simulation/atlas_sim_structure_arrPDF}
+        \caption{
+            Paths of the ATLAS $pp$ event simulation, starting from the MC event generation all the way
+            to the full ATLAS reconstructed event.
+            The red path and markers indicate that of the particle-level (truth-level) events,
+            while the blue path and markers indicate that of the fully reconstructed simulated events.
+            The green path and markers show the path that real data takes when reconstructed and recorded by ATLAS.
+            The acronym SDO (ROD) stands for `Simulated Data Object' (`ReadOut Driver').
+            Original figure taken from Ref.~\cite{ATLASSim}.
+        }
+        \label{fig:atlas_sim_structure}
+    \end{center}
+\end{figure}
