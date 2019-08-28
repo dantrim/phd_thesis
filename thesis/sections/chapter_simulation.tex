@@ -35,6 +35,7 @@ a few of which that are relevant to the work presented in this thesis will be de
 Section~\ref{sec:detector_sim} then describes how these MC-based simulations of the underling $pp$ collision processes
 are put on the same footing as the recorded data via the accurate simulation of the ATLAS
 detector and its response to the $pp$ collision products.
+Section~\ref{sec:pileup_sim} briefly describes how the simulation of pileup events is performed.
 
 %construct a reliable \textit{background-only} model with which the compatibility of data
 %and the \textit{background-plus-signal} model, in which a BSM physics process is additionally simulated,
@@ -200,7 +201,6 @@ to additional radiation of quarks and gluons, also simulated using tuneable phen
 provided by specific MC generators~\cite{Sjostrand:2006za,Butterworth:1996zw}.
 
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -215,7 +215,7 @@ provided by specific MC generators~\cite{Sjostrand:2006za,Butterworth:1996zw}.
 \label{sec:mc_gen}
 
 There are a handful of MC-based event generators dedicated for LHC physics
-and the implementation of the processes described in the previous section and illustrated
+and the implementation of the processes described in the previous section, illustrated
 in Figure~\ref{fig:pp_sim_steps}~\cite{Buckley:2011ms}.
 In the following we reference those relevant to the work to be presented in the current
 thesis.
@@ -225,8 +225,7 @@ thesis.
 
 Matrix element (ME) MC generators provide calculations of the matrix element corresponding
 to the underlying $pp$ hard-scatter sub-processes.
-They are generally supplemented by separate PS MC generators that perform the subsequent
-showering, hadronisation, etc...
+They are generally interfaced to separate PS MC generators that perform the subsequent fragmentation.
 
 \begin{description}
     \item[] \underline{\textsc{MadGraph5\_AMC@NLO}} \cite{MGFive} is an MC event generator providing automated
@@ -234,9 +233,47 @@ showering, hadronisation, etc...
     \item[] \underline{\textsc{Powheg-Box}} \cite{POWHEGBOX} is a library for implementing NLO calculations in
         MC programs using the \textsc{Powheg} formalism~\cite{POWHEGMETHOD} to match the matrix element
         computation to that of the PS.
-    \item[] \underline{\textsc{Pythia}}
-    \item[] \underline{\textsc{Sherpa}}
-    \item[] \underline{\textsc{Herwig}}
+\end{description}
+
+\subsection{General Purpose Event Generators}
+\label{sec:mc_gen_gen_purpose}
+
+General purpose MC event generators are capable of performing matrix element calculations
+as well as handling the fragmentation and UE modelling.
+
+\begin{description}
+    \item[] \underline{\textsc{Pythia}} \cite{PYTHIA8Intro,PYTHIA8} is a standalone event generator
+        capable of simulating over 200 processes, specifically $2\rightarrow 1$, $2 \rightarrow 2$, and
+        (in a few cases) $2\rightarrow3$ processes.
+        In the present thesis \textsc{Pythia} is used primarily as a PS/UE generator, with separate MC generators
+        performing the matrix element computation.
+    \item[] \underline{\textsc{Herwig}} \cite{HERWIG6,HERWIG7} is a general purpose event generator emphasising
+        the detailed simulation of QCD parton showers. In the work to be presented in this thesis,
+        \textsc{Herwig} is used only as a PS generator.
+    \item[] \underline{\textsc{Sherpa}} \cite{SHERPA1,SHERPA2} is a general purpose MC generator capable
+        of both LO and NLO computations and contains a detailed PS generator based on the
+        Catani-Seymour dipole formalism~\cite{Schumann:2007mg}.
+        In the present analysis, when \textsc{Sherpa} is used for the matrix element computation it is
+        also used for the PS.
+\end{description}
+
+\subsection{Afterburners and Specialists}
+\label{sec:mc_gen_afterburner}
+
+There exist several so-called MC-generator \textit{afterburners} which are run
+after one of the steps detailed in Figure~\ref{fig:pp_sim_steps}, typically after the matrix-element
+computation prior to running the PS algorithms or at the end, supplementing the hadronisation step in order
+to improve the specific description of physics processes therein.
+
+\begin{description}
+    \item[] \underline{\textsc{EvtGen}} \cite{EVTGEN} is an MC generator that is interfaced to and runs after
+        the PS and hadronisation step. It implements a detailed description of the physics of $b$-hadron
+        decays, including models of their semi-leptonic decays, CP-violating effects, and accurate
+        modelling of the angular distributions and correlations relevant to sequential decays of $b$-hadrons.
+    \item[] \underline{\textsc{MadSpin}} \cite{MADSPIN1} is a tool based on the formalism of Ref.~\cite{MADSPIN2}
+        that handles the decays of heavy resonances with NLO matrix element computations provided by \textsc{MadGraph5}.
+        It ensures that
+        off-shell effects and spin-correlations amongst child particles (from the heavy resonance decay) are accounted for properly.
 \end{description}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -285,9 +322,6 @@ may then be treated by the same reconstruction algorithms used during actual dat
 The paths of the particle-level and fully reconstructed simulated $pp$ collision events, as well
 as the paths of the data events, through the simulation and reconstruction infrastructure are illustrated in Figure~\ref{fig:atlas_sim_structure}.
 
-{\color{red}{How is pileup simulated?}}
-%{\color{red}{The computing infrastructure needed for simulation is large...}}
-
 \begin{figure}[!htb]
     \begin{center}
         \includegraphics[width=0.85\textwidth]{figures/event_simulation/atlas_sim_structure_arrPDF}
@@ -303,3 +337,38 @@ as the paths of the data events, through the simulation and reconstruction infra
         \label{fig:atlas_sim_structure}
     \end{center}
 \end{figure}
+
+\section{Simulation of Pileup}
+\label{sec:pileup_sim}
+
+As mentioned previously, there are two types of pileup to consider: in-time pileup and out-of-time pileup.
+The former mainly consists of soft QCD interactions and is modelled similarly to the UE/MPI processes.
+The out-of-time pileup is modelled by separately generating a large sample of minimum-bias $pp$ collision events
+using the \textsc{Pythia} MC event generator.
+For each generated hard-scatter process of interest, a given number of these minimum-bias events' detector hits
+are overlaid onto those from the simulated hard-scatter event prior to digitisation and reconstruction.
+The number of overlaid minimum-bias events is based on a sampling of the pileup distribution for a given
+data-taking period, corresponding to the $\langle \mu \rangle$ profile shown in Figure~\ref{fig:int_lumi_multiyear}.
+Overlaying the simulated events in this way, at the hit level and prior to digitisation, allows for a precise
+simulation of the effects of pileup on the detector response.
+This process is illustrated in Figure~\ref{fig:pileup_gen}.
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.9\textwidth]{figures/event_simulation/pileup_illustrationPDF}
+        \caption{
+            Cartoon illustration of the steps for performing the MC-MC pileup overlay used
+            for simulating the out-of-time pileup in ATLAS.
+            Events are sampled from a collection of simulated minimum-bias events generated using the
+            \textsc{Pythia} MC event generator.
+            For each generated hard-scatter process, the number of overlaid simulated minimum-bias events is
+            determined by sampling the expected pileup profile for the given data-taking period (Figure~\ref{fig:int_lumi_multiyear}).
+            The simulated detector hits from both the main hard-scatter process and from
+            the overlaid pileup events are combined prior to the remaining digitisation and reconstruction
+            steps of the ATLAS detector simulation chain (Figure~\ref{fig:atlas_sim_structure}).
+        }
+        \label{fig:pileup_gen}
+    \end{center}
+\end{figure}
+
+\FloatBarrier
