@@ -10,18 +10,39 @@ fundamental relations of pitched sounds in the science of harmony and of musical
 expression and adaptations, the engine might compose elaborate and scientific pieces of music of any degree of
 complexity or extent.}}{--Ada Augusta, Countess of Lovelace}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 In order to be able to make predictions with which comparisons to the observed data
 recorded by the ATLAS data can be made, the need for an accurate simulation infrastructure
 arises.
 Simulation of the $pp$ collision process must be made in order to estimate predicted
 rates of specific SM processes so that, in searches for new physics, one can
-construct a reliable \textit{background-only} model with which the compatibility of data
-and the \textit{background-plus-signal} model, in which a BSM physics process is additionally simulated,
-can be tested {\color{red}{NEEDS RE-WORDING}}.
-In addition to computing overall rates and kinematics of specific physics processes, an accurate
-simulation of the response of the ATLAS detector to these physics events must also be performed which
-requires accurate knowledge of the detector material as well as its read-out such that these, too,
-may be simulated.
+construct reliable models of both the \textit{background-only} and \textit{background-plus-signal}
+hypotheses; the former including only those processes described by the SM and the latter
+including additional BSM physics processes on top of the SM ones.
+With both models in hand, tests of compatibility between the data recorded by the ATLAS detector
+can be made and quantitative statements about the likelihood of either of the two models can be made.
+
+Simulation of the $pp$ collisions in a general purpose high-energy particle-physics detector
+like ATLAS implies a precise knowledge of the underlying physics driving the $pp$ interactions; namely,
+the theory of QCD.
+In Section~\ref{sec:fact_frag} an introduction to the concepts underlying the simulation of QCD
+processes will be given.
+The simulation of the physics processes rely on detailed Monte-Carlo (MC) programs for their implementation,
+a few of which that are relevant to the work presented in this thesis will be described in Section~\ref{sec:mc_gen}.
+Section~\ref{sec:detector_sim} then describes how these MC-based simulations of the underling $pp$ collision processes
+are put on the same footing as the recorded data via the accurate simulation of the ATLAS
+detector and its response to the $pp$ collision products.
+
+%construct a reliable \textit{background-only} model with which the compatibility of data
+%and the \textit{background-plus-signal} model, in which a BSM physics process is additionally simulated,
+%can be tested {\color{red}{NEEDS RE-WORDING}}.
+%In addition to computing overall rates and kinematics of specific physics processes, an accurate
+%simulation of the response of the ATLAS detector to these physics events must also be performed which
+%requires accurate knowledge of the detector material as well as its read-out such that these, too,
+%may be simulated.
 
 %Physics analyses at ATLAS generally rely on simulations of $pp$ collisions,
 %and of particular procecesses such as the production of $W$ bosons, in order to build
@@ -163,7 +184,7 @@ features of QCD.
 The main hadronisation models used in the MC simulation relevant to the current analysis are the
 Lund string model~\cite{Andersson:1983ia} and cluster hadronisation model~\cite{Webber:1983if}.
 Unstable particles produced as a result of the hadronisation process are also decayed at this point;
-in some cases relying on the use of dedicated programs such as \texttt{EvtGen} in the case of $b$-hadron decays~\cite{Lange:2001uf}.
+in some cases relying on the use of dedicated programs such as \textsc{EvtGen} in the case of $b$-hadron decays~\cite{Lange:2001uf}.
 
 The so-called \textit{spectator partons}, indicated by the outgoing lines from the PDFs in Figure~\ref{fig:pp_sim_steps},
 are those partons not directly involved in the $pp$ hard-scatter sub-process.
@@ -190,8 +211,31 @@ provided by specific MC generators~\cite{Sjostrand:2006za,Butterworth:1996zw}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\section{Monte-Carlo Event Generators}
-%\label{sec:mc_event_gen}
+\section{Monte-Carlo Event Generators}
+\label{sec:mc_gen}
+
+There are a handful of MC-based event generators dedicated for LHC physics~\cite{Buckley:2011ms}.
+In the following we reference those relevant to the work to be presented in the current
+thesis.
+
+\subsection{Matrix Element Generators}
+\label{sec:mc_gen_me}
+
+Matrix element (ME) MC generators provide calculations of the matrix element corresponding
+to the underlying $pp$ hard-scatter sub-processes.
+They are generally supplemented by separate PS MC generators that perform the subsequent
+showering, hadronisation, etc...
+
+\begin{description}
+    \item[] \underline{\textsc{MadGraph5\_AMC@NLO}} \cite{MGFive} is an MC event generator providing automated
+        computation of matrix elements at LO, with NLO computations aided by the MC@NLO method~\cite{AMCNLO}.
+    \item[] \underline{\textsc{Powheg-Box}} \cite{POWHEGBOX} is a library for implementing NLO calculations in
+        MC programs using the \textsc{Powheg} formalism~\cite{POWHEGMETHOD} to match the matrix element
+        computation to that of the PS.
+    \item[] \underline{\textsc{Pythia}}
+    \item[] \underline{\textsc{Sherpa}}
+    \item[] \underline{\textsc{Herwig}}
+\end{description}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -225,10 +269,10 @@ the full ATLAS reconstruction process, described in Section~\ref{chap:objects}, 
 %To compare the MC simulation to data, so that one can make meaningful predictions for specific
 %physics processes, the output of the MC simulated event generation must be analyzed after the
 %full ATLAS reconstruction described in Section~\ref{chap:objects} takes place.
-To accomplish this, a detailed \texttt{GEANT4}~\cite{GEANT4} model of the ATLAS detector is used
+To accomplish this, a detailed \textsc{GEANT4}~\cite{GEANT4} model of the ATLAS detector is used
 which includes not only the sensing elements of each of the subdetectors but also includes
 simulation of inactive material such as support structures, cabling, and services~\cite{ATLASSim}.
-Custom algorithms are developed for each of the ATLAS subdetectors which convert the simulated \texttt{GEANT4}
+Custom algorithms are developed for each of the ATLAS subdetectors which convert the simulated \textsc{GEANT4}
 energy depositions into hits on the corresponding detectors, modelling the detailed nature
 of each subdetector's response to incident particles.
 For example, the simulation of the MDT drift tubes (Section~\ref{sec:ms}) includes realistic simulation of signal formation as a result of the ion
