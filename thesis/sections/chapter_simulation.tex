@@ -174,8 +174,8 @@ and hadronisation takes place.
 For the simulation of initial-state radiation (ISR), a \textit{backward evolution} occurs wherein the radiation is emitted
 by the initiating partons. In this case the final low-energy scale is that of the ancestor partons fragmenting from the PDFs, gaining energy to take part
 in the hard-scatter, and the initial energy scale is the high-energy scale of the hard-scatter.
-For this reason, the ISR shower evolution is dependent on the factorisation scale $\mu_F$ through
-its sensitivity to the value of the PDFs.
+As the ISR shower evolution is sensitive to the PDFs, it is dependent on the factorisation scale $\mu_F$ since the
+value of the PDF is scale-dependent.
 
 As the partons reach the hadronisation scale, the confining nature of QCD takes over and the non-perturbative regime of QCD is reached
 once again.
@@ -290,13 +290,8 @@ to improve the specific description of physics processes therein.
 \section{Simulation of the Detector Response}
 \label{sec:detector_sim}
 
-%Up until the stage of hadronisation, the Monte-Carlo event simulation depends only on the nature of the
-%incident beam (i.e. proton beam and bunch structure) and on the beam energy ($\sqrt{s} = 13\,\TeV$).
-%These are taken as configuration parameters needed for calculating the hard-scatter sub-process
-%and initiating fragmentation.
 The end result of the steps discussed above and outlined in Figure~\ref{fig:pp_sim_steps}
-is a collection of four-vectors of all stable particles after hadronisation.% and that have the potential to leave detectable
-%signatures in the ATLAS detector.
+is a collection of four-vectors of all stable particles after hadronisation.
 By itself, this collection of particle four-vectors is useful for studying physics processes at
 the so-called \textit{truth}- or \textit{particle}-level, allowing one to understand specific
 processes without the effects of the ATLAS detector's geometric acceptance and response folded in.
@@ -321,13 +316,15 @@ The result of the simulation, then, is a set of simulated digitized output signa
 may then be treated by the same reconstruction algorithms used during actual data taking, including the trigger.
 The paths of the particle-level and fully reconstructed simulated $pp$ collision events, as well
 as the paths of the data events, through the simulation and reconstruction infrastructure are illustrated in Figure~\ref{fig:atlas_sim_structure}.
+The reconstruction stage refers to the process of reconstructing the high-level physics objects
+and is described in detail in Chapter~\ref{chap:objects}.
 
 \begin{figure}[!htb]
     \begin{center}
         \includegraphics[width=0.85\textwidth]{figures/event_simulation/atlas_sim_structure_arrPDF}
         \caption{
             Paths of the ATLAS $pp$ event simulation, starting from the MC event generation all the way
-            to the full ATLAS reconstructed event.
+            to the full ATLAS reconstructed event (Chapter~\ref{chap:objects}).
             The red path and markers indicate that of the particle-level (truth-level) events,
             while the blue path and markers indicate that of the fully reconstructed simulated events.
             The green path and markers show the path that real data takes when reconstructed and recorded by ATLAS.
