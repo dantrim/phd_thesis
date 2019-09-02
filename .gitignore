@@ -33,3 +33,4 @@
 
 # random/misc
 .DS_Store
+*.key
