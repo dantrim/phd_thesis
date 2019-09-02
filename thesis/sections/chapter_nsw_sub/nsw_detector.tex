@@ -164,7 +164,7 @@ Small Wheel, in which the readout plane consists of perpendicular wires and stri
 the two dimensional readout information.
 This perpendicular readout is susceptible to high rates of so-called \textit{ghost hits},
 illustrated in the left side of Figure~\ref{fig:mm_stereo}, and leads to high levels of track-building ambiguities.
-In the high particle rates expected at the HL-LHC, the multiplicies of these ghost hits would
+In the high particle rates expected at the HL-LHC, the multiplicities of these ghost hits would
 lead to an unacceptable degradation in tracking performance.
 The combination of the small-angle stereo readout and high strip-multiplicities on each MM layer will
 enable the MM detectors to sustain these high particle rates.
@@ -212,7 +212,7 @@ incident angles, as illustrated on the right side of Figure~\ref{fig:mm_tpc_hit_
         \caption{
             \textbf{\textit{Left}}: Illustration of the small-angle stereo two-dimensional readout principle.
                 The upper panel shows two layers with readout strips perpendicular to each other.
-                The lower panel shows two layers with readout strips tilted at a small-angle,
+                The lower panel shows two layers with readout strips tilted at a small angle,
                 $\theta_{\text{stereo}}$, relative to one another.
                 In both cases, true detector hits are indicated by the blue dots.
                 The readout strips registering the hits are indicated in green.
@@ -226,12 +226,12 @@ incident angles, as illustrated on the right side of Figure~\ref{fig:mm_tpc_hit_
             \textbf{\textit{Right}}: Illustration of the layout of the `precision' and `stereo'
                 readout layers of the two MM quadruplets in a given NSW sector.
                 The precision layers, so-called since their readout strips are along $\phi$ and measure directly the
-                coordinate in the bending plane of passing muons, are the outer two layers of
+                coordinate in the bending plane of passing muons relevant for \pT~determination, are the outer two layers of
                 each quadruplet relative to the spacer frame.
                 The stereo layers are those with the readout strips tilted at $\pm 1.5^{\degree}$ relative to the precision layers and are the two layers
                 in each quadruplet nearest the central spacer frame.
                 One stereo layer in each quadruplet has stereo angle $+1.5^{\degree}$ and the other $-1.5^{\degree}$, making
-                for $\Delta \theta = 3^{\degree}$ between the two stereo layers.
+                for $\Delta \theta = 3^{\degree}$ between the two stereo layers in each quadruplet.
         }
         \label{fig:mm_stereo}
     \end{center}
@@ -242,10 +242,10 @@ incident angles, as illustrated on the right side of Figure~\ref{fig:mm_tpc_hit_
         \raisebox{1.4cm}{\includegraphics[width=0.48\textwidth]{figures/nsw/mm_tpc_hit_loc}}
         \includegraphics[width=0.48\textwidth]{figures/nsw/tpc_vs_centroid_res}
         \caption{
-            \textit{Left}: Illustration of the `$x_{\text{half}}$' method of defining a hit position for
+            \textbf{\textit{Left}}: Illustration of the `$x_{\text{half}}$' method of defining a hit position for
                 an inclinded track: the hit position is defined as the position on the readout plane
                 corresponding to the half-height location along the reconstructed tracklet in the MM conversion gap.
-            \textit{Right}: Expected MM spatial resolution with charge centroid method (blue triangles), $\mu$-TPC
+            \textbf{\textit{Right}}: Expected MM spatial resolution with charge centroid method (blue triangles), $\mu$-TPC
                 method (filled red circles), and the combination of the two (black open circles) as a function
                 of particle incident angle.
                 The combination of the two methods achieves the greater-than $100\,\micron$ single-layer spatial resolution
@@ -318,7 +318,7 @@ Additionally, wires are grouped together (i.e. multiple wires correspond to a si
 channel) as only a rough measurement of the azimuthal coordinate --- not relevant for \pT~determination in the trigger---
 is needed.
 With the charge information collected from the three sub-components, the sTGC is able to achieve very
-good spatial resolutions approaching $approx 80\,\micron$ ($\approx 100\,\micron$) per layer for perpendicular (inclined) tracks.
+good spatial resolutions approaching $\approx 80\,\micron$ ($\approx 100\,\micron$) per layer for perpendicular (inclined) tracks.
 
 \begin{figure}[!htb]
     \begin{center}
