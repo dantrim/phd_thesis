@@ -152,12 +152,12 @@ The design and principle of operation of the resistive-strip MM technology is sh
 in which incident MIPs traversing perpendicular and at an angle relative to the detector plane
 are illustrated.
 
-Each layer of an MM detector in the NSW is composed of $1023 \times 8$ parallel readout strips, giving
+Each layer of an MM detector in the NSW is composed of $1024 \times 8$ parallel readout strips, giving
 a highly granular spatial readout allowing for high resolution position measurements to be made.
 Although all readout strips of a given MM layer are parallel, the MM quadruplets will be capable
 of two-dimensional readout and will provide both $r$ and $\phi$ coordinate information
 of traversing particles.
-The two dimensional readout is achieved through the use of a stereo readout, in which
+The two dimensional readout is achieved through the use of a small-angle stereo readout, in which
 MM layers are tilted by fixed relative angles of $\pm 1.5$\,degrees.
 This means of a two-dimensional readout is unlike that achieved by the CSC detectors in the current
 Small Wheel, in which the readout plane consists of perpendicular wires and strips providing
@@ -166,7 +166,7 @@ This perpendicular readout is susceptible to high rates of so-called \textit{gho
 illustrated in Figure~\ref{fig:mm_stereo}, and leads to high levels of track-building ambiguities.
 In the high particle rates expected at the HL-LHC, the multiplicies of these ghost hits would
 lead to an unacceptable degradation in tracking performance.
-The combination of the stereo readout and high strip-multiplicities on each MM layer will
+The combination of the small-angle stereo readout and high strip-multiplicities on each MM layer will
 enable the MM detectors to sustain these high particle rates.
 
 Typical definitions of hit locations within strip-based detectors are based on the
@@ -179,19 +179,25 @@ The centroid method provides worsening spatial resolution as the incident angles
 to the ionisation charges of a single incident particle being spread across multiple readout strips (Figure~\ref{fig:nsw_mm_principle}).
 To overcome this, the MM hit reconstruction will use hit timing information
 to use the $5$\,mm conversion gap as a time-projection chamber (TPC).
-In the NSW, this TPC-like hit reconstruction is referred to as the micro-TPC (`$\mu$-TPC') reconstruction method.
+In the NSW, this two-dimensional TPC hit reconstruction is referred to as the micro-TPC (`$\mu$-TPC') reconstruction method.
 The use of the timing information of each of the hits recorded by the readout strips
-allows for the position \textit{above} the readout plane to be reconstructed, thereby
+allows for the position above the readout plane to be reconstructed, thereby
 allowing for a mini-track to be reconstructed that follows the ionisation history
 of a single incident particle.
-From this mini-track, a well-defined metric for defining the hit location for inclined tracks on each MM layer can be defined,
-as illustrated in Figure~\ref{fig:nsw_mm_principle}.
+From this mini-track, a well-defined metric for defining the hit location for inclined tracks on
+each MM layer can be defined, as illustrated on the left side of Figure~\ref{fig:mm_tpc_hit_loc}.
+In the NSW, the MM hit location will be determined through the combined use of both the
+charge-centroid and $\mu$-TPC methods, allowing for sufficient spatial resolution spanning the relevant
+incident angles, as illustrated on the right side of Figure~\ref{fig:mm_tpc_hit_loc}.
+%This combined 
+%From this mini-track a well-defined metric for defining the hit location for inclined tracks on each MM layer can be defined,
+%as illustrated in Figure~\ref{fig:mm_tpc_hit_loc}.
 
 
 \begin{figure}[!htb]
     \begin{center}
-        \includegraphics[width=0.62\textwidth]{figures/nsw/nsw_mm_principle}
-        \raisebox{1.12cm}{\includegraphics[width=0.37\textwidth]{figures/nsw/mm_tpc_hit_loc}}
+        \includegraphics[width=0.75\textwidth]{figures/nsw/nsw_mm_principle}
+       % \raisebox{1.12cm}{\includegraphics[width=0.37\textwidth]{figures/nsw/mm_tpc_hit_loc}}
         \caption{
         }
         \label{fig:nsw_mm_principle}
@@ -208,14 +214,23 @@ as illustrated in Figure~\ref{fig:nsw_mm_principle}.
     \end{center}
 \end{figure}
 
-%\begin{figure}[!htb]
-%    \begin{center}
-%        \includegraphics[width=0.7\textwidth]{figures/nsw/mm_tpc_hit_loc}
-%        \caption{
-%        }
-%        \label{fig:mm_tpc_hit_loc}
-%    \end{center}
-%\end{figure}
+\begin{figure}[!htb]
+    \begin{center}
+        \raisebox{1.4cm}{\includegraphics[width=0.48\textwidth]{figures/nsw/mm_tpc_hit_loc}}
+        \includegraphics[width=0.48\textwidth]{figures/nsw/tpc_vs_centroid_res}
+        \caption{
+            \textit{Left}: Illustration of the `$x_{\text{half}}$' method of defining a hit position for
+                an inclinded track: the hit position is defined as the position on the readout plane
+                corresponding to the half-height location along the reconstructed tracklet in the MM conversion gap.
+            \textit{Right}: Expected MM spatial resolution with charge centroid method (blue triangles), $\mu$-TPC
+                method (filled red circles), and the combination of the two (black open circles) as a function
+                of particle incident angle.
+                The combination of the two methods achieves the greater-than $100\,\micron$ single-layer spatial resolution
+                required for HL-LHC operation for the expected range of incident angles.
+        }
+        \label{fig:mm_tpc_hit_loc}
+    \end{center}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % STGC
