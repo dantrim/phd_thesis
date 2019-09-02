@@ -76,9 +76,9 @@ a necessity for these timescales.
         \includegraphics[width=0.48\textwidth]{figures/nsw/nsw_current_sw}
         \includegraphics[width=0.48\textwidth]{figures/nsw/nsw_cartoon}
         \caption{
-            \textit{Left}: Current Small Wheel detector (prior to installation in ATLAS), with CSC detectors (copper color) at low radii
+            \textbf{\textit{Left}}: Current Small Wheel detector (prior to installation in ATLAS), with CSC detectors (copper color) at low radii
                 and MDT chambers (silver color) at higher radii.
-            \textit{Right}: Geometry of the NSW, with a view of the large-sector side. The gaps in azimuth
+            \textbf{\textit{Right}}: Geometry of the NSW, with a view of the large-sector side. The gaps in azimuth
                 between the large sectors are instrumented with detectors on the side facing into the page.
         }
         \label{fig:nsw_geo}
@@ -163,20 +163,21 @@ This means of a two-dimensional readout is unlike that achieved by the CSC detec
 Small Wheel, in which the readout plane consists of perpendicular wires and strips providing
 the two dimensional readout information.
 This perpendicular readout is susceptible to high rates of so-called \textit{ghost hits},
-illustrated in Figure~\ref{fig:mm_stereo}, and leads to high levels of track-building ambiguities.
+illustrated in the left side of Figure~\ref{fig:mm_stereo}, and leads to high levels of track-building ambiguities.
 In the high particle rates expected at the HL-LHC, the multiplicies of these ghost hits would
 lead to an unacceptable degradation in tracking performance.
 The combination of the small-angle stereo readout and high strip-multiplicities on each MM layer will
 enable the MM detectors to sustain these high particle rates.
+In the right side of Figure~\ref{fig:mm_stereo}, the layout of the MM layers in the NSW as regards
+their readout strip orientation (i.e. tilted or not) is illustrated.
 
 Typical definitions of hit locations within strip-based detectors are based on the
 centroid method, using the charge-weighted strip position to define the spatial location
 of the hit.
-This method works optimally for particles incident at angles perpendicular to the detector readout plane.
-The planar NSW detectors, however, will be subjected to particles incident at non-zero angles as they are
-originating from the IP.
-The centroid method provides worsening spatial resolution as the incident angles increase due
-to the ionisation charges of a single incident particle being spread across multiple readout strips (Figure~\ref{fig:nsw_mm_principle}).
+This method works optimally for particles incident at angles perpendicular (zero inclination) to the detector readout plane.
+The planar NSW detectors, however, will be subjected to particles originating from the IP that follow inclined tracks.
+The centroid method provides worsening spatial resolution as the incident angles of these inclined tracks increase due
+to the charges from the multiple ionisation events of a single incident particle being spread across multiple readout strips (Figure~\ref{fig:nsw_mm_principle}).
 To overcome this, the MM hit reconstruction will use hit timing information
 to use the $5$\,mm conversion gap as a time-projection chamber (TPC).
 In the NSW, this two-dimensional TPC hit reconstruction is referred to as the micro-TPC (`$\mu$-TPC') reconstruction method.
@@ -209,6 +210,28 @@ incident angles, as illustrated on the right side of Figure~\ref{fig:mm_tpc_hit_
         %\includegraphics[width=0.8\textwidth]{figures/nsw/mm_ghost_stereoPDF}
         \includegraphics[width=0.8\textwidth]{figures/nsw/mm_stereo_cartoonPDF}
         \caption{
+            \textbf{\textit{Left}}: Illustration of the small-angle stereo two-dimensional readout principle.
+                The upper panel shows two layers with readout strips perpendicular to each other.
+                The lower panel shows two layers with readout strips tilted at a small-angle,
+                $\theta_{\text{stereo}}$, relative to one another.
+                In both cases, true detector hits are indicated by the blue dots.
+                The readout strips registering the hits are indicated in green.
+                In the case with perpendicular readout, there are two ghost hits indicated
+                by the red dots.
+                For perpendicular readout strips, there will generally be $N_{\text{ghost}} = (N^2 - N)$
+                ghost hits for $N$ real hits when the readout strips on the two layers have
+                equal pitches as in the case of the MM detectors in the NSW.
+                On the lower panel, the green readout strips registering the two hits
+                do not cross as a result of the small stereo angle and there are no ghost hits.
+            \textbf{\textit{Right}}: Illustration of the layout of the `precision' and `stereo'
+                readout layers of the two MM quadruplets in a given NSW sector.
+                The precision layers, so-called since their readout strips are along $\phi$ and measure directly the
+                coordinate in the bending plane of passing muons, are the outer two layers of
+                each quadruplet relative to the spacer frame.
+                The stereo layers are those with the readout strips tilted at $\pm 1.5^{\degree}$ relative to the precision layers and are the two layers
+                in each quadruplet nearest the central spacer frame.
+                One stereo layer in each quadruplet has stereo angle $+1.5^{\degree}$ and the other $-1.5^{\degree}$, making
+                for $\Delta \theta = 3^{\degree}$ between the two stereo layers.
         }
         \label{fig:mm_stereo}
     \end{center}
@@ -237,3 +260,87 @@ incident angles, as illustrated on the right side of Figure~\ref{fig:mm_tpc_hit_
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{The Small-strip Thin Gap Chamber Detectors}
 \label{sec:nsw_stgc}
+
+The sTGC are those detectors stated as being primarily used for producing trigger primitives
+to be used by the Level-1 muon trigger system.
+As triggering detectors, they have fast signal formation and readout times owing to their characteristic high
+operating electric fields.
+This enables
+them to provide accurate bunch crossing identification (i.e. assigning hits to a specific bunch crossing).
+The average drift time of ionisation electrons within the sTGC chambers is less than 25\,ns,
+with the earliest cluster arrival times well below 10\,ns.
+Figure~\ref{fig:stgc_timing} shows the distribution of the measured drift times in an
+sTGC, with 95\% of the measured and simulated data being inside a 25\,ns (the LHC bunch crossing
+frequency) time window.
+The sTCG detectors also provide good online angular resolution --- better than 1\,mrad --- for the track segments
+reconstructed across the layers of an sTGC quadruplet, meaning fairly good spatial resolution.
+The high quality angular resolution allows for good \pT~determination based on the trigger primitives
+provided to the Level-1 trigger.
+Offline spatial reconstruction for track segments provided by the sTGC detectors will also be good, matching
+the sub-100$\,\micron$ threshold for the HL-LHC precision tracking requirements in the forward region
+of the muon system.
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.5\textwidth]{figures/nsw/stgc_timing}
+        \caption{
+            Due to the very thin gap and the intense electric field applied,
+            $\approx95$\,\% of the measured drift times of passing MIPs are
+            confined within a window of 25\,ns, showing that the sTGC
+            are capable of relaible bunch crossing assignment.
+        }
+        \label{fig:stgc_timing}
+    \end{center}
+\end{figure}
+
+The basic sTGC detector is shown in Figure~\ref{fig:stgc_drawing}.
+It consists of a grid of $50\,\micron$ gold-plated tungsten wires with $1.8$\,mm pitch
+sandwiched between two cathode planes at a distance of $1.4$\,mm.
+On one plane there are the readout pads and on the other the strips.
+The strips have a $3.2$\,mm pitch, which is smaller than that of the current TGC
+detectors used in the current forward muon system (Figure~\ref{fig:muon_plan_view_eta}),
+which is the origin of the name of the sTGC detectors.
+The wires and strips are perpendicular, with the wires stretching along $r$ and the
+strips along $\phi$.
+
+The pads are used to form coincidences between the layers of the sTGC quadruplets in order
+to form projective trigger primitives corresponding to muon tracks pointing roughly back to the IP.
+There are $\approx 1300$ pads per sTGC layer.
+The collected charge from all components of the sTGC --- the pads, strips, and wires --- associated with a traversing particle are read out and
+used for the subsequent offline precision muon-track reconstruction.
+Two-dimensional readout is achieved by the $r$ and $\phi$ information provided by the strips
+and wires, respectively.
+To help cope with the foreseen high particle rates, and to reduce the types of tracking ambiguities
+described in Section~\ref{sec:nsw_mm} due to combinatorial hits, only
+those wires and strips covering the projective area of pads registering the passage of
+the particle are read out.
+Additionally, wires are grouped together (i.e. multiple wires correspond to a single readout
+channel) as only a rough measurement of the azimuthal coordinate --- not relevant for \pT~determination in the trigger---
+is needed.
+With the charge information collected from the three sub-components, the sTGC is able to achieve very
+good spatial resolutions approaching $approx 80\,\micron$ ($\approx 100\,\micron$) per layer for perpendicular (inclined) tracks.
+
+\begin{figure}[!htb]
+    \begin{center}
+        \raisebox{0.8cm}{\includegraphics[width=0.52\textwidth]{figures/nsw/stgc_drawing}}
+        \includegraphics[width=0.45\textwidth]{figures/nsw/stgc_layer_cartoonPDF}
+        \caption{
+            \textbf{\textit{Left}}: Graphical representation of the internal structure of an
+                sTGC detector.
+                The passage of a traversing MIP (black line) induces signals on the anode wires, readout pads,
+                and strips behind the resistive cathode planes as a result of the drifting of ionisation
+                charges and their subsequent multiplication (in red).
+            \textbf{\textit{Right}}: Illustration of the geometry of the sTGC pads, wires, and strips and their
+                relative layout in a single sTGC layer.
+                The strips (blue) are along $\phi$ and provide the measurement of the precision momentum coordinate
+                in the particle bending plane.
+                The wires are along $r$ and provide measurements sensitive to $\phi$.
+                The pads provide information necessary for building trigger coincidences between
+                the layers of an sTGC quadruplet and determine which subset of wires and strips will
+                subsequently be readout upon a Level-1 trigger accept.
+                The drawing is not to scale and does not illustrate the actual segmentation
+                of the readout components in a given layer, only their relative orientation.
+        }
+        \label{fig:stgc_drawing}
+    \end{center}
+\end{figure}
