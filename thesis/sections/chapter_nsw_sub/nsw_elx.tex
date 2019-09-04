@@ -90,6 +90,18 @@ The digitised output of these amplitude and timing measurements are calculated b
 internal ADCs within 200\,ns and stored in internal buffers of the VMM.
 The buffered data is stored until selected for readout by another ASIC housed on the same frontend
 board as the VMM, the ROC, based on the buffered data's bunch crossing.
+The PDO and TDO data are those used in the precision hit reconstruction in the detectors.
+The hit timing information provided by the TDO is critical only for the MM detectors which
+rely primarily on the $\mu$-TPC hit reconstruction method, as illustrated in Figure~\ref{fig:mm_tpc_hit_loc} (right).
+For the sTGC, the accurate timing information is not required for precision tracking and,
+to increase readout bandwidth, the timing information will likely not be serialised
+in the data output from the sTGC frontend electronics.
+%{\color{red}{For the precision hit reconstruction, the timing information is critical only for the MM
+%detectors which rely on the $\mu$-TPC hit reconstruction method which requires
+%precision time measurements for building the tracklets within the drift region of the
+%MM detector. For the sTGC the accurate timing information is not required
+%for precision tracking and, to increase readout bandwidth, the timing information will not be
+%serialised.}}
 
 In addition to the precision data useful for reconstructing high-level muon tracks provided by
 the PDO and TDO measurements, the VMM can also operate at a faster mode used for
@@ -114,7 +126,7 @@ Some of the main configurable items are the peaking (integration) time of the si
 adjustable channel gains (0.5, 1, 3, 4.5, 6, 9, 12, and 16\,mV/fC),
 time-to-amplitude conversion (TAC) ramp time (60, 100, 350, and 650\,ns) relevant for the timing measurements,
 and channel threshold trimmers provided by 5-bit DACs that adjust each channel's individual
-threshold around the globally (per-VMM) configured threshold.
+threshold around the globally-configured (per-VMM) threshold.
 The VMM input can also be configured to handle either positive or negative input
 signals.
 This latter fact is necessary for the NSW, in which the sTGC and MM detectors
@@ -148,5 +160,126 @@ sTGC wires produce signals of opposite polarity as the sTGC strips and pads.}
     \end{center}
 \end{figure}
 
-\subsection{Front-end Boards for the NSW}
+\subsection{Frontend-electronics Boards for the NSW}
 \label{sec:nsw_boards}
+
+There have been two classes of frontend boards encountered
+throughout the work on the NSW electronics represented in this thesis.
+The first class relates to a type of frontend board that is not specific to the NSW
+but which houses one (or several) VMM ASICs.
+The second class relates to prototype frontend boards following the design to be used
+in the NSW to readout the MM detectors, the so-called MMFE8 frontend board.
+Figure~\ref{fig:frontend_boards} provides pictures of these two classes of frontend
+boards with relevant parts indicated.
+
+The general purpose frontend boards, such as the GPVMM in Figure~\ref{fig:frontend_boards}, are those used primarily for the direct study
+and characterisation of the VMM ASIC.
+The prototype MMFE8 frontend boards allow for a more realistic interface to the MM
+detectors to be studied as well as for the overall design and layout of the hardware components on the
+boards themselves to be studied and optimised.
+One such optimisation was the placement of the DC-to-DC converters used for the on-board power distribution.\footnote{In the
+final MMFE8 prototype frontend boards, and in those to be used in the NSW,
+the DC-to-DC converters are packaged in the so-called FEAST ASIC developed by CERN.
+Further information at \url{https://project-dcdc.web.cern.ch/project-dcdc/Default.html}}
+DC-to-DC converters are potential sources of electronic noise and stray electromagnetic fields as a result of
+their high switching frequencies.
+When placed directly on the frontend boards, their nearness to the noise-sensitive readout
+elements means that the matter of their placement and shielding needs to be handled carefully.
+
+The types of boards discussed here have allowed for the study of the VMM ASIC both on- and off-detector,
+where in the latter case prototype MM detectors were used ({\color{red}{More to say in Section XXX}}).
+Over the timespan of the present thesis, many iterations of each type of frontend board
+were encountered, with subsequent iterations adapting to the evolution of the VMM, for example (Figure~\ref{fig:vmms_silicon}).
+In addition to housing the VMM ASIC, the frontend boards house a
+\textsc{Xilinx} field-programmable gate array (FPGA). 
+One of the main purposes of the FPGA is to aggregate the data being output from the VMM
+and prepare it for being sent off-board via standard network protocols over Ethernet to the
+backend data-acquisition system ({\color{red}{Section XXX}}).
+Additionally, the FPGA responds to commands and requests submitted by users via the software
+interface ({\color{red}{Section XXX}}).
+Such commands may have as endpoint the FPGA itself or they may require the FPGA to forward
+them to the VMM ASIC.
+%may have as end and either adjusts its own configuration parameters or
+%forwards the commands to the VMM such that it itself may respond.
+
+The GPVMM board has a simple connector designed in such a way that lends itself to
+be easily adapted to many types of detectors in labs and teststands.
+The MMFE8 board, both the prototypes and those to be used in the NSW, use a ZEBRA\footnote{More information
+on ZEBRA-type connectors can be found online at \url{https://en.wikipedia.org/wiki/Elastomeric_connector}} elastomeric
+connector that allows for a seamless interconnect between the readout strips on the MM detector layers
+and the VMM channel inputs.
+The principle of the ZEBRA connector is illustrated in Figure~\ref{fig:zebra_connector}.
+%In the final version of the MMFE8 frontend board to be used for interfacing with the MM detectors,
+%the Ethernet readout will be replaced b
+%the role of the FPGA will be replaced by the combination of the ROC ASIC, mentioned in the previous section,
+%and the CERN-provided Slow Control Adapter (SCA) ASIC~\cite{GBTASIC}
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.8\textwidth]{figures/nsw/frontend/gpvmm_labelledPDF}
+        \includegraphics[width=0.8\textwidth]{figures/nsw/frontend/mmfe8_labelledPDF}
+        \caption{
+            Pictures of two VMM-based frontend boards. The RJ-45 connectors provide network I/O via
+            standard Ethernet cables.
+            The $\mu$HDMI connectors provide inputs for additional signalling purposes, such as external
+            trigger signals.
+            `MO' refers to the multiplexed monitoring output of the VMM (see Figure~\ref{fig:vmm3_channel}), which samples the analog
+            signals internal to the VMM, such as the shaped input signals, prior to their digitisation.
+            \textbf{\textit{Top}}: General purpose VMM (GPVMM) board housing a single VMM ASIC.
+            The MO and trigger I/O are provided by LEMO connectors.
+            \textbf{\textit{Bottom}}: Prototype MMFE8 board with its 8 VMM ASICs.
+            The ZEBRA connector used for the MM detectors is described in the text.
+            On this board the MO output is accessible primarily by the use of a oscilloscope probe.
+        }
+        \label{fig:frontend_boards}
+    \end{center}
+\end{figure}
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.8\textwidth]{figures/nsw/frontend/zebra_connector_illustratedPDF}
+        \caption{
+            \textbf{\textit{Left}}: Illustration of the ZEBRA connector concept.
+                The ZEBRA connector is composed of a high density of alternating conductive (white) and non-conductive (black) layers
+                that make contact with the detector readout elements on bottom and frontend board sensing elements
+                on top.
+            \textbf{\textit{Right}}: Picture of the ZEBRA connector being used with an MMFE8 frontend board
+                on a full-scale MM detector.
+                When interfaced to the MM detector, the MMFE8 frontend board is situated such that the VMMs are downward facing and
+                are not therefore visible as pictured.
+                The connection of the ZEBRA connector is realised via the tightening of a compression bar mounted on the MM detector chamber.
+                The resulting
+                downward pressure forces the ZEBRA connector to be securely sandwiched between
+                the readout elements of the MM detector and VMM channel inputs located on the frontend board, bringing them in direct electrical contact.
+        }
+        \label{fig:zebra_connector}
+    \end{center}
+\end{figure}
+
+The NSW frontend boards are interfaced directly to the detectors.
+Both the GPVMM-type and MMFE8 frontend boards have been used on small prototype MM detectors, with
+active area of $10\times10$\,cm$^2$.
+A picture of an MMFE8 connected to such a detector is shown in Figure~\ref{fig:mmfe8_t2}.
+On the full-scale MM detectors to be used in the NSW, the frontend boards are situated along the edge
+of each detector layer in a given multilayer.
+A drawing of a complete MM quadruplet with frontend electronics boards is shown in Figure~\ref{fig:mm_quad_elx}.
+
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.75\textwidth]{figures/nsw/frontend/mmfe8_t2_labelledPDF}
+        \caption{
+        }
+        \label{fig:mmfe8_t2}
+    \end{center}
+\end{figure}
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.8\textwidth]{figures/nsw/frontend/mm_quad_elx}
+        \caption{
+            {\color{red}{Explain how the frontend boards are situated on the NSW chambers}}
+        }
+        \label{fig:mm_quad_elx}
+    \end{center}
+\end{figure}
