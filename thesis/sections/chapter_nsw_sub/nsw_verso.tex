@@ -79,6 +79,7 @@ Upon receipt of a VMM configuration bitstream, the FPGA forwards it to the SPI i
 The FPGA knows to which of the (potentially several) on-board VMMs to forward the configuration based on
 a custom addressing dataframe parsed by the FPGA that VERSO prepends to each configuration bitstream.
 
+
 \begin{figure}[!htb]
     \begin{center}
         \includegraphics[width=0.95\textwidth]{figures/nsw/vrs/verso_mainPDF}
@@ -159,7 +160,7 @@ number of data fragments from each of the frontend elements before finishing
 the event building process.
 Once the event building process is completed,
 the event building thread starts the process over and begins gathering the data fragments from the next-received trigger number identifier.
-The use of the fast concurrent queue has allowed VERSO to achieve 100\% DAQ efficiency
+The use of the multi-threaded architecture, pivoting around a fast concurrent queue, has allowed VERSO to achieve 100\% DAQ efficiency
 in all use-cases encountered ({\color{red}{Section XXX for use-cases}}).
 
 
