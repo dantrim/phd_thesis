@@ -9,3 +9,104 @@ as well as control the data acquisition and monitoring.
 The high-level software suite containing these functionalities is referred
 to as \textit{VERSO}, an acronym for `VMM Embedded ReadOut Software'.
 In this section an overview of VERSO's role within the VRS system will be provided.
+
+The user interface and software backend to VERSO are written entirely in C++,
+with the user interface relying primarily on the Qt framework~\cite{QtCompany}.
+The VERSO user interface is shown in Figure~\ref{fig:verso_main}.
+VERSO has two main responsibilities: orchestrating configuration processes and
+data-acquisition (DAQ).
+Both functionalities are performed using a custom-made communication protocol
+implemented in the UDP/IP communication protocol.
+As illustrated in Figures~\ref{fig:vrs_diagram_minimal} and \ref{fig:vrs_diagram},
+all communication from VERSO is sent over the network to either FPGAs located directly
+on the frontend boards or on the VRS supervisory board, depending on the
+data-taking situation.
+The logical blocks indicated in Figure~\ref{fig:verso_main} are described as follows:
+
+\begin{description}
+    \item[] \textbf{Run Control} This block sets up the underlying configuration and DAQ
+        that VERSO implements.
+        From here the user can initiate and terminate the data taking sessions (`runs').
+        VERSO supports several frontend types, either differing in the version of the VMM or in the
+            implementation of the firmware (selected by the `VMM2', `VMM3', or `L0 R/O' buttons).
+        The `Setup' and `Config' fields allow a user to load configuration files describing
+            the detector-readout-element-to-VMM-channel mapping and VMM ASIC configuration, respectively.\footnote{
+                The detector-readout-element-to-VMM-channel mapping refers to both the geometric description
+                of any detectors to which VERSO is communicating and the correspondence, for example, between an MM detector's
+                strip location to the frontend board and VMM channel responsible for reading out that MM strip's signals.
+                This correspondence is required if one wishes to construct high level objects, such as
+                particle tracks, traversing through several detector layers and with each layer read out
+                by different frontend boards.
+            }
+    \item[] \textbf{Network Communication} This block describes the network addresses of the
+        frontend electronics and handles the sustained connection to them.
+    \item[] \textbf{FPGA and Operational Parameters} This block sets the configuration parameters
+            for the FPGA on the connected frontend boards. Such parameters, for example,
+            are the frequency and width of the VMM channel test pulse signal and the bunch
+            crossing clock driving the readout of the VMM ASIC.
+    \item[] \textbf{Message Reporting} Reports messages visually so that the user may acknowledge
+            the current state of the system. Sends messages also to files.
+    \item[] \textbf{VMM Configuration Panel} The `Global Registers' and `Channel Registers' panels allow
+        the user to set the configuration parameters of the VMM ASICs on the frontend boards.
+        An instance of the VMM Channel Registers panel is shown in Figure~\ref{fig:verso_chanreg}.
+    \item[] \textbf{VMM Calibration Panel} This panel allows the user to schedule various calibration routines.
+        The user may also provide files containing calibration constants/parameters, derived from previous
+        calibration runs, that get loaded into the associated VMM configuration
+        bitstreams during the VMM configuration process.
+\end{description}
+
+\noindent The configuration of the FPGA is sent over the network from VERSO and
+follows an address-value mechanism whereby each configurable parameter of the FPGA has its
+value stored within the FPGA at a specific memory register.
+VERSO sets an FPGA configurable parameter by forwarding a register address followed by its corresponding
+value set on the user interface.
+The FPGA sends acknowledgement packets over the network to VERSO upon each message received,
+indicating whether it was able to successfully perform the requested configuration action or not.
+If not, then VERSO can log this information and can re-attempt transmission of the lost or mis-handled packet
+containing the configuration specification.
+%The configuration of the VMM ASICs is forwarded by the FPGA via the Serial Peripheral Interface (SPI) protocal
+%to the VMMs.
+The VMM ASIC recieves its own configuration following a Serial Peripheral Interface (SPI) protocol.
+An individual VMM ASIC configuration is rather large, given its highly configurable nature, and is
+nearly 2 kilobits long.
+The specification of the configuration bitstreams is specified by the user in the `Global' and `Channel' configuration
+panels on the user interface, shown in Figure~\ref{fig:verso_main}.
+The `Global' VMM parameters are those that are not specific to an individual channel; for example,
+the VMM channel threshold, channel gain, or the specification of the VMM shaper integration time.
+The VERSO software handles the construction of the configuration bitstreams for each VMM ASIC and forwards
+them to the corresponding FPGA housing the VMM to be configured.
+Upon receipt of a VMM configuration bitstream, the FPGA forwards it to the SPI input of the specified VMM.
+The FPGA knows to which of the (potentially several) on-board VMMs to forward the configuration based on
+a custom addressing dataframe parsed by the FPGA that VERSO prepends to each configuration bitstream.
+
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.95\textwidth]{figures/nsw/vrs/verso_mainPDF}
+        \includegraphics[width=0.8\textwidth]{figures/nsw/vrs/verso_dataflow}
+        \caption{
+            \textbf{\textit{Top}}: Main VERSO user interface, with different logical blocks indicated.
+            \textbf{\textit{Bottom}}: VERSO dataflow monitor, showing the rate of VMM channel hits
+                for all connected frontend boards and VMMs. Also displayed are the rate at which individual
+                hits and events are recorded, where an `event' is a collection of hits associated with the
+                same trigger.
+                The data being shown in this graph correspond to hits generated with the VMM channel
+                test pulse injection with the output data recording disabled.
+                The DAQ efficiency, during a normal data taking period with recording enabled, is defined
+                as the number of recorded VMM hits divided by the number of input VMM hits having been
+                sent from the frontend electronics.
+        }
+        \label{fig:verso_main}
+    \end{center}
+\end{figure}
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.8\textwidth]{figures/nsw/vrs/verso_chanreg}
+        \caption{
+        }
+        \label{fig:verso_chanreg}
+    \end{center}
+\end{figure}
+
+\FloatBarrier
