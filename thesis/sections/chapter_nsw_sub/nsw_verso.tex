@@ -79,6 +79,50 @@ Upon receipt of a VMM configuration bitstream, the FPGA forwards it to the SPI i
 The FPGA knows to which of the (potentially several) on-board VMMs to forward the configuration based on
 a custom addressing dataframe parsed by the FPGA that VERSO prepends to each configuration bitstream.
 
+The VERSO DAQ backend is responsible for handing the readout of the frontend boards.
+VMM hit data is sent over the network and received by VERSO.
+The hit data may be that of a detector being readout by the VMM-based frontend electronics
+or simulated data created by the VMM channel test-charge capacitors that can inject
+signal onto each of the VMM channel inputs.
+In the latter case, the frequency and characteristics (width, amplitude, etc...) of the
+signals are specified via the FPGA configuration described above, since the FPGA orchestrates
+the triggering of the VMM channel test-charge injection signals.
+
+VERSO's DAQ functionalities are implemented following a single-producer/single-consumer
+architecture.
+In such an architecture, at the start of each run, the software constructs two threads with independent
+tasks.
+One thread is responsible for receiving the raw data packets over the network from the
+frontend electronics and subsequently buffering them in a queue.
+The data fragments received over the network are indexed in this queue by their corresonding
+event or trigger identifier: VMM hit data corresponding to a single trigger will all be given the
+same such identifier.
+The second thread is responsible for taking all the data fragments received for each corresponding
+trigger, decoding and inspecting the raw data contained therein, and building output
+data fragments that represent high level constructs that associate the VMM hits
+with specicific frontend boards and/or detector readout elements.
+This latter aspect --- the gathering together of all data fragments corresponding to a
+specific trigger --- is referred to as `event building'.
+Once an event is built, VERSO stores it on disk in the ROOT \texttt{TTree} format
+for later analysis.
+
+Given the asynchronous nature of the network communication, as well as the fact that the UDP/IP
+network protocol does not ensure a fixed latency, events based on the same trigger
+are not guaranteed to be captured by VERSO within the same UDP/IP network packet.
+The use of the single-producer/single-consumer model is adapted to such a case, with
+the producer thread indexing and filling the queue and the consumer thread performing the event building.
+In VERSO, the queue in which indexed data fragments are stored is implemented
+as a lock-free, concurrent queue.
+As a result, the queue may be accessed and manipulated by each thread without affecting or blocking
+the other, allowing for smooth DAQ operation.
+The event building thread can then periodically inspect the queue and wait for a configurable amount of time for the expected
+number of data fragments from each of the frontend elements before finishing
+the event building process.
+Once the event building process is completed,
+the event building thread starts the process over and begins gathering the data fragments from the next-received trigger number identifier.
+The use of the fast concurrent queue has allowed VERSO to achieve 100\% DAQ efficiency
+in all use-cases encountered ({\color{red}{Section XXX for use-cases}}).
+
 
 \begin{figure}[!htb]
     \begin{center}
@@ -104,6 +148,16 @@ a custom addressing dataframe parsed by the FPGA that VERSO prepends to each con
     \begin{center}
         \includegraphics[width=0.8\textwidth]{figures/nsw/vrs/verso_chanreg}
         \caption{
+            The VERSO `Channel Registers' panel, showing the configuration specifaction
+            of each of the 64 channels of an individual VMM.
+            The `ST' (`SM') flags activate the corresonding channel's internal test-charge
+            capacitor (masking).
+            In the example shown, VMM channels 10-13 (inclusive) will have their
+            test-charge capacitor activated. All other channels are masked and
+            are effectively disabled.
+            The `Trim' configuration refers to the 5-bit channel threshold trimming,
+            specifying by how much the individual channel's threshold should be moved
+            relative to the global VMM threshold value.
         }
         \label{fig:verso_chanreg}
     \end{center}
