@@ -79,6 +79,45 @@ Upon receipt of a VMM configuration bitstream, the FPGA forwards it to the SPI i
 The FPGA knows to which of the (potentially several) on-board VMMs to forward the configuration based on
 a custom addressing dataframe parsed by the FPGA that VERSO prepends to each configuration bitstream.
 
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.95\textwidth]{figures/nsw/vrs/verso_mainPDF}
+        \includegraphics[width=0.8\textwidth]{figures/nsw/vrs/verso_dataflow}
+        \caption{
+            \textbf{\textit{Top}}: Main VERSO user interface, with different logical blocks indicated.
+            \textbf{\textit{Bottom}}: VERSO dataflow monitor, showing the rate of VMM channel hits
+                for all connected frontend boards and VMMs. Also displayed are the rate at which individual
+                hits and events are recorded, where an `event' is a collection of hits associated with the
+                same trigger.
+                The data being shown in this graph correspond to hits generated with the VMM channel
+                test pulse injection with the output data recording disabled.
+                The DAQ efficiency, during a normal data taking period with recording enabled, is defined
+                as the number of recorded VMM hits divided by the number of input VMM hits having been
+                sent from the frontend electronics.
+        }
+        \label{fig:verso_main}
+    \end{center}
+\end{figure}
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.8\textwidth]{figures/nsw/vrs/verso_chanreg}
+        \caption{
+            The VERSO `Channel Registers' panel, showing the configuration specification
+            of each of the 64 channels of an individual VMM.
+            The `ST' (`SM') flags activate the corresonding channel's internal test-charge
+            capacitor (masking).
+            In the example shown, VMM channels 10-13 (inclusive) will have their
+            test-charge capacitor activated. All other channels are masked and
+            are effectively disabled.
+            The `Trim' configuration refers to the 5-bit channel threshold trimming,
+            specifying by how much the individual channel's threshold should be moved
+            relative to the global VMM threshold value.
+        }
+        \label{fig:verso_chanreg}
+    \end{center}
+\end{figure}
+
 The VERSO DAQ backend is responsible for handing the readout of the frontend boards.
 VMM hit data is sent over the network and received by VERSO.
 The hit data may be that of a detector being readout by the VMM-based frontend electronics
@@ -124,43 +163,5 @@ The use of the fast concurrent queue has allowed VERSO to achieve 100\% DAQ effi
 in all use-cases encountered ({\color{red}{Section XXX for use-cases}}).
 
 
-\begin{figure}[!htb]
-    \begin{center}
-        \includegraphics[width=0.95\textwidth]{figures/nsw/vrs/verso_mainPDF}
-        \includegraphics[width=0.8\textwidth]{figures/nsw/vrs/verso_dataflow}
-        \caption{
-            \textbf{\textit{Top}}: Main VERSO user interface, with different logical blocks indicated.
-            \textbf{\textit{Bottom}}: VERSO dataflow monitor, showing the rate of VMM channel hits
-                for all connected frontend boards and VMMs. Also displayed are the rate at which individual
-                hits and events are recorded, where an `event' is a collection of hits associated with the
-                same trigger.
-                The data being shown in this graph correspond to hits generated with the VMM channel
-                test pulse injection with the output data recording disabled.
-                The DAQ efficiency, during a normal data taking period with recording enabled, is defined
-                as the number of recorded VMM hits divided by the number of input VMM hits having been
-                sent from the frontend electronics.
-        }
-        \label{fig:verso_main}
-    \end{center}
-\end{figure}
-
-\begin{figure}[!htb]
-    \begin{center}
-        \includegraphics[width=0.8\textwidth]{figures/nsw/vrs/verso_chanreg}
-        \caption{
-            The VERSO `Channel Registers' panel, showing the configuration specification
-            of each of the 64 channels of an individual VMM.
-            The `ST' (`SM') flags activate the corresonding channel's internal test-charge
-            capacitor (masking).
-            In the example shown, VMM channels 10-13 (inclusive) will have their
-            test-charge capacitor activated. All other channels are masked and
-            are effectively disabled.
-            The `Trim' configuration refers to the 5-bit channel threshold trimming,
-            specifying by how much the individual channel's threshold should be moved
-            relative to the global VMM threshold value.
-        }
-        \label{fig:verso_chanreg}
-    \end{center}
-\end{figure}
 
 \FloatBarrier
