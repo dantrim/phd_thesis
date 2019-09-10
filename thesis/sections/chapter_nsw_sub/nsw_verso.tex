@@ -7,12 +7,12 @@ provides the main interface by which users can control the overall
 state of the frontend electronics, either on- or off-detector,
 as well as control the data acquisition and monitoring.
 The high-level software suite containing these functionalities is referred
-to as \textit{VERSO}, an acronym for `VMM Embedded ReadOut Software'.
+to as `VERSO', an acronym for `VMM Embedded ReadOut Software'.
 In this section an overview of VERSO's role within the VRS system will be provided.
 
-The user interface and software backend to VERSO are written entirely in C++,
-with the user interface relying primarily on the Qt framework~\cite{QtCompany}.
-The VERSO user interface is shown in Figure~\ref{fig:verso_main}.
+The user interface (UI) and software backend to VERSO are written entirely in the C++ programming langauge,
+with the graphical user interface (GUI) relying primarily on the use of the Qt framework~\cite{QtCompany}.
+The VERSO GUI is shown in Figure~\ref{fig:verso_main}.
 VERSO has two main responsibilities: orchestrating configuration processes and
 data-acquisition (DAQ).
 Both functionalities are performed using a custom-made communication protocol
@@ -30,7 +30,7 @@ The logical blocks indicated in Figure~\ref{fig:verso_main} are described as fol
         VERSO supports several frontend types, either differing in the version of the VMM or in the
             implementation of the firmware (selected by the `VMM2', `VMM3', or `L0 R/O' buttons).
         The `Setup' and `Config' fields allow a user to load configuration files describing
-            the detector-readout-element-to-VMM-channel mapping and VMM ASIC configuration, respectively.\footnote{
+            the detector-readout-element-to-VMM-channel mapping (detector geometry) and VMM ASIC configuration, respectively.\footnote{
                 The detector-readout-element-to-VMM-channel mapping refers to both the geometric description
                 of any detectors to which VERSO is communicating and the correspondence, for example, between an MM detector's
                 strip location to the frontend board and VMM channel responsible for reading out that MM strip's signals.
@@ -45,40 +45,42 @@ The logical blocks indicated in Figure~\ref{fig:verso_main} are described as fol
             are the frequency and width of the VMM channel test pulse signal and the bunch
             crossing clock driving the readout of the VMM ASIC.
     \item[] \textbf{Message Reporting} Reports messages visually so that the user may acknowledge
-            the current state of the system. Sends messages also to files.
+            the current state of the system. Sends messages also to files stored on the DAQ PC.
     \item[] \textbf{VMM Configuration Panel} The `Global Registers' and `Channel Registers' panels allow
         the user to set the configuration parameters of the VMM ASICs on the frontend boards.
         An instance of the VMM Channel Registers panel is shown in Figure~\ref{fig:verso_chanreg}.
-    \item[] \textbf{VMM Calibration Panel} This panel allows the user to schedule various calibration routines.
+    \item[] \textbf{VMM Calibration Panel} This panel allows the user to schedule various VMM calibration routines.
         The user may also provide files containing calibration constants/parameters, derived from previous
         calibration runs, that get loaded into the associated VMM configuration
-        bitstreams during the VMM configuration process.
+        bitstreams during subsequent VMM configuration processes.
 \end{description}
 
 \noindent The configuration of the FPGA is sent over the network from VERSO and
 follows an address-value mechanism whereby each configurable parameter of the FPGA has its
 value stored within the FPGA at a specific memory register.
 VERSO sets an FPGA configurable parameter by forwarding a register address followed by its corresponding
-value set on the user interface.
+value as specified by the user.
 The FPGA sends acknowledgement packets over the network to VERSO upon each message received,
 indicating whether it was able to successfully perform the requested configuration action or not.
-If not, then VERSO can log this information and can re-attempt transmission of the lost or mis-handled packet
+If not, VERSO can log this information and re-attempt transmission of the lost or mis-handled packet
 containing the configuration specification.
 %The configuration of the VMM ASICs is forwarded by the FPGA via the Serial Peripheral Interface (SPI) protocal
 %to the VMMs.
 The VMM ASIC recieves its own configuration following a Serial Peripheral Interface (SPI) protocol.
-An individual VMM ASIC configuration is rather large, given its highly configurable nature, and is
-nearly 2 kilobits long.
-The specification of the configuration bitstreams is specified by the user in the `Global' and `Channel' configuration
-panels on the user interface, shown in Figure~\ref{fig:verso_main}.
+An individual VMM ASIC configuration specification is rather large and is nearly 2 kilobits long.
+This large configuration bitstream is due to the highly configurable nature of the VMM ASIC, especially
+so given that each of the 64 channels of a single VMM has 24 bits worth of configuration information.
+%An individual VMM ASIC configuration is rather large, given its highly configurable nature, and is
+%nearly 2 kilobits long.
+The specification of the VMM configuration bitstreams is set by the user in the `Global' and `Channel' configuration
+panels on the GUI, shown in Figure~\ref{fig:verso_main}.
 The `Global' VMM parameters are those that are not specific to an individual channel; for example,
 the VMM channel threshold, channel gain, or the specification of the VMM shaper integration time.
 The VERSO software handles the construction of the configuration bitstreams for each VMM ASIC and forwards
-them to the corresponding FPGA housing the VMM to be configured.
+them to the corresponding FPGA that is directly connected to the VMM to be configured.
 Upon receipt of a VMM configuration bitstream, the FPGA forwards it to the SPI input of the specified VMM.
 The FPGA knows to which of the (potentially several) on-board VMMs to forward the configuration based on
 a custom addressing dataframe parsed by the FPGA that VERSO prepends to each configuration bitstream.
-
 
 \begin{figure}[!htb]
     \begin{center}
@@ -92,9 +94,8 @@ a custom addressing dataframe parsed by the FPGA that VERSO prepends to each con
                 same trigger.
                 The data being shown in this graph correspond to hits generated with the VMM channel
                 test pulse injection with the output data recording disabled.
-                The DAQ efficiency, during a normal data taking period with recording enabled, is defined
-                as the number of recorded VMM hits divided by the number of input VMM hits having been
-                sent from the frontend electronics.
+                The DAQ efficiency, defined in Equation~\ref{eq:verso_daq_eff}, can be observed on this graph
+                by dividing the blue line by the red line.
         }
         \label{fig:verso_main}
     \end{center}
@@ -122,7 +123,7 @@ a custom addressing dataframe parsed by the FPGA that VERSO prepends to each con
 The VERSO DAQ backend is responsible for handing the readout of the frontend boards.
 VMM hit data is sent over the network and received by VERSO.
 The hit data may be that of a detector being readout by the VMM-based frontend electronics
-or simulated data created by the VMM channel test-charge capacitors that can inject
+or simulated data created by the individual VMM channel test-charge capacitors that can inject
 signal onto each of the VMM channel inputs.
 In the latter case, the frequency and characteristics (width, amplitude, etc...) of the
 signals are specified via the FPGA configuration described above, since the FPGA orchestrates
@@ -131,28 +132,39 @@ the triggering of the VMM channel test-charge injection signals.
 VERSO's DAQ functionalities are implemented following a single-producer/single-consumer
 architecture.
 In such an architecture, at the start of each run, the software constructs two threads with independent
-tasks.
-One thread is responsible for receiving the raw data packets over the network from the
-frontend electronics and subsequently buffering them in a queue.
-The data fragments received over the network are indexed in this queue by their corresonding
-event or trigger identifier: VMM hit data corresponding to a single trigger will all be given the
+tasks: a `listener' thread and an `event builder' thread.
+The listener thread is reponsible for receiving the raw data packets over the network from the
+frontend electronics and buffering them in a queue.
+The listener thread indexes each of the data fragments in the queue based on their corresponding
+event or trigger identifier.
+VMM hit data corresponding to the same trigger will all be given the
 same such identifier.
-The second thread is responsible for taking all the data fragments received for each corresponding
-trigger, decoding and inspecting the raw data contained therein, and building output
-data fragments that represent high level constructs that associate the VMM hits
-with specicific frontend boards and/or detector readout elements.
-This latter aspect --- the gathering together of all data fragments corresponding to a
-specific trigger --- is referred to as `event building'.
-Once an event is built, VERSO stores it on disk in the ROOT \texttt{TTree} format
-for later analysis.
+For each received trigger identifier, the event builder thread collects the associated data fragments from
+the queue so that all fragments from a given event may be handled at a single time.
+The event builder thread is responsible for decoding and inspecting the raw data contained in these fragments and building
+an output data structure that represents high-level constructs related to the event as a whole: associating
+the event's VMM hits with specific frontend boards and/or detector readout elements, for example.
+It is this latter aspect --- the gathering together of all data fragments corresponding to a specific trigger ---
+that is referred to as `event building'.
+Once such an event is built, VERSO stores it on disk in the ROOT \texttt{TTree} format
+so that it may be used in later offline analysis.
+%The event builder thread is responsible for taking all the data fragments from a given trigger identifier,
+%The second thread is responsible for taking all the data fragments received for each corresponding
+%trigger, decoding and inspecting the raw data contained therein, and building output
+%data fragments that represent high level constructs that associate the VMM hits
+%with specicific frontend boards and/or detector readout elements.
+%This latter aspect --- the gathering together of all data fragments corresponding to a
+%specific trigger --- is referred to as `event building'.
+%Once an event is built, VERSO stores it on disk in the ROOT \texttt{TTree} format
+%for later analysis.
 
 Given the asynchronous nature of the network communication, as well as the fact that the UDP/IP
 network protocol does not ensure a fixed latency, events based on the same trigger
-are not guaranteed to be captured by VERSO within the same UDP/IP network packet.
+are not guaranteed to be captured by VERSO within the same UDP/IP network packet if there are multiple frontend boards being read out.
 The use of the single-producer/single-consumer model is adapted to such a case, with
 the producer thread indexing and filling the queue and the consumer thread performing the event building.
 In VERSO, the queue in which indexed data fragments are stored is implemented
-as a lock-free, concurrent queue.
+as a lock-free\footnote{\url{https://en.wikipedia.org/wiki/Non-blocking_algorithm}} concurrent queue.
 As a result, the queue may be accessed and manipulated by each thread without affecting or blocking
 the other, allowing for smooth DAQ operation.
 The event building thread can then periodically inspect the queue and wait for a configurable amount of time for the expected
@@ -160,9 +172,19 @@ number of data fragments from each of the frontend elements before finishing
 the event building process.
 Once the event building process is completed,
 the event building thread starts the process over and begins gathering the data fragments from the next-received trigger number identifier.
-The use of the multi-threaded architecture, pivoting around a fast concurrent queue, has allowed VERSO to achieve 100\% DAQ efficiency
-in all use-cases encountered ({\color{red}{Section XXX for use-cases}}).
-
-
+The use of the multi-threaded architecture, pivoting around a fast concurrent queue
+implementation,\footnote{\url{http://moodycamel.com/blog/2013/a-fast-lock-free-queue-for-c++}}
+has allowed VERSO to achieve 100\% DAQ efficiency
+in all use-cases encountered ({\color{red}{Section XXX for use-cases}}),
+where the DAQ efficiency is defined as,
+\begin{align}
+    \varepsilon_{\text{DAQ}} = \frac{ N_{\text{recorded}} }{ N_{\text{expected}} },
+    \label{eq:verso_daq_eff}
+\end{align}
+where $N_{\text{recorded}}$ is the number of events stored on disk by the event building
+thread and $N_{\text{expected}}$ is the total number of event data fragments sent
+over the network to VERSO from the frontend electronics.
+The latter number, $N_{\text{expected}}$, can be determined via counters located
+on the FPGAs on the frontend.
 
 \FloatBarrier

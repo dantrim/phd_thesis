@@ -6,7 +6,8 @@ and the approaching installation of the NSW, a complete
 configuration and data-acquisition (DAQ) system has been built.
 The system, referred to as the `VMM Readout System' (VRS), consists of a flexible
 firmware and software infrastructure that allows for
-interfacing to frontend boards housing the VMM ASIC.
+interfacing to frontend boards housing the VMM ASIC, such as those
+shown in Figure~\ref{fig:frontend_boards}.
 
 A minimal instantiation of the VRS system is illustrated in Figure~\ref{fig:vrs_diagram_minimal}
 in which the DAQ PC, hosting the VRS software, communicates directly to a set
@@ -30,7 +31,7 @@ address associated with each frontend board that is exposed to the network by th
 The VRS system is extensible and performant enough that it may handle an arbitrary number of frontend boards
 and detectors.
 This is illustrated in Figure~\ref{fig:vrs_diagram} in which several detectors, with their own
-set of frontend boards, are being configured and readout via the VRS system.
+set of frontend boards, are being controlled, configured and readout via the VRS system.
 In this case, an external clock and trigger system send their signals to a `VRS Supervisory Board' (VSB)
 which handles the synchronous transmission of these signals to the independent groups of frontend boards
 located on the separate detectors.
