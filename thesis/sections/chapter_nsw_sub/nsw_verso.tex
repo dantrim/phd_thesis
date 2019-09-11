@@ -1,7 +1,7 @@
 \subsection{VERSO}
 \label{sec:verso}
 
-The software residing on the DAQ PC or server side of the VRS system,
+The software residing on the DAQ PC side (server side) of the VRS system,
 illustrated in Figure~\ref{fig:vrs_diagram_minimal} and \ref{fig:vrs_diagram},
 provides the main interface by which users can control the overall
 state of the frontend electronics, either on- or off-detector,
@@ -66,7 +66,7 @@ If not, VERSO can log this information and re-attempt transmission of the lost o
 containing the configuration specification.
 %The configuration of the VMM ASICs is forwarded by the FPGA via the Serial Peripheral Interface (SPI) protocal
 %to the VMMs.
-The VMM ASIC recieves its own configuration following a Serial Peripheral Interface (SPI) protocol.
+The VMM ASIC recieves its own configuration following a Serial Peripheral Interface (SPI) protocol.\footnote{\url{https://en.wikipedia.org/wiki/Serial_Peripheral_Interface}}
 An individual VMM ASIC configuration specification is rather large and is nearly 2 kilobits long.
 This large configuration bitstream is due to the highly configurable nature of the VMM ASIC, especially
 so given that each of the 64 channels of a single VMM has 24 bits worth of configuration information.
@@ -75,7 +75,7 @@ so given that each of the 64 channels of a single VMM has 24 bits worth of confi
 The specification of the VMM configuration bitstreams is set by the user in the `Global' and `Channel' configuration
 panels on the GUI, shown in Figure~\ref{fig:verso_main}.
 The `Global' VMM parameters are those that are not specific to an individual channel; for example,
-the VMM channel threshold, channel gain, or the specification of the VMM shaper integration time.
+the VMM channel threshold, channel gain, or the specification of the VMM signal shaper's integration time.
 The VERSO software handles the construction of the configuration bitstreams for each VMM ASIC and forwards
 them to the corresponding FPGA that is directly connected to the VMM to be configured.
 Upon receipt of a VMM configuration bitstream, the FPGA forwards it to the SPI input of the specified VMM.
@@ -133,7 +133,7 @@ VERSO's DAQ functionalities are implemented following a single-producer/single-c
 architecture.
 In such an architecture, at the start of each run, the software constructs two threads with independent
 tasks: a `listener' thread and an `event builder' thread.
-The listener thread is reponsible for receiving the raw data packets over the network from the
+The listener thread is reponsible for receiving the raw digitised data packets over the network from the
 frontend electronics and buffering them in a queue.
 The listener thread indexes each of the data fragments in the queue based on their corresponding
 event or trigger identifier.
@@ -162,7 +162,7 @@ Given the asynchronous nature of the network communication, as well as the fact 
 network protocol does not ensure a fixed latency, events based on the same trigger
 are not guaranteed to be captured by VERSO within the same UDP/IP network packet if there are multiple frontend boards being read out.
 The use of the single-producer/single-consumer model is adapted to such a case, with
-the producer thread indexing and filling the queue and the consumer thread performing the event building.
+the producer (listener) thread indexing and filling the queue and the consumer thread performing the event building.
 In VERSO, the queue in which indexed data fragments are stored is implemented
 as a lock-free\footnote{\url{https://en.wikipedia.org/wiki/Non-blocking_algorithm}} concurrent queue.
 As a result, the queue may be accessed and manipulated by each thread without affecting or blocking
@@ -175,8 +175,8 @@ the event building thread starts the process over and begins gathering the data 
 The use of the multi-threaded architecture, pivoting around a fast concurrent queue
 implementation,\footnote{\url{http://moodycamel.com/blog/2013/a-fast-lock-free-queue-for-c++}}
 has allowed VERSO to achieve 100\% DAQ efficiency
-in all use-cases encountered ({\color{red}{Section XXX for use-cases}}),
-where the DAQ efficiency is defined as,
+in all use-cases encountered ({\color{red}{Section XXX for use-cases}}).
+Here the DAQ efficiency is defined as,
 \begin{align}
     \varepsilon_{\text{DAQ}} = \frac{ N_{\text{recorded}} }{ N_{\text{expected}} },
     \label{eq:verso_daq_eff}
