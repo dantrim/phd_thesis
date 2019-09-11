@@ -42,6 +42,8 @@ the xADC.
 The xADC has a full scale range of 1\,V, providing a digital measurement resolution of roughly 0.24\,mV.
 The digitised samples produced by the analog measurements of the xADC are forwarded to the VERSO
 DAQ software so that they can be stored and subsequently processed by the calibration algorithms.
+As the xADC is housed in the on-board FPGA, the VERSO software can control its operation and access its measurements
+using similar configuration and DAQ functionalities as described in the previous section.
 Alternatively, the external measurement of the MO can be made via an oscilloscope probe.
 The use of the oscilloscope probe does not lend itself to automated calibration but provides for
 direct inspection of the analog levels as well as a reference on the measurements of the xADC.
@@ -98,7 +100,7 @@ Fluctuations about the baseline, then, give a measurement of the inherent channe
 Measurements of both of these quantities are important, both when the frontend electronics
 are and are not interfaced to a detector.
 Measurements of the noise when the frontend electronics are not interfaced to a detector give
-a measurement of the inherent electronics noise.
+a measurement of the inherent electronics noise characteristic of the frontend board.
 Interfacing the frontend electronics to a detector introduces additional capacitive effects
 that can introduce new sources of noise that must also be studied and reduced.
 Knowledge of both the absolute baseline and noise levels of each VMM allows for the optimal threshold
@@ -129,6 +131,48 @@ level can be obtained.
 
 \subsubsection{Channel Threshold Trimming}
 \label{sec:calib_trimming}
+
+The global VMM threshold inherently has channel-to-channel variation.
+In order to ensure that the VMM discriminators of all channels in the system
+fire at the same value, the VMM has a per-channel threshold trimming functionality included.
+This functionality allows for each channel's threshold to be adjusted (`trimmed') in 32 steps that cover a range
+of approximately 32\,mV.
+To equalize the channel discriminators, external measurements made via the xADC are performed.
+For each channel, measurements of the channel discriminator's threshold are taken at each of the 32
+steps in the allowed range of trimming.
+Once done for every VMM channel in the system, a metric for equalizing their thresholds is needed.
+In the example of Figure~\ref{fig:calib_channel_trim}, the metric is to bring all channels
+as close as possible to the globally set VMM threshold.
+Once this is done, all VMM channels in the system ideally have equal thresholds and will
+have equivalent responses to input signals.
+As seen in Figure~\ref{fig:calib_channel_trim}, prior to this calibration there is quite
+some variation, which shows the importance of this fine-grained calibration procedure.
+The amount of threshold trimming necessary to bring a channel to its equalized state
+is independent of the globally set VMM threshold; therefore, once the calibration procedure
+is performed and the subsequent channel threshold trimming is applied, the global
+threshold can be adjusted with confidence that all channels in the system are likewise adjusted coherently.
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.85\textwidth]{figures/nsw/calibration/channel_threshold_calibPDF}
+        \caption{
+            Summary plot of a VMM channel threshold trimming calibration.
+            For this set up, a single VMM is calibrated and has a global threshold
+            set to 235\,mV.
+            The channel-by-channel variation of the threshold is seen by the yellow dots,
+            which indicate the per-channel threshold measurement made by the xADC prior to any
+            threshold trimming.
+            The blue columns indicate the entire threshold range accessible by each channel
+            by scanning the full range of channel trimmers and taking xADC measurements at each.
+            It can be seen that most channels have a full range of approximately 32\,mV.
+            The calibration algorithm shown here picks for all VMM channels the amount of trimming
+            that allows for them to have thresholds as near as possible to the globally set threshold.
+            In this case, the post-calibration threshold of all channels, indicated by the red dots,
+            is very nearly 235\,mV, and is $234.8\pm 0.27$\,mV on average.
+        }
+        \label{fig:calib_channel_trim}
+    \end{center}
+\end{figure}
 
 \subsubsection{Signal Amplitude Gain and Pedestal}
 \label{sec:calib_pdo}
