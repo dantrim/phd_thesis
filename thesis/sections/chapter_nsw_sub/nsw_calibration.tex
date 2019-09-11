@@ -92,7 +92,7 @@ relation, where $C$ is the injection capacitor's capacitance and $V$ is the test
 \subsubsection{Measurement of Channel Baselines and Noise}
 \label{sec:calib_baselines}
 
-External measurements via the xADC can be made of each channel's analog output (i.e. prior
+External measurements via the xADC can bGe made of each channel's analog output (i.e. prior
 to digitisation) when no signals are present at the channel input.
 Doing so allows one to obtain a measurement of the channel \textit{baseline}, i.e. the
 ambient level when no signal is present.
@@ -158,7 +158,7 @@ threshold can be adjusted with confidence that all channels in the system are li
         \caption{
             Summary plot of a VMM channel threshold trimming calibration.
             For this set up, a single VMM is calibrated and has a global threshold
-            set to 235\,mV.
+            set to 235\,mV using the threshold DAC.
             The channel-by-channel variation of the threshold is seen by the yellow dots,
             which indicate the per-channel threshold measurement made by the xADC prior to any
             threshold trimming.
@@ -177,6 +177,199 @@ threshold can be adjusted with confidence that all channels in the system are li
 \subsubsection{Signal Amplitude Gain and Pedestal}
 \label{sec:calib_pdo}
 
+The output of the PDO for each channel must also be calibrated.
+The PDO calibration aims to correct the per-channel response to a given input
+signal.
+Its calibration relies on the injection of test pulses on each channel.
+Measurements of the output PDO for each channel can be taken as a function
+of the amplitude of the test pulse, which is configured via the 10-bit test pulse DAC.
+This is illustrated on the left side of Figure~\ref{fig:gain_curves}.
+Linear fits to the resulting measurements provide a measure of the channel gain, which
+will generally differ with respect to the globally set VMM channel gain.
+The right side of Figure~\ref{fig:gain_curves} shows the channel-by-channel slope (gain)
+variation measured for a single VMM.
+From the DAC-mV relation derived from the DAC calibration described above, the
+observed slope can be obtained in absolute terms (i.e. in terms of mV/fC) to give the channel gain.
+This can then be used
+to correct the signal amplitude measurements in later analysis; for example, when constructing particle tracks.
+From the measurements above, relying on the linear fits, the PDO pedestal can be measured
+as the extrapolated $y$-intercept.
+Due to the VMM's internal ADC having a built-in baseline subtraction, the PDO pedestal will
+differ with respect to the baseline as described Section~\ref{sec:calib_baselines}.
+The PDO pedestal is an offset that must be subtracted from the PDO amplitude measurements
+prior to any analysis or track fitting.
+The VMM can be configured to output PDO measurements for those channels that are neighboring
+a channel that has an above-threshold signal but that do not themselves have an above-threshold
+signal.
+With this option enabled, individual channels may have injected test-pulses and have the  neighboring
+channels' PDO measurements recorded.
+The neighboring channels readout in this manner thus provide
+an alternative method for measuring the PDO pedestal.
+The neighbor-enabled method for obtaining VMM channel PDO pedestals is actually more efficient
+as a significantly smaller amount of data samples need to be recorded since one does not
+need to scan over values of the test pulse amplitude: pedestals obtained in this manner
+can be obtained for any single value of the test pulse amplitude since they are obtained from those channels
+\textit{not} being pulsed.
+Figure~\ref{fig:pedestals} shows the PDO pedestals measured for the channels of a single VMM
+using the linear-fit extrapolation and neighbor-enabled methods.
+The two methods agree quite well with one another.
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.5\textwidth]{figures/nsw/calibration/calib_gain_curve}
+        \includegraphics[width=0.45\textwidth]{figures/nsw/calibration/gain_curve_slope}
+        \caption{
+            \textbf{\textit{Left}}: Average PDO response as a function of test pulse amplitude,
+                for a single VMM channel.
+                The slope gives a measure of the channel gain.
+            \textbf{\textit{Right}}: Measured slopes of the PDO response to injected test pulses
+                for 64 channels of a VMM.
+        }
+        \label{fig:gain_curves}
+    \end{center}
+\end{figure}
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.48\textwidth]{figures/nsw/calibration/vmm_pedestals_extrap}
+        \includegraphics[width=0.48\textwidth]{figures/nsw/calibration/vmm_pedestals_neighbor}
+        \caption{
+            Measurements of PDO pedestals of each channel of a VMM.
+            \textbf{\textit{Left}}: Using the linear-fit extrapolation method.
+                The mean pedestal measured across all channels is $37.99$, in units of PDO counts.
+            \textbf{\textit{Right}}: Using the neighbor method.
+                The mean pedestal measured across all channels is $37.48$, in units of PDO counts.
+        }
+        \label{fig:pedestals}
+    \end{center}
+\end{figure}
+
 \subsubsection{Timing Measurement Calibration}
 \label{sec:calib_tod}
+
+The time measurement of the MM readout is of the utmost importance for providing
+high-resolution tracks since the track-primitive building in the MM detectors
+relies primarily on the $\mu$-TPC reconstruction method, as illustrated on the right side of Figure~\ref{fig:mm_tpc_hit_loc}.
+The TDO output must then be calibrated if high resolution track-primitives are to
+be constructed.
+
+The TDO provides signal timing information and is the the amplitude of a latched
+time-to-analog converter (TAC) ramp that is initiated either when the signal peak
+amplitude is found (coinciding with the time at which the PDO value is latched)
+or when the signal amplitude first crosses above threshold.
+The former is referred to as `timing-at-peak' and the latter as `timing-at-threshold'.
+The operation of the TAC ramp and subsequent TDO measurement is illustrated
+in Figure~\ref{fig:tdo_illustration}.
+The maximum TAC ramp time is configurable, and if the maximum is reached the output
+TDO value will be saturated at its maximum value.
+In nominal VMM operation, the TAC ramp is halted at the following falling-edge
+of the bunch-crossing clock driving the VMM readout and read out as the TDO.
+In an alternative configuration of the frontend electronics, the FPGA which
+provides the bunch-crossing clock to the VMM can be configured such that
+it halts the bunch-crossing clock for a fixed amount of time once the TAC ramp is
+initiated.
+After this fixed amount of time, the bunch-crossing clock is re-initiated and the first
+falling edge then halts the TAC ramp.
+This \textit{fixed latency} method of acquiring the TDO allows
+for a fine-grained calibration of the timing measurement of the VMM.
+The timing calibration is performed by scanning the bunch-crossing clock's latency (i.e.
+the amount of time for which it is halted) and measuring the TDO output, per channel,
+as a result of injected test pulses.
+This is illustrated in Figure~\ref{fig:timing_calib_bcLatency} for two values of the
+TAC ramp time: 100\,ns and 350\,ns.
+Linear fits to the resulting TDO measurements as a function of this fixed latency
+then give the per-channel conversion from TDO output (counts) to absolute time (e.g. nanoseconds).
+
+Once the TDO conversions are known, the inherent VMM timing resolutions can be studied and
+further measurement improvements can be made.
+Figure~\ref{fig:time_res} shows the TDO timing resolution in absolute time as a function
+of the injected charge.
+It can be seen that for input signals with charges $Q \approx \mathcal{O}(10)$\,fC
+that sub-nanosecond timing resolutions are approached.
+Given that the MM detector avalanche gains are on the order of $10^4$, this
+leads to the VMM having sub-nanosecond timing resolutions for avalanches produced
+from 1 to 2 drift electrons.
+
+The timing measurement is highly sensitive to the signal shaping, as can be seen in Figure~\ref{fig:time_res}.
+This is due to the fact that the shaped signal's peak and threshold-crossing becomes less pronounced for larger
+shaper integration times, leading to poorer timing resolution.
+The effect of the signal shaping also introduces non-negligible timewalk, as seen in Figure~\ref{fig:time_walk},
+which shows the effect of timewalk for a VMM configured for timing-at-threshold.
+The timewalk effects are exaggerated for timing-at-threshold since the point at which a
+given signal rises above threshold is more susceptible to noise, in addition to the integration
+time effects described previously.
+For a given timing configuration, the measurement of the timewalk for a given signal amplitude
+is used to correct the timing information provided by the the VMM TDO measurement and can thus
+improve the subsequent track-primitive reconstruction.
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.7\textwidth]{figures/nsw/calibration/tdo_illustration}
+        \caption{
+            Illustration of the TDO measurement for injected test pulses.
+            Here, the TAC ramp begins once the signal peak is found and halts at the next
+            falling edge of the bunch-crossing clock which drives the readout of the VMM.
+            CKTP is the clock driving test-pulse injection, CKBC is the bunch-crossing clock.
+            The TDO is the digitised voltage value corresponding to the latched TAC ramp.
+            In the nominal VMM operation mode, with a fixed CKBC frequency, the
+            window between the peak found and CKBC is bounded by the CKBC period (25\,ns for the 40\,MHz LHC bunch-crossing clock).
+            In the fixed-latency mode of operation described in the text, the CKBC is halted
+            for a fixed amount of time once the TAC ramp begins.
+            In this scenario, the TAC can ramp to its maximal value if the latency is set to
+            be longer than this value.
+        }
+        \label{fig:tdo_illustration}
+    \end{center}
+\end{figure}
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.48\textwidth]{figures/nsw/calibration/timing_calib_bcLatency_TAC100}
+        \includegraphics[width=0.48\textwidth]{figures/nsw/calibration/timing_calib_bcLatency_TAC350}
+        \caption{
+            TDO calibration using the fixed-latency method for a TAC ramp time of 100\,ns (\textbf{\textit{left}})
+            and 350\,ns (\textbf{\textit{right}}).
+            The flat portion, fit with a blue line, are 50\,ns long and correspond to the configured
+            VMM shaper's integration time.
+            The linear fit for latencies beyond this 50\,ns give the timing calibration for the channel via
+            the slope which gives the conversion between the TDO digitised count values to absolute
+            time in nanoseconds.
+            It can be seen that the TDO conversion constant is larger for smaller TAC ramp times,
+            which follows from the fact that the TDO 8-bit range is the same irrespective of the configured
+            TAC ramp.
+        }
+        \label{fig:timing_calib_bcLatency}
+    \end{center}
+\end{figure}
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.48\textwidth]{figures/nsw/calibration/res_v_charge}
+        \includegraphics[width=0.48\textwidth]{figures/nsw/calibration/nsw_time_res}
+        \caption{
+            VMM timing resolution as a function of the injected test pulse charge
+            for various integration times.
+            \textbf{\textit{Left}}: Absolute timing resolution as a function of absolute charge
+                for shaper integration times of 25\,ns (red) and 50\,ns (blue).
+            \textbf{\textit{Right}}: TDO resolution as function of injected test-pulse
+                amplitudes, over the full PDO range, for various shaper integration times: 25\,ns (black), 50\,ns (red),
+                100\,ns (blue), and 200\,ns (green).
+        }
+        \label{fig:time_res}
+    \end{center}
+\end{figure}
+
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.48\textwidth]{figures/nsw/calibration/time_walk}
+        \caption{
+            Measured timewalk for a given VMM channel configured for timing-at-threshold.
+            The $x$-axis is the measured PDO value of the channel and the $y$-axis is the
+            TDO value, giving the time information of the signal.
+            The red line is a fit to a sigmoid-like function, $\text{TDO} =  p_0 / (p_1 + p_2 * e^{p_3 \times \text{PDO}})$.
+        }
+        \label{fig:time_walk}
+    \end{center}
+\end{figure}
 
