@@ -5,6 +5,17 @@
     \begin{center}
         \includegraphics[width=0.8\textwidth]{figures/nsw/calibration/xadc_diagramPDF}
         \caption{
+            Illustration of the concept of using an external measurement for calibration
+            of the VMM internals.
+            For the automated calibration routines described in the text, the ADC provided
+            by the FPGA is used as the external measurement device but an oscilloscope probe can be used
+            as well.
+            For calibration purposes, the external measurements are of the VMM channel analog outputs prior
+            to digitisation via the internal VMM ADCs
+            (green), the VMM threshold DAC analog output (red circle), and the
+            output of the DAC setting the test pulse amplitude (yellow) provided by the test charge capacitor
+            on each VMM channel.
+            Not indicated, external measurements are also made of each of the VMM channel's discriminator thresholds.
         }
         \label{fig:xadc_diagram}
     \end{center}
@@ -17,7 +28,7 @@ very low signal amplitudes and are therefore typically noise dominated, with
 much of the noise component derived mainly from the frontend electronics themselves.
 It is therefore necessary to optimise the readout functionality of the
 the VMM ASIC by calibrating it and ensuring that its signal-to-noise
-ratio, $S/N$, is maximised during datataking.
+ratio, $S/N$, is maximised during data taking.
 Additionally, to achieve the best performance in the reconstruction of particle
 tracks in the NSW detectors, several key aspects such as the charge amplitude
 and timing measurement of the VMM need to be understood and well calibrated.
@@ -55,7 +66,7 @@ An illustration of these external measurement mechanisms is provided in Figure~\
 Each VMM has two important DACs: one for setting the global VMM threshold and one for
 setting the amplitude of the injected test-pulse charge via the test-pulse capacitor on each
 channel.
-Each is 10-bit, meaning that it can be set to a value of 0-1023 (inclusive).
+Each is 10-bit, meaning that it can be set to integer values between 0-1023 (inclusive).
 In order for the user to know in absolute terms what the VMM threshold or test-pulse amplitude
 is set to, i.e. in terms of analog voltage values and not digital counts, the analog level of each
 DAC is measured using the xADC.
@@ -92,7 +103,8 @@ relation, where $C$ is the injection capacitor's capacitance and $V$ is the test
 \subsubsection{Measurement of Channel Baselines and Noise}
 \label{sec:calib_baselines}
 
-External measurements via the xADC can bGe made of each channel's analog output (i.e. prior
+
+External measurements via the xADC can be made of each channel's analog output (i.e. prior
 to digitisation) when no signals are present at the channel input.
 Doing so allows one to obtain a measurement of the channel \textit{baseline}, i.e. the
 ambient level when no signal is present.
@@ -102,16 +114,19 @@ are and are not interfaced to a detector.
 Measurements of the noise when the frontend electronics are not interfaced to a detector give
 a measurement of the inherent electronics noise characteristic of the frontend board.
 Interfacing the frontend electronics to a detector introduces additional capacitive effects
-that can introduce new sources of noise that must also be studied and reduced.
+that can introduce new sources of noise that must also be studied and perhaps reduced.
 Knowledge of both the absolute baseline and noise levels of each VMM allows for the optimal threshold
-to be set for each.
+to be set for the VMMs.
 In order to be sensitive to small-amplitude signals, one would set the threshold just above the baseline
-which sets the zero-level of an observable signal.
+since the baseline defines the effective zero-level of an observable signal.
 In practice, one sets the VMM threshold a few times the magnitude of the measured noise above the baseline: typically
 2 to 3 times the level of the measured noise above the baseline.
 Figure~\ref{fig:baselines_calib} shows an example of the measurements of a VMM channel's baseline and noise, taken by the xADC.
 The xADC samples each channel's baseline and from the width of the distribution of these measurements the noise
 level can be obtained.
+Figure~\ref{fig:vmm_noise_enc} shows the evolution of the measured noise as a function of the VMM's
+configured gain, both when the frontend board housing the VMM ASIC is and is not interfaced to a small prototype
+MM detector having $\sim$30\,pF capacitance.
 
 \begin{figure}[!htb]
     \begin{center}
@@ -129,11 +144,24 @@ level can be obtained.
     \end{center}
 \end{figure}
 
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.5\textwidth]{figures/nsw/calibration/vmm_noise_enc}
+        \caption{
+            Equivalent noise charge (ENC) of the VMM3 as a function of its configured gain value.
+            Noise measurements are performed with a GPVMM-type frontend board both on- (filled circles)
+            and off-detector (unfilled circles).
+            The detector used is a small $10\times10$\,cm$^2$ prototype MM chamber.
+        }
+        \label{fig:vmm_noise_enc}
+    \end{center}
+\end{figure}
+
 \subsubsection{Channel Threshold Trimming}
 \label{sec:calib_trimming}
 
 The global VMM threshold inherently has channel-to-channel variation.
-In order to ensure that the VMM discriminators of all channels in the system
+In order to ensure that the discriminators of all VMM channels in the system
 fire at the same value, the VMM has a per-channel threshold trimming functionality included.
 This functionality allows for each channel's threshold to be adjusted (`trimmed') in 32 steps that cover a range
 of approximately 32\,mV.
@@ -254,7 +282,7 @@ The TDO output must then be calibrated if high resolution track-primitives are t
 be constructed.
 
 The TDO provides signal timing information and is the the amplitude of a latched
-time-to-analog converter (TAC) ramp that is initiated either when the signal peak
+time-to-analog converter (TAC) voltage ramp that is initiated either when the signal peak
 amplitude is found (coinciding with the time at which the PDO value is latched)
 or when the signal amplitude first crosses above threshold.
 The former is referred to as `timing-at-peak' and the latter as `timing-at-threshold'.
@@ -279,6 +307,14 @@ This is illustrated in Figure~\ref{fig:timing_calib_bcLatency} for two values of
 TAC ramp time: 100\,ns and 350\,ns.
 Linear fits to the resulting TDO measurements as a function of this fixed latency
 then give the per-channel conversion from TDO output (counts) to absolute time (e.g. nanoseconds).
+The timing calibration using the nominal TDO measurement method is performed similarly. However, instead
+of scanning the bunch-crossing clock latency, the time difference between the test pulse clock driving
+the injection of the test pulse charge and the bunch crossing clock is scanned.
+From Figure~\ref{fig:tdo_illustration} it can be seen that by skewing the test pulse injection in
+this manner, for larger values of the time difference the TAC ramp time will be nearer to the
+next subsequent bunch crossing clock and therefore will be halted sooner.
+The resulting TDO measurements for several values of the amount of time skewing allows for the
+timing calibration to be performed.
 
 Once the TDO conversions are known, the inherent VMM timing resolutions can be studied and
 further measurement improvements can be made.
@@ -304,19 +340,36 @@ improve the subsequent track-primitive reconstruction.
 
 \begin{figure}[!htb]
     \begin{center}
-        \includegraphics[width=0.7\textwidth]{figures/nsw/calibration/tdo_illustration}
+        \includegraphics[width=0.7\textwidth]{figures/nsw/calibration/tdo_illustrationPDF}
         \caption{
-            Illustration of the TDO measurement for injected test pulses.
-            Here, the TAC ramp begins once the signal peak is found and halts at the next
-            falling edge of the bunch-crossing clock which drives the readout of the VMM.
-            CKTP is the clock driving test-pulse injection, CKBC is the bunch-crossing clock.
-            The TDO is the digitised voltage value corresponding to the latched TAC ramp.
-            In the nominal VMM operation mode, with a fixed CKBC frequency, the
-            window between the peak found and CKBC is bounded by the CKBC period (25\,ns for the 40\,MHz LHC bunch-crossing clock).
-            In the fixed-latency mode of operation described in the text, the CKBC is halted
-            for a fixed amount of time once the TAC ramp begins.
-            In this scenario, the TAC can ramp to its maximal value if the latency is set to
-            be longer than this value.
+            Illustration of the TDO measurement for an injected test pulse.
+            The test pulse is injected following the test pulse clock (green), after
+            which the subsequent shaped signal is formed.
+            In the timing-at-peak scenario, once the peak-detector circuitry in the VMM fires,
+            the TAC voltage ramp is initiated.
+            In the nominal TDO measurement (red), the bunch crossing clock frequency remains unchanged
+            and will be kept at its 40\,MHz frequency in LHC conditions.
+            In this configuration, the next falling edge of the bunch crossing clock after
+            the TAC voltage ramp begins halts the ramp, and the TAC voltage is digitised as
+            the TDO value.
+            While in this mode, the TAC ramp is confined to times smaller than that given by the bunch crossing
+            clock frequency (25\,ns in the case of the LHC 40\,MHz clock).
+            In the fixed latency mode of acquiring the TDO measurement (yellow), the bunch crossing clock
+            is halted for a configurable amount of time after which it is resumed and its
+            next falling edge halts the TAC voltage ramp.
+            In the fixed latency mode, the TAC can ramp to its maximal configured value (60, 100, 350, or 650\,ns in the VMM3)
+            if the configured BC latency is at least as large as this value.
+            %Illustration of the TDO measurement for injected test pulses.
+            %Here, the TAC ramp begins once the signal peak is found and halts at the next
+            %falling edge of the bunch-crossing clock which drives the readout of the VMM.
+            %CKTP is the clock driving test-pulse injection, CKBC is the bunch-crossing clock.
+            %The TDO is the digitised voltage value corresponding to the latched TAC ramp.
+            %In the nominal VMM operation mode, with a fixed CKBC frequency, the
+            %window between the peak found and CKBC is bounded by the CKBC period (25\,ns for the 40\,MHz LHC bunch-crossing clock).
+            %In the fixed-latency mode of operation described in the text, the CKBC is halted
+            %for a fixed amount of time once the TAC ramp begins.
+            %In this scenario, the TAC can ramp to its maximal value if the latency is set to
+            %be longer than this value.
         }
         \label{fig:tdo_illustration}
     \end{center}
@@ -330,8 +383,10 @@ improve the subsequent track-primitive reconstruction.
             TDO calibration using the fixed-latency method for a TAC ramp time of 100\,ns (\textbf{\textit{left}})
             and 350\,ns (\textbf{\textit{right}}).
             The flat portion, fit with a blue line, are 50\,ns long and correspond to the configured
-            VMM shaper's integration time.
-            The linear fit for latencies beyond this 50\,ns give the timing calibration for the channel via
+            VMM shaper's integration (peaking) time.
+            As can be inferred by Figure~\ref{fig:tdo_illustration}, proper timing measurements for times
+            smaller than the integration time cannot be obtained.
+            The linear fit for latencies beyond the peaking time give the timing calibration for the channel via
             the slope which gives the conversion between the TDO digitised count values to absolute
             time in nanoseconds.
             It can be seen that the TDO conversion constant is larger for smaller TAC ramp times,
@@ -367,7 +422,10 @@ improve the subsequent track-primitive reconstruction.
             Measured timewalk for a given VMM channel configured for timing-at-threshold.
             The $x$-axis is the measured PDO value of the channel and the $y$-axis is the
             TDO value, giving the time information of the signal.
-            The red line is a fit to a sigmoid-like function, $\text{TDO} =  p_0 / (p_1 + p_2 * e^{p_3 \times \text{PDO}})$.
+            The red line is a fit to a sigmoid-like function: $\text{TDO} =  p_0 / (p_1 + p_2 * e^{p_3 \times \text{PDO}})$.
+            The injected signals all occur at the same time, but due to the timewalk effects
+            the measured time provided by the TDO measurement are biased to larger values as the measured amplitude
+            increases.
         }
         \label{fig:time_walk}
     \end{center}
