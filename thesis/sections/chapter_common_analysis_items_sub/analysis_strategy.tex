@@ -77,6 +77,8 @@ This is one-diminsional SR case is illustrated in Figure~\ref{fig:sr_search_v}.
             to have values of the discriminating variable that are larger than
             the value indicated by the dashed vertical line, where the signal purity is
             enhanced.
+            The $y$-axis represents the probability distribution of the background and signal
+            processes, not their absolute yield for a given range of the quantity on the $x$-axis.
         }
         \label{fig:sr_search_v}
     \end{center}
@@ -102,7 +104,7 @@ and the statistical procedures described in Section~\ref{sec:stat_hypo} can be u
 make statements about whether or not --- or to what degree --- the data is likely to contain the specified signal.
 The emphasis, then, in physics analyses is on the understanding and precise estimation of the backgrounds.
 Without being able to properly estimate the contribution of the background processes to the
-events in the SRs well-defined predictions cannot therein be made, resulting in ineffective
+events observed in the SRs well-defined predictions cannot therein be made, resulting in ineffective
 analyses.
 
 The process of estimating the backgrounds in an analysis' SRs is aptly referred to as
@@ -113,15 +115,66 @@ as well as more dedicated estimation techniques that are specific to a smaller s
 SM processes.
 Most rely on the MC simulation of the SM processes, either as the primary source of providing
 the prediction of a given SM process in an analysis' SR(s) or secondarily, as a means of providing a
-cross-check on a prediction obtained using data.
+cross-check on or input to a prediction obtained using the observed data obtained in auxiliary measurements as the primary source.
 The high levels of accuracy imposed upon the ATLAS MC simulation infrastructure is derived
 from the large and dominant role that the MC simulation plays in the background estimation
 procedures in almost all analyses performed by the ATLAS experiment.
+
+The same background estimation strategy is used in each of the analyses to be presented in the
+present thesis and is as follows.
+Once the SRs designed to capture the sought-for signal are defined, MC simulation can be
+used to determine the overall contribution of all SM background processes.
+In such a way, the MC simulation can be used to understand which SM processes in the SR(s)
+are dominant and which are sub-dominant.
+The former are those whose relative contribution to the total background prediction
+are large and the latter are those for which this quantity is small or negligible.
+As illustrated in Figure~\ref{fig:sr_search_v} for the one-dimensional example,
+SR(s) are typically defined by events populating the \textit{tails} of discriminating
+observables.
+The tails of such observables are regions of low cross-section and
+are relatively extreme regions of phase space for which the underlying theoretical inputs
+to the MC may be less well-understood as compared to the bulk of the phase space.
+The MC simulation by itself, therefore, may not be able to adequately describe the background
+processes in the SRs defined in the tails of these observables, failing to describe
+either the overall cross-section of specific processes or the actual shape of the observables' distributions
+therein.
+Indeed, the tails of many observables are highly sensitive to theoretical parameters used as
+inputs to the MC simulation process which leads the background estimation being sensitive to these
+parameters.
+In order to increase the confidence in the background estimates in such SR(s), the analyses in the present
+thesis make use of the so-called \textit{control region method}.
+This method is characterised by defining a (set of) region(s) in which there is (are) high purities
+of the dominant background process(es).
+These regions are referred to as \textit{control regions} (CRs) and are ideally defined using the
+same basis of observables used to define the analysis' SRs.
+The CRs are defined to be orthogonal to the SRs, meaning that no events that satisfy the requirements of
+the SRs populate the CRs.
+The observed data in the CRs, which are enriched in a specific background process, are used to derive
+factors that correct the cross-section predictions of the MC estimates of the dominant background processes for
+which the CRs are defined.
+
+\begin{align}
+    \mu_{p} = \frac{  N_{\text{data}}^{\text{CR}} - \sum\limits_{\substack{i \\ i\ne p}} N_{\text{MC},\,i}^{\text{CR}}} { N_{\text{MC},\,p}^{\text{CR}}    }
+    %\mu = \frac{ \left( N_{\text{obs}}^{\text{CR}} - \sum\limits_{i_{i\ne \text{proc}}} \right)} {4}
+\end{align}
+
+In order to increase the confidence in the background estimates in the SR(s), the analyses to be presented
+
+
+in the current thesis make use of dedicated control regions (CRs) that provide auxiliary measurements
+that allow for corrections to be  on the MC-based predictions in teh SRs
 
 \begin{figure}[!htb]
     \begin{center}
         \includegraphics[width=0.65\textwidth]{figures/common_ana/sr_search_v_CRPDF}
         \caption{
+            Illustration of the control region method, in the one-dimensional case analogous to that
+            presented in Figure~\ref{fig:sr_search_v}.
+            The control region (CR) is pure in the background process but is defined kinematically alongside the signal region (SR).
+            A validation region (VR), ideally still with high background purity, is defined between the CR and SR and is used to validate
+            the extrapolation of the background estimate from the CR to the SR.
+            The $y$-axis represents the probability distribution of the background and signal
+            processes, not their absolute yield for a given range of the quantity on the $x$-axis.
         }
         \label{fig:sr_search_v_CR}
     \end{center}
