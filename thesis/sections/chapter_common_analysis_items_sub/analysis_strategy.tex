@@ -10,7 +10,7 @@ sub-sections.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % SIGNAL PHENO
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Target Phenomenology}
+\subsection{Target the Signal}
 \label{sec:sig_pheno}
 
 The search for a particular source of new physics, such as a particular model of SUSY (Chapter~\ref{chap:bsm}),
@@ -20,15 +20,15 @@ This generally requires a strict definition of the \textit{final state} of the
 new physics model that one wishes to look for; for example, deciding to search for
 evidence of SUSY via the production of the SUSY partners to the SM top-quark
 in final states having exactly two leptons (electrons or muons) instead of
-exactly zero or exactly one lepton, as in Chapter~\ref{chap:search_stop2l}.
-Performing searches for new physics by the partitioning of specific new physics models
-by their resulting final states allows for separate, independent analyses to be carried out
+exactly zero or exactly one lepton, as in Chapter~\ref{chap:search_stop2l}.\footnote{Performing
+searches for new physics by the partitioning of specific new physics models
+by their resulting final states allows for separate, independent dedicated analyses to be carried out
 for each possible final state with the idea that each one will be more sensitive
 to the presence of the new physics in their respective final state than would be
 a single analysis attempting to target all possible final states of the new physics production.
-The results of the independent analyses' searches can be combined once they are finished,
-leading to enhanced sensitivities to the new physics scenario in question that is independent
-of the final state.
+The results of the independent analyses' searches can be statistically combined once they are finished,
+leading to enhanced sensitivities to the new physics scenario in question that is more or less independent
+of the final state.}
 Once a new physics model has been chosen, along with its final state, there is a well-defined
 \textit{signal} to be looked for in the data recorded by the ATLAS detector.
 The production and decay of the sought-for signal is then simulated via MC methods in the exact
@@ -44,30 +44,88 @@ For example, if the sought-for signal decays to two leptons with opposite electr
 that are of the same flavor (both leptons are electrons or both are muons, for example)
 it is very likely that the SM processes inclusive of $Z$-boson production will be relevant,
 since this is one of the main $Z$-boson decay final states, as opposed to the production of a single $W$-boson
-whose decay does not lead to final states with two leptons.
-Knowledge of the `dominant' SM background processes, then, allow
+whose decay does not lead directly to final states with two leptons.
+Knowledge of the dominant SM background processes, then, allows
 one to determine how the phenomenology and kinematics of the signal differ
-to those of the relevant backgrounds.
-The aim of this is to define regions of phase space in which the signal-to-background ratio
-is (ideally) maximal, such that the likelihood of observing the presence of the signal process
-is large.
-These regions of increased signal purity are referred to as \textit{signal regions},
-and are typically defined by choosing a basis of kinematic observables
-that allow for discrimination between the signal and background processes.
+with respect to those of the relevant backgrounds by comparing the simulated events
+of each.
+The aim of this is to be able to define a basis of kinematic observables that allows
+for the discrimination between the signal and background.
+From such a basis of observables, one can define regions of phase space in which
+the signal-to-background ratio is large, such that the likelihood of observing
+the presence of the signal is (ideally) maximal.
+Such regions of increased signal purity\footnote{The `purity' of a process is defined
+as the fraction of a given process in a region of phase space, relative to the sum
+of all processes (inclusive of the process in question).} are referred
+to as \textit{signal regions} (SR).
+As an example, take the case where there is a single discriminating variable in our
+basis of useful kinematic observables.
+One would apply a selection on this observable in such a way that $pp$ collision events
+satisfying this selection are likely to be enhanced in signal events.
+This is one-diminsional SR case is illustrated in Figure~\ref{fig:sr_search_v}.
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.65\textwidth]{figures/common_ana/sr_search_vPDF}
+        \caption{
+            Signal region concept illustrated in the case of a one-dimensional selection
+            made on a discriminating kinematic observable.
+            The dominant SM background (red) is characterised by typically small values
+            of the discriminating variable whereas the signal (blue) has values that extend
+            beyond that of the background.
+            The signal region in this case is defined by requiring $pp$ collision events
+            to have values of the discriminating variable that are larger than
+            the value indicated by the dashed vertical line, where the signal purity is
+            enhanced.
+        }
+        \label{fig:sr_search_v}
+    \end{center}
+\end{figure}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % GATHER THE DATA
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% BACKGROUND ESTIMATION
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\FloatBarrier
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % THE CONTROL REGION METHOD
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Background Estimation and the Control Region Method}
+\label{sec:control_region_method}
+
+The general principle behind searches for new physics is to define a SR, or a set of SRs,
+and then make predictions about how the signal and background behave therein.
+Such predictions can then be compared to the data actually recorded by the ATLAS detector
+and the statistical procedures described in Section~\ref{sec:stat_hypo} can be used to
+make statements about whether or not --- or to what degree --- the data is likely to contain the specified signal.
+The emphasis, then, in physics analyses is on the understanding and precise estimation of the backgrounds.
+Without being able to properly estimate the contribution of the background processes to the
+events in the SRs well-defined predictions cannot therein be made, resulting in ineffective
+analyses.
+
+The process of estimating the backgrounds in an analysis' SRs is aptly referred to as
+\textit{background estimation}.
+There are many background estimation methods that are used.
+There exist general background estimation techniques, applicable to a wide range of SM processes,
+as well as more dedicated estimation techniques that are specific to a smaller subset of
+SM processes.
+Most rely on the MC simulation of the SM processes, either as the primary source of providing
+the prediction of a given SM process in an analysis' SR(s) or secondarily, as a means of providing a
+cross-check on a prediction obtained using data.
+The high levels of accuracy imposed upon the ATLAS MC simulation infrastructure is derived
+from the large and dominant role that the MC simulation plays in the background estimation
+procedures in almost all analyses performed by the ATLAS experiment.
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.65\textwidth]{figures/common_ana/sr_search_v_CRPDF}
+        \caption{
+        }
+        \label{fig:sr_search_v_CR}
+    \end{center}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % SYSTEMATIC UNCERTAINTIES
