@@ -158,8 +158,7 @@ factors that correct the cross-section predictions of the MC estimates of the do
 which the CRs are defined.
 The per-process normalisation corrections, $\mu_p$, can essentially be thought of as those factors
 that adjust the process' normalisation in such a way as to cover any discrepancy between the observed
-data yield and MC prediction for the process in question.
-
+data yield and MC prediction for the process in question:
 \begin{align}
     \mu_{p} = \frac{  N_{\text{data}}^{\text{CR}} - \sum\limits_{\substack{i \\ i\ne p}} N_{\text{MC},\,i}^{\text{CR}}} { N_{\text{MC},\,p}^{\text{CR}}},
     \label{eq:mu_fac}
@@ -181,14 +180,34 @@ where $N_{\text{data,sub}}^{a}$ is the observed data yield in the region $a$ wit
 for those processes not having a dedicated  CR subtracted (analogous to the numerator appearing in Equation~\ref{eq:mu_fac}),
 $\mu_p$ are the normalisation factors for each process being solved for, and $N_p^{a}$ are the MC predictions
 for process $p$ in region $a$.
-Each process' dedicated CR, though, ideally exhibits high purity of the given process and therefore
+Each process' dedicated CR ideally exhibits both a high purity of the given process and relatively large
+number of events and therefore {\color{red}{too large may indicate large extrapolation}}
 is the only CR that has any real constraining power on the process' normalisation correction factor.
 If this is true, the expression in Equation~\ref{eq:mu_fac} generally holds true for each process with a
 CR, even in the case of multiple CRs and
 normalisation factors.
-%If there is more than one process for which a normalisation correction factor is being derived, and therefore
-%more than one CR, the expression given by Equation~\ref{eq:mu_fac} is expanded into a system of
-%equations,
+
+As mentioned above, the CRs are ideally defined using the same basic of kinematic observables
+as used in the definition of the SR.
+When this is the case, it is more likely that the constructed CRs probe a similar kinematic
+phase space as that of the SRs.
+It is important that the CRs are kinematically similar to the SRs so that the correction factors
+derived in them are representative of the SRs; that is, that the underlying root cause of the
+correction is the same in both the CRs, where the corrections are derived, and the SRs, where
+the corrections are applied.
+If an SR requires high numbers of jets (high event activity), for example, but the CR is defined to have zero
+jets (low event activity) then any normalisation correction derived in the CR may be correcting for physics effects
+that are not relevant to the phase space probed by the SR.
+
+In addition to the CRs, so-called \textit{validation regions} (VRs) are typically defined.
+The VRs are typically kinematically more similar to the SRs, while still maintaining orthogonality
+between the CRs and the SRs.
+VRs are defined for each CR and allow for one to validate the extrapolation of the CR-derived normalisation
+correction for each process in a region more similar to the SR.
+The validation is done by comparing the post-corrected MC prediction of the backgrounds to the
+observed data in the VRs, ensuring that both the overall normalisation of the backgrounds
+agrees with the observed data as well as the overall shape of the relevant observables used
+in the definition of the SRs.
 
 \begin{figure}[!htb]
     \begin{center}
