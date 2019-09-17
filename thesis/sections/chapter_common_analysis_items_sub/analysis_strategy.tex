@@ -130,17 +130,21 @@ The former are those whose relative contribution to the total background predict
 are large and the latter are those for which this quantity is small or negligible.
 As illustrated in Figure~\ref{fig:sr_search_v} for the one-dimensional example,
 SR(s) are typically defined by events populating the \textit{tails} of discriminating
-observables.
-The tails of such observables are regions of low cross-section and
-are relatively extreme regions of phase space for which the underlying theoretical inputs
+observables or probe extreme regions of phase space.
+%The tails of such observables are regions of low cross-section and
+Such regions typically exhibit low cross-section (background rates) and
+are regions of phase space for which the underlying theoretical inputs
 to the MC may be less well-understood as compared to the bulk of the phase space.
 The MC simulation by itself, therefore, may not be able to adequately describe the background
-processes in the SRs defined in the tails of these observables, failing to describe
-either the overall cross-section of specific processes or the actual shape of the observables' distributions
+processes in the SRs defined in these regions, failing to describe
+either the overall cross-section of specific processes or the actual shape of the discriminating observables' distributions
 therein.
-Indeed, the tails of many observables are highly sensitive to theoretical parameters used as
-inputs to the MC simulation process which leads the background estimation being sensitive to these
-parameters.
+The former results in a failure in the overall predicted \textit{rate}, or normalisation, of a specific backgrounds' contribution
+to the event yields in the regions
+and the latter results in a faulure in predicting the background process' \textit{acceptance}.
+%Indeed, the tails of many observables are highly sensitive to theoretical parameters used as
+%inputs to the MC simulation process which leads the background estimation being sensitive to these
+%parameters.
 In order to increase the confidence in the background estimates in such SR(s), the analyses in the present
 thesis make use of the so-called \textit{control region method}.
 This method is characterised by defining a (set of) region(s) in which there is (are) high purities
@@ -152,17 +156,39 @@ the SRs populate the CRs.
 The observed data in the CRs, which are enriched in a specific background process, are used to derive
 factors that correct the cross-section predictions of the MC estimates of the dominant background processes for
 which the CRs are defined.
+The per-process normalisation corrections, $\mu_p$, can essentially be thought of as those factors
+that adjust the process' normalisation in such a way as to cover any discrepancy between the observed
+data yield and MC prediction for the process in question.
 
 \begin{align}
-    \mu_{p} = \frac{  N_{\text{data}}^{\text{CR}} - \sum\limits_{\substack{i \\ i\ne p}} N_{\text{MC},\,i}^{\text{CR}}} { N_{\text{MC},\,p}^{\text{CR}}    }
+    \mu_{p} = \frac{  N_{\text{data}}^{\text{CR}} - \sum\limits_{\substack{i \\ i\ne p}} N_{\text{MC},\,i}^{\text{CR}}} { N_{\text{MC},\,p}^{\text{CR}}},
+    \label{eq:mu_fac}
     %\mu = \frac{ \left( N_{\text{obs}}^{\text{CR}} - \sum\limits_{i_{i\ne \text{proc}}} \right)} {4}
 \end{align}
-
-In order to increase the confidence in the background estimates in the SR(s), the analyses to be presented
-
-
-in the current thesis make use of dedicated control regions (CRs) that provide auxiliary measurements
-that allow for corrections to be  on the MC-based predictions in teh SRs
+where `$p$' indicates the process for which the CR is defined, $N_{\text{data}}^{\text{CR}}$ is the observed
+data yield in the CR, and $N_{\text{MC},\,j}^{\text{CR}}$ is the predicted yield in MC for the background
+process $j$.
+If there is more than one process for which a normalisation correction factor is being derived, and therefore
+more than one CR, the normalisation factors are constrained by the process' contribution across all CRs in which
+it is present and the expression in Equation~\ref{eq:mu_fac} is expanded into a system of equations,
+\begin{align}
+    N_{\text{data,sub}}^{\text{CR1}} &= \mu_i N_i^{\text{CR1}} + \mu_j N_j^{\text{CR1}} + ... \\
+    N_{\text{data,sub}}^{\text{CR2}} &= \mu_i N_i^{\text{CR2}} + \mu_j N_j^{\text{CR2}} + ... \\
+        &\vdots
+    \label{eq:mu_fac_expand}
+\end{align}
+where $N_{\text{data,sub}}^{a}$ is the observed data yield in the region $a$ with the MC predictions
+for those processes not having a dedicated  CR subtracted (analogous to the numerator appearing in Equation~\ref{eq:mu_fac}),
+$\mu_p$ are the normalisation factors for each process being solved for, and $N_p^{a}$ are the MC predictions
+for process $p$ in region $a$.
+Each process' dedicated CR, though, ideally exhibits high purity of the given process and therefore
+is the sole CR that has any real constraining power on the process' normalisation correction factor.
+If this is true, the expression in Equation~\ref{eq:mu_fac} generally holds true for each process with a
+CR, even in the case of multiple
+normalisation factors being derived.
+%If there is more than one process for which a normalisation correction factor is being derived, and therefore
+%more than one CR, the expression given by Equation~\ref{eq:mu_fac} is expanded into a system of
+%equations,
 
 \begin{figure}[!htb]
     \begin{center}
