@@ -198,16 +198,43 @@ the corrections are applied.
 If an SR requires high numbers of jets (high event activity), for example, but the CR is defined to have zero
 jets (low event activity) then any normalisation correction derived in the CR may be correcting for physics effects
 that are not relevant to the phase space probed by the SR.
+In such a case, extrapolation uncertainties will generally be incurred in the final background estimate in the SR.
 
 In addition to the CRs, so-called \textit{validation regions} (VRs) are typically defined.
-The VRs are typically kinematically more similar to the SRs, while still maintaining orthogonality
+The VRs are typically kinematically more similar to the SRs than the CRs, while still maintaining orthogonality
 between the CRs and the SRs.
 VRs are defined for each CR and allow for one to validate the extrapolation of the CR-derived normalisation
 correction for each process in a region more similar to the SR.
+As they are kinematically closer to the SRs, VRs are generally less pure in the specific process for which they are defined,
+and will also have generally fewer events, as compared to the associated CRs.
 The validation is done by comparing the post-corrected MC prediction of the backgrounds to the
 observed data in the VRs, ensuring that both the overall normalisation of the backgrounds
 agrees with the observed data as well as the overall shape of the relevant observables used
 in the definition of the SRs.
+The relationship between the CR, VR, and SR is illustrated in the one-dimensional case in
+Figure~\ref{fig:sr_search_v_CR}.
+
+When constructing a set of CRs and VRs, it is important to do so using the right set of observables
+out of the total basis of observables from which the SRs are defined.
+It is important that the shape as predicted by the simulated background process for which
+the normalisation correction is being derived reproduces that of the observed data.
+If this is not the case, then the extrapolation from the CR to the SR suffers.
+This is illustrated in Figure~\ref{fig:crvr_extrap_shape} for two scenarios in which
+the MC-based background prediction of the shape of the observable used for defining
+the various regions both agrees and does not agree with the observed data.
+%in the regions used to derive and validate the normalisation correction.
+If the MC simulation for the specific background for which a normalisation correction is being derived
+has monotonic shape mis-modellings, as in the case of Scenario B in Figure~\ref{fig:crvr_extrap_shape},
+the normalisation correction will generally not be applicable in the SR and may lead to
+SR background estimates with false over- or under-predictions of the data.
+In the latter case, a false excess in data may be observed and lead to mis-statements about the
+likelihood of the existence of new physics in the SRs.
+For this reason, dedicated studies on the dependence of the derived normalisation corrections
+on the set of observables used to define the CRs and VRs should generally be made so
+that the analysis avoids these susceptibilities to shape mis-modellings in the MC.
+Of course, this can become challenging in the general case where the SRs are defined using a large basis of potentially
+correlated observables
+and/or when one wishes to define several CRs to correct multiple processes' normalisations.
 
 \begin{figure}[!htb]
     \begin{center}
@@ -225,6 +252,30 @@ in the definition of the SRs.
     \end{center}
 \end{figure}
 
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.8\textwidth]{figures/common_ana/crvr_extrap_shape}
+        \caption{
+            Illustration of CR extrapolation scenarios in the control region method.
+            In Scenario A (green data) the predicted shape of the discriminating variable
+            used to define the CR, VR, and SR agrees well with the observed data
+            in both the CR and VR, as seen by the flat data-to-background ratio in the bottom.
+            In Scenario B (red data) the predicted shape of the discriminanting variable
+            differs with respect to that of the observed data, leading to an observed
+            slope in the data-to-background ratio.
+            In Scenario A, the normalisation correction derived for the background process
+            in the CR will be well extrapolated into the VR and gives confidence in its applicability
+            in the SR.
+            In Scenario B, the CR-derived normalisation factor for the background process
+            will pull the background prediction in the wrong direction when extrapolated
+            to the VR, making the data-to-background agreement even worse and reducing
+            its applicability in the SR.
+        }
+        \label{fig:crvr_extrap_shape}
+    \end{center}
+\end{figure}
+
+\FloatBarrier
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % SYSTEMATIC UNCERTAINTIES
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
