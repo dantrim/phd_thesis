@@ -1,2 +1,217 @@
 \section{Estimation of Sources of Fake and Non-prompt Leptons}
 \label{sec:fakes}
+
+Despite both the high levels of accuracy achieved by the ATLAS simulation
+infrastructure and the lepton reconstruction and identification algorithms
+described in Chapter~\ref{chap:objects}, sources of misidentified reconstructed
+leptons still exist and lead to an additional source of backgrounds to
+the analyses discussed in Chapters~\ref{chap:search_stop} and \ref{chap:search_hh}.
+These background sources of leptons are broken down into two categories:
+\begin{itemize}
+    \item \textbf{Fake leptons}: Cases in which signals in the ATLAS detector
+        are selected as being leptons when in fact there is no real lepton present
+    \item \textbf{Non-prompt leptons}: When real, genuine leptons are identified
+        but they are not leptons originating from the primary $pp$ hard-scatter interaction process
+        of interest
+\end{itemize}
+In the subsequent discussion, the term `fake' will be used in reference to the two
+categories listed above, unless specified otherwise.
+
+The contribution of backgrounds leading to sources of fake leptons are generally predicted
+using methods based on the observed data --- referred to as `data-driven' methods ---
+and arise from various sources and mechanisms.
+The sources of fake leptons will be described in Section~\ref{sec:fake_lepton_sources}, separately for
+electrons and muons.
+Section~\ref{sec:fake_dd_motivation} provides some reasoning for why a data-driven
+approach is generally taken for estimating these backgrounds.
+Sections~\ref{sec:matrix_method} and \ref{sec:same_sign_extrap} go on to describe
+the two data-driven approaches taken in the analyses to be presented in this thesis
+for estimating fake lepton contributions: the so-called `Matrix Method' and the `Same-sign Extrapolation Method', respectively.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% SOURCES OF FAKE LEPTONS
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Sources of Fake Leptons}
+\label{sec:fake_lepton_sources}
+
+The types and sources of fake leptons generally have different experimental signatures
+than those leptons that genuinely originate from the $pp$ hard-scatter.
+However, due to the non-perfect lepton identification and isolation algorithms,
+such sources are able to contaminate the various regions of an analysis.
+The rates of contamination are generally quite low for the analyses to be presented, but their inclusion in the background
+estimates of the analyses has measurable consequences nevertheless.
+
+The analyses to be presented in the current thesis make use of $b$-tagging algorithms
+to identify jets originating from $b$-hadrons.
+Fake leptons, both electrons and muons, can originate from the semi-leptonic decays of
+$b$- and $c$-quarks within these $b$-tagged jets, following $b\rightarrow \ell$ or cascade-type
+$b \rightarrow c \rightarrow \ell$ decays of the $B$ hadrons within the jets.
+The leptons resulting from such decays are typically embedded within or very close to
+the originating reconstructed jet object and the lepton isolation requirements
+are intended to reduce this type of background.
+The subsequent paragraphs will describe additional sources of fake electrons
+and muons, which generally differ between the two lepton species.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% SOURCES OF FAKE ELECTRONS
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Sources of Fake Electrons}
+\label{sec:fake_electron_sources}
+
+As described in Section~\ref{sec:electrons}, electrons are reconstructed based
+on the presence of well-reconstructed tracks in the ID matched to deposited
+energy clusters in the EM calorimeter.
+Light-flavor jets, originating from the production of light quarks ($u$, $d$, $s$),
+or gluon jets, which are associated with a large number of tracks due to their
+increased radiation pattern, are able to fake electrons as they leave
+tracks in the ID as well as subsequent energy depositions in both the EM and hadronic calorimeters.
+This background, due to mis-identified jets, is typically suppressed by the use
+of lepton isolation and by jet shower-shape information used in the electron identification: the
+hadronic shower shapes and radial extent differ with respect to the electromagnetic shower
+produced by a genuine electron.
+
+An additional large source of fake electrons is due to photon conversion processes,
+$\gamma \rightarrow e^+ e^-$, and other electromagnetic scattering processes
+that happen as a result of detector material interactions.
+These processes leave both tracks in the ID and electromagnetic energy depositions
+in the EM calorimeter which are difficult to distinguish from genuine electrons.
+Neutral hadron decays, such as the $\pi^0 \rightarrow e^+ e^- \gamma$ Dalitz decay,
+also lead to electron-like signatures.
+This decay of the $\pi^0$ only has a branching fraction of just over $1\%$~\cite{PDGRef}, but given
+the large production of $\pi^0$ states in the $pp$ collision this has the potential to be
+a relevant source of fake electrons.
+These electromagnetic sources of fake electrons are distinguished by their generally
+larger impact parameters relative to genuine prompt electrons.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% SOURCES OF FAKE MUONS
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Sources of Fake Muons}
+\label{sec:fake_muon_sources}
+
+As described in Section~\ref{sec:muons}, muons are primarily reconstructed via the combination
+of tracking information provided by the ID and MS, and, generally speaking, they should be the only particle species to reach
+the MS.
+In addition to the semi-leptonic decays of heavy-flavored jets described above, however,
+there are several sources of fake muons.
+Highly energetic jets can have elongated shower profiles that reach the outer
+radii of the hadronic calorimeter, with a non-zero chance of exiting the calorimeter
+and resulting in particle leakage into the MS.
+Such cases are referred to as calorimeter punch-through, and have been illustrated
+in Figure~\ref{fig:jet_punch_through}.
+Punch-through particles can leave signatures similar to charged muons whose subsequent
+MS tracks are associated with a track in the ID, leading to a reconstructed combined muon
+faking a genuine muon.
+An additional source of fake muons come from the in-flight decays of charged hadrons,
+such as the $K^\pm$ that decay to $\mu^{\pm} \nu$.
+Non-prompt muons arising as a result of such in-flight decays are typically
+characterised by combined tracks that exhibit a kink topology, mentioned briefly
+in the discussion of muon combined reconstruction in Section~\ref{sec:muon_id} and
+illustrated in Figure~\ref{fig:fake_muon_kink}.
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.65\textwidth]{figures/common_ana/fake_muon_kinkPDF}
+        \caption{
+            Illustration of a reconstructed non-prompt muon resulting from a kinked-track topology.
+            A promptly produced hadron is produced and decays to a final state including a
+            high-\pT muon.
+            The point at which the hadron decays is indicated by the yellow dot,
+            An example of such a decay is the decay $K^+ \rightarrow \mu^+ \nu$.
+            The red circles indicate detector hits in the ID and MS layers indicated
+            by the horizontal black lines.
+            Implied particle lifetimes and detector sizes are not to scale.
+        }
+        \label{fig:fake_muon_kink}
+    \end{center}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% DATA DRIVEN MOTIVATION
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{The Need for a Data-driven Approach}
+\label{sec:fake_dd_motivation}
+
+In the analyses to be presented in Chapters~\ref{chap:search_stop} and \ref{chap:search_hh},
+relatively tight identification working points are used for electrons and muons.
+As a result, the contamination of fake leptons in these analyses is relatively
+minor.
+Although small, their contamination does have measurable effects and so their contribution
+must be accounted for in order to achieve accurate estimates of the backgrounds
+in each analysis.
+
+Several methods exist to estimate the background rates arising from the sources of fake
+leptons, those relying on data-driven methods or those based entirely on the MC
+simulation.
+Relying on the MC simulation of these sources of fake leptons, described in previous
+sections, means to rely entirely on the \textsc{GEANT4} simulation of the ATLAS detector
+and on the MC generation and showering processes to accurately predict the
+rates of these processes.
+There are several problems with this approach and they are (nonexhaustively) as follows.
+Given the very small region of phase space being probed by the analysis,
+the number of MC events needed to appropriately sample the sources of production of fake
+leptons as described above would be prohibitively large if a statistically relevant sample
+is desired.
+An accurate prediction of the production rates of several of these fake lepton sources
+would require an accurate underlying theoretical model of many processes, such as
+heavy-flavor jet fragmentation, which is challenging.
+Additionally, many sources of fake leptons arise as a result of detector material interactions
+or as a result of subtle and difficult-to-model failure modes of the detector response.
+%or inaccurate simulation of the detector response.
+The accurate prediction of the rate of photon conversions, for example, requires
+high levels of precision in the simulation and measurement of the active and passive material in the ATLAS detector and cavern,
+which is not necessarily possible.
+The rates of jets being mis-identified as electrons and jet punch-through, for example,
+require that the MC simulation of the calorimeter response and shower evolution are
+accurately modelled.
+The MC simulation is not expected to perform to the degree at which these subtle, and comparatively rare, effects
+are accurately predicted.
+For this reason, data-driven approaches are typically taken for estimating the background rates
+of these fake lepton sources.
+In the analyses to be presented, two data-driven approaches are taken.
+In the search described in Chapter~\ref{chap:search_stop}, the Matrix Method
+is used.
+In the search described in Chapter~\ref{chap:search_hh}, the Same-sign Extrapolation
+Method is used.
+These methods are introduced in Sections~\ref{sec:matrix_method} and \ref{sec:same_sign_extrap}, respectively.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% THE MATRIX METHOD
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{The Matrix Method}
+\label{sec:matrix_method}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% SAME SIGN EXTRAPOLATION
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Same-sign Extrapolation Method}
+\label{sec:same_sign_extrap}
+
+

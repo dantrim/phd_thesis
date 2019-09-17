@@ -104,7 +104,7 @@ and the statistical procedures described in Section~\ref{sec:stat_hypo} can be u
 make statements about whether or not --- or to what degree --- the data is likely to contain the specified signal.
 The emphasis, then, in physics analyses is on the understanding and precise estimation of the backgrounds.
 Without being able to properly estimate the contribution of the background processes to the
-events observed in the SRs well-defined predictions cannot therein be made, resulting in ineffective
+events observed in the SRs, well-defined predictions cannot therein be made, resulting in ineffective
 analyses.
 
 The process of estimating the backgrounds in an analysis' SRs is aptly referred to as
@@ -128,6 +128,7 @@ In such a way, the MC simulation can be used to understand which SM processes in
 are dominant and which are sub-dominant.
 The former are those whose relative contribution to the total background prediction
 are large and the latter are those for which this quantity is small or negligible.
+
 As illustrated in Figure~\ref{fig:sr_search_v} for the one-dimensional example,
 SR(s) are typically defined by events populating the \textit{tails} of discriminating
 observables or probe extreme regions of phase space.
@@ -141,7 +142,7 @@ either the overall cross-section of specific processes or the actual shape of th
 therein.
 The former results in a failure in the overall predicted \textit{rate}, or normalisation, of a specific backgrounds' contribution
 to the event yields in the regions
-and the latter results in a faulure in predicting the background process' \textit{acceptance}.
+and the latter results in a failure in predicting the background process' \textit{acceptance}.
 %Indeed, the tails of many observables are highly sensitive to theoretical parameters used as
 %inputs to the MC simulation process which leads the background estimation being sensitive to these
 %parameters.
@@ -171,28 +172,28 @@ If there is more than one process for which a normalisation correction factor is
 more than one CR, the normalisation factors are constrained by the process' contribution across all CRs in which
 it is present and the expression in Equation~\ref{eq:mu_fac} is expanded into a system of equations,
 \begin{align}
-    N_{\text{data,sub}}^{\text{CR1}} &= \mu_i N_i^{\text{CR1}} + \mu_j N_j^{\text{CR1}} + ... \\
+    N_{\text{data,sub}}^{\text{CR1}} &= \mu_i N_i^{\text{CR1}} + \mu_j N_j^{\text{CR1}} + ... \nonumber \\
     N_{\text{data,sub}}^{\text{CR2}} &= \mu_i N_i^{\text{CR2}} + \mu_j N_j^{\text{CR2}} + ... \\
-        &\vdots
     \label{eq:mu_fac_expand}
+        &\vdots \nonumber
 \end{align}
 where $N_{\text{data,sub}}^{a}$ is the observed data yield in the region $a$ with the MC predictions
 for those processes not having a dedicated  CR subtracted (analogous to the numerator appearing in Equation~\ref{eq:mu_fac}),
 $\mu_p$ are the normalisation factors for each process being solved for, and $N_p^{a}$ are the MC predictions
 for process $p$ in region $a$.
-Each process' dedicated CR ideally exhibits both a high purity of the given process and relatively large
+Each process' dedicated CR ideally exhibits both a high purity of the given process and a relatively large
 number of events and therefore {\color{red}{too large may indicate large extrapolation}}
 is the only CR that has any real constraining power on the process' normalisation correction factor.
 If this is true, the expression in Equation~\ref{eq:mu_fac} generally holds true for each process with a
 CR, even in the case of multiple CRs and
 normalisation factors.
 
-As mentioned above, the CRs are ideally defined using the same basic of kinematic observables
+As mentioned above, the CRs are ideally defined using the same basis of kinematic observables
 as used in the definition of the SR.
 When this is the case, it is more likely that the constructed CRs probe a similar kinematic
 phase space as that of the SRs.
 It is important that the CRs are kinematically similar to the SRs so that the correction factors
-derived in them are representative of the SRs; that is, that the underlying root cause of the
+derived in them are representative of the SRs; that is, that the underlying root cause of the need for the
 correction is the same in both the CRs, where the corrections are derived, and the SRs, where
 the corrections are applied.
 If an SR requires high numbers of jets (high event activity), for example, but the CR is defined to have zero
@@ -229,6 +230,8 @@ the normalisation correction will generally not be applicable in the SR and may 
 SR background estimates with false over- or under-predictions of the data.
 In the latter case, a false excess in data may be observed and lead to mis-statements about the
 likelihood of the existence of new physics in the SRs.
+In the former case, a false over-prediction will lead to too-prematurely excluding the possibility for new
+physics to arise when it may in fact exist.
 For this reason, dedicated studies on the dependence of the derived normalisation corrections
 on the set of observables used to define the CRs and VRs should generally be made so
 that the analysis avoids these susceptibilities to shape mis-modellings in the MC.
