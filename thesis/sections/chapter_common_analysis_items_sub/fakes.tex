@@ -194,6 +194,7 @@ Method is used.
 These methods are introduced in Sections~\ref{sec:matrix_method} and \ref{sec:same_sign_extrap}, respectively.
 
 
+\FloatBarrier
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -203,6 +204,126 @@ These methods are introduced in Sections~\ref{sec:matrix_method} and \ref{sec:sa
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{The Matrix Method}
 \label{sec:matrix_method}
+
+In the Matrix Method, two levels of lepton selections are defined:
+\begin{itemize}
+    \item[]\textbf{Tight Leptons}: Those leptons passing all reconstruction, identification, and isolation criteria
+        as the leptons used in the final analysis' results
+    \item[]\textbf{Loose Leptons}: Leptons requiring similar selections as the Tight leptons but typically with either, or both, identification
+        and isolation criteria relaxed
+\end{itemize}
+The Tight leptons are a subset of the Loose, by definition.
+In the analysis described in Chapter~\ref{chap:search_stop}, the Loose leptons are defined by loosening
+only the lepton identification working points.
+Generally speaking, both samples of Loose and Tight leptons will contain
+both fake and real leptons.\footnote{Genuine, prompt
+leptons originating from the $pp$ hard-scatter interaction point are typically referred to as `real' leptons
+in order to distinguish them, semantically, from fake and non-prompt leptons.
+}
+The Matrix Method consists of measuring a set of efficiencies: the \textit{real}
+(\textit{fake}) \textit{efficiencies}, $\varepsilon_r$ ($\varepsilon_f$),
+defined as the efficiency for a real (fake) electron or muon that satisfies the Loose selection criteria
+to also satisfy the Tight selection criteria.
+This is illustrated in Figure~\ref{fig:fake_effs}.
+As illustrated, both the Loose and Tight lepton samples will contain contributions of both fake
+and real leptons.
+The Matrix Method can be generalised to final states with any number of leptons.
+In the discussion to follow, we will discuss that of final states with two leptons: the dilepton Matrix Method.
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.65\textwidth]{figures/common_ana/fakes/fake_effs_illustration}
+        \caption{
+        }
+        \label{fig:fake_effs}
+    \end{center}
+\end{figure}
+
+The real efficiencies, $\varepsilon_r$, are measured in data using $Z$-boson tag-and-probe methods, requiring the probe lepton
+to satisfy the Tight lepton selection and to be matched to the trigger.
+The probe lepton must satisfy the Loose lepton selection.
+The fraction of loose probe leptons to pass the Tight lepton selection then gives a measure of $\varepsilon_r$.
+
+The fake efficiencies, $\varepsilon_f$, are measured in data using events with different-flavor leptons,
+where one lepton is an electron and the other is a muon, that have the same electric charge.
+A tag-and-probe method similar to that used in the measurement of $\varepsilon_r$ is used
+and relies on the fact that a comparatively small amount of SM processes can result in same-sign
+and different-flavor events.
+Therefore, when a probe satisfies the Tight selection it is very likely to be the case that the
+probe lepton is a fake lepton.
+An additional component of the $\varepsilon_f$ is measured by additionally requesting that there
+be at least one $b$-tagged jet in the same-sign, different-flavor selection.
+This allows for $\varepsilon_f$ to be measured in a region enriched in fake leptons originating
+from semi-leptonic decays of heavy-flavor jets.
+The various measurements of $\varepsilon_f$ are combined following an averaging scheme, weighted according
+to the composition of fake lepton sources expected to contaminate the SRs.
+
+The real and fake efficiencies are not global quantities.
+Instead, they are measured as a function of both the lepton $\pT$ and $\eta$
+such that they may track the effects of changes in detector response and
+material interaction over the $\pT$ and $\eta$ ranges relevant to the leptons used in the analysis.
+
+Once $\varepsilon_r$ and $\varepsilon_f$ are obtained, the fake lepton background
+can be obtained by inverting the equation relating the measured quantities (Tight versus Loose), taken
+from the observed data, in terms
+of those that we want to know (Fake versus Real):
+\begin{equation}
+    \begin{pmatrix}
+        N_{TT} \\ N_{TL} \\ N_{LT} \\ N_{LL}
+    \end{pmatrix}
+        = M
+    \begin{pmatrix}
+        N_{LL}^{RR} \\ N_{LL}^{RF} \\ N_{LL}^{FR} \\ N_{LL}^{FF}
+    \end{pmatrix}
+    \label{eq:matrix_method}
+\end{equation}
+\noindent where in the sub- and super-scripts, the first (second) index refers to the leading (sub-leading) lepton.
+The sub-script `$T$' (`$L$') refers to the lepton passing the Tight (Loose) lepton
+selection.
+The super-script `$R$' (`$F$') indicates whether or not the lepton is a real (fake) lepton.
+For example, the quantity $N_{LL}^{FR}$ is the number of events in which the leading lepton
+in the sample of Loose leptons is fake and the sub-leading is real.
+The matrix $M$ is given by,
+\begin{align}
+    M = \begin{pmatrix}
+            r_1 r_2 & r_1 f_2  & f_1 r_2 & f_1 f_2 \\
+            r_1 \overline{r_2} & r_1\overline{f_2} & f_1 \overline{r_2} & f_1 \overline{f_2} \\
+            \overline{r_1} r_2 & \overline{r_1} f_2 & \overline{f_1} r_2 & \overline{f_1} f_2 \\
+            \overline{r_1} \overline{r_2} & \overline{r_1} \overline{f_2} & \overline{f_1} \overline{r_2} & \overline{f_1} \overline{f_2}
+        \end{pmatrix}
+    \label{eq:matrix_method_matrix}
+\end{align}
+where $r_i$ ($f_i$) is shorthand for the real (fake) efficiency, $\varepsilon_r$ ($\varepsilon_f$),
+and the notation $\overline{x_i}$ indicates $(1 - x_i)$.
+%To make clear the data-driven aspect of the method:
+%both sets of qauntities --- those appearing on the left-hand-side of Equation~\ref{eq:matrix_method} and the $r_i$ and $f_i$ ---
+%are measured using the observed data.
+
+The number of events with double-fake and single-fake leptons satisfying the analysis' Tight selection
+($N_{TT}^{FF}$ and $N_{TT}^{RF} + N_{TT}^{FR}$, respectively) can then be obtained from the
+number of events with double-fake and single-fake leptons satisfying the Loose selection
+($N_{LL}^{FF}$ and $N_{LL}^{RF} + N_{LL}^{FR}$, respectively) through inversion
+of Equation~\ref{eq:matrix_method}  and
+noting the following relations,
+\begin{align}
+    N_{TT}^{RR} &= r_1 r_2 \cdot N_{LL}^{RR}  \label{eq:matrix_method_sol0}\\
+    N_{TT}^{RF} &= r_1 f_2 \cdot N_{LL}^{RF}  \label{eq:matrix_method_sol1}\\
+    N_{TT}^{FR} &= f_1 r_2 \cdot N_{LL}^{FR}  \label{eq:matrix_method_sol2}\\
+    N_{TT}^{FF} &= f_1 f_2 \cdot N_{LL}^{FF}. \label{eq:matrix_method_sol3}
+\end{align}
+The quantities appearing on the right-hand-side of Equations~\ref{eq:matrix_method_sol0}-\ref{eq:matrix_method_sol3}
+depend entirely on the observed data.
+The number of events in the analysis' Tight selection that have at least one fake lepton is then given by the sum
+$N_{TT}^{RF} + N_{TT}^{FR} + N_{TT}^{FF}$.
+This gives a total integrated yield for the fake background contribution in the analysis'
+Tight selection; however, from Equations~\ref{eq:matrix_method_sol1}-\ref{eq:matrix_method_sol3}
+a set of per-event weighting factors (`fake weights'), depending only on the $\varepsilon_r(\pT,\eta)$ and
+$\varepsilon_f(\pT,\eta)$ efficiency factors for the two leptons, can be defined.
+These fake weights allow for kinematic distributions of the fake lepton background
+sources to be populated
+by appropriately applying them to the data sample consisting of leptons satisfying the analysis' Loose selection.
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
