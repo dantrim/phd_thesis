@@ -257,7 +257,7 @@ In the discussion to follow, we will discuss that of final states with two lepto
 The real efficiencies, $\varepsilon_r$, are measured in data using $Z$-boson tag-and-probe methods, requiring the probe lepton
 to satisfy the Tight lepton selection and to be matched to the trigger.
 The probe lepton must satisfy the Loose lepton selection.
-The fraction of loose probe leptons to pass the Tight lepton selection then gives a measure of $\varepsilon_r$.
+The fraction of Loose probe leptons to pass the Tight lepton selection then gives a measure of $\varepsilon_r$.
 
 The fake efficiencies, $\varepsilon_f$, are measured in data using events with different-flavor leptons,
 where one lepton is an electron and the other is a muon, that have the same electric charge.
@@ -318,12 +318,12 @@ The number of events with double-fake and single-fake leptons satisfying the ana
 number of events with double-fake and single-fake leptons satisfying the Loose selection
 ($N_{LL}^{FF}$ and $N_{LL}^{RF} + N_{LL}^{FR}$, respectively) through inversion
 of Equation~\ref{eq:matrix_method}  and
-noting the following relations,
+noting the following relations:
 \begin{align}
-    N_{TT}^{RR} &= \varepsilon_{r,1}\,\varepsilon_{r,2} \cdot N_{LL}^{RR}  \label{eq:matrix_method_sol0}\\
-    N_{TT}^{RF} &= \varepsilon_{r,1}\,\varepsilon_{f,2} \cdot N_{LL}^{RF}  \label{eq:matrix_method_sol1}\\
-    N_{TT}^{FR} &= \varepsilon_{f,1}\,\varepsilon_{r,2} \cdot N_{LL}^{FR}  \label{eq:matrix_method_sol2}\\
-    N_{TT}^{FF} &= \varepsilon_{f,1}\,\varepsilon_{f,2} \cdot N_{LL}^{FF}. \label{eq:matrix_method_sol3}
+    N_{TT}^{RR} &= \varepsilon_{r,1}\,\varepsilon_{r,2} \times N_{LL}^{RR}  \label{eq:matrix_method_sol0}\\
+    N_{TT}^{RF} &= \varepsilon_{r,1}\,\varepsilon_{f,2} \times N_{LL}^{RF}  \label{eq:matrix_method_sol1}\\
+    N_{TT}^{FR} &= \varepsilon_{f,1}\,\varepsilon_{r,2} \times N_{LL}^{FR}  \label{eq:matrix_method_sol2}\\
+    N_{TT}^{FF} &= \varepsilon_{f,1}\,\varepsilon_{f,2} \times N_{LL}^{FF}. \label{eq:matrix_method_sol3}
 \end{align}
 The quantities appearing on the right-hand-side of Equations~\ref{eq:matrix_method_sol0}-\ref{eq:matrix_method_sol3}
 depend entirely on the observed data.
@@ -372,12 +372,12 @@ converted photons produced in jets are equally likely to give rise to a reconstr
 $e^+$ or $e^-$ and are uncorrelated to the sign of the real lepton.
 In trident decays whereby bremsstrahlung photons (radiated from the lepton children
 of the top-quarks) undergo conversion processes, however, there is a partial
-charge correlation of the reconstructed electron with the charge of the original lepton,
-and hence a larger contribution to the OS sample of events.
+charge correlation of the reconstructed (non-prompt) electron with the charge of the original lepton,
+and hence conversion processes contribute more to the OS sample of events.
 These two cases are illustrated in Figure~\ref{fig:ttbar_fake_charge_sym}.
 The lepton definitions within the OS and SS event samples are the same.
 That is, they use the same reconstruction, identification, and isolation working points.
-This is compared to the Matrix Method, in which the two samples of leptons used in the technique's
+This is compared to the Matrix Method (Section~\ref{sec:matrix_method}), in which the two samples of leptons used in the technique's
 implementation differ by their lepton definitions.
 
 \begin{figure}[!htb]
@@ -422,19 +422,17 @@ to be used in the OS selections.
 The contribution of fakes to each of the regions (CR, VR, or SR) in the analysis is estimated
 by subtracting the prediction of the prompt (real) SM backgrounds from the observed data
 in the associated SS selections, defined similarly to the OS selections used in the analysis but with the
-charge-requirements inverted.
+charge requirements inverted.
 The ratio of the number of OS to SS events with fake leptons, $f^{SS \rightarrow OS}$,
 is taken entirely from MC and is applied to the SS data that has had the prompt-MC contribution
 subtracted in order to extrapolate this number to the OS regions.
-This SS extrapolation is described by Equation~\ref{eq:ss_extrap}.
-
+This SS extrapolation is described by Equation~\ref{eq:ss_extrap}:
 \begin{align}
     N_{\text{OS}}^{\text{fake}} &= f^{SS \rightarrow OS} \times N_{\text{SS}}^{\text{fake}} \nonumber \\
         &= \frac{ N_{\text{MC,OS}}^{\text{fake}} }{ N_{\text{MC,SS}}^{\text{fake}} } \times ( N_{\text{data,SS}} - N_{\text{MC,SS}}^{\text{real}} )
         \label{eq:ss_extrap}
 \end{align}
-
-In addition to providing overall yields fake backgrounds in a given region,
+In addition to providing the overall yields of the fake backgrounds in a given region,
 the method described by Equation~\ref{eq:ss_extrap} provides the means to
 inspect the kinematics of the predicted fake backgrounds by simply computing
 Equation~\ref{eq:ss_extrap} on a bin-by-bin basis when populating histograms
