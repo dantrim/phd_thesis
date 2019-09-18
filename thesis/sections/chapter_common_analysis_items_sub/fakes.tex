@@ -125,24 +125,27 @@ Punch-through particles can leave signatures similar to charged muons whose subs
 MS tracks are associated with a track in the ID, leading to a reconstructed combined muon
 faking a genuine muon.
 An additional source of fake muons come from the in-flight decays of charged hadrons,
-such as the $K^\pm$ that can decay to $\mu^{\pm} \nu$.
-Non-prompt muons arising as a result of such in-flight decays are typically
-characterised by combined tracks that exhibit a kink topology, mentioned briefly
-in the discussion of muon combined reconstruction in Section~\ref{sec:muon_id} and
-illustrated in Figure~\ref{fig:fake_muon_kink}.
+such as the $K^\pm$ and $\pi^{\pm}$, that can decay to $\mu^{\pm} \nu$.
+These sources of non-prompt muons typically result in low-\pT~muons and are characterised
+by combined tracks with exhibiting a kink topology,
+briefly mentioned when discussing the muon combined reconstruction in Section~\ref{sec:muon_id}.
+The \pT~dependence of muon cross-sections for various sources of muons (prompt, fake, and non-prompt)
+is shown in Figure~\ref{fig:fake_muon_kink}, along with an illustration of the kinked-track topology
+characterising the in-flight decays of Kaons and charged pions.
 
 \begin{figure}[!htb]
     \begin{center}
-        \includegraphics[width=0.65\textwidth]{figures/common_ana/fake_muon_kinkPDF}
+        \includegraphics[width=0.43\textwidth]{figures/common_ana/fakes/reco_muon_sources}
+        \raisebox{0.45cm}{\includegraphics[width=0.54\textwidth]{figures/common_ana/fake_muon_kinkPDF}}
         \caption{
-            Illustration of a reconstructed non-prompt muon resulting from a kinked-track topology.
-            A promptly produced hadron is produced and decays to a final state including a
-            high-\pT muon.
-            The point at which the hadron decays is indicated by the yellow dot.
-            An example of such a decay is the decay $K^+ \rightarrow \mu^+ \nu$.
-            The red circles indicate detector hits in the ID and MS layers indicated
-            by the horizontal black lines.
-            Implied particle lifetimes and detector sizes are not to scale.
+            \textbf{\textit{Left}}:  Transverse momentum dependence of muon cross-sections for muons originating
+                from various prompt and non-prompt sources.
+                Figure taken from Ref.~\cite{CERN-LHCC-97-022}.
+            \textbf{\textit{Right}}: Illustration of a reconstructed non-prompt muon resulting from a kinked-track topology.
+                A produced $K^{\pm}$ or $\pi^{\pm}$ is produced and decays in-flight to a muon and muon-neutrino.
+                The point at which the hadron decays is indicated by the yellow dot.
+                The red circles indicate detector hits in the ID and MS layers indicated
+                by the horizontal black lines.
         }
         \label{fig:fake_muon_kink}
     \end{center}
@@ -347,4 +350,94 @@ by appropriately applying them to events in the data sample consisting of lepton
 \subsection{Same-sign Extrapolation Method}
 \label{sec:same_sign_extrap}
 
+The Same-sign Extrapolation Method is another method for
+estimating the numbers of events with fake and non-prompt leptons.
+This method is well described in Refs.~\cite{TOPQ-2015-09,TOPQ-2017-05}.
+The method is tailored for dilepton analyses that require the two
+leptons to have opposite electric charge and takes advantage of the fact that the
+production mechanisms for the fake leptons described above are generally
+uncorrelated with the charges of leptons in the event.
+This means that the rates of the various sources of fake leptons will generally
+be the same in the sample of oppositely-charged dilepton events and in the
+sample of dilepton events in which the leptons have the same charge.
+The former are referred to as opposite-sign (OS) events and the latter
+as same-sign (SS) events.
+This assumption is not entirely correct, however, since the underlying sources of
+the fake and/or non-prompt leptons are not all charge symmetric.\footnote{`Charge-symmetric' means that the
+dilepton final state of a given process may be either OS or SS, with equal probability of each case occuring.}
+For example, a dominant source of mis-identified leptons in dileptonic events
+arises from the production of semi-leptonically decaying top-quark pairs, in which the sub-leading reconstructed
+electrons arise from a mis-identified jet.
+This process is charge-symmetric since
+converted photons produced in jets are equally likely to give rise to a reconstructed
+$e^+$ or $e^-$ and are uncorrelated to the sign of the real lepton.
+In trident decays whereby bremsstrahlung photons (radiated from the lepton children
+of the top-quarks) undergo conversion processes, however, there is a partial
+charge correlation of the reconstructed electron with the charge of the original lepton,
+and hence a larger contribution to the OS sample of events.
+These two cases are illustrated in Figure~\ref{fig:ttbar_fake_charge_sym}.
 
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.7\textwidth]{figures/common_ana/fakes/ttbar_fake_charge_sym_semi}
+        \includegraphics[width=0.7\textwidth]{figures/common_ana/fakes/ttbar_fake_charge_sym_trident}
+        \caption{
+            Illustration of charge-asymmetry in fake lepton production
+            arising in top-quark pair production events, leading to
+            the rate of photon conversion sources of fake electrons being larger in OS dilepton events.
+            \textbf{\textit{Top}}: Shower photons arising from decays within one of the jets
+                in semi-leptonic decays of top-quark pairs may convert to an electron-positron pair,
+                leading to one of the jets being reconstructed as an electron.
+                Looking at the charge possibilities of each side of the top-quark pair decay,
+                the event is equally likely to be classified as either an OS or SS event.
+            \textbf{\textit{Bottom}}: Trident events arising in dileptonic top-quark pair production
+                events can lead to a non-prompt electron from the photon conversion being selected
+                as one of the event's candidate leptons.
+                The overall charge possibilites of the lepton charges on the side of the trident decay
+                are correlated with the charge of the initial lepton.
+                Looking at the charge combinations possible between both sides of the top-quark pair decay,
+                the event is more likely to be classified as an OS event.
+        }
+        \label{fig:ttbar_fake_charge_sym}
+    \end{center}
+\end{figure}
+
+The method also assumes that the rate of dilepton events in which \textit{both} leptons
+are fake is negligible, and that the composition of the fake background contributing to
+the dilepton final state is composed of events in which one of the leptons is real.
+In the majority of cases, the sub-leading lepton is the fake lepton.
+For this reason, when using the MC simulation to gain predictions of the composition of
+the fake backgrounds, the MC events in which only one of the leptons is fake are considered.
+This will become clear in the discussion to follow and in the specific implementation described
+in Chapter~\ref{chap:search_hh}.
+
+
+The general method works as follows.
+Since, as described above, the rates of the various sources of fake backgrounds in the OS and SS samples of events
+are generally the same, the method relies on using the sample of SS events to provide a template of the fake backgrounds
+to be used in the OS selections.
+The contribution of fakes to each of the regions (CR, VR, or SR) in the analysis is estimated
+by subtracting the prediction of the prompt (real) SM backgrounds from the observed data
+in the associated SS selections, defined similarly to the OS selections used in the analysis but with the
+charge-requirements inverted.
+The ratio of the number of OS to SS events with fake leptons, $f^{SS \rightarrow OS}$,
+is taken entirely from MC and is applied to the SS data that has had the prompt-MC contribution
+subtracted in order to extrapolate this number to the OS regions.
+This SS extrapolation is described by Equation~\ref{eq:ss_extrap}.
+
+\begin{align}
+    N_{\text{OS}}^{\text{fake}} &= f^{SS \rightarrow OS} \times N_{\text{SS}}^{\text{fake}} \nonumber \\
+        &= \frac{ N_{\text{MC,OS}}^{\text{fake}} }{ N_{\text{MC,SS}}^{\text{fake}} } \times ( N_{\text{data,SS}} - N_{\text{MC,SS}}^{\text{real}} )
+        \label{eq:ss_extrap}
+\end{align}
+
+In addition to providing overall yields fake backgrounds in a given region,
+the method described by Equation~\ref{eq:ss_extrap} provides the means to
+inspect the kinematics of the predicted fake backgrounds by simply computing
+Equation~\ref{eq:ss_extrap} on a bin-by-bin basis when populating histograms
+of kinematic observables.
+
+Further details on the implementation of the Same-sign Extrapolation Method,
+described by Equation~\ref{eq:ss_extrap}, will be given in Chapter~\ref{chap:search_hh}.
+In particular, the implicit sensitivities to the MC simulation will be described,
+as well as additional extrapolations specific to the analysis.
