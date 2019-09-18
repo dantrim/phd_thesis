@@ -301,15 +301,14 @@ in the sample of Loose leptons is fake and the sub-leading is real.
 The matrix $M$ is given by,
 \begin{align}
     M = \begin{pmatrix}
-            r_1 r_2 & r_1 f_2  & f_1 r_2 & f_1 f_2 \\
-            r_1 \overline{r_2} & r_1\overline{f_2} & f_1 \overline{r_2} & f_1 \overline{f_2} \\
-            \overline{r_1} r_2 & \overline{r_1} f_2 & \overline{f_1} r_2 & \overline{f_1} f_2 \\
-            \overline{r_1} \overline{r_2} & \overline{r_1} \overline{f_2} & \overline{f_1} \overline{r_2} & \overline{f_1} \overline{f_2}
+            \varepsilon_{r,1}\,\varepsilon_{r,2} & \varepsilon_{r,1}\,\varepsilon_{f,2}  & \varepsilon_{f,1}\, \varepsilon_{r,2} & \varepsilon_{f,1}\, \varepsilon_{f,2} \\
+            \varepsilon_{r,1}\, \overline{\varepsilon_{r,2}} & \varepsilon_{r,1}\,\overline{\varepsilon_{f,2}} & \varepsilon_{f,1}\, \overline{\varepsilon_{r.2}} & \varepsilon_{f,1}\, \overline{\varepsilon_{f,2}} \\
+            \overline{\varepsilon_{r,1}} \varepsilon_{r,2} & \overline{\varepsilon_{r,1}}\, \varepsilon_{f,2} & \overline{\varepsilon_{f,1}}\, \varepsilon_{r,2} & \overline{\varepsilon_{f,1}}\, \varepsilon_{f,2} \\
+            \overline{\varepsilon_{r,1}}\, \overline{\varepsilon_{r,2}} & \overline{\varepsilon_{r,1}}\, \overline{\varepsilon_{f,2}} & \overline{\varepsilon_{f,1}}\, \overline{\varepsilon_{r,2}} & \overline{\varepsilon_{f,1}}\, \overline{\varepsilon_{f,2}}
         \end{pmatrix}
     \label{eq:matrix_method_matrix}
 \end{align}
-where $r_i$ ($f_i$) is shorthand for the real (fake) efficiency, $\varepsilon_r$ ($\varepsilon_f$),
-and the notation $\overline{x_i}$ indicates $(1 - x_i)$.
+where the notation $\overline{\varepsilon}$ indicates $(1 - \varepsilon)$.
 %To make clear the data-driven aspect of the method:
 %both sets of qauntities --- those appearing on the left-hand-side of Equation~\ref{eq:matrix_method} and the $r_i$ and $f_i$ ---
 %are measured using the observed data.
@@ -321,10 +320,10 @@ number of events with double-fake and single-fake leptons satisfying the Loose s
 of Equation~\ref{eq:matrix_method}  and
 noting the following relations,
 \begin{align}
-    N_{TT}^{RR} &= r_1 r_2 \cdot N_{LL}^{RR}  \label{eq:matrix_method_sol0}\\
-    N_{TT}^{RF} &= r_1 f_2 \cdot N_{LL}^{RF}  \label{eq:matrix_method_sol1}\\
-    N_{TT}^{FR} &= f_1 r_2 \cdot N_{LL}^{FR}  \label{eq:matrix_method_sol2}\\
-    N_{TT}^{FF} &= f_1 f_2 \cdot N_{LL}^{FF}. \label{eq:matrix_method_sol3}
+    N_{TT}^{RR} &= \varepsilon_{r,1}\,\varepsilon_{r,2} \cdot N_{LL}^{RR}  \label{eq:matrix_method_sol0}\\
+    N_{TT}^{RF} &= \varepsilon_{r,1}\,\varepsilon_{f,2} \cdot N_{LL}^{RF}  \label{eq:matrix_method_sol1}\\
+    N_{TT}^{FR} &= \varepsilon_{f,1}\,\varepsilon_{r,2} \cdot N_{LL}^{FR}  \label{eq:matrix_method_sol2}\\
+    N_{TT}^{FF} &= \varepsilon_{f,1}\,\varepsilon_{f,2} \cdot N_{LL}^{FF}. \label{eq:matrix_method_sol3}
 \end{align}
 The quantities appearing on the right-hand-side of Equations~\ref{eq:matrix_method_sol0}-\ref{eq:matrix_method_sol3}
 depend entirely on the observed data.
