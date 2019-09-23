@@ -1,14 +1,14 @@
 \section{Systematic Uncertainties}
 \label{sec:common_systematics}
 
-There are many sources of systematic uncertainty that affect the results of the analyses
+There are many sources of systematic uncertainty (`systematics') that affect the results of the analyses
 to be presented in Chapters~\ref{chap:search_stop} and \ref{chap:search_hh}.
 The considered sources of systematic uncertainty are listed in Table~\ref{tab:syst_summary}.
 There are uncertainties related to the overall event (e.g. the uncertainty
 on the luminosity measurement), on the reconstruction and identification of
 the physics objects described in Section~\ref{chap:objects}, and in the MC
 simulation of both the SM background and signal processes.
-Brief descriptions of the sources of systematic uncertainties (`systematics')
+Brief descriptions of the sources of systematic uncertainty
 appearing in Table~\ref{tab:syst_summary} are given in Sections~\ref{sec:syst_experimental}-\ref{sec:syst_sig_modelling}.
 
 \input{tables/systematics/tab_syst_summary}
@@ -85,9 +85,44 @@ Generally, the \met uncertainties are sub-dominant.
 
 \subsubsection{Fake Lepton Estimate}
 
+As will be seen in Chapters~\ref{chap:search_stop} and \ref{chap:search_hh}, the overall contribution
+of the fake background processes to the analyses to be presented in this thesis is very small.
+As a result, the systematic uncertainties related to this background are almost always negligible
+in impact on the analyses' final results.
+However, given the subtle nature of these data-driven estimates, we describe the methods by which
+systematic uncertainties are derived for them.
+They are as follows:
+
 \begin{description}
-    \item{Matrix Method (Section~\ref{sec:matrix_method}):} Hello World
-    \item{Same-sign Extrapolation Method (Section~\ref{sec:same_sign_extrap}):}  YERP
+    \item{Matrix Method (Section~\ref{sec:matrix_method}):} There are three primary sources of systematic
+        uncertainty ascribed to the fake estimate derived from the Matrix Method in the analysis described
+        in Chapter~\ref{chap:search_stop}.
+        The first is related to the limited statistics in the region(s) used for the determination of the
+        fake efficiencies, $\varepsilon_r$ and $\varepsilon_f$.
+        The second is related to the `prompt subraction': the evaluation of the portion of real events contaminating the
+        regions in which the fake efficiencies are derived, which is evaluated using the MC simulation.       
+        The component of real lepton sources is varied by $\pm 30$\% and the impact on the resulting
+        fake efficiencies is propagated to to the final analysis. 
+        The third component is related to the compositional differences of the background sources leading
+        to fake leptons in the region in which the fake efficiencies are derived and in the regions (SRs)
+        in which the fake estimate is applied.
+        To assess the systematic related to compositional differences, alternative regions in which the leading
+        components of the fake backgrounds (e.g. the heavy flavor component) are varied are defined and the impact on the measured fake efficiencies
+        is used to define an uncertainty.
+    \item{Same-sign Extrapolation Method (Section~\ref{sec:same_sign_extrap}):} As with the Matrix Method,
+        there are three primary sources of uncertainty prescribed to the fake background estimate derived using
+        the Same-sign Exrtrapolation Method. The first, as with the Matrix Method, is related to the prompt subtraction
+        in which the rate of contamination of prompt processes is varied.
+        In the analysis described in Chapter~\ref{chap:search_hh}, the real contamination in the same-sign
+        regions is varied by $\pm 50$\%, and the impact on the final fake background estimate is used to quantify
+        an uncertainty.
+        Following the studies in Refs.~\cite{TOPQ-2015-09,TOPQ-2017-05}, an additional uncertainty (on top of the statistical component) on the
+        extrapolation from the SS to the OS regions is included by varying the $f^{SS \rightarrow OS}$ factors
+        by $\pm 20$\% and assessing the impact on the final fake background prediction.
+        The statistical uncertainty related to the extrapolation over the $d_{hh}$ discriminant,
+        described in {\color{red}{Section XXX}} is applied as an additional uncertainty on this fake background estimate.
+        Uncertainties related to the composition of fakes in the SS and OS regions are found to be small,
+        and are covered by the extrapolation factor uncertainties already described.
 \end{description}
 
 
