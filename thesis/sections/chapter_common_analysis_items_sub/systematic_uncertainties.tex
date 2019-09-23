@@ -49,6 +49,17 @@ The effects of the JES and JER uncertainties are among the more dominant sources
 on the final analysis results in both analyses to be presented.
 Given the complexity of the JES and JER calibrations, there are nearly 100 components associated with their uncertainties
 that must be incorporated into an analysis' measurement uncertainty.
+In general, the leading uncertainty in searches such as those to be presented in the current thesis
+is statistical in nature --- related to the limited statistics in data and in the MC simulation used
+for the final SR predictions ---  and not related to the systematic uncertainties.
+For this reason, the searches described in Chapters~\ref{chap:search_stop} and \ref{chap:search_hh}
+used a reduced set of JES and JER uncertainties that are derived following a Principal Component Analysis (PCA)
+designed to capture only the dominant components, and their correlations, of the total set of JES and JER uncertainty components
+that are relevant to the phase space being probed by the analyses.
+%to group together only those components of the overall uncertainty that are relevant to the phase
+%space being probed by the analyses.
+In the analysis presented in Chapter~\ref{chap:search_stop} (\ref{chap:search_hh}), this uncertainty reduction
+process leads to only 4 (34) separate components of the combined JES and JER systematic uncertainty.
 
 \subsubsection{Flavor Tagging Uncertainties}
 There are uncertainties in the jet flavor tagging efficiencies, as well as in
@@ -211,6 +222,64 @@ assessed by comparing the nominal MC simulation for the processes in question to
 that of an MC simulation with certain theoretical or phenomenological parameters varied.
 In this way, one can assess the impact of the underlying assumptions made
 in the MC simulation on the analyses' final results.
+
+\subsubsection{Top-quark Pair and Single-top $Wt$ Production}
+The production of SM top-quark pairs, \ttbar, is by far the most dominant SM background
+in both of the analyses described in Chapters~\ref{chap:search_stop} and \ref{chap:search_hh}.
+Some of the largest uncertainties in both analyses described therein are related to the modelling
+of the \ttbar~process.
+The process in which a single top-quark is produced in association with a $W$-boson plays a large
+role in the analysis presented in Chapter~\ref{chap:search_hh}.
+The MC simulation of these two processes is done using the same MC generation steps and, as a result,
+the methods by which their systematic evaluation is performed are the same.
+Here we describe the systematic variations used in the analyses for both of these processes.
+
+Variation of the hard-scatter generation is performed by comparing the \ttbar~and \wt~samples produced
+using \textsc{Powheg} for the matrix element generation to that using \textsc{aMC@NLO}, but keeping
+the showering and fragmentation model the same in both (\textsc{Pythia8}).
+The effects of the choice of fragmentation and hadronization model is assessed by comparing
+the use of \textsc{Pythia8}, used in the nominal \ttbar~and \wt~predictions, to that of \textsc{Herwig}, all the while
+keeping \textsc{Powheg} for the hard-scatter generation in both cases.
+The description of the ISR and FSR provided by the hard-scatter generation is ascribed an
+uncertainty by varying the underlying parameters that describe the characteristic energy
+scales at which additional radiation (beyond that described by the matrix-element hard-scatter)
+is produced.
+In \textsc{Powheg}, this is controlled primarily by the \texttt{hdamp} parameter, and to assess
+the impact of this parameter's value on the analyses it is varied up and down by a factor of 2 relative
+to the nominal scenario.
+The impact of the choice of PDF used in the hard-scatter generation is assessed by varying the
+choice of PDF from the nominal, which is that of the NNPDF collaboration~\cite{Ball:2014uwa},
+to that of the MMHT~\cite{Harland-Lang:2014zoa}, CT14~\cite{Lai:2010vv}, and PDF4LHC~\cite{Butterworth:2015oua} PDF sets and taking
+the envelope of the variations.
+The PDF error set, comprised of 100 separate components and provided by the NNPDF collaboration, is used to assign an additional uncertainty
+on the nominal PDF used.
+To assess the impact of the finite order in QCD at which the MC simulation is taken, and
+sensitivity to missing higher-order terms, the factorization and renormalization scales,
+$\mu_F$ and $\mu_R$, are varied in all pairings possible in which either is varied by a factor of two
+up or down.
+The resulting \textit{scale uncertainties} are derived by taking the envelope of the resulting variations.
+
+Only in the analysis presented in Chapter~\ref{chap:search_hh} is the uncertainty related
+to the theoretical prediction of the \ttbar~and \wt~processes taken into account.
+The former is taken to be $\pm 5.82\%$ and the latter $\pm 5.32$\%~\cite{Czakon:2013goa,ATLAS-CONF-2013-102,Kidonakis:2010ux}.
+The analysis described in Chapter~\ref{chap:search_hh} considers the sum of the \ttbar~and \wt~processes
+as a single background and constrains the normalisation of their sum using a dedicated CR.
+The uncertainties on these processes' cross-section, therefore, are taken into account to allow
+for the \textit{composition} of their combined estimate ($\ttbar+\wt$), as opposed to its normalisation, to vary within the theoretical uncertainties.
+
+An additional uncertainty, considered in both analyses presented in the current thesis, is related
+to the non-trivial quantum interference between the NLO predictions of the \ttbar~and $\wt+b$~processes relevant
+to both analyses.
+This uncertainty is assessed by comparing the estimates of the \wt~process simulated
+under the so-called Diagram Removal (DR) and Diagram Subtraction (DS) schemes that
+are used in the NLO calculation of the single-top \wt~process.
+The DR and DS schemes, and their comparison as a means of assessing a systematic uncertainty
+as just described, are fully described in Refs.~\ref{Frixione:2008yi,ATL-PHYS-PUB-2016-004}.
+This \textit{interference uncertainty} is negligible in the analysis presented in Chapter~\ref{chap:search_stop},
+given the relatively small contamination of the \wt~process.
+However, it is an important uncertainty in the analysis presented in Chapter~\ref{chap:search_hh}.
+In this latter analysis, the \wt~background contributes at a rate equal to that of the \ttbar~process, making
+the assessment of their interference a subtle one that will be described in Chapter~\ref{chap:search_hh}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
