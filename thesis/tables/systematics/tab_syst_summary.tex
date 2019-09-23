@@ -1,38 +1,69 @@
 \begin{table}[!htb]
+    \caption{
+        Summary of the sources of systematic uncertainties affecting the measurements
+        in the analyses discussed in Chapters~\ref{chap:search_stop} and \ref{chap:search_hh}.
+        Sources of uncertainty in {\color{red}{red}} ({\color{blue}{blue}}) pertain only to the
+        search presented in Chapter~\ref{chap:search_stop} (\ref{chap:search_hh}).
+        Those in black are considered in both analyses.
+    }
+    \label{tab:syst_summary}
+    \begin{footnotesize}
     \begin{center}
-        \begin{tabularx}{\textwidth}{l c c c c c}
+        %\begin{tabularx}{\textwidth}{@{\extracolsep{\fill}}c c c c}
+        %\begin{tabularx}{\textwidth}{c c c c}
+        \begin{tabular}{c c c c}
         \toprule
         \hline
-        \multicolumn{6}{c}{\textbf{Event-level}} \\
+        \multicolumn{4}{c}{\textbf{Event-level}} \\
         \hline
-        \multicolumn{6}{c}{Luminosity} \\
-        \multicolumn{6}{c}{Pile-up Modelling} \\
+        \multicolumn{4}{c}{Luminosity Measurement} \\
+        \multicolumn{4}{c}{Pile-up Modelling} \\
 %        \multicolumn{3}{c}{Luminosity} & \multicolumn{2}{c}{ Pile-up }  \\
         \hline
         \midrule
-        \multicolumn{6}{c}{\textbf{Object-level}} \\
-        \hline
-        \multicolumn{3}{c}{\underline{Jets}} & \underline{Flavor Tagging} & \underline{Leptons} & \underline{\met} \\
-        \multicolumn{3}{c}{Jet Energy Scale (JES)} & Scale-factor Meas. & Reconstruction Eff. & Soft-term Resolution \\
-        \multicolumn{3}{c}{Jet Energy Resolution (JER)} &  & Identification Eff. &  Soft-term Scale \\
-        \multicolumn{3}{c}{Pile-up Suppression (JVT)} &  & Isolation Eff. &  \\
+        \multicolumn{4}{c}{\textbf{Object Reconstruction}} \\ \hline
+        \hspace{-2cm} \underline{\textbf{Jets}} &     \hspace{-1.8cm} \underline{\textbf{Flavor Tagging}} & \hspace{0.5cm}\underline{\textbf{Leptons}} & \hspace{0.3cm} \underline{\textbf{\met}} \\
+        \hspace{-2cm} Jet Energy Scale (JES) &        \hspace{-1.8cm} $b$-tag Eff. & \hspace{0.5cm}Reconstruction Eff. & \hspace{0.3cm} Soft-term Resolution \\
+        \hspace{-2cm} Jet Energy Resolution (JER) &   \hspace{-1.8cm} Mis-tag Eff. & \hspace{0.5cm}Identification Eff. & \hspace{0.3cm}  Soft-term Scale \\
+        \hspace{-2cm} Pile-up Suppression (JVT) &     \hspace{-1.8cm}   & \hspace{0.5cm}Isolation Eff. &\hspace{0.3cm}  \\
+        \hspace{-2cm} &     \hspace{-1.8cm}   & \hspace{0.5cm}Trigger Eff. &\hspace{0.3cm}  \\
         \midrule
         \midrule
-        \multicolumn{6}{c}{\textbf{Background Modelling}} \\
+        \multicolumn{4}{c}{\textbf{Background Modelling}} \\
         \hline
-        \multicolumn{1}{l|}{} & \multicolumn{5}{c}{Background Process} \\
-        %\multicolumn{1}{l|}{ }  & \underline{\ttbar} & \underline{$Wt$} & \underline{Diboson} & \underline{$Z$+jets} & \underline{Fake Lepton Estimate} \\
-        \multicolumn{1}{l|}{Uncertainty Source }  & \ttbar & $Wt$ & Diboson & $Z$+jets & Fake Lepton \\
+        \multicolumn{1}{l}{\textbf{Souce of Uncertainty}} & \multicolumn{3}{c}{\textbf{Affected Background Processes}}\\
         \hline
-        \multicolumn{1}{l|}{Hard-Scatter Generation}  & \checkmark & \checkmark & & & \\
-        \multicolumn{1}{l|}{Fragmentation}  & \checkmark & \checkmark  & & & \\
-        \multicolumn{1}{l|}{Additional Radiation} & \checkmark & \checkmark & & & \\
-        \multicolumn{1}{l|}{PDF} & \checkmark & \checkmark &  & \checkmark & \\
-        \multicolumn{1}{l|}{Scale ($\mu_R$, $\mu_F$) Variations} & \checkmark & \checkmark & & & \\
-        \multicolumn{1}{l|}{Cross-section} & \checkmark$_{HH}$& & & & \\
+        \multicolumn{1}{l}{Hard-Scatter Generation}  & \multicolumn{3}{c}{\ttbar, \wt, \color{blue}{\zhf}} \\
+        \multicolumn{1}{l}{Fragmentation} & \multicolumn{3}{c}{\ttbar, \wt} \\
+        \multicolumn{1}{l}{Additional Radiation (ISR and FSR variation)} & \multicolumn{3}{c}{\ttbar, \wt} \\
+        \multicolumn{1}{l}{PDF Choice and Uncertainty} & \multicolumn{3}{c}{\ttbar, \wt, \color{blue}{\zhf}, \color{red}{\vv}} \\
+        \multicolumn{1}{l}{Scale ($\mu_R$, $\mu_F$) Variations} & \multicolumn{3}{c}{\ttbar, \wt, \color{red}{\vv}, \color{blue}{\zhf}} \\
+        \multicolumn{1}{l}{Cross-section Uncertainty} & \multicolumn{3}{c}{\color{blue}{\ttbar}, \color{blue}{\wt}} \\
+        \multicolumn{1}{l}{Interference Uncertainty} & \multicolumn{3}{c}{\wt} \\
+        \multicolumn{1}{l}{Prompt Subtraction \& Fake Composition} & \multicolumn{3}{c}{Fake Lepton Background} \\ 
+        \multicolumn{1}{l}{SS-OS Extrapolation} & \multicolumn{3}{c}{\color{blue}{Fake Lepton Background}} \\ 
+        \midrule
+        \midrule
+        \multicolumn{4}{c}{\textbf{Signal Modelling}} \\
+        \hline
+        \multicolumn{4}{c}{Fragmentation} \\
+        \multicolumn{4}{c}{Scale ($\mu_R$, $\mu_F$) Variations} \\
+        \multicolumn{4}{c}{PDF Choice and Uncertainty} \\
+        \multicolumn{4}{c}{Cross-section Uncertainty} \\
+        
+%        %\multicolumn{1}{l|}{ }  & \underline{\ttbar} & \underline{$Wt$} & \underline{Diboson} & \underline{$Z$+jets} & \underline{Fake Lepton Estimate} \\
+%        \multicolumn{1}{l|}{Uncertainty Source }  & \ttbar & $Wt$ & Diboson & $Z$+jets & Fake Lepton \\
+%        \hline
+%        \multicolumn{1}{l|}{Hard-Scatter Generation}  & \checkmark & \checkmark & & & n/a\\
+%        \multicolumn{1}{l|}{Fragmentation}  & \checkmark & \checkmark  & & & \\
+%        \multicolumn{1}{l|}{Additional Radiation} & \checkmark & \checkmark & & & \\
+%        \multicolumn{1}{l|}{PDF} & \checkmark & \checkmark &  & \checkmark & \\
+%        \multicolumn{1}{l|}{Scale ($\mu_R$, $\mu_F$) Variations} & \checkmark & \checkmark & & & \\
+%        \multicolumn{1}{l|}{Cross-section} & \checkmark$_{HH}$& & & & \\
 %        HS + Matching & HS + Matching & & &  \\
 %        Frag. + Had. & Frag. + Had. & & &  \\
         \bottomrule
-        \end{tabularx}
+        \end{tabular}
     \end{center}
+    \end{footnotesize}
 \end{table}
