@@ -54,7 +54,7 @@ is statistical in nature --- related to the limited statistics in data and in th
 for the final SR predictions ---  and not related to the systematic uncertainties.
 For this reason, the searches described in Chapters~\ref{chap:search_stop} and \ref{chap:search_hh}
 used a reduced set of JES and JER uncertainties that are derived following a Principal Component Analysis (PCA)
-designed to capture only the dominant components, and their correlations, of the total set of JES and JER uncertainty components
+designed to capture only the dominant components --- and their correlations --- of the total set of JES and JER uncertainty components
 that are relevant to the phase space being probed by the analyses.
 %to group together only those components of the overall uncertainty that are relevant to the phase
 %space being probed by the analyses.
@@ -206,6 +206,11 @@ using the nominal (systematically varied) prediction of the process.
 The quantity $\Delta \tau$ is then taken as a fractional uncertainty on the corresponding
 process' SR predicted yield.
 
+Sources of uncertainty stated as following the TF approach in Table~\ref{tab:syst_summary} are
+quantified following Equation~\ref{eq:tf_uncert}.
+The others are assessed simply by taking the impact of the variation on the process'
+predicted yields in each of the regions appearing in the analyses.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -281,6 +286,43 @@ However, it is an important uncertainty in the analysis presented in Chapter~\re
 In this latter analysis, the \wt~background contributes at a rate equal to that of the \ttbar~process, making
 the assessment of their interference a subtle one that will be described in Chapter~\ref{chap:search_hh}.
 
+\subsubsection{$Z$-boson Production in Association with Heavy-Flavor Jets}
+
+Processes involving the production of a SM $Z$-boson in association with
+two or more heavy-flavor jets are important for the analysis presented in Chapter~\ref{chap:search_hh}.
+These processes are referred to simply as `\zhf'.
+
+The PDF and scale uncertainties on the \zhf~process are computed in exactly the
+same fashion as for the \ttbar~and \wt~processes described in the previous section.
+Additional uncertainties on the parton shower merging scales are assessed by varying
+the CKKW merging scales~\cite{Lonnblad:2012ix} used by the \textsc{Sherpa} MC generator
+used for the \zhf~simulation.
+To assess the impact of different MC hard-scatter generation and fragmentation models, the 
+nominal sample produced using \textsc{Sherpa} is compared to a \zhf~simulation produced using
+\textsc{Madgraph+aMC@NLO} for the hard-scatter generation.
+%This last uncertainty prescription provides a measure of the uncertainty in the prediction
+%of the phase space probed by the \zhf~process, which is known to be theoretically challenging.
+%Experimentally, it is found that the theoretical predictions for the \zhf~process tend to
+%under-predict the observed data by 20-30\% in regions in which the $b$-tagged jets
+%tend to be collinear~\cite{CMS-EWK-11-015,STDM-2012-15}.
+This last source of uncertainty is important for the analysis described in Chapter~\ref{chap:search_hh}
+and amounts to an uncertainty of $\pm 15$\% on the \zhf~background estimate in the analysis' SRs.
+%This region of phase space is important for the analysis presented in Chapter~\ref{chap:search_hh} and
+%amounts to an uncertainty $\pm 15$\%.
+The other sources of uncertainty on the \zhf~background are minor in comparison.
+
+\subsubsection{Diboson Production}
+
+The SM production of boson pairs --- diboson production (`$VV$') --- plays an important role only in the
+analysis described in Chapter~\ref{chap:search_stop}.
+The nominal $VV$ background estimate is simulated using the \textsc{Sherpa} MC generator.
+Uncertainties arising as a result of variations in the factorziation and renormalization scales,
+PDF variations, and uncertainties in the CKKW merging scales are considered.
+The methods by which these uncertainteis are quantified are described above.
+These systematic uncertainteis amount to about a $\pm 9$\% uncertainty in the SR prediction
+in the analysis described in Chapter~\ref{chap:search_stop}, but are generally smaller than
+the modelling uncertainties on the \ttbar~background process.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -291,3 +333,21 @@ the assessment of their interference a subtle one that will be described in Chap
 
 \subsection{Signal Modelling Uncertainties}
 \label{sec:syst_sig_modelling}
+
+Uncertainties on the signal modelling are assessed in both analyses presented in Chapters~\ref{chap:search_stop}
+and \ref{chap:search_hh}.
+The methods by which the uncertainties arising due to variations in the $\mu_F$ and $\mu_R$ scales, as
+well as due to variations in the PDF choice, are assessed in exactly the same manner
+as for the SM backgrounds described in Section~\ref{sec:syst_bkg_modelling}.
+In both searches, these uncertainties on the signal are negligible.
+For the analysis described in Chapter~\ref{chap:search_stop}, the uncertainties
+arising as a result of varying the fragmentation model are found to be negligible for the
+phase space probed by the SUSY parameter space, described by the masses of the supersymmetric
+top-quark and LSP, in which that search is performed.
+In the analysis described in Chapter~\ref{chap:search_hh}, uncertainties arising as a result of
+the choice in fragmentation model are assessed by varying the choice of parton shower generator
+from the nominal \textsc{Herwig} to an alternative description provided by \textsc{Pythia}
+and have little impact on the analysis' final result.
+The uncertainties on the theoretical cross-sections on the signal models appearing in the two analyses
+are generally small and are found to not have a large impact on either of the analyses' final results.
+
