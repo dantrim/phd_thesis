@@ -5,6 +5,8 @@
         Sources of uncertainty in {\color{red}{red}} ({\color{blue}{blue}}) pertain only to the
         search presented in Chapter~\ref{chap:search_stop} (\ref{chap:search_hh}).
         Those in black are considered in both analyses.
+        For the uncertainties related to the SM background modelling, it is indicated
+        whether or not they are computed using the Transfer Factor Method (Section~\ref{sec:transfer_factor}).
     }
     \label{tab:syst_summary}
     \begin{footnotesize}
@@ -31,17 +33,17 @@
         \midrule
         \multicolumn{4}{c}{\textbf{Background Modelling}} \\
         \hline
-        \multicolumn{1}{l}{\textbf{Souce of Uncertainty}} & \multicolumn{3}{c}{\textbf{Affected Background Processes}}\\
+        \multicolumn{1}{l}{\textbf{Souce of Uncertainty}} & \multicolumn{2}{c}{\textbf{Affected Background Processes}} & \textbf{Transfer Factor Approach?} \\
         \hline
-        \multicolumn{1}{l}{Hard-Scatter Generation}  & \multicolumn{3}{c}{\ttbar, \wt, \color{blue}{\zhf}} \\
-        \multicolumn{1}{l}{Fragmentation} & \multicolumn{3}{c}{\ttbar, \wt} \\
-        \multicolumn{1}{l}{Additional Radiation (ISR and FSR variation)} & \multicolumn{3}{c}{\ttbar, \wt} \\
-        \multicolumn{1}{l}{PDF Choice and Uncertainty} & \multicolumn{3}{c}{\ttbar, \wt, \color{blue}{\zhf}, \color{red}{\vv}} \\
-        \multicolumn{1}{l}{Scale ($\mu_R$, $\mu_F$) Variations} & \multicolumn{3}{c}{\ttbar, \wt, \color{red}{\vv}, \color{blue}{\zhf}} \\
-        \multicolumn{1}{l}{Cross-section Uncertainty} & \multicolumn{3}{c}{\color{blue}{\ttbar}, \color{blue}{\wt}} \\
-        \multicolumn{1}{l}{\ttbar~Interference Uncertainty} & \multicolumn{3}{c}{\wt} \\
-        \multicolumn{1}{l}{Prompt Subtraction \& Fake Composition} & \multicolumn{3}{c}{Fake Lepton Background} \\ 
-        \multicolumn{1}{l}{SS-OS Extrapolation} & \multicolumn{3}{c}{\color{blue}{Fake Lepton Background}} \\ 
+        \multicolumn{1}{l}{Hard-Scatter Generation}  & \multicolumn{2}{c}{\ttbar, \wt, \color{blue}{\zhf}} & Yes \\
+        \multicolumn{1}{l}{Fragmentation} & \multicolumn{2}{c}{\ttbar, \wt} & Yes \\
+        \multicolumn{1}{l}{Additional Radiation (ISR and FSR variation)} & \multicolumn{2}{c}{\ttbar, \wt} & Yes \\
+        \multicolumn{1}{l}{PDF Choice and Uncertainty} & \multicolumn{2}{c}{\ttbar, \wt, \color{blue}{\zhf}, \color{red}{\vv}} & Yes \\
+        \multicolumn{1}{l}{Scale ($\mu_R$, $\mu_F$) Variations} & \multicolumn{2}{c}{\ttbar, \wt, \color{red}{\vv}, \color{blue}{\zhf}} & Yes \\
+        \multicolumn{1}{l}{Cross-section Uncertainty} & \multicolumn{2}{c}{\color{blue}{\ttbar}, \color{blue}{\wt}} & No \\
+        \multicolumn{1}{l}{\ttbar~Interference Uncertainty} & \multicolumn{2}{c}{\wt} & Yes \\
+        \multicolumn{1}{l}{Prompt Subtraction \& Fake Composition} & \multicolumn{2}{c}{Fake Lepton Background} & No \\ 
+        \multicolumn{1}{l}{SS-OS Extrapolation} & \multicolumn{2}{c}{\color{blue}{Fake Lepton Background}} & No \\ 
         \midrule
         \midrule
         \multicolumn{4}{c}{\textbf{Signal Modelling}} \\

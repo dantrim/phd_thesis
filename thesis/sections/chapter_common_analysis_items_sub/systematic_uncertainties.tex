@@ -1,4 +1,189 @@
 \section{Systematic Uncertainties}
 \label{sec:common_systematics}
 
+There are many sources of systematic uncertainty that affect the results of the analyses
+to be presented in Chapters~\ref{chap:search_stop} and \ref{chap:search_hh}.
+The considered sources of systematic uncertainty are listed in Table~\ref{tab:syst_summary}.
+There are uncertainties related to the overall event (e.g. the uncertainty
+on the luminosity measurement), on the reconstruction and identification of
+the physics objects described in Section~\ref{chap:objects}, and in the MC
+simulation of both the SM background and signal processes.
+Brief descriptions of the sources of systematic uncertainties (`systematics')
+appearing in Table~\ref{tab:syst_summary} are given in Sections~\ref{sec:syst_experimental}-\ref{sec:syst_sig_modelling}.
+
 \input{tables/systematics/tab_syst_summary}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% EXPERIMENTAL UNCERTAINTIES
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Experimental Uncertainties}
+\label{sec:syst_experimental}
+
+\subsubsection{Event-wide Uncertainties}
+Event-wide (process-independent) uncertainties affecting the overall normalisation of the processes
+relate to both the luminosity and pileup measurements.
+The uncertainty on the integrated luminosity used to normalise all MC simulated
+processes is derived following the methodology described in Ref.~\cite{LumiUncert}.
+For the 2015+2016 (full Run 2) dataset, relevant to the analysis described in Chapter~\ref{chap:search_stop} (\ref{chap:search_hh}),
+this uncertainty was found to be 2.1\% (1.7\%).
+The uncertainty on the luminosity measurement does not affect processes whose
+SR normalisation is constrained by data in dedicated CRs.
+
+An uncertainty is considered on re-weighting the pileup distributions in the
+MC simulation.
+The re-weighting is applied in order to correct for the differences in the actual pile-up
+distributions observed in data and those assumed at the time of producing the MC simulation (Section~\ref{sec:pileup_sim}).
+
+\subsubsection{Jet Uncertainties}
+The systematic uncertainties on reconstructed jet objects are related to the jet energy
+resolution (JER), jet energy scale (JES), and jet vertex tagger (JVT) {\color{red}{don't forget to describe JVT}}.
+There are many sources of uncertainties related to the JES and JER, each related to a specific
+part of the JES and JER calibration measurements, as described in Section~\ref{sec:jet_calib}.
+They arise from the techniques and corrections derived in MC, including statistical, detector,
+modelling effects, jet flavor compositions, pileup corrections, and $\eta$-dependence effects.
+The effects of the JES and JER uncertainties are among the more dominant sources of uncertainty
+on the final analysis results in both analyses to be presented.
+Given the complexity of the JES and JER calibrations, there are nearly 100 components associated with their uncertainties
+that must be incorporated into an analysis' measurement uncertainty.
+
+\subsubsection{Flavor Tagging Uncertainties}
+There are uncertainties in the jet flavor tagging efficiencies, as well as in
+the measured mis-tagging efficiencies associated with $c$- and light jets.
+They are a mixture of statistical, experimental, and modelling uncertainties
+incurred during the flavor tagging calibration procedures.
+The uncertainties enter into the analyses through their impact on the scale-factors,
+described in Section~\ref{sec:ftag_calib},
+that are applied in the analysis.
+Given the importance of $b$-tagged jets in the final states of the signal processes
+in the analyses described in Chapters~\ref{chap:search_stop} and \ref{chap:search_hh},
+these uncertainties have non-negligible impact on the analyses' results.
+
+\subsubsection{Lepton Uncertainties}
+Uncertainties on the measurement of leptons correspond to the electron and muon reconstruction,
+identiication, trigger, and isolation {\color{red}{don't forget to describe lepton isolation}} efficiencies in a manner similar to the flavor tagging
+in that systematic variations incurred in the associated scale-factor measurements are applied
+in the analysis.
+Additional uncertainties related to the lepton kinematics due to the resolution and scale of the
+electron (muon) energy (momentum) measurement are considered.
+The muon momentum measurement uncertainties are derived for both the ID and MS measurement
+of the combined muons used in the analyses.
+
+\subsubsection{Missing Transverse Momentum, \met}
+Systematic variations of the \met are coherently incurred as a result of the
+systematic variations, described above, being applied to the objects provided as input to the \met calculation:
+the leptons and jets.
+Additional uncertainties related to the scale and resolution of the soft-term of the \met calculation
+are also considered.
+Given that the analyses considered in Chapters~\ref{chap:search_stop} and \ref{chap:search_hh}
+are characterised by real sources of \met, the soft-term component plays a small role in the magnitude
+of the \met and therefore its uncertainties have negligible impact on the analyses.
+Generally, the \met uncertainties are sub-dominant.
+
+\subsubsection{Fake Lepton Estimate}
+
+\begin{description}
+    \item{Matrix Method (Section~\ref{sec:matrix_method}):} Hello World
+    \item{Same-sign Extrapolation Method (Section~\ref{sec:same_sign_extrap}):}  YERP
+\end{description}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% TRANSFER FACTOR METHOD
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{The Transfer Factor Method}
+\label{sec:transfer_factor}
+
+For estimating the impact of modelling uncertainties on the SM backgrounds that
+have dedicated CRs to constrain their overall normalisation in the SRs,
+the so-called Transfer Factor (TF) Method is typically used.
+Since the purpose of the CRs is to constrain the process' normalisation using
+the observed data, we do not want the systematic variations to directly
+impact the processes' normalisations within the SRs.
+Instead, the impact of the systematic variations is assessed via their effect
+on the SM processes' acceptance in the CRs and SRs.
+If a given systematic variation for a given SM process affects the process
+in a coherent manner across both the CR and SR, then the resulting affect of the systematic variation
+on the analysis should be reduced.
+This will nearly be guaranteed if the phase spaces being probed by the CR and SR
+are similar.
+The more dissimilar the phase space being probed by the CR and SR, the larger
+the expected impact of a given systematic variation due to the larger kinematic
+extrapolation required.
+% for example, a systematic shift
+%of some underlying modelling parameter may result in an upward fluctuation of the process'
+%prediction in the CR but a downward shift in the SR.
+This can be seen by considering Equation~\ref{eq:cr_tf}:
+\begin{align}
+    N_{p}^{\text{SR}} &= \mu_p \times N_{p,\,\text{MC}}^{\text{SR}} \nonumber \\
+        &= \left( \frac{N_{p, \text{data}}^{\text{CR}}}{N_{p,\,\text{MC}}^{\text{CR}}} \right) \times N_{p,\,\text{MC}}^{\text{SR}} \nonumber \\
+        &= N_{p, \text{data}}^{\text{CR}} \times \left( \frac{ N_{p,\,\text{MC}}^{\text{SR}}  }{ N_{p,\,\text{MC}}^{\text{CR}} } \right) \label{eq:cr_tf} \\
+        &= N_{p, \text{data}}^{\text{CR}} \times \underbrace{\tau_p}_{\substack{\text{Transfer} \\ \text{ Factor}}} \nonumber,
+\end{align}
+where `$p$' is the process for which the CR and normalisation factor are defined, $\mu_p$
+is the CR-derived normalisation factor (c.f. Equation~\ref{eq:mu_fac}),
+$N_{p, \text{data}}^{\text{CR}}$ is the observed data in the CR with the MC simulation
+for all processes that are not process $p$ subtracted, and $N_{p,\,\text{MC}}^{\text{SR}}$
+is the MC-based SR prediction of process $p$.
+The quantity $\tau_p$ is the process' TF that extrapolates the observed data in the CR
+to the SR.
+It can be seen that if the MC simulation response for a given process for a given systematic variation is the same
+across both the CR and SR, that the TF will be unchanged as a result of the systematic
+variation and therefore the predicted contribution of this process in the SR will
+be unaffected by the systematic uncertainty.
+If kinematics differ across the CR and SR, the acceptance for a given process may vary
+in going from the CR and SR (or vice versa) and therefore such a cancellation is not likely to
+occur due to the larger extrapolation required.
+
+It can be seen, then, that for processes whose SR normalisation is derived in dedicated CRs,
+that the TF appearing in Equation~\ref{eq:cr_tf} quantifies the acceptance
+variation between the CR and SR.
+Systematic variations of the SM backgrounds with dedicated CRs, then, are quantified
+by their impact on the resulting TF values.
+This is contrary to assessing their impact by measuring the change in a process' SR prediction
+by simply comparing the SR predictions before and after a given systematic variation is applied.
+The uncertainties ascribed to SM processes via the TF Method are computed as follows,
+\begin{align}
+    \Delta \tau = \frac{ \lvert \tau_{\,\text{nominal}} - \tau_{\,\text{variation}} \rvert} { \tau_{\,\text{nominal}} },
+    \label{eq:tf_uncert}
+\end{align}
+where $\tau_{\,\text{nominal}}$ ($\tau_{\,\text{variation}}$) is the TF computed
+using the nominal (systematically varied) prediction of the process.
+The quantity $\Delta \tau$ is then taken as a fractional uncertainty on the corresponding
+process' SR predicted yield.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% BACKGROUND MODELLING
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Background Modelling Uncertainties}
+\label{sec:syst_bkg_modelling}
+
+Uncertainties in the modelling of specific processes, SM or otherwise, are typically
+assessed by comparing the nominal MC simulation for the processes in question to
+that of an MC simulation with certain theoretical or phenomenological parameters varied.
+In this way, one can assess the impact of the underlying assumptions made
+in the MC simulation on the analyses' final results.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% SIGNAL MODELLING
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Signal Modelling Uncertainties}
+\label{sec:syst_sig_modelling}
