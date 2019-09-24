@@ -275,20 +275,20 @@ In the analyses to be presented, so-called `counting experiments' are performed 
 only the numbers of events, from data and the predicted background and signal,
 are used as input.
 These numbers are taken from all relevant regions in the analysis: the CRs and the SRs.
-The expected number of events populating each region is then given by the following:
+The expected number of events populating each region is given by the following:
 
 \begin{align}
     N_r^\text{exp}(\mu_{\text{sig}}, \bm{\mu_{\text{bkg}}}, \bm{\theta}) = \mu_{\text{sig}} \cdot N_{r,\,\text{sig}}^{\text{exp}}(\bm{\theta}) + \sum\limits_{b\,\in \,\text{bkg}} \, \mu_b \cdot N_{r,\,b}^{\text{exp}}(\bm{\theta}),
     \label{eq:test_stat_n_r}
 \end{align}
-where $\bm{\theta}$ are a set of so-called nuisance parameters associated with the systematic
+where $\bm{\theta}$ are a set of fit nuisance parameters (NP) associated with the systematic
 uncertainties described in Section~\ref{sec:common_systematics},
 $\bm{\mu_{\text{bkg}}}$ are normalisation factors associated with the background processes (indexed by `$b$'),
 $\mu_{\text{sig}}$ is the signal-strength modifier associated with the signal hypothesis,
 $N_{r,\,\text{sig}}^{\text{exp}}$ is the predicted signal yield in region $r$,
 and $N_{r,\,b}^{\text{exp}}$ is the predicted background yield in region $r$ for process $b$.
 The predicted number of events for each process, signal or background, depend on the $\bm{\theta}$ parameter vector
-since systematic variations can adjust the overall normalisation of a given process (efficiency variations) or adjust
+since systematic variations can adjust the overall normalisation of a given process or adjust
 the acceptance of a given process in the phase space probed by the regions indexed by $r$.
 Both of these effects result in a change in the predicted rate of a process in a given region.
 
@@ -310,7 +310,7 @@ constructed as a product of Poisson probability terms:
 \end{align}
 where $N_r^{\text{obs}}$ is the observed data yield in region $r$.
 
-It is standard practice to parametrize the systematic uncertainties associated with the measurements
+{\color{red}{REORDER THIS TEXT}} It is standard practice to parametrize the systematic uncertainties associated with the measurements
 of the $N_r^{\text{exp}}$ in such a way that $\bm{\theta} = 0$ (all of the $\theta_i$ equal to zero) corresponds to the central (nominal) value
 of the set of parameters associated with the uncertainty (e.g. the nominal value of JES).
 The values $\theta_i = \pm 1$ represent shifts in the parameter values by their $\pm 1\sigma$
@@ -321,13 +321,22 @@ in the associated parameter are known.
 Means of interpolation and extrapolation, needed to obtain a smoothly varying response in the
 numbers of predicted events as the $\theta$ parameters vary continously between their $\pm 1 \sigma$ values,
 are provided by the \textsc{HistFactory} toolkit~\cite{HistFactory}.
-The effect of the nuisance parameters associated with each of the analysis' systematic uncertainties
-are implemented as Gaussian \textit{constraint terms} in the likelihood defined in Equation~\ref{eq:likelihood_main}:
+The effects of the NP associated with each of the analysis' systematic uncertainties
+are implemented as \textit{constraint terms} in the likelihood appearing in Equation~\ref{eq:likelihood_main}.
+These terms are typically implemented as Gaussians centered on zero and with a width of 1:
+%are implemented as Gaussian \textit{constraint terms}, with wi in the likelihood defined in Equation~\ref{eq:likelihood_main}:
 \begin{align}
     L(\mu_{\text{sig}}, \bm{\mu_{\text{bkg}}}, \bm{\theta}) = L_0(\mu_{\text{sig}}, \bm{\mu_{\text{bkg}}}, \bm{\theta})
-        \, \cdot \, \prod\limits_{i = 1}^{n} \frac{1}{\sqrt{2 \pi}} \, \exp \left( - \frac{\theta_i^2}{2} \right)
+        \, \cdot \, \prod\limits_{i = 1}^{n} \frac{1}{\sqrt{2 \pi}} \, \exp \left( - \frac{\theta_i^2}{2} \right).
     \label{eq:full_likelihood}
 \end{align}
+%The constraint terms represent Gaussians centered on 0 and with a width of 1.
+%This is equivalent to:
+%\begin{align}
+%    \theta^{\prime} = \frac{ \theta - \hat{\theta} } {\sigma},
+%\end{align}
+%allowing for the post-fit NP to be easily compared with the pre-fit ones in the following manner.
+%A post-fit value and uncertainty of the NP near 0 and 1, respectively, indicate that the data
 The best estimates (maximum likelihood estimates, MLE) for the parameters ($\mu_{\text{sig}}$, $\bm{\mu_{\text{bkg}}}$, $\bm{\theta}$) are determined in the fit to $\bm{N^{\text{obs}}}$ via the maximization
 of the likelihood function given by Equation~\ref{eq:full_likelihood}. 
 Typically, and equivalently, the negative log likelihood, $-\ln L$, is minimized.
@@ -339,7 +348,7 @@ The values of all parameters prior to (after) the minimization procedure are ref
 The pre-fit values for the $\mu_{\text{bkg}}$ parameters are set to 1 and the $\theta_i$ are set to $0$, corresponding
 to the central values of the Gaussian-shifted parameters associated with the systematic uncertainties.
 
-The test statistic defined for the analyses to be presented are defined based on the following
+The test statistic defined for the analyses to be presented is based on the following
 \textit{profile likelihood ratio},
 \begin{align}
     \lambda(\mu_{\text{sig}}) \equiv
@@ -363,9 +372,63 @@ final test statistic relevant to the analyses,
 \end{align}
 which is used to perform the hypothesis tests described in Section~\ref{sec:hypo_test}.
 
+We note here that the quantites described by $\bm{\mu_{\text{bkg}}}$ correspond to normalisation correction
+factors for a given SM background process.
+In the analyses to be presented in Chapters~\ref{chap:search_stop} and \ref{chap:search_hh},
+for the background processes for which a dedicated CR is not defined, the associated $\mu_b$ are
+set to 1 and are not allowed to vary during the fit (i.e. their pre-fit and post-fit values are equal).
+%these values are set to one for all background processes that do not have a dedicated
+%CR and are not allowed to vary from this value during the fit procedure.
+For those processes for which a dedicated CR is defined, the associated $\mu_b$ parameters
+are analogous to the normalisation correction factors described in Section~\ref{sec:control_region_method} and
+are unconstrained in the fit procedure.
+They are therefore said to `freely float' during the fit and 
+their post-fit value does not necessarily correspond to their pre-fit one.
+Given the low numbers of events typically expected in the SRs, and the relatively
+large numbers expected in the CRs, the post-fit values of the $\mu_b$ typically
+correspond to those values expected from the simple computations provided by Equations~\ref{eq:mu_fac}
+and/or \ref{eq:mu_fac_expand}.
+In the signal-plus-background hypotheses with $\mu_{\text{sig}} \ne 0$, if
+the CRs have a non-negligible contamination of signal events, however, this will generally not be true
+since the post-fit values of the $\mu_b$ will depend on a given value of the $\mu_{\text{sig}}$ parameter.
+The desire to construct a robust background-only model is one of the motivating factors, then,
+in designing analyses in such a way as to minimize the signal contamination in the CRs.
+
 \subsubsection{Profiling}
 \label{sec:profiling}
 
+The Gaussian constraint terms in Equation~\ref{eq:full_likelihood}, centered on 0 and with widths of 1,
+are equivalent to transforming the $\bm{\theta}$ parameters associated with the systematic uncertainties as follows,
+\begin{align}
+    \bm{\theta}^{\prime} = \frac{\bm{\theta} - \bm{\hat{\theta}}}{\bm{\hat{\sigma}}},
+    \label{eq:theta_gaus}
+\end{align}
+where the quantity $\bm{\sigma}$ corresponds to the initial widths of the $\pm 1 \sigma$ variations
+associated with the systematic variation represented by $\bm{\theta}$.
+Equation~\ref{eq:theta_gaus} normalises all NP to facilitate the easy comparison of their pre- and post-fit values and uncertainties.
+For a given NP, then, a post-fit value and uncertainty near 0 and 1, respectively, indicate
+that the data was not able to adjust the NP.
+Changes in the post-fit NP values (uncertainties) are referred to as NP `pulling' (`profiling').
+NP values may be pulled far from zero in order to maximize the overall agreement of the background prediction
+with data during the fit procedure.
+NP may be profiled in such a way that the post-fit uncertainties on the NP are smaller than the
+the initial estimate of the uncertainty provided by auxiliary measurements and data.
+Such a case indicates that the initial prior on the impact of the systematic uncertainty was too
+large and that the uncertainties may be reduced so as to be more compatible  with the range allowed by
+the data statistics relevant for the analysis at hand.
+This potential for the profiling mechanism to reduce the overall impact of systematic uncertainties
+on an analysis' results is seen as a general benefit of the profile likelihood prescription described
+by Equations~\ref{eq:likelihood_ratio} and \ref{eq:pll_test_stat}.
+The interpretation of this is that the profiling mechanism allows for the impact of the systematic uncertainties
+to be more accurately characterised in the phase space in which they are being applied, as opposed
+to that of the auxiliary measurements in which they are initially derived.
+
+\subsubsection{Profiling Example 1}
+\label{sec:profiling_example_1}
+
+{\color{red}{Not sure if I want this}}
 
 \subsection{Asymptotic Formulation of Likelihood Ratio Tests}
 
+{\color{red}{Describe the asympotitc formula used for the analysis to be presented and illustrate
+examples of how various p values are obtained, as well as how analysis sensitivity is optimized}}
