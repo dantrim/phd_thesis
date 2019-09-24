@@ -66,7 +66,7 @@ it is one that is not included in the $H_0$ hypothesis.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{The Test Statistic and $p$-Values}
 
-In order to perform a hypothesis test in the Frequentist arena, a \textit{test statistic}, $t(x)$,
+In order to perform a hypothesis test in the Frequentist arena, a \textit{test statistic}, $q(x)$,
 is defined.
 A test statistic is defined using the analysis' measurements alone and is
 used in order to define metrics by which the observed data is said to agree with
@@ -79,27 +79,27 @@ some of the language that will be used later on when discussing the results of t
 analyses.
 
 The conclusions eventually drawn about a given hypothesis are baesd on the observed value
-of $t(x)$ and where this value lies in relation to the pre-defined \textit{critical region}.
-The critical region is defined by a cut value, $t_c$, on the distribution of $t(x)$ under a specified hypothesis.
+of $q(x)$ and where this value lies in relation to the pre-defined \textit{critical region}.
+The critical region is defined by a cut value, $q_c$, on the distribution of $q(x)$ under a specified hypothesis.
 In the one-sided tests to be considered in the present thesis, $H_1$
-will tend to have larger values of $t(x)$ as compared to the $H_0$.
+will tend to have larger values of $q(x)$ as compared to the $H_0$.
 The critical region defines two important parameters associated with the hypothesis test.
 The first is the quantity $\alpha$, which is referred to as the \textit{significance level},
 and is defined as follows,
 \begin{align}
-    \int\limits_{t_c}^{+\infty} \, g(t | H_0) \, \mathrm{d}t = \alpha,
+    \int\limits_{q_c}^{+\infty} \, f(q | H_0) \, \mathrm{d}q = \alpha,
     \label{eq:sig_level}
 \end{align}
-where $g(t|H_0)$ is the probability distribution for the test statistic under
+where $f(q|H_0)$ is the probability distribution for the test statistic under
 the background-only hypothesis.
 The quantity $\alpha$ reports the probability for the background-only hypothesis (the SM) to be rejected when it is actually
 true. This is commonly referred to as the Type I error rate.
 The second quantity is $\beta$ and is defined as,
 \begin{align}
-    \int\limits_{-\infty}^{t_c} \, g(t|H_1) \, \mathrm{d}t = \beta,
+    \int\limits_{-\infty}^{q_c} \, f(q|H_1) \, \mathrm{d}q = \beta,
     \label{eq:power_level}
 \end{align}
-where $g(t|H_1)$ is the probability distribution for the test statistic under
+where $f(q|H_1)$ is the probability distribution for the test statistic under
 the signal-plus-background hypothesis.
 The quantity $\beta$ gives the probability to reject the signal-plus-background hypothesis
 when it is actually true. This is commonly referred to as the Type II error rate.
@@ -113,6 +113,57 @@ For simplicity, the two hypotheses $H_0$ and $H_1$ can be generalised by introdu
 appearing in $H_1$.
 The hypothesis $H_0$, then, corresponds to the case $\mu = 0$ and that of $H_1$ corresponds to
 $\mu = 1$.
+With this general notation, then, the test statistic under either hypothesis is labelled as $q_{\mu}$.
+
+Once a test statistic is specified, and its expected distribution under a given hypothesis is obtained,
+$p$-values can be defined in order to compute the probability that the observed data originates from the
+considered hypothesis (value of $\mu$).
+They are computed as follows,
+\begin{align}
+    p_{\mu} = \int\limits_{q_{\mu, \text{obs}}}^{+\infty} \, f(q_{\mu} | \mu) \, \mathrm{d}q_{\mu},
+    \label{eq:test_stat_pvalue}
+\end{align}
+where $q_{\mu, \text{obs}}$ is the observed value of the test statistic in data and $f(q_{\mu} | \mu)$ is the probability
+density function of $q_{\mu}$ assuming hypothesis $\mu$.
+A particular case of Equation~\ref{eq:test_stat_pvalue} is that of $p_0$, which quantifies the agreement of the data with the background-only
+hypothesis ($\mu = 0$).
+The $p_{\mu}$-value associated with a given hypothesis ($\mu$-value) is typically converted into the equivalent corresponding Gaussian significance, $Z$, defined
+as the number of standard deviations that correspond to an upper-tail probability of $p_{\mu}$.
+This is illustrated in Figure~\ref{fig:pval_sig}.
+
+As the value of $p_{\mu}$ gets smaller, the confidence that the assumed hypothesis (value of $\mu$) is true
+decreases.
+At a certain point, it becomes acceptable to say that the assumed hypothesis is incompatible with
+reality and the hypothesis described by the particular value of $\mu$ is said to be \textit{excluded}.
+In the particle physics community, the conventional threshold to take for the value of $p_{\mu}$
+at which point a hypothesis is said to be excluded is $p_{\mu} = 0.05$, corresponding to $Z=1.64$ as
+illustrated in Figure~\ref{fig:pval_sig}.
+This choice of the $p_{\mu}$-value at which point exclusion is said to occur defines
+the critical region, described above, of the test.
+The value of $0.05$ corresponds to the significance level of the test (c.f. Equation~\ref{eq:sig_level}), and is referred
+to a hypothesis test being performed at the $95\%$ confidence level (CL).
+
+In order to claim that new physics has been seen, the null hypothesis ($\mu = 0$) must be rejected.
+The thresholds at which new physics can be said to have been observed and discovered are
+much more stringent than that used for the exclusion of a specified hypothesis.
+Incompatibilities with the null-hypothesis at the level of $p_0 = 1.3 \times 10^{-3}$ and
+$p_0 = 2.9\times 10^{-7}$ are required in order to state that observation and discovery, respectively,
+of new phenomena has occurred.
+These thresholds, illustrated in Figure~\ref{fig:pval_sig}, for claiming observation and discovery are the fabled `$3\sigma$' and `$5\sigma$'
+$p_0$-value criterion adopted by the particle physics community.
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.48\textwidth]{figures/common_ana/stat_hypo/pval_sig_lin}
+        \includegraphics[width=0.48\textwidth]{figures/common_ana/stat_hypo/pval_sig_log}
+        \caption{
+            Gaussian tail significance levels corresponding to $Z = 1.64\sigma$, $3\sigma$, and $5\sigma$
+            significances, corresponding to $p_0$-values of $0.05$, $1.3 \times 10^{-3}$, and $2.9\times 10^{-7}$, respectively.
+            \textbf{\textit{Left}}: Linear $y$-scale. \textbf{\textit{Right}}: Logarithmic $y$-scale.
+        }
+        \label{fig:pval_sig}
+    \end{center}
+\end{figure}
 
 %The process of performing a hypothesis test, then, is specified by the following procedure:
 %\begin{enumerate}
