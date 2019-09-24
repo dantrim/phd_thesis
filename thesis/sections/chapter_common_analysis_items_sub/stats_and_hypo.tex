@@ -189,6 +189,68 @@ $p_0$-value criterion adopted by the particle physics community.
 \subsubsection{The \cls Construction}
 \label{sec:cls_method}
 
+In searches for new physics, the statement that a given signal hypothesis has been excluded
+is an important one.
+Once made by one of the large LHC experiments, the specific signal model is essentially considered
+no longer important to be searched for.
+Therefore, the metrics by which the experiments make claims of exclusion have surrounding them
+a wide-ranging literature discussing the merits and drawbacks of the many such metrics
+that have been proposed over the years.
+The bare $p_{\mu}$-value, for example, extracted from the observed data is subject to statistical fluctuations
+and it can lead to unphysical exclusions when a downward fluctuation in the observed
+number of events occurs.
+This would lead to a premature exclusion of perhaps a broad region of new physics
+that would perhaps no longer be looked into by future analyses or experiments.
+
+The standard metric used by the LHC experiments today is known as `\cls'~\cite{CLSReadI,CLSReadII},
+and is constructed in such a way as to minimize the likelihood of excluding signal
+hypotheses that a search is not a-priori sensitive to.
+The \cls metric is given by,
+\begin{align}
+    \text{CL}_s = \frac{p_{\mu}}{1-p_0},
+    \label{eq:cls_def}
+\end{align}
+where the quantities $p_{\mu}$ and $p_0$ quantify the compatibilities between the data and the signal-plus-background
+and background-only hypotheses, respectively.
+Downward fluctuations in data, as those described above, will lead to larger values of $p_0$; thus
+leading to larger values of \cls that avoid premature exclusion.
+
+At the LHC, the \cls metric is used primarily for performing hypothesis tests aimed at claiming exclusion.
+The standard null-hypothesis $p_0$-value is still used for claiming observation and discovery, as described above.
+A given signal hypothesis with $\mu = 1$ is considered excluded when $\cls \le 0.05$.
+Note that this prescription for exclusion, $\cls \le \alpha$, is generally a stronger requirement than the
+standard prescription, $p_{\mu} \le \alpha$.
+The \cls metric is also used to compute \textit{upper limits}.
+An upper limit on a given signal hypothesis which is specified by $\mu$
+is the largest value of $\mu$ satisfying $\cls \ge 0.05$.
+The interpretation being that this is the largest possible signal-strength modifier
+that is unable to be excluded and therefore smaller values of $\mu$, corresponding
+to smaller signal rates, are still consistent with the observed data and cannot therefore
+be excluded.
+The process of scanning $\mu$ hypotheses and computing the \cls in order to find
+an upper limit on $\mu$ is illustrated in Figure~\ref{fig:upper_limit_scan_cartoon}.
+%An upper limit on a given signal hypothesis specified by $\mu$ is
+%the value of $\mu$ at which $\cls = 0.05$.
+%An illustration of how an upper limit is obtained is provided by Figure~\ref{fig:upper_limit_scan_cartoon}.
+%%the largest value of $\mu$ describing the signal process that satisfies $\cls \le 0.05$.
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.5\textwidth]{figures/common_ana/stat_hypo/upper_limit_scan_examplePDF}
+        \caption{
+            An upper limit scan on the signal strength parameter $\mu$ describing a signal hypothesis.
+            The \cls, given by Equation~\ref{eq:cls_def}, is recomputed for a range of $\mu$ values
+            describing a given signal hypothesis.
+            This is shown by the blue line.
+            The $\mu$ value at which the \cls curve crosses the line $\cls = 0.05$, $\mu^{\text{UL}}$, is the
+            upper limit on $\mu$ for the signal hypothesis.
+            Values of $\mu$ smaller than $\mu^{\text{UL}}$ remain compatible with the observed data,
+            while those values greater than $\mu^{\text{UL}}$ are excluded at $95\%$ CL.
+        }
+        \label{fig:upper_limit_scan_cartoon}
+    \end{center}
+\end{figure}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
