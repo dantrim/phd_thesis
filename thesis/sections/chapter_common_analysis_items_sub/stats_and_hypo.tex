@@ -70,7 +70,7 @@ In order to perform a hypothesis test in the Frequentist arena, a \textit{test s
 is defined.
 A test statistic is defined using the analysis' measurements alone and is
 used in order to define metrics by which the observed data is said to agree with
-one of the two hypothesis, $H_0$ or $H_1$.
+one of the two hypothesis, either $H_0$ or $H_1$.
 In Section~\ref{sec:likelihood}, the exact form of the likelihood used in modern LHC experiments,
 and that used in the analyses discussed in Chapters~\ref{chap:search_stop} and \ref{chap:search_hh},
 will be introduced.
@@ -141,7 +141,7 @@ illustrated in Figure~\ref{fig:pval_sig}.
 This choice of the $p_{\mu}$-value at which point exclusion is said to occur defines
 the critical region, described above, of the test.
 The value of $0.05$ corresponds to the significance level of the test (c.f. Equation~\ref{eq:sig_level}), and is referred
-to a hypothesis test being performed at the $95\%$ confidence level (CL).
+to a hypothesis test being performed at the $95\%$ confidence level (CL) (i.e. CL $\equiv (1-\alpha)$)
 
 In order to claim that new physics has been seen, the null hypothesis ($\mu = 0$) must be rejected.
 The thresholds at which new physics can be said to have been observed and discovered are
@@ -191,7 +191,7 @@ $p_0$-value criterion adopted by the particle physics community.
 
 In searches for new physics, the statement that a given signal hypothesis has been excluded
 is an important one.
-Once made by one of the large LHC experiments, the specific signal model is essentially considered
+Once made by the LHC experiments, the specific signal model is essentially considered
 no longer important to be searched for.
 Therefore, the metrics by which the experiments make claims of exclusion have surrounding them
 a wide-ranging literature discussing the merits and drawbacks of the many such metrics
@@ -221,11 +221,11 @@ A given signal hypothesis with $\mu = 1$ is considered excluded when $\cls \le 0
 Note that this prescription for exclusion, $\cls \le \alpha$, is generally a stronger requirement than the
 standard prescription, $p_{\mu} \le \alpha$.
 The \cls metric is also used to compute \textit{upper limits}.
-An upper limit on a given signal hypothesis which is specified by $\mu$
+An upper limit on a given signal hypothesis specified by $\mu$
 is the largest value of $\mu$ satisfying $\cls \ge 0.05$.
-The interpretation being that this is the largest possible signal-strength modifier
+The interpretation being that this corresponds to the largest possible signal cross-section
 that is unable to be excluded and therefore smaller values of $\mu$, corresponding
-to smaller signal rates, are still consistent with the observed data and cannot therefore
+to smaller signal cross-sections, are still consistent with the observed data and cannot therefore
 be excluded.
 The process of scanning $\mu$ hypotheses and computing the \cls in order to find
 an upper limit on $\mu$ is illustrated in Figure~\ref{fig:upper_limit_scan_cartoon}.
@@ -238,7 +238,7 @@ an upper limit on $\mu$ is illustrated in Figure~\ref{fig:upper_limit_scan_carto
     \begin{center}
         \includegraphics[width=0.5\textwidth]{figures/common_ana/stat_hypo/upper_limit_scan_examplePDF}
         \caption{
-            An upper limit scan on the signal strength parameter $\mu$ describing a signal hypothesis.
+            An upper limit scan on the signal strength parameter $\mu$ associated with a signal hypothesis.
             The \cls, given by Equation~\ref{eq:cls_def}, is recomputed for a range of $\mu$ values
             describing a given signal hypothesis.
             This is shown by the blue line.
