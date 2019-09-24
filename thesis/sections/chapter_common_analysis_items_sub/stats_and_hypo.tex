@@ -157,8 +157,12 @@ $p_0$-value criterion adopted by the particle physics community.
         \includegraphics[width=0.48\textwidth]{figures/common_ana/stat_hypo/pval_sig_lin}
         \includegraphics[width=0.48\textwidth]{figures/common_ana/stat_hypo/pval_sig_log}
         \caption{
-            Gaussian tail significance levels corresponding to $Z = 1.64\sigma$, $3\sigma$, and $5\sigma$
-            significances, corresponding to $p_0$-values of $0.05$, $1.3 \times 10^{-3}$, and $2.9\times 10^{-7}$, respectively.
+            Gaussian tail significance levels corresponding to specific $p$-values.
+            The significance level of $Z=1.64\sigma$ corresponds to $p = 0.05$,
+            that of $Z=3\sigma$ to $p = 1.3 \times 10^{-3}$, and that of
+            $Z = 5\sigma$ to $p = 2.9\times 10^{-7}$.
+            The area under the tail to the right of each indicated significance level corresponds to
+            the associated $p$-value.
             \textbf{\textit{Left}}: Linear $y$-scale. \textbf{\textit{Right}}: Logarithmic $y$-scale.
         }
         \label{fig:pval_sig}
@@ -203,7 +207,7 @@ This would lead to a premature exclusion of perhaps a broad region of new physic
 that would perhaps no longer be looked into by future analyses or experiments.
 
 The standard metric used by the LHC experiments today is known as `\cls'~\cite{CLSReadI,CLSReadII},
-and is constructed in such a way as to minimize the likelihood of excluding signal
+and is constructed in such a way as to reduce the likelihood of excluding signal
 hypotheses that a search is not a-priori sensitive to.
 The \cls metric is given by,
 \begin{align}
@@ -259,6 +263,109 @@ an upper limit on $\mu$ is illustrated in Figure~\ref{fig:upper_limit_scan_carto
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Likelihood Analysis}
+\subsection{The Profile Likelihood Ratio Test Statistic}
 \label{sec:likelihood}
+
+The test statistic associated with many of the LHC experiments, including ATLAS,
+and the one used in the analyses to be presented in Chapters~\ref{chap:search_stop} and
+\ref{chap:search_hh} is based on a likelihood ratio.
+The construction of the test statistic is described in this section.
+
+In the analyses to be presented, so-called `counting experiments' are performed wherein
+only the numbers of events, from data and the predicted background and signal,
+are used as input.
+These numbers are taken from all relevant regions in the analysis: the CRs and the SRs.
+The expected number of events populating each region is then given by the following:
+
+\begin{align}
+    N_r^\text{exp}(\mu_{\text{sig}}, \bm{\mu_{\text{bkg}}}, \bm{\theta}) = \mu_{\text{sig}} \cdot N_{r,\,\text{sig}}^{\text{exp}}(\bm{\theta}) + \sum\limits_{b\,\in \,\text{bkg}} \, \mu_b \cdot N_{r,\,b}^{\text{exp}}(\bm{\theta}),
+    \label{eq:test_stat_n_r}
+\end{align}
+where $\bm{\theta}$ are a set of so-called nuisance parameters associated with the systematic
+uncertainties described in Section~\ref{sec:common_systematics},
+$\bm{\mu_{\text{bkg}}}$ are normalisation factors associated with the background processes (indexed by `$b$'),
+$\mu_{\text{sig}}$ is the signal-strength modifier associated with the signal hypothesis,
+$N_{r,\,\text{sig}}^{\text{exp}}$ is the predicted signal yield in region $r$,
+and $N_{r,\,b}^{\text{exp}}$ is the predicted background yield in region $r$ for process $b$.
+The predicted number of events for each process, signal or background, depend on the $\bm{\theta}$ parameter vector
+since systematic variations can adjust the overall normalisation of a given process (efficiency variations) or adjust
+the acceptance of a given process in the phase space probed by the regions indexed by $r$.
+Both of these effects result in a change in the predicted rate of a process in a given region.
+
+The observed data yield in each region of the analysis is expected to obey Poisson statistics.
+Therefore, the likelihood function $L(\mu_{\text{sig}}, \bm{\mu_{\text{bkg}}}, \bm{\theta})$ is
+constructed as a product of Poisson probability terms:
+\begin{align}
+    L_0(\mu_{\text{sig}}, \bm{\mu_{\text{bkg}}}, \bm{\theta}) = \prod\limits_{r\,\in\,\text{regions}} \, 
+            \frac
+            {
+                \left[N_r^{\text{exp}} ( \mu_{\text{sig}}, \bm{\mu_{\text{bkg}}}, \bm{\theta}) \right] ^ {N_r^{\text{obs}}}
+            }
+            {
+                N_r^{\text{obs}}!
+            }
+            \cdot
+            \exp\left[ N_r^{\text{exp}} ( \mu_{\text{sig}}, \bm{\mu_{\text{bkg}}}, \bm{\theta}) \right],
+    \label{eq:likelihood_main}
+\end{align}
+where $N_r^{\text{obs}}$ is the observed data yield in region $r$.
+
+It is standard practice to parametrize the systematic uncertainties associated with the measurements
+of the $N_r^{\text{exp}}$ in such a way that $\bm{\theta} = 0$ (all of the $\theta_i$ equal to zero) corresponds to the central (nominal) value
+of the set of parameters associated with the uncertainty (e.g. the nominal value of JES).
+The values $\theta_i = \pm 1$ represent shifts in the parameter values by their $\pm 1\sigma$
+variation, as defined by the systematic uncertainty (e.g. systematic shifts in the value of the JES).
+The systematic uncertainties described in Section~\ref{sec:common_systematics} are typically
+computed such that, at the level of performing a physics analysis, only the $\pm 1 \sigma$ shifts about the central value
+in the associated parameter are known.
+Means of interpolation and extrapolation, needed to obtain a smoothly varying response in the
+numbers of predicted events as the $\theta$ parameters vary continously between their $\pm 1 \sigma$ values,
+are provided by the \textsc{HistFactory} toolkit~\cite{HistFactory}.
+The effect of the nuisance parameters associated with each of the analysis' systematic uncertainties
+are implemented as Gaussian \textit{constraint terms} in the likelihood defined in Equation~\ref{eq:likelihood_main}:
+\begin{align}
+    L(\mu_{\text{sig}}, \bm{\mu_{\text{bkg}}}, \bm{\theta}) = L_0(\mu_{\text{sig}}, \bm{\mu_{\text{bkg}}}, \bm{\theta})
+        \, \cdot \, \prod\limits_{i = 1}^{n} \frac{1}{\sqrt{2 \pi}} \, \exp \left( - \frac{\theta_i^2}{2} \right)
+    \label{eq:full_likelihood}
+\end{align}
+The best estimates (maximum likelihood estimates, MLE) for the parameters ($\mu_{\text{sig}}$, $\bm{\mu_{\text{bkg}}}$, $\bm{\theta}$) are determined in the fit to $\bm{N^{\text{obs}}}$ via the maximization
+of the likelihood function given by Equation~\ref{eq:full_likelihood}. 
+Typically, and equivalently, the negative log likelihood, $-\ln L$, is minimized.
+Technically, the minimization of Equation~\ref{eq:full_likelihood} in the analyses to be presented
+in Chapters~\ref{chap:search_stop} and \ref{chap:search_hh} is done using \textsc{Miniuit}
+via an interface provided by \textsc{RooFit}~\cite{MINUIT,RooFitI}.
+The values of all parameters prior to (after) the minimization procedure are referred to as the
+`pre-fit' (`post-fit') values.
+The pre-fit values for the $\mu_{\text{bkg}}$ parameters are set to 1 and the $\theta_i$ are set to $0$, corresponding
+to the central values of the Gaussian-shifted parameters associated with the systematic uncertainties.
+
+The test statistic defined for the analyses to be presented are defined based on the following
+\textit{profile likelihood ratio},
+\begin{align}
+    \lambda(\mu_{\text{sig}}) \equiv
+        \frac{
+            L(\mu_{\text{sig}}, \hat{\hat{\bm{\mu}}}_{\text{bkg}}, \hat{\hat{\bm{\theta}}})
+        }
+        {
+            L(\hat{\mu}_{\text{sig}}, \hat{\bm{\mu}}_{\text{bkg}}, \hat{\bm{\theta}})
+        },
+    \label{eq:likelihood_ratio}
+\end{align}
+where in the numerator the parameters $(\bm{\mu}_{\text{bkg}}, \bm{\theta})$ are fit to their MLE values
+for a given value of the assumed value of the signal-strength parameter $\mu_{\text{sig}}$.
+In the denominator, the full set of parameters ($\mu_{\text{sig}}$, $\bm{\mu_{\text{bkg}}}$, $\bm{\theta}$) are
+equal to their MLE values.
+The likelihood ratio defined in Equation~\ref{eq:likelihood_ratio} is used to define the
+final test statistic relevant to the analyses,
+\begin{align}
+    q_{\mu_{\text{sig}}} = - 2 \ln \lambda (\mu_{\text{sig}}),
+    \label{eq:pll_test_stat}
+\end{align}
+which is used to perform the hypothesis tests described in Section~\ref{sec:hypo_test}.
+
+\subsubsection{Profiling}
+\label{sec:profiling}
+
+
+\subsection{Asymptotic Formulation of Likelihood Ratio Tests}
 
