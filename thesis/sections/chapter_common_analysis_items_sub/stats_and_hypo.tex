@@ -71,6 +71,60 @@ is defined.
 A test statistic is defined using the analysis' measurements alone and is
 used in order to define metrics by which the observed data is said to agree with
 one of the two hypothesis, $H_0$ or $H_1$.
+In Section~\ref{sec:likelihood}, the exact form of the likelihood used in modern LHC experiments,
+and that used in the analyses discussed in Chapters~\ref{chap:search_stop} and \ref{chap:search_hh},
+will be introduced.
+Here we will discuss general features of Frequentist test statistics and introduce
+some of the language that will be used later on when discussing the results of the
+analyses.
+
+The conclusions eventually drawn about a given hypothesis are baesd on the observed value
+of $t(x)$ and where this value lies in relation to the pre-defined \textit{critical region}.
+The critical region is defined by a cut value, $t_c$, on the distribution of $t(x)$ under a specified hypothesis.
+In the one-sided tests to be considered in the present thesis, $H_1$
+will tend to have larger values of $t(x)$ as compared to the $H_0$.
+The critical region defines two important parameters associated with the hypothesis test.
+The first is the quantity $\alpha$, which is referred to as the \textit{significance level},
+and is defined as follows,
+\begin{align}
+    \int\limits_{t_c}^{+\infty} \, g(t | H_0) \, \mathrm{d}t = \alpha,
+    \label{eq:sig_level}
+\end{align}
+where $g(t|H_0)$ is the probability distribution for the test statistic under
+the background-only hypothesis.
+The quantity $\alpha$ reports the probability for the background-only hypothesis (the SM) to be rejected when it is actually
+true. This is commonly referred to as the Type I error rate.
+The second quantity is $\beta$ and is defined as,
+\begin{align}
+    \int\limits_{-\infty}^{t_c} \, g(t|H_1) \, \mathrm{d}t = \beta,
+    \label{eq:power_level}
+\end{align}
+where $g(t|H_1)$ is the probability distribution for the test statistic under
+the signal-plus-background hypothesis.
+The quantity $\beta$ gives the probability to reject the signal-plus-background hypothesis
+when it is actually true. This is commonly referred to as the Type II error rate.
+The quantity $(1-\beta)$ is referred to as the \textit{power of the test}.
+The better a given physics analysis is at being able to discriminate between the signal
+and background, i.e. to have clear separation between the $H_0$ and $H_1$ hypotheses,
+the smaller (larger) is $\beta$ (the power of the test).
+
+For simplicity, the two hypotheses $H_0$ and $H_1$ can be generalised by introducing a so-called
+`signal strength' parameter, $\mu$, which acts as a multiplicative factor on the signal cross-section
+appearing in $H_1$.
+The hypothesis $H_0$, then, corresponds to the case $\mu = 0$ and that of $H_1$ corresponds to
+$\mu = 1$.
+
+%The process of performing a hypothesis test, then, is specified by the following procedure:
+%\begin{enumerate}
+%    \item Unambiguously define the background-only (the SM prediction) and signal-plus-background (the prediction of the SM with BSM physics added)
+%            hypotheses, $H_0$ and $H_1$.
+%    \item Define an appropriate test statistic, $t(x)$ (see Section~\ref{sec:likelihood}).
+%    \item Construct the distribution of the test statistic under the background-only hypothesis, $g(t|H_0)$.
+%    \item Define the desired significance level of the hypothesis, $\alpha$
+%    \item Obtain the value of $t(x)$ as observed in data
+%    \item If the observed value of $t(x)$ is within the critical region defined by $\alpha$ as in Equation~\ref{eq:sig_level} ($t_{\text{obs}} > t_c$), reject $H_0$.
+%            Otherwise, $H_0$ cannot be rejected.
+%\end{enumerate}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
