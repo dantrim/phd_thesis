@@ -1,2 +1,73 @@
-\section{Statistics and Hypothesis Testing}
+\section{Hypothesis Testing and Statistics}
 \label{sec:stat_hypo}
+
+This section describes the statistical procedures used in the analyses to be
+presented in Chapters~\ref{chap:seach_stop} and \ref{chap:search_hh} that allow
+for conclusions to be drawn about the compatibility of the observed data with theories of
+BSM physics.
+The statistical inference tools described are inherently Frequentist and
+are, for the most part, the \textit{de facto} standard for physics analyses searching for evidence of BSM physics
+at the large experiments at the LHC.
+Their widespread adoption by the experiments at the LHC does not indicate the
+philosophical merit of Frequentist inference methodology, but rather highlights the technically simpler implementation
+of Frequentist hypothesis testing that allows for physics analyses to not get
+bogged down in some of the details associated with Bayesian analyses, computational
+or otherwise.
+Indeed, most people by default think and interact with the world around them
+in a Bayesian manner.
+Taking the path of least resistance, physicists have tended to opt for the simpler
+implementation of reporting their results, which, at the end of the day,
+tend to not lose out much in terms of the picture of the objective truth that they draw~\cite{CousinsBayes}.
+Section~\ref{sec:hypo_test} will describe, in somewhat general terms, what
+hypotheses tests are and the way in which they are performed in ATLAS.
+Section~\ref{sec:likelihood} describes the details by which the measurements and systematic
+uncertainties of
+an analysis are transcribed into the language of the hypothesis test described
+in Section~\ref{sec:hypotest} using a likelihood-based test statistic.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% HYPOTHESIS TESTING
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Hypothesis Testing and the \cls Construction}
+\label{sec:hypo_test}
+
+Hypothesis testing starts with the unambiguous formulation of the hypothesis being
+tested.
+In the search for evidence of BSM physics, there are two hypothesis pitted
+against one another.
+The first is the \textit{null hypothesis}, denoted $H_0$, which is the hypothesis
+subject to the test and corresponds to the SM hypothesis. The null hypothesis is commonly
+referred to simply as the background-only (B) hypothesis.
+The second hypothesis is the \textit{alternative hypothesis}, denoted $H_1$, and corresponds
+to the SM with the addition of the BSM physics process being sought out.
+The hypothesis $H_1$ is commonly referred to as the signal-plus-background (S+B) hypothesis.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% THE CLS METHOD
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{The \cls Construction}
+\label{sec:cls_method}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% PROFILE LIKELIHOOD
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Likelihood Analysis}
+\label{sec:likelihood}
+
