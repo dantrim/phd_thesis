@@ -44,7 +44,7 @@ against one another.
 The first is the \textit{null hypothesis}, denoted $H_0$, which is the hypothesis
 subject to the test and corresponds to the SM hypothesis. The null hypothesis is commonly
 referred to simply as the background-only (B) hypothesis.
-The second hypothesis is the \textit{alternative hypothesis}, denoted $H_1$, and corresponds
+The second hypothesis is the \textit{alternate hypothesis}, denoted $H_1$, and corresponds
 to the SM with the addition of the BSM physics process being sought out.
 The hypothesis $H_1$ is commonly referred to as the signal-plus-background (S+B) hypothesis.
 In both searches presented in Chapters~\ref{chap:search_stop} and \ref{chap:search_hh},
@@ -68,7 +68,7 @@ it is one that is not included in the $H_0$ hypothesis.
 
 In order to perform a hypothesis test in the Frequentist arena, a \textit{test statistic}, $q(x)$,
 is defined.
-A test statistic is defined using the analysis' measurements alone and is
+A test statistic is defined using the analysis' measurements $x$ alone and is
 used in order to define metrics by which the observed data is said to agree with
 one of the two hypothesis, either $H_0$ or $H_1$.
 In Section~\ref{sec:likelihood}, the exact form of the likelihood used in modern LHC experiments,
@@ -78,11 +78,11 @@ Here we will discuss general features of Frequentist test statistics and introdu
 some of the language that will be used later on when discussing the results of the
 analyses.
 
-The conclusions eventually drawn about a given hypothesis are baesd on the observed value
+The conclusions eventually drawn about a given hypothesis are based on the observed value
 of $q(x)$ and where this value lies in relation to the pre-defined \textit{critical region}.
 The critical region is defined by a cut value, $q_c$, on the distribution of $q(x)$ under a specified hypothesis.
 In the one-sided tests to be considered in the present thesis, $H_1$
-will tend to have larger values of $q(x)$ as compared to the $H_0$.
+will tend to have larger values of $q(x)$ as compared to $H_0$.
 The critical region defines two important parameters associated with the hypothesis test.
 The first is the quantity $\alpha$, which is referred to as the \textit{significance level},
 and is defined as follows,
@@ -337,7 +337,8 @@ These terms are typically implemented as Gaussians centered on zero and with a w
 %\end{align}
 %allowing for the post-fit NP to be easily compared with the pre-fit ones in the following manner.
 %A post-fit value and uncertainty of the NP near 0 and 1, respectively, indicate that the data
-The best estimates (maximum likelihood estimates, MLE) for the parameters ($\mu_{\text{sig}}$, $\bm{\mu_{\text{bkg}}}$, $\bm{\theta}$) are determined in the fit to $\bm{N^{\text{obs}}}$ via the maximization
+The best estimates (maximum likelihood estimates, MLE) for the parameters ($\mu_{\text{sig}}$, $\bm{\mu_{\text{bkg}}}$, $\bm{\theta}$)
+are determined in the fit to the observed data, $\bm{N^{\text{obs}}}$, via the maximization
 of the likelihood function given by Equation~\ref{eq:full_likelihood}. 
 Typically, and equivalently, the negative log likelihood, $-\ln L$, is minimized.
 Technically, the minimization of Equation~\ref{eq:full_likelihood} in the analyses to be presented
@@ -372,7 +373,9 @@ final test statistic relevant to the analyses,
 \end{align}
 which is used to perform the hypothesis tests described in Section~\ref{sec:hypo_test}.
 
-We note here that the quantites described by $\bm{\mu_{\text{bkg}}}$ correspond to normalisation correction
+\subsubsection{Profile Likelihood Fit Determination of Background Constraints}
+
+We note here that the quantites described by $\bm{\mu_{\text{bkg}}}$ in Equations~\ref{eq:test_stat_n_r}--\ref{eq:pll_test_stat} correspond to normalisation correction
 factors for a given SM background process.
 In the analyses to be presented in Chapters~\ref{chap:search_stop} and \ref{chap:search_hh},
 for the background processes for which a dedicated CR is not defined, the associated $\mu_b$ are
@@ -385,11 +388,11 @@ are unconstrained in the fit procedure.
 They are therefore said to `freely float' during the fit and 
 their post-fit value does not necessarily correspond to their pre-fit one.
 Given the low numbers of events typically expected in the SRs, and the relatively
-large numbers expected in the CRs, the post-fit values of the $\mu_b$ typically
-correspond to those values expected from the simple computations provided by Equations~\ref{eq:mu_fac}
-and/or \ref{eq:mu_fac_expand}.
-In the signal-plus-background hypotheses with $\mu_{\text{sig}} \ne 0$, if
-the CRs have a non-negligible contamination of signal events, however, this will generally not be true
+large numbers and purities expected in the CRs, the post-fit values of the $\mu_b$ typically
+correspond to those values expected from the simple computations provided by Equation~\ref{eq:mu_fac}
+and/or Equation~\ref{eq:mu_fac_expand}.
+An additional note is that in the signal-plus-background hypotheses with $\mu_{\text{sig}} \ne 0$, if
+the CRs have a non-negligible contamination of signal events, however, this correspondence will generally not be true
 since the post-fit values of the $\mu_b$ will depend on a given value of the $\mu_{\text{sig}}$ parameter.
 The desire to construct a robust background-only model is one of the motivating factors, then,
 in designing analyses in such a way as to minimize the signal contamination in the CRs.
