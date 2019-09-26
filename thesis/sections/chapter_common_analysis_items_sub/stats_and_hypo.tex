@@ -435,16 +435,28 @@ examples, to which we turn to now.
 This example illustrates the mechanisms of both NP profiling and pulling.
 We set up a dummy analysis, with two regions and two backgrounds only.
 The regions are referred to as `Region 1' and `Region 2' and the backgrounds
-are `Bkg 1' and `Bkg 2':
+are `Bkg 1' and `Bkg 2'.
+A summary of the predicted and observed yields, as well as the uncertainties on
+the predicted yields, is as follows:
 
 \begin{itemize}
-    \item \textbf{Region 1}
+    \item \underline{\textbf{Region 1}}
         \begin{itemize}
             \item Background composition: 80 events from Bkg 1
             \item Observed data: 100 events
             \item Systematic Uncertainties:
             \begin{itemize}
-                \item A 50\% systematic uncertainty on the predicted yield of Bkg 1
+                \item `Norm. Bkg. 1': A 50\% systematic uncertainty on the predicted yield of Bkg 1
+            \end{itemize}
+        \end{itemize}
+    \item \underline{\textbf{Region 2}}
+        \begin{itemize}
+            \item Background composition: 100 events from Bkg 2
+            \item Observed data: 100 events
+            \item Systematic Uncertainties:
+            \begin{itemize}
+                \item `Norm. Bkg. 2$_1$': A 10\% systematic uncertainty on the predicted yield of Bkg 2
+                \item `Norm. Bkg. 2$_2$': An additional 10\% systematic uncertainty on the predicted yield of Bkg 2
             \end{itemize}
         \end{itemize}
 \end{itemize}
