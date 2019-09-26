@@ -426,11 +426,15 @@ The interpretation of this is that the profiling mechanism allows for the impact
 to be more accurately characterised in the phase space in which they are being applied, as opposed
 to that of the auxiliary measurements in which they are initially derived.
 
+
+\subsection{Toy Examples of the Profile Likelihood Fit}
+\label{sec:profile_examples}
+
 The best way to get a feel for the profiling mechanisms just described is via a few simple
 examples, to which we turn to now.
 
-\subsubsection{Profiling Likelihood Fit Example 1}
-\label{sec:profiling_example_1}
+\subsubsection{Profile Likelihood Fit Example 1a}
+\label{sec:profiling_example_1a}
 
 This example illustrates the mechanisms of both NP profiling and pulling.
 We set up a dummy analysis, with two regions and two backgrounds only.
@@ -461,25 +465,47 @@ the predicted yields, is as follows:
         \end{itemize}
 \end{itemize}
 
+From this information, a likelihood ratio as in Equation~\ref{eq:full_likelihood} is constructed.
+In this setup, all of the $\mu$ parameters are set to 1 for the backgrounds
+and NP constraint terms parametrized by $\theta$ terms
+for each of the three uncertainties are included.
+The pre-fit situation is illustrated by the left side of Figure~\ref{fig:prof_ex_1_np50}.
+A profile-likelihood fit to the observed data is performed and the results for the fitted parameters
+are shown in Figure~\ref{fig:prof_ex_1_pulls} and by the
+right side of Figure~\ref{fig:prof_ex_1_np50}.
+
+Focusing first on Region 1, we see that after the fit the pre-fit 20 event excess is removed by
+the increase in Bkg. 1's predicted yield.
+This is explained by the NP on Bkg. 1 being pulled by nearly 0.5, as seen in Figure~\ref{fig:prof_ex_1_pulls}.
+By Equation~\ref{eq:theta_gaus}, a pull by 0.5 is precisely 20 events ($\theta^{\text{post-fit}} \times ( \text{pre-fit uncertainty} \times N^{\text{pre-fit}}) \rightarrow 0.5 \times (0.5 \times 80) = 20$).
+The post-fit uncertainty has also been reduced to that allowed by the data statistics, which is driven
+by the NP on Bkg. 1 being profiled from its initial uncertainty of $\pm 1$ to $\pm 0.25$ ($\Delta \theta^{\text{post-fit}} \times (\text{pre-fit uncertainty} \times N^{\text{pre-fit}}) \rightarrow 0.25 \times (0.5 \times 80) = 10$).
+
+Looking to the post-fit results of Region 2, we see that, as with Region 1, the overall
+background uncertainty has been profiled so as to be compatible with that allowed by the data statistics.
+The main difference with respect to Region 1, however, is the fact that there are two NP constraints
+on Bkg. 2.
+Each of the NP constraint terms is already at the level of $10\%$ that corresponds to the data statistics.
+There is therefore a redundancy in the NP constraints on Bkg. 2 and the fit develops a correlation between
+them such that their combined post-fit impact on Bkg. 2 is as seen on the right side of Figure~\ref{fig:prof_ex_1_np50}.
+The correlation between the two constraints is seen in Figure~\ref{fig:prof_ex_1_pulls} to be $\rho = -0.5$,
+which, in this simple scenario, can be expected to be the case by the following:
+\begin{align}
+    \sigma_{1} &= \sigma_{2} = \sigma \nonumber \\
+    \sigma_{1 \oplus 2} &= \sqrt{ \sigma_1^2 + \sigma_2^2 + 2 \sigma_1 \sigma_2 \rho } = \sigma \nonumber
+\end{align}
+where, in the second line, we expect $\sigma$ to be at the level of the data statistics.
+This requires $\rho = -0.5$ and is indeed what the profile-likelihood fit ends up with.
 
 \begin{figure}[!htb]
     \begin{center}
         \includegraphics[width=0.48\textwidth]{figures/common_ana/stat_hypo/profile_examples/profile_ex_1_NP50_pre}
         \includegraphics[width=0.48\textwidth]{figures/common_ana/stat_hypo/profile_examples/profile_ex_1_NP50_post}
         \caption{
+            \textbf{\textit{Left}}: Pre-fit scenario for Example 1a, described in the text.
+            \textbf{\textit{Right}}: Post-fit scenario for Example 1a, described in the text.
         }
         \label{fig:prof_ex_1_np50}
-    \end{center}
-\end{figure}
-
-
-\begin{figure}[!htb]
-    \begin{center}
-        \includegraphics[width=0.48\textwidth]{figures/common_ana/stat_hypo/profile_examples/profile_ex_1_NP10_pre}
-        \includegraphics[width=0.48\textwidth]{figures/common_ana/stat_hypo/profile_examples/profile_ex_1_NP10_post}
-        \caption{
-        }
-        \label{fig:prof_ex_1_np10}
     \end{center}
 \end{figure}
 
@@ -488,19 +514,103 @@ the predicted yields, is as follows:
         \includegraphics[width=0.48\textwidth]{figures/common_ana/stat_hypo/profile_examples/profile_ex_1_pulls}
         \includegraphics[width=0.48\textwidth]{figures/common_ana/stat_hypo/profile_examples/np_corr_ex_1}
         \caption{
+            \textbf{\textit{Left}}: Post-fit values for the parameters entering the profile-likelihood fit
+                described in the text. The post-fit result for the NP `Norm. Bkg. 1' in pink corresponds
+                to that of the fit configuration described in Example 1b, below.
+                All other parameters (in black) correspond to those in the fit configuration described in Example 1a.
+            \textbf{\textit{Right}}: Post-fit correlation matrix for the parameters entering the profile-likelihood
+                fit described in the text.
         }
         \label{fig:prof_ex_1_pulls}
+    \end{center}
+\end{figure}
+
+\subsubsection{Profile Likelihood Fit Example 1b}
+\label{sec:profiling_example_1b}
+
+In the previous example we saw that, through the pulling of a constraint term,
+the complete removal of a discrepancy between the observed data and the
+predicted background was made possible.
+This reinforces the idea that the predicted numbers of events are dependent
+upon the NP entering the fit ($N^{\text{exp}} \rightarrow N^{\text{exp}}(\bm{\theta})$)
+and that their post-fit values can change even if their is no explicit normalisation-correcting $\mu$ terms in the fit.
+Of course, the large uncertainty on Bkg. 1's prediction in Example 1a equates to a loose constraint term and allows for a large degree of
+flexibility in the fit for it to be pulled in such a way as to have the post-fit prediction perfectly line up with
+the data being fit to.
+In this current example we reproduce the fit configuration introduced in Example 1a, but instead the
+uncertainty on Bkg. 1 in Region 1 is reduced to $10\%$.
+The pre- and post-fit distributions of the observed and predicted events, with their uncertainties,
+are shown in Figure~\ref{fig:prof_ex_1_np10}.
+The results of the fit for Region 2 are exactly the same as in Example 1a since we have not altered
+the parameters describing this region.
+
+Given the tighter constraint on the predicted yield of Bkg. 1 in Region 1, as compared to Example 1a,
+the NP describing Bkg. 1's normalisation uncertainty does not have enough freedom to be pulled to fully
+cover the 20 event excess.
+The post-fit value of the NP is shown in pink in Figure~\ref{fig:prof_ex_1_pulls}.
+It is pulled to a value of 1.04, which corresponds to just above 8 events as seen in Figure~\ref{fig:prof_ex_1_np10}.
+The smaller uncertainty Bkg. 1's prediction in this example, as compared to Example 1a, corresponds
+to a higher level of confidence in its pre-fit value.
+The associated NP constraint term, therefore, should not be allowed the freedom to contradict this
+high degree of confidence by shifting the prediction to the same extent as that in Example 1a.
+%This is unlike the case of Example 1a,
+%where there was relatively little confidence in the pre-fit prediction of Bkg. 1.
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.48\textwidth]{figures/common_ana/stat_hypo/profile_examples/profile_ex_1_NP10_pre}
+        \includegraphics[width=0.48\textwidth]{figures/common_ana/stat_hypo/profile_examples/profile_ex_1_NP10_post}
+        \caption{
+            \textbf{\textit{Left}}: Pre-fit scenario for Example 1b, described in the text.
+            \textbf{\textit{Right}}: Post-fit scenario for Example 1b, described in the text.
+        }
+        \label{fig:prof_ex_1_np10}
     \end{center}
 \end{figure}
 
 \subsubsection{Profile Likelihood Fit Example 2}
 \label{sec:profiling_example_2}
 
+In this example we again set up the same fit configuration as in Example 1a.
+However, an additional process, `Bkg. $\mu$', with 20 events predicted in Region 1 is added.
+A freely floating normalisation correction term is added to the fit,
+associated with this newly added background (hence its name).
+Again, a profile-likelihood fit to the observed data is run.
+The pre- and post-fit distributions of the observed data and predicted backgrounds,
+with their uncertainties, are shown in Figure~\ref{fig:prof_ex_2_pre}.
+
+From the post-fit distributions shown in Figure~\ref{fig:prof_ex_2_pre} we see the
+expected result that the post-fit uncertainties on the predicted backgrounds
+are such that they match precision allowed by the data statistics.
+As we have not changed anything in Region 2, relative to Example 1a and Example 1b,
+we do not expect the post-fit values of the NP associated with Bkg. 2 to have changed relative
+to those examples.
+The post-fit value of the NP associated with Bkg. 1, however, differs quite substantially
+relative to the earlier examples, as is seen in Figure~\ref{fig:prof_ex_2_pulls}.
+We see that the NP term `Norm. Bkg. 1' is neither pulled nor profiled.
+Instead, the unconstrained $\mu$ parameter associated with Bkg. 1 is able to `eat up'
+the remaining degrees of freedom needed for the reduction in the background prediction's uncertainty.
+Since the pre-fit predicted yield of Bkg. $\mu$ is such that the complete background
+prediction in Region 1 matches the data, the post-fit value for the $\mu$ term is equal to its
+pre-fit value of 1.
+It's uncertainty, however, is $\pm 1.90$ and corresponds to a post-fit uncertainty
+on Bkg. $\mu$'s prediction of nearly 40 events ($1.90 \times 20$).
+This precision on Bkg. $\mu$ matches that of Bkg. 1, with its predicted 80 events
+with 50\% uncertainty.
+This illustrates the fact that the $\mu$ term is completely degenerate with the NP associated with Bkg. 1:
+any variation in the NP term can be fully compensated by the unconstrained $\mu$ term.
+This is illustrated in the right side of Figure~\ref{fig:prof_ex_2_pulls},
+% the post-fit
+%correlation between Bkg. 1's NP constraint and $\mu$ terms,
+where it can be seen that Bkg. 1's NP constraint and $\mu$ terms exhibit almost perfect anti-correlation.
+
 \begin{figure}[!htb]
     \begin{center}
         \includegraphics[width=0.48\textwidth]{figures/common_ana/stat_hypo/profile_examples/profile_ex_2_pre}
         \includegraphics[width=0.48\textwidth]{figures/common_ana/stat_hypo/profile_examples/profile_ex_2_post}
         \caption{
+            \textbf{\textit{Left}}: Pre-fit scenario for Example 2, described in the text.
+            \textbf{\textit{Right}}: Post-fit scenario for Example 2, described in the text.
         }
         \label{fig:prof_ex_2_pre}
     \end{center}
@@ -511,15 +621,72 @@ the predicted yields, is as follows:
         \includegraphics[width=0.48\textwidth]{figures/common_ana/stat_hypo/profile_examples/profile_ex_2_pulls}
         \includegraphics[width=0.48\textwidth]{figures/common_ana/stat_hypo/profile_examples/np_corr_ex_2}
         \caption{
+            \textbf{\textit{Left}}: Post-fit values for the parameters entering the profile-likelihood fit
+                of Example 2,
+                described in the text. 
+            \textbf{\textit{Right}}: Post-fit correlation matrix for the parameters entering the profile-likelihood
+                fit of Example 2, described in the text.
         }
         \label{fig:prof_ex_2_pulls}
     \end{center}
 \end{figure}
 
+It is interesting to make note of the fact, exemplified by Example 2 above, that the precision on a given process' $\mu$ term,
+if allowed to vary in the fit, is highly dependent on the precision of the prediction of the
+other backgrounds.
+This, of course, is intuitive and has meaningful consequences for searches for new physics, in which the signal-plus-background
+hypotheses are characterised by $\mu_{\text{sig}}$ terms associated with the sought-for signal processes.
+Large uncertainties in background predictions result in less precise statements about the presence
+of signal in the analyses' regions.
+This, then, reduces the statistical power (c.f. Equation~\ref{eq:power_level}) of the hypothesis tests
+being performed and, if the uncertainties are large enough, prevent the analyses from making meaningful
+statements about the compatibility of the signal-plus-background hypotheses with the observed data.
+
+As an illustration, Figure~\ref{fig:cls_scan_uncert} shows the CL$_s$ computed as a function of varying signal-to-background ratio, for several background uncertainty hypotheses,
+for a fixed number of predicted background and data events in a single-region analysis.
+%This is shown in Figure~\ref{fig:cls_scan_uncert}, 
+The scenario shown in Figure~\ref{fig:cls_scan_uncert} is not unlike those to be
+presented in Chapters~\ref{chap:search_stop} and \ref{chap:search_hh}, in which the predicted
+and observed event counts are relatively low.
+The number of signal events needed to cross the critical CL$_s <0.05$ region
+at which a signal hypothesis may be considered excluded is quite sensitive to the uncertainty
+on the background prediction.
+Again, this is intuitive mainly from the perspective that reduced levels of precision
+in the background prediction correspond directly to increased levels of ambiguity 
+as to the point at which a signal becomes apparent.
+
+Figure~\ref{fig:cls_scan_uncert} also illustrates the increase in the upper limit
+on a signal process' cross-section, as a result of increased background uncertainty,
+in cases where no excess in data is observed.
+For example, imagine that the sought-for signal process has a predicted cross-section leading to an
+$S/B$ value of 0.4 in Figure~\ref{fig:cls_scan_uncert}.
+At a level of background uncertainty of $30\%$, with a CL$_s \approx 0.35$, this process can neither be said
+to be excluded nor to actually exist.
+At this background uncertainty, the analysis would find an upper-limit on the signal process' $\mu_{\text{sig}}$ term nearing a value of 2,
+since the CL$_s$ crossing point is near $S/B = 0.8$.
+%only be sensitive to the type of process
+%described by the sought-for signal if it had a cross-section nearly twice that of the predicted
+%one, since the CL$_s$ crossing point is near $S/B = 0.8$.
+Using this terminology, then, when no discrepancies between the predicted background and observed event counts
+are seen, the upper-limit value under the hypothesis for a
+given signal process
+quantifies the analysis'
+sensitivity to that process.
+If the upper-limit value is $200$ times the predicted cross-section, the analysis is not sensitive to the process at all.
+However, if the upper-limit value is $\mathcal{O}(1)$ times the predicted process' cross-section, the analysis
+is nearing the regime in which meaningful statements about the existence of that process, at its predicted cross-section, can begin to be made.
+If an upper-limit value corresponds to a cross-section value that is \textit{less} than the predicted one,
+the process --- as predicted --- is excluded.
+%Thinking in these terms is relevant to the search presented in Chapter~\ref{chap:search_hh},
+%in which a search for Standard Model Higgs boson pair production is presented.
+
 \begin{figure}[!htb]
     \begin{center}
         \includegraphics[width=0.6\textwidth]{figures/common_ana/stat_hypo/cls_bkguncert_scan}
         \caption{
+            Dependence of computed CL$_s$ on the signal-to-background ratio for a single-region
+            analysis in which 20 events are predicted and 20 events are observed, shown
+            for varying levels of uncertainty on the predicted background.
         }
         \label{fig:cls_scan_uncert}
     \end{center}
