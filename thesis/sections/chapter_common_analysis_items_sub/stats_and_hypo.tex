@@ -426,8 +426,28 @@ The interpretation of this is that the profiling mechanism allows for the impact
 to be more accurately characterised in the phase space in which they are being applied, as opposed
 to that of the auxiliary measurements in which they are initially derived.
 
-\subsubsection{Profiling Example 1}
+The best way to get a feel for the profiling mechanisms just described is via a few simple
+examples, to which we turn to now.
+
+\subsubsection{Profiling Likelihood Fit Example 1}
 \label{sec:profiling_example_1}
+
+This example illustrates the mechanisms of both NP profiling and pulling.
+We set up a dummy analysis, with two regions and two backgrounds only.
+The regions are referred to as `Region 1' and `Region 2' and the backgrounds
+are `Bkg 1' and `Bkg 2':
+
+\begin{itemize}
+    \item \textbf{Region 1}
+        \begin{itemize}
+            \item Background composition: 80 events from Bkg 1
+            \item Observed data: 100 events
+            \item Systematic Uncertainties:
+            \begin{itemize}
+                \item A 50\% systematic uncertainty on the predicted yield of Bkg 1
+            \end{itemize}
+        \end{itemize}
+\end{itemize}
 
 
 \begin{figure}[!htb]
@@ -460,6 +480,9 @@ to that of the auxiliary measurements in which they are initially derived.
         \label{fig:prof_ex_1_pulls}
     \end{center}
 \end{figure}
+
+\subsubsection{Profile Likelihood Fit Example 2}
+\label{sec:profiling_example_2}
 
 \begin{figure}[!htb]
     \begin{center}
