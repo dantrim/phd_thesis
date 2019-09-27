@@ -503,7 +503,9 @@ This requires $\rho = -0.5$ and is indeed what the profile-likelihood fit ends u
         \includegraphics[width=0.48\textwidth]{figures/common_ana/stat_hypo/profile_examples/profile_ex_1_NP50_post}
         \caption{
             \textbf{\textit{Left}}: Pre-fit scenario for Example 1a, described in the text.
+                The hatched areas indicate the uncertainty in the predicted yields.
             \textbf{\textit{Right}}: Post-fit scenario for Example 1a, described in the text.
+                The hatched areas indicate the uncertainty in the predicted yields.
         }
         \label{fig:prof_ex_1_np50}
     \end{center}
@@ -515,11 +517,11 @@ This requires $\rho = -0.5$ and is indeed what the profile-likelihood fit ends u
         \includegraphics[width=0.48\textwidth]{figures/common_ana/stat_hypo/profile_examples/np_corr_ex_1}
         \caption{
             \textbf{\textit{Left}}: Post-fit values for the parameters entering the profile-likelihood fit
-                described in the text. The post-fit result for the NP `Norm. Bkg. 1' in pink corresponds
+                described in Example 1a. The post-fit result for the NP `Norm. Bkg. 1' in pink corresponds
                 to that of the fit configuration described in Example 1b, below.
                 All other parameters (in black) correspond to those in the fit configuration described in Example 1a.
             \textbf{\textit{Right}}: Post-fit correlation matrix for the parameters entering the profile-likelihood
-                fit described in the text.
+                fit described in Example 1a.
         }
         \label{fig:prof_ex_1_pulls}
     \end{center}
@@ -562,7 +564,9 @@ high degree of confidence by shifting the prediction to the same extent as that 
         \includegraphics[width=0.48\textwidth]{figures/common_ana/stat_hypo/profile_examples/profile_ex_1_NP10_post}
         \caption{
             \textbf{\textit{Left}}: Pre-fit scenario for Example 1b, described in the text.
+                The hatched areas indicate the uncertainty in the predicted yields.
             \textbf{\textit{Right}}: Post-fit scenario for Example 1b, described in the text.
+                The hatched areas indicate the uncertainty in the predicted yields.
         }
         \label{fig:prof_ex_1_np10}
     \end{center}
@@ -618,8 +622,10 @@ of whether they are associated with signal or background processes.
         \includegraphics[width=0.48\textwidth]{figures/common_ana/stat_hypo/profile_examples/profile_ex_2_pre}
         \includegraphics[width=0.48\textwidth]{figures/common_ana/stat_hypo/profile_examples/profile_ex_2_post}
         \caption{
-            \textbf{\textit{Left}}: Pre-fit scenario for Example 2, described in the text.
+            \textbf{\textit{Left}}: Pre-fit scenario for Example 2, described in the text. 
+                The hatched areas indicate the uncertainty in the predicted yields only on the background processes.
             \textbf{\textit{Right}}: Post-fit scenario for Example 2, described in the text.
+                The hatched areas indicate the uncertainty in the predicted yields only on the background processes.
         }
         \label{fig:prof_ex_2_pre}
     \end{center}
@@ -657,8 +663,8 @@ for a fixed number of predicted background and data events in a single-region an
 %The scenario shown in Figure~\ref{fig:cls_scan_uncert} is not unlike those to be
 %presented in Chapters~\ref{chap:search_stop} and \ref{chap:search_hh}, in which the predicted
 %and observed event counts are relatively low.
-The number of signal events needed to cross the critical CL$_s <0.05$ region
-at which a signal hypothesis may be considered excluded is quite sensitive to the uncertainty
+The number of signal events needed to cross into the critical CL$_s <0.05$ region
+at which point a signal hypothesis may be considered excluded is quite sensitive to the uncertainty
 on the background prediction.
 Again, this is intuitive mainly from the perspective that reduced levels of precision
 in the background prediction correspond directly to increased levels of ambiguity 
@@ -666,7 +672,7 @@ as to the point at which a signal becomes apparent.
 
 Figure~\ref{fig:cls_scan_uncert} also illustrates the increase in the upper limit
 on a signal process' cross-section, as a result of increased background uncertainty,
-in cases where no excess in data is observed.
+in cases where no significant excess in data over the predicted background level is observed.
 For example, imagine that the sought-for signal process has a predicted cross-section leading to an
 $S/B$ value of 0.4 in Figure~\ref{fig:cls_scan_uncert}.
 At a level of background uncertainty of $30\%$, with a CL$_s \approx 0.35$, this process can neither be said
@@ -676,14 +682,14 @@ since the CL$_s$ crossing point is near $S/B = 0.8$.
 %only be sensitive to the type of process
 %described by the sought-for signal if it had a cross-section nearly twice that of the predicted
 %one, since the CL$_s$ crossing point is near $S/B = 0.8$.
-Using this terminology, then, when no discrepancies between the predicted background and observed event counts
+Using this terminology, then, when no meaningful discrepancies (e.g. very low $p_0$-values) between the predicted background and observed event counts
 are seen, the upper-limit value under the hypothesis for a
-given signal process
-quantifies the analysis'
-sensitivity to that process.
+given signal process gives a measure of `how far' the analysis is from being sensitive to that process.
+%quantifies the analysis'
+%sensitivity to that process.
 If the upper-limit value is $200$ times the predicted cross-section, the analysis is not sensitive to the process at all.
-However, if the upper-limit value is $\mathcal{O}(1)$ times the predicted process' cross-section, the analysis
-is entering the regime where it will be able to resolve the presence of the signal and can begin to make meaningful statements about
+However, if the upper-limit value is $\mathcal{O}(1)$ times the process' predicted cross-section, the analysis
+is entering the regime wherein it will be able to resolve the presence of the signal and can begin to make meaningful statements about
 its likelihood of existence.
 %can begin to make meaningful statements about its existence
 %is nearing the regime in which meaningful statements about the existence of that process, at its predicted cross-section, can begin to be made.
@@ -706,6 +712,61 @@ the process --- as predicted --- is excluded.
 
 \FloatBarrier
 \subsection{Asymptotic Formulation of Likelihood Ratio Tests}
+\label{sec:asymptotics}
 
-{\color{red}{Describe the asympotitc formula used for the analysis to be presented and illustrate
-examples of how various p values are obtained, as well as how analysis sensitivity is optimized}}
+In Section~\ref{sec:profile_examples} we have made use of the profile likelihood ratio fits and
+even shown some examples of hypothesis testing.
+We have not shown, however, how the probability density functions of the test statistics described
+by Equation~\ref{eq:pll_test_stat} are obtained.
+The probability density functions are needed in order to compute the $p_{\mu}$-values as indicated
+by Equation~\ref{eq:test_stat_pvalue}.
+There are two general approaches taken to obtain such distributions.
+The first is by generating so-called `pseudo-experiments', in which the predictions of the hypotheses are sampled within their uncertainties many times,
+with a value of the corresponding test statistic computed for each sample, such that a distribution
+of the $q_{\mu}$ may be obtained.
+This method can be computationally intensive if high-levels
+of precision are required for the analysis.
+The method used in the searches presented in Chapters~\ref{chap:search_stop} and \ref{chap:search_hh}
+relies on asymptotic approximations of the sampling distributions of the 
+profile-likelihood ratio test statistic of Equation~\ref{eq:pll_test_stat}.
+The complete discussion and description of the asymptotic formulae used to represent
+Equation~\ref{eq:pll_test_stat} is given in Ref.~\ref{AsymptoticFormula}.
+
+The key takeaway from Ref.~\ref{AsymptoticFormula}, is that in the large $N$ limit, with $N$
+corresponding to the data sample size, the sampling distributions of the profile likelihood test statistics
+take the form of non-central chi-square distributions with single degrees of freedom,
+\begin{align}
+    f(q_{\mu} | \Lambda) = \frac{1}{2\sqrt{q_{\mu}}} \frac{1}{\sqrt{2\pi}} \left[ \exp \left( -\frac{1}{2} (\sqrt{q_{\mu}} + \sqrt{\Lambda})^2 \right) 
+        + \exp \left( -\frac{1}{2}(\sqrt{q_{\mu}} - \sqrt{\Lambda} )^2 \right) \right],
+    \label{eq:test_stat_asym}
+\end{align}
+where the non-centrality term, $\Lambda$, is given by the following:
+\begin{align}
+    \Lambda = \frac{ (\mu - \hat{\mu})^2 } {\sigma^2}.
+    \label{eq:noncentrality}
+\end{align}
+Example distributions of the test statistic probability density function are shown in Figure~\ref{fig:qmu_dist},
+using Equation~\ref{eq:test_stat_asym}, illustrating the differences between the background-only
+and signal-plus-background hypotheses for a case in which there is a large predicted rate of signal
+and for the case in which there is not.
+As described by Equation~\ref{eq:test_stat_pvalue}, the $p_{\mu}$ and $p_0$ values needed, among other things, for the computation of \cls can be obtained from these distributions
+for a given value of $q_{\mu}$ by integrating the areas to the right of the specified $q_{\mu}$ under the distributions associated
+with the $S+B$ and $B$ hypotheses, respectively.
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.48\textwidth]{figures/common_ana/stat_hypo/qmu_dist_large_s}
+        \includegraphics[width=0.48\textwidth]{figures/common_ana/stat_hypo/qmu_dist_small_s}
+        \caption{
+            Probability densities of the profile likelihood test statistic of Equation~\ref{eq:pll_test_stat}
+            obtained under the asymptotic formulae described in Ref.~\ref{AsymptoticFormula} and shown
+            in Equation~\ref{eq:test_stat_asym}.
+            The background-only hypothesis ($\mu = 0$) is shown in blue, and the signal-plus-background
+            hypothesis ($\mu \ne 0$) is shown in red.
+            \textit{\textbf{Left}}: The case in which the predicted amount of signal is large compared to the
+                background rate.
+            \textit{\textbf{Right}}:  The case in which the predicted signal rate is similar to that of the background.
+        }
+        \label{fig:qmu_dist}
+    \end{center}
+\end{figure}
