@@ -82,8 +82,8 @@ def example_2() :
     ax.tick_params(which = "both", direction = "out")
     ax.set_xticks(bins[:-1]+0.5*bw)
     ax.set_yticks(bins[:-1]+0.5*bw)
-    ax.set_xticklabels(["Norm. Bkg 1", r"Norm. Bkg 2$_1$", r"Norm. Bkg 2$_2$", r"$\mu$"])
-    ax.set_yticklabels([r"$\mu$", r"Norm. Bkg 2$_2$", r"Norm. Bkg 2$_1$", "Norm. Bkg. 1"],
+    ax.set_xticklabels(["Norm. Bkg 1", r"Norm. Bkg 2$_1$", r"Norm. Bkg 2$_2$", r"$\mu_{\mathrm{sig}}$"])
+    ax.set_yticklabels([r"$\mu_{\mathrm{sig}}$", r"Norm. Bkg 2$_2$", r"Norm. Bkg 2$_1$", "Norm. Bkg. 1"],
         rotation = 50)
     #sys.exit()
 

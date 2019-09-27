@@ -31,7 +31,7 @@ def do_plot(post = False) :
     #    width = 1,
 	#	label = "Bkg 1"
     #)
-    ax.bar([0.5], 100, color = "#cccc65", width = 1, label = r"Bkg $\mu$")
+    ax.bar([0.5], 100, color = "#cccc65", width = 1, label = "Signal")
     ax.bar([0.5], bkg_vals[0], color = "#bb2a33",
         width = 1,
 		label = "Bkg 1"
@@ -122,7 +122,7 @@ def do_pull() :
     ax.set_xlabel("")
     ax.set_ylabel(r"Post Fit $\theta$")
     ax.set_xticks([0.5, 1.5, 2.5, 3.5])
-    ax.set_xticklabels(["Norm. Bkg 1", r"Norm. Bkg 2$_1$", r"Norm. Bkg 2$_2$", r"$\mu$"])
+    ax.set_xticklabels(["Norm. Bkg 1", r"Norm. Bkg 2$_1$", r"Norm. Bkg 2$_2$", r"$\mu_{\mathrm{sig}}$"])
 
     x_vals = [0.5, 1.5, 2.5]
     y_vals = [bkg0[0], bkg1_0[0], bkg1_1[0]]
@@ -159,8 +159,8 @@ def do_pull() :
 
 def main() :
 
-    #do_plot(post = False)
-    #do_plot(post = True)
+    do_plot(post = False)
+    do_plot(post = True)
     do_pull()
 
 if __name__ == "__main__" :

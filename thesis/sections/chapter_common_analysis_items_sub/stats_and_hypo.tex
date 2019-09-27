@@ -572,10 +572,12 @@ high degree of confidence by shifting the prediction to the same extent as that 
 \label{sec:profiling_example_2}
 
 In this example we again set up the same fit configuration as in Example 1a.
-However, an additional process, `Bkg. $\mu$', with 20 events predicted in Region 1 is added.
-A freely floating normalisation correction term is added to the fit,
-associated with this newly added background (hence its name).
-Again, a profile-likelihood fit to the observed data is run.
+However, a signal process `Signal' with 20 events predicted in Region 1 is added.
+The signal-strength parameter $\mu_{\text{sig}}$, acting as a freely floating normalisation
+term for the signal process, is now included in the fit as well.
+%A freely floating normalisation correction term is added to the fit,
+%associated with this newly added background (hence its name).
+A profile-likelihood fit to the observed data is once again performed.
 The pre- and post-fit distributions of the observed data and predicted backgrounds,
 with their uncertainties, are shown in Figure~\ref{fig:prof_ex_2_pre}.
 
@@ -588,21 +590,28 @@ to those examples.
 The post-fit value of the NP associated with Bkg. 1, however, differs quite substantially
 relative to the earlier examples, as is seen in Figure~\ref{fig:prof_ex_2_pulls}.
 We see that the NP term `Norm. Bkg. 1' is neither pulled nor profiled.
-Instead, the unconstrained $\mu$ parameter associated with Bkg. 1 is able to `eat up'
+Instead, the unconstrained signal-strength parameter $\mu_{\text{sig}}$ is able to `eat up'
 the remaining degrees of freedom needed for the reduction in the background prediction's uncertainty.
-Since the pre-fit predicted yield of Bkg. $\mu$ is such that the complete background
-prediction in Region 1 matches the data, the post-fit value for the $\mu$ term is equal to its
+Since the pre-fit predicted yield of the signal process is such that the complete background
+prediction in Region 1 matches the data, the post-fit value for $\mu_{\text{sig}}$ is equal to its
 pre-fit value of 1.
 It's uncertainty, however, is $\pm 1.90$ and corresponds to a post-fit uncertainty
-on Bkg. $\mu$'s prediction of nearly 40 events ($1.90 \times 20$).
-This precision on Bkg. $\mu$ matches that of Bkg. 1, with its predicted 80 events
-with 50\% uncertainty.
-This illustrates the fact that the $\mu$ term is completely degenerate with the NP associated with Bkg. 1:
-any variation in the NP term can be fully compensated by the unconstrained $\mu$ term.
-This is illustrated in the right side of Figure~\ref{fig:prof_ex_2_pulls},
+on the signal process' prediction of nearly 40 events ($1.90 \times 20$).
+This precision on the signal matches the pre-fit uncertainty of of Bkg. 1, with its predicted 80 events
+and 50\% uncertainty.
+This illustrates the fact that the $\mu_{\text{sig}}$ term is completely degenerate with the NP associated with Bkg. 1:
+any variation in the NP term can be fully compensated by the unconstrained $\mu_{\text{sig}}$ term.
+This compensation allows for the background precision in Region 1 to be reduced nearly to
+that of the data statistics, as seen in Figure~\ref{fig:prof_ex_2_pre},
+and is characterised by the nearly perfect anti-correlation between the $\mu_{\text{sig}}$ and
+Bkg. 1 NP constraint terms, shown in the right side of Figure~\ref{fig:prof_ex_2_pulls}.
+%This is illustrated in the right side of Figure~\ref{fig:prof_ex_2_pulls},
 % the post-fit
 %correlation between Bkg. 1's NP constraint and $\mu$ terms,
-where it can be seen that Bkg. 1's NP constraint and $\mu$ terms exhibit almost perfect anti-correlation.
+%where it can be seen that Bkg. 1's NP constraint and $\mu$ terms exhibit almost perfect anti-correlation.
+This ability for $\mu_{\text{sig}}$ to compensate the NP by preventing its being pulled is a general
+feature of the addition of unconstrained normalisation-scaling $\mu$ terms in these types of fits, regardless
+of whether they are associated with signal or background processes.
 
 \begin{figure}[!htb]
     \begin{center}
@@ -674,7 +683,10 @@ quantifies the analysis'
 sensitivity to that process.
 If the upper-limit value is $200$ times the predicted cross-section, the analysis is not sensitive to the process at all.
 However, if the upper-limit value is $\mathcal{O}(1)$ times the predicted process' cross-section, the analysis
-is nearing the regime in which meaningful statements about the existence of that process, at its predicted cross-section, can begin to be made.
+is entering the regime where it will be able to resolve the presence of the signal and can begin to make meaningful statements about
+its likelihood of existence.
+%can begin to make meaningful statements about its existence
+%is nearing the regime in which meaningful statements about the existence of that process, at its predicted cross-section, can begin to be made.
 If an upper-limit value corresponds to a cross-section value that is \textit{less} than the predicted one,
 the process --- as predicted --- is excluded.
 %Thinking in these terms is relevant to the search presented in Chapter~\ref{chap:search_hh},
