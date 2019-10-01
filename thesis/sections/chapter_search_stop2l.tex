@@ -43,8 +43,27 @@ The LSP in these models is assumed to be the lightest neutralino, \ninoone.
 
 \begin{figure}[!htb]
     \begin{center}
+        \includegraphics[width=0.7\textwidth]{figures/search_stop2l/signal/stop_LSP_boundaries}
+        \caption{
+            Kinematic boundaries in the (\stopone,\ninoone) plane, indicating the three kinematic
+            regimes associated with the decay of the \stopone: the two-body $\stopone \rightarrow t \ninoone$
+            decay ($\Delta m(\stopone, \ninoone) > m_t$), the three-body $\stopone \rightarrow b W \ninoone$ decay
+            ($\Delta m(\stopone, \ninoone) < m_t$), and the four-body $\stopone \rightarrow b f f^{\prime} \ninoone$
+            decay ($\Delta m(\stopone, \ninoone) < m_b + m_W$).
+            Here $\Delta m(\stopone, \ninoone) = m_{\stopone} - m_{\ninoone}$.
+        }
+        \label{fig:stop_boundaries}
+    \end{center}
+\end{figure}
+
+\begin{figure}[!htb]
+    \begin{center}
         \includegraphics[width=0.7\textwidth]{figures/search_stop2l/run1_stop_summary}
         \caption{
+            Summary of third-generation SUSY searches in the (\stopone, \ninoone) plane
+            at the end of Run 1.
+            The region relevant to the work in the present thesis is indicated by the 
+            coverage of purple, `t1L,t2L' and `WW'.
         }
         \label{fig:run1_stop_summary}
     \end{center}
@@ -63,6 +82,21 @@ The LSP in these models is assumed to be the lightest neutralino, \ninoone.
     \begin{center}
         \includegraphics[width=0.8\textwidth]{figures/search_stop2l/susy_exclusion_cartoonPDF}
         \caption{
+            Cartoon illustrating an example of a typical two-dimensional exclusion plot
+            for a SUSY simplified model.
+            The mass of the pair-produced SUSY particle is on the $x$-axis and the mass of the
+            LSP to which it decays is on the $y$-axis.
+            The region bounded by (i.e. inside of) the dashed-black (red) curves indicate
+            the expected (observed) region of SUSY parameter space excluded at the 95\% CL.
+            SUSY exclusion curves such as these usually exhibit a triangular shape as a result
+            of two competing effects, indicated by the arrows: 1) the reduction in production
+            cross-section as the mass of the produced SUSY particle increases, and 2) kinematic
+            supression occurring when the phase space available to the final state decreases
+            as a result of $\Delta m (x, y) = m_x - m_y \rightarrow 0$.
+            Kinematic suppression results in the final state objects, such as leptons and $b$-tagged jets
+            in the case presented in the current thesis,
+            having very little momenta, thereby making it difficult to efficiently identify
+            the event as being consistent with the given SUSY hypothesis being searched for.
         }
         \label{fig:susy_exclusion_cartoon}
     \end{center}
@@ -73,7 +107,14 @@ The LSP in these models is assumed to be the lightest neutralino, \ninoone.
         \includegraphics[width=0.65\textwidth]{figures/search_stop2l/SUSY_xsec_13TeV_v1}
         \includegraphics[width=0.75\textwidth]{figures/search_stop2l/nachman_stop_phase_space}
         \caption{
-            From Ref.~\cite{Nachman:2016qyc}
+            \textbf{\textit{Top}}: Production cross-sections for several SUSY scenarios of pair-produced
+                sparticles. The band indicates the theoretical uncertainty on the predicted cross-section.
+                The green band is that for the production of pairs of \stopone particles, relevant to the
+                analyses being presented in the current chapter.
+            \textbf{\textit{Bottom}}: Average invariant mass of the $b$-quark and SM fermions ($f f^{\prime}$) in the
+                final state of the $\stopone \rightarrow b f f^{\prime} \ninoone$ decay, as a function of the mass
+                of the \stopone and \ninoone particles.
+                Figure taken from Ref.~\cite{Nachman:2016qyc}.
         }
         \label{fig:stop_phase_space}
     \end{center}
@@ -89,6 +130,7 @@ The LSP in these models is assumed to be the lightest neutralino, \ninoone.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{sections/chapter_search_stop2l_sub/signal_pheno}
+\input{sections/chapter_search_stop2l_sub/event_selection}
 \input{sections/chapter_search_stop2l_sub/strategy}
 \input{sections/chapter_search_stop2l_sub/background_estimate}
 
