@@ -143,7 +143,7 @@ the three-body \stopone in the two-lepton final state.
 %\end{figure}
 
 \FloatBarrier
-\subsection{Aside: SUSY Exclusion Plots}
+\section{Aside: SUSY Exclusion Plots}
 \label{sec:susy_exclusion_plots}
 
 In this section we describe the typical SUSY exclusion plot, illustrated in Figure~\ref{fig:susy_exclusion_cartoon}.
@@ -172,12 +172,16 @@ which leads to analyses becoming less sensitive to the scenarios with larger mas
 
 Item (4) is also relatively straightforward.
 As the masses of the produced sparticle and final-state LSP become nearer to one another, and even
-degenerate with one another, there is less energy-momentum available to be transferred to the final state
-observables since most of the energy-momentum of the initial sparticle is transferred into the production of the final
-state observables \textit{at threshold}.
-This leads to final states characterised by low-momentum objects that are difficult to trigger on and
-reconstruct efficiently.
-This inefficiency reduces an analysis' sensitivity to these kinematic regimes, since the observable objects become experimentally
+degenerate, kinematic phase space suppression results in there being less energy-momentum available to be transferred to the final state
+particles.
+This results in final state particles having typically lower energies and momenta,
+making them difficult to trigger on and reconstruct efficiently.
+%which means that they tend to have lower energies and momenta.
+%% since most is transferred into the production of the final
+%%state observables \textit{at or near their production threshold} (i.e. at r. 
+%This leads to final states characterised by low-momentum objects that are difficult to trigger on and
+%reconstruct efficiently.
+This inefficiency reduces an analysis' sensitivity to these kinematic regimes, since the final states become experimentally
 inaccessible.
 This scenario also appears when the produced sparticle follows a more complex decay chain,
 as in the cases illustrated in Figure~\ref{fig:stop_diagrams}, where intermediate mass scales such as the
@@ -186,10 +190,12 @@ Near these regions, the kinematics of the particles decaying from the objects de
 mass scales change rapidly.
 As a result, analyses targetting particle kinematics on one side of such a boundary
 cannot simultaneously be sensitive to the particle kinematics on the opposing side of the boundary.
+For this reason, it is common practice to define separate analyses targetting each side of a given boundary,
+as indicated in Figure~\ref{fig:run1_stop_summary}.
 
 The expected limits in Item (5) in the above are related to running the analysis' hypothesis tests
 on the SUSY scenarios indicated by the position on the $(m_{\stopone}, m_{\ninoone})$-plane,
-and using for $\bm{N^{\text{obs}}}$ (c.f. Equation~\ref{eq:likelihood_main}) the value in the SRs for the predicted background; that is, the
+and using for $\bm{N^{\text{obs}}}$ (c.f. Equations~\ref{eq:likelihood_main} and \ref{eq:full_likelihood}) the value in the SRs for the predicted background; that is, the
 observed data counts in the analysis' signal regions are substituted with the value of the total predicted
 background in the signal regions.
 The observed data is still used in the CRs, which provide the normalisation correction factors as described in Section~\ref{sec:likelihood}.
