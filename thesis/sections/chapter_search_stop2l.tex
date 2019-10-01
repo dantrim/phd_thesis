@@ -35,11 +35,48 @@ If the \stopone exists, and is indeed lighter than the \TeV~scale, it may easily
 occurring at the LHC.
 Searches for stops therefore play a prominent role in the searches for SUSY in ATLAS.
 
-This chapter therefore presents a search for the production of stop quarks.
+This chapter presents a search for the production of stop quarks.
 The SUSY model considered here satisfies $R$-parity conservation, as do the majority of SUSY
 searches at the LHC, which forces the \stopone to be produced in pairs and to follow
-a decay chain ending in the LSP.
+a decay chain ending in the stable LSP.
 The LSP in these models is assumed to be the lightest neutralino, \ninoone.
+
+SUSY searches performed in ATLAS are done using so-called `simplified models', wherein all parameters
+of the MSSM are selected except for the masses of the sparticles relevant to the decays
+of the sparticle being searched for.
+For the case presented in this chapter, a search for \stopone is described and the simplified models
+used to describe the SUSY signal process are parametrised by two free parameters: the mass of the 
+\stopone and the mass of the \ninoone.
+With these two parameters defined, the kinematics and production cross-section are fixed.
+In the models considered, the \stopone is classified into three regions of phase space according
+to the mass of the \ninoone, into which it decays.
+The potential decays of the \stopone are illustrated by the decay diagrams in Figure~\ref{fig:stop_diagrams}.
+showing the cases of the two-, three-, and four-body decays of the \stopone.
+These decays are associated with three different regions of parameter space in the $(m_{\stopone}, m_{\ninoone})$ plane,
+illustrated in Figure~\ref{fig:stop_boundaries}.
+The analysis to be discussed in this chapter reports the results of a search for the production
+of \stopone particles following the three-body decay, in which the mass-difference between the \stopone
+and \ninoone, \sdiff, is less than (greater than) the mass of the SM top-quark ($W+b$ system).
+This is the middle region of phase space indicated in Figure~\ref{fig:stop_boundaries}, $\stopone \rightarrow b W \ninoone$.
+In this region, the two-body \stopone decays are kinematically suppressed and the \stopone decays via
+an off-shell top-quark or \chinoonepm to the three-body $b W \ninoone$ final state.
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.3\textwidth]{figures/search_stop2l/signal/fgraph_stop_tN} \hspace{1cm}
+        \includegraphics[width=0.3\textwidth]{figures/search_stop2l/signal/fgraph_stop_bCN} \\
+        \includegraphics[width=0.3\textwidth]{figures/search_stop2l/signal/fgraph_3body} \hspace{1cm}
+        \includegraphics[width=0.3\textwidth]{figures/search_stop2l/signal/fgraph_stop_bffN}
+        \caption{
+            Decay diagrams for the \stopone relevant to the two-lepton final state of \stopone pair-production.
+            \textit{\textbf{Top}}: Diagrams leading to the two-body decay of the \stopone, either
+                into $\stopone \rightarrow t \ninoone$ (\textit{top left}) or $\stopone \rightarrow b \chinoonepm$ (\textit{top right}).
+            \textit{\textbf{Bottom left}}: Three-body decay of the \stopone, $\stopone \rightarrow b W \ninoone$.
+            \textit{\textbf{Bottom right}}: Four-body decay of the \stopone, $\stopone \rightarrow b f f^{\prime} \ninoone$.
+        }
+        \label{fig:stop_diagrams}
+    \end{center}
+\end{figure}
 
 \begin{figure}[!htb]
     \begin{center}
@@ -56,11 +93,38 @@ The LSP in these models is assumed to be the lightest neutralino, \ninoone.
     \end{center}
 \end{figure}
 
+Figure~\ref{fig:run1_stop_summary} shows the results of the searches for \stopone particles performed
+in Run 1 of the LHC by the ATLAS experiment.
+This figure indicates the regions of SUSY parameter space, under the hypothesis of the
+simplified model parametrised by the masses of the \stopone and \ninoone particles,
+that are excluded at 95\% CL by the zero, one, and two lepton analyses.
+It can be seen that the Run 1 analyses targetting the two-lepton final states did not effectively
+cover the three-body regime, at least in comparison to all analyses in the two-body and four-body regions
+of the $(m_{\stopone}, m_{\ninoone})$-plane.
+
+Section~\ref{sec:susy_exclusion_plots} provides a brief introduction to the type of plots
+shown in Figure~\ref{fig:run1_stop_summary}, which are the general SUSY exclusion plots
+that are presented to summarise the results of SUSY searches based on simplified models
+by both the ATLAS and CMS experiments.
+Section~\ref{sec:stop_pheno} then begins by describing the kinematics and phenomenology of the three-body \stopone
+decays that are being targetted in the SUSY analysis presented in this chapter.
+With the signal kinematics in mind, Section~\ref{sec:stop_event_sel} describes the overall event
+selection and object definition used in the analysis, so that the analysis' event sample can be understood.
+Section~\ref{sec:stop_strategy} describes how the phenomenology described in Section~\ref{sec:stop_pheno}
+motivates a particular choice of discriminating observables that are sensitive to the three-body decay
+of the \stopone particle, as well as the definition of the analysis' SRs.
+Section~\ref{sec:stop_background_estimate} describes the analysis' background estimation
+strategy, particular the definition of CRs and VRs used to constrain the dominant
+SM backgrounds.
+Section~\ref{sec:stop_results} closes the chapter with the results of the search for
+the three-body \stopone in the two-lepton final state.
+
+
 \begin{figure}[!htb]
     \begin{center}
         \includegraphics[width=0.7\textwidth]{figures/search_stop2l/run1_stop_summary}
         \caption{
-            Summary of third-generation SUSY searches in the (\stopone, \ninoone) plane
+            Summary of SUSY \stopone searches in the (\stopone, \ninoone) plane
             at the end of Run 1.
             The region relevant to the work in the present thesis is indicated by the 
             coverage of purple, `t1L,t2L' and `WW'.
@@ -78,6 +142,62 @@ The LSP in these models is assumed to be the lightest neutralino, \ninoone.
 %    \end{center}
 %\end{figure}
 
+\FloatBarrier
+\subsection{Aside: SUSY Exclusion Plots}
+\label{sec:susy_exclusion_plots}
+
+In this section we describe the typical SUSY exclusion plot, illustrated in Figure~\ref{fig:susy_exclusion_cartoon}.
+These plots are used when presenting the results of SUSY searches based on the assumptions
+made in simplified models of the MSSM, parametrised only by the masses of the
+pair-produced sparticle and the stable sparticle appearing in the final state (the LSP), assuming $R$-parity
+conservation. The main things to observe in this plot are as follows:
+
+\begin{enumerate}
+    \item The region contained \textit{within} the contours is the region of SUSY parameter space,
+        under the assumption of the simplified model, excluded at 95\% CL
+    \item The region in which the mass of the produced
+        sparticle is less than the mass of the LSP is kinematically forbidden
+    \item The analysis sensitivity (i.e. power to exclude) decreases as the mass of the produced sparticle increases
+    \item The analysis sensitivity (i.e. power to exclude) decreases as $\sdiff \rightarrow 0$ ($\sdiff \rightarrow m_X$,
+        with $m_X$ a mass scale related to an internal degree of freedom of the model)
+    \item The expected 95\% CL exclusion limits are reported with their $\pm 1 \sigma$ uncertainty band,
+        related to the precision of the analyses based on the analysis' systematic uncertainty evaluation
+    \item The observed 95\% CL exclusion limit is not reported with an error
+\end{enumerate}
+
+Item (3) in the above is related to the fact that the cross-section of the SUSY sparticle production cross-section
+is a function of \textit{only} the mass of the pair-produced sparticle in the simplified models assumed here.
+The production cross-section decreases in proportion to the mass of the sparticle, indicated in Figure~\ref{fig:susy_xsec},
+which leads to analyses becoming less sensitive to the scenarios with larger masses of the produced sparticles.
+
+Item (4) is also relatively straightforward.
+As the masses of the produced and final-state LSP particles become nearer to one another, and even
+degenerate with one another, there is less energy-momentum available to be transferred to the final state
+observables since most of the initial sparticle's mass-energy is transferred into the production of the final
+state observables at threshold.
+This leads to final states characterised by low-momentum objects that are difficult to trigger on and
+reconstruct efficiently.
+This inefficiency reduces an analyses' sensitivity to these kinematic regimes, since they become experimentally
+inaccessible.
+This scenario also appears when the produced sparticle follows a more complex decay chain,
+as in the cases illustrated in Figure~\ref{fig:stop_diagrams}, where intermediate mass scales such as the
+mass of the SM top-quark or $W$-boson are introduced.
+Near these regions, the kinematics of the final state objects decaying from the objects defining these intermediate
+mass scales change rapidly.
+Analyses targetting the kinematic regimes on one side of the boundaries
+cannot simultaneously be sensitive to the kinematic regimes on the opposing side of the boundaries.
+
+The expected limits in Item (5) in the above are related to running the analysis' hypothesis tests
+on the SUSY scenarios indicated by the position on the $(m_{\stopone}, m_{\ninoone})$-plane,
+and using for $\bm{N^{\text{obs}}}$ (c.f. Equation~\ref{eq:likelihood_main}) the value in the SRs for the predicted background; that is, the
+observed data counts in the analysis' signal regions are substituted with the value of the total predicted
+background in the signal regions.
+The observed data is still used in the CRs, which provide the normalisation correction factors as described in Section~\ref{sec:likelihood}.
+The observed limits discussed in Item (6), on the other hand, take as $\bm{N^{\text{obs}}}$ the actual observed data counts
+in the analysis' SRs.
+Due to statistical fluctuations in the observed data, the expected and observed 95\%CL exclusion contours
+do not typically overlap perfectly.
+
 \begin{figure}[!htb]
     \begin{center}
         \includegraphics[width=0.8\textwidth]{figures/search_stop2l/susy_exclusion_cartoonPDF}
@@ -88,6 +208,8 @@ The LSP in these models is assumed to be the lightest neutralino, \ninoone.
             LSP to which it decays is on the $y$-axis.
             The region bounded by (i.e. inside of) the dashed-black (red) curves indicate
             the expected (observed) region of SUSY parameter space excluded at the 95\% CL.
+            The $\pm 1\sigma$ error band is shown on the expected limits, and is based on the
+            systematic uncertainties included in the analysis.
             SUSY exclusion curves such as these usually exhibit a triangular shape as a result
             of two competing effects, indicated by the arrows: 1) the reduction in production
             cross-section as the mass of the produced SUSY particle increases, and 2) kinematic
@@ -105,21 +227,33 @@ The LSP in these models is assumed to be the lightest neutralino, \ninoone.
 \begin{figure}[!htb]
     \begin{center}
         \includegraphics[width=0.65\textwidth]{figures/search_stop2l/SUSY_xsec_13TeV_v1}
-        \includegraphics[width=0.75\textwidth]{figures/search_stop2l/nachman_stop_phase_space}
         \caption{
-            \textbf{\textit{Top}}: Production cross-sections for several SUSY scenarios of pair-produced
-                sparticles. The band indicates the theoretical uncertainty on the predicted cross-section.
-                The green band is that for the production of pairs of \stopone particles, relevant to the
-                analyses being presented in the current chapter.
-            \textbf{\textit{Bottom}}: Average invariant mass of the $b$-quark and SM fermions ($f f^{\prime}$) in the
-                final state of the $\stopone \rightarrow b f f^{\prime} \ninoone$ decay, as a function of the mass
-                of the \stopone and \ninoone particles.
-                Figure taken from Ref.~\cite{Nachman:2016qyc}.
+            Production cross-section for the SUSY sparticles indicated in the legend,
+            as a function of their mass.
+            The bands indicate the uncertainty due to the theoretical prediction of the production
+            process.
+            The green band indicates the \stopone production cross-section, relevant to the analysis
+            described in the current chapter.
+            For comparison, the production cross-section for SM top-quark pair-production is $\approx 830$\,pb at 13\,\TeV.
         }
-        \label{fig:stop_phase_space}
+        \label{fig:susy_xsec}
     \end{center}
 \end{figure}
 
+%\begin{figure}[!htb]
+%    \begin{center}
+%        \includegraphics[width=0.75\textwidth]{figures/search_stop2l/nachman_stop_phase_space}
+%        \caption{
+%            Average invariant mass of the $b$-quark and SM fermions ($f f^{\prime}$) in the
+%            final state of the $\stopone \rightarrow b f f^{\prime} \ninoone$ decay, as a function of the mass
+%            of the \stopone and \ninoone particles.
+%            Figure taken from Ref.~\cite{Nachman:2016qyc}.
+%        }
+%        \label{fig:stop_phase_space}
+%    \end{center}
+%\end{figure}
+
+\FloatBarrier
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -133,6 +267,7 @@ The LSP in these models is assumed to be the lightest neutralino, \ninoone.
 \input{sections/chapter_search_stop2l_sub/event_selection}
 \input{sections/chapter_search_stop2l_sub/strategy}
 \input{sections/chapter_search_stop2l_sub/background_estimate}
+\input{sections/chapter_search_stop2l_sub/results}
 
 %\chinoonepm
 %
