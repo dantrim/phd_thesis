@@ -30,7 +30,7 @@ the object in the decay tree in that level, to determine the properties of the s
 This effectively means that conclusions drawn at the `upper levels' of the decay about the kinematic
 properties of the particles present are not lost or altered as one traverses further down the decay chain.
 The `jigsaw' in the technique's name refers to the sets of rules and/or algorithms that are applied ---
-so-called `Jigsaw rules' --- in order to either piece together or break apart the reconstructed
+so-called `Jigsaw Rules' --- in order to either piece together or break apart the reconstructed
 event provided the kinematic information (lab-frame four-vectors) that the user has provided as input
 to the decay tree assumption.
 
@@ -204,8 +204,8 @@ the expression for the boost relating the lab frame to the $PP$ (COM) frame:
         \vec{p}_V^{\,\text{LAB}} + \vec{p}_I^{\,\text{LAB}}
     }
     {
-        E_V^{\text{LAB}} + \sqrt{ |\vec{p}_I^{\,\text{LAB}} |^2 + m_I^2 }.
-    }
+        E_V^{\text{LAB}} + \sqrt{ |\vec{p}_I^{\,\text{LAB}} |^2 + m_I^2 }
+    }.
     \label{eq:rjr_lab_boost}
 \end{align}
 The boost in Equation~\ref{eq:rjr_lab_boost} affords provides us the observables in the $PP$ (COM)
@@ -223,8 +223,8 @@ For our decay tree, a possible solution for this is chosen to be:
         \vec{p}_{V_a}^{\,PP} - \vec{p}_{V_b}^{\,PP}
     }
     {
-        E_{V_a}^{PP} + E_{V_b}^{PP}.
-    }
+        E_{V_a}^{PP} + E_{V_b}^{PP}
+    }.
     \label{eq:rjr_pi_boost}
 \end{align}
 Under this boost, all observables subsequently defined are \textit{contra-boost invariant}, meaning that,
@@ -241,9 +241,246 @@ With the application of the RJR technique, then, all of the unknowns in the even
 (approximately), and one has access to kinematic information (four vectors) for every level of the RJR decay tree
 that has been imposed (Figure~\ref{fig:rjr_stop}).
 
+\FloatBarrier
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% DISCRIMINATING VARIABLES
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Discriminating Observables}
 \label{sec:stop_variables}
+
+In this section we describe the basis of kinematic observables, defined using the states defined
+by the RJR, that are used to define the SRs, CRs, and VRs in the present analysis.
+
+With the RJR technique providing us with an approximation of the center-of-mass frame of the
+\stop system (the state $PP$ in Figure~\ref{fig:rjr_stop}), a natural variable to define is the
+total energy, or invariant mass, available to those objects in our decay tree.
+With the entire system defined, this can be obtained easily and we refer to this
+appriximate COM energy as $m_{PP}$, shown in Figure~\ref{fig:rjr_mpp}.
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.7\textwidth]{figures/search_stop2l/strategy/comp_plots/dfpresel_MDR}
+        \caption{
+            Normalised distribution of the $m_{PP}$ variable for several $\stopone \rightarrow b W \ninoone$
+            signal hypotheses, labeled with respect to their assumed $(m_{\stopone}, m_{\ninoone})$ values in the
+            legend.
+            The SM \ttbar~and diboson ($VV$) background processes are also shown for comparison.
+        }
+        \label{fig:rjr_mpp}
+    \end{center}
+\end{figure}
+
+In addition to $m_{PP}$, we can define the associated transverse momentum of the COM frame,
+$|\vec{p}_T^{\,PP}|$, shown in Figure~\ref{fig:rjr_pTT_T}.
+Used in conjunction, the two variables $m_{PP}$ and $|\vec{p}_T^{\,PP}|$ can be used to build the
+ratio, $R_{p_T}$, defined as:
+\begin{align}
+    R_{p_T}  = \frac{
+        |\vec{p}_T^{\,PP}|
+    }
+    {
+        |\vec{p}_T^{\,PP}| + m_{PP}/4
+    }.
+    \label{eq:rjr_rpt}
+\end{align}
+Distributions of $R_{p_T}$ are provided in Figure~\ref{fig:rjr_RPT}.
+The more central nature of our signal hypothesis wherein the pair-produced sparticles decay to
+heavy final state objects and distribute more of their energy to the transverse plane can be seen
+in Figure~\ref{fig:rjr_RPT}.
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.7\textwidth]{figures/search_stop2l/strategy/comp_plots/dfpresel_pTT_T}
+        \caption{
+            Normalised distribution of the $|\vec{p}_T^{\,PP}|$ variable for several $\stopone \rightarrow b W \ninoone$
+            signal hypotheses, labeled with respect to their assumed $(m_{\stopone}, m_{\ninoone})$ values in the
+            legend.
+            The SM \ttbar~and diboson ($VV$) background processes are also shown for comparison.
+        }
+        \label{fig:rjr_pTT_T}
+    \end{center}
+\end{figure}
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.7\textwidth]{figures/search_stop2l/strategy/comp_plots/dfpresel_RPT}
+        \caption{
+            Normalised distribution of the $R_{p_T}$ variable for several $\stopone \rightarrow b W \ninoone$
+            signal hypotheses, labeled with respect to their assumed $(m_{\stopone}, m_{\ninoone})$ values in the
+            legend.
+            The SM \ttbar~and diboson ($VV$) background processes are also shown for comparison.
+        }
+        \label{fig:rjr_RPT}
+    \end{center}
+\end{figure}
+
+The next variable that can be defined uses the relative velocity of the $PP$ frame as seen
+in the LAB frame, as well as the total visible system $V = V_a + V_b$ as seen in the $PP$ frame.
+This is the azimuthal angle between the velocity, or boost, from the LAB to $PP$ frame and the visible
+system $V$ (which, in our case, is simply the dilepton system) as seen in the $PP$ (COM) frame.
+This variable, \dpb, is shown in Figure~\ref{fig:rjr_DPB}.
+
+The key features of the angular quantity \dpb can be seen in Figure~\ref{fig:rjr_DPB}.
+The \stopone signals cleary peak more strongly near values of $\dpb \sim \pi$ and are roughly
+overlapping for all values of $\sdiff$, meaning that the behavior of \dpb is loosely
+independent on \sdiff.
+Rather, \dpb tends to be more dependent on the assumptions gone into constructing the underlying
+RJR decay tree in Figure~\ref{fig:rjr_stop}, from which the quantity \dpb is ultimately derived.
+As discussed, with the dilepton system $V = V_a + V_b$, Equation~\ref{eq:rjr_invisible_mass} results
+in the assumption $m_I = m_V$.
+For the massive \ninoone particles in the invisible final state of our \stopone signal decays, this
+assumption is clearly incorrect and means that the boost from the LAB frame to the approximate 
+$PP$ (COM) frame tends to be an \textit{over}-boost since the assumption of equal masses assumes
+too much momentum for the invisible system.
+In reality, on the other hand, much of the \stopone energy-momentum goes
+into the \textit{mass} of the invisible system.
+This over-boosting can be seen in Equation~\ref{eq:rjr_lab_boost} with the under-predicted $m_I$
+in the denominator.
+This results in the system $V$ to point, on average, in the opposite (anti-parallel) direction with
+respect to the boost in Equation~\ref{eq:rjr_lab_boost} when viewed in the approximate COM frame, $PP$.
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.7\textwidth]{figures/search_stop2l/strategy/comp_plots/dfpresel_DPB_vSS}
+        \caption{
+            Normalised distribution of the $\dpb$ variable for several $\stopone \rightarrow b W \ninoone$
+            signal hypotheses, labeled with respect to their assumed $(m_{\stopone}, m_{\ninoone})$ values in the
+            legend.
+            The SM \ttbar~and diboson ($VV$) background processes are also shown for comparison.
+        }
+        \label{fig:rjr_DPB}
+    \end{center}
+\end{figure}
+
+We can also define a variable that is sensitive to the (squared) mass differences between the pair-produced
+\stopone and final state \ninoone.
+This observable, corresponding to the energy of one of the $V_i$ (one of the leptons) with respect to the sparticle $P_i$ frames
+of reference.
+This variable, $E_V^P$, can be interpreted as the approximate energy of the state $V_i$ in the frame
+corresponding to $P_i$ and has an endpoint following,
+\begin{align}
+    E_V^P \propto \frac{
+        m_{P_i}^2 - m_{I_i}^2
+    }
+    {
+        m_{P_i}
+    },
+\end{align}
+which follows essentially from special relativistic kinematics.
+Distributions of $E_V^P$ are given in Figure~\ref{fig:rjr_MDR}.
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.7\textwidth]{figures/search_stop2l/strategy/comp_plots/dfpresel_MDR}
+        \caption{
+            Normalised distribution of the $\mdr$ variable for several $\stopone \rightarrow b W \ninoone$
+            signal hypotheses, labeled with respect to their assumed $(m_{\stopone}, m_{\ninoone})$ values in the
+            legend.
+            The SM \ttbar~and diboson ($VV$) background processes are also shown for comparison.
+        }
+        \label{fig:rjr_MDR}
+    \end{center}
+\end{figure}
+
+The next Jigsaw variable to be used is the so-called `visible shape' of the $PP$ (COM) frame.
+In the limiting case of $m_{V_a} = m_{V_b} = 0$, in which the current analysis finds itself,
+this quantity corresponds to the (inverse) boost factor ($\gamma$) associated with the boost from the
+$PP$ frame to the $P_i$ frames and is defined as follows,
+\begin{align}
+    \text{PP Visible Shape} \rightarrow \gaminv \equiv \frac{
+        \sqrt{
+            2(|\vec{p}_{V_a}^{\,PP}| |\vec{p}_{V_b}^{\,PP}| + \vec{p}_{V_a}^{\,PP} \cdot \vec{p}_{V_b}^{\,PP})
+        }
+    }
+    {
+        |\vec{p}_{V_a}^{\,PP}| + |\vec{p}_{V_b}^{\,PP}|.
+    }.
+    \label{eq:rjr_gaminv}
+\end{align}
+The quantity \gaminv is a measure of how the two visible systems, $V_i$, are distributed.
+It tends towards unity when $V_a$ and $V_b$ (the two leptons) are equal in momenta and collinear while tending
+towards zero when they are back-to-back or having different momenta.
+In this sense, the variable earns its name as a measure of the `visible shape' of the decay.
+In decays with massive particles contributing to the missing tansverse momentum,
+the visible final state legs $V_a$ and $V_b$ will, on average, tend to not be back-to-back since,
+in addition to balancing each other, they much balance the invisible particles.
+This effect is exaggerated in two cases: (1) when the decay is highly `active' (as in \ttbar),
+and (2) when the invisible system is composed of heavy particles.
+The effect (1) is essentially due to our including in the states $V_a$ and $V_b$ only the
+final state leptons: the quantity \gaminv is blind to any jets in the event and the `shape' it
+corresponds to is in response to balancing these jets as well.
+The effect (2) results in the visible legs recoiling harder off of the heavier invisible particles,
+thus tending to be collinear.
+Distributions of the \gaminv quantity are shown in Figure~\ref{fig:rjr_gaminv}.
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.7\textwidth]{figures/search_stop2l/strategy/comp_plots/dfpresel_gamInvRP1}
+        \caption{
+            Normalised distribution of the $\gaminv$ variable for several $\stopone \rightarrow b W \ninoone$
+            signal hypotheses, labeled with respect to their assumed $(m_{\stopone}, m_{\ninoone})$ values in the
+            legend.
+            The SM \ttbar~and diboson ($VV$) background processes are also shown for comparison.
+        }
+        \label{fig:rjr_gaminv}
+    \end{center}
+\end{figure}
+
+The variables discussed so far are relatively independent of the underlying signal model
+that we are attempting to search for.
+Their utility relies simply on their being massivle particles contributing to the missing
+transverse momentum.
+
+We now discuss a variable that, in order for it to be useful in the search for \stopone particles,
+makes an assumption on the nature of the pair-produced sparticle that we are
+searching for.
+This variable, \cosb, is angular in nature that is sensitive to the decay angle of a given lepton with
+respect to the beam axis in it's production frame.
+
+We define \cosb using only the two final state leptons.
+Each of the leptons is boosted into the frame of the dilepton system, after which
+we take the difference in pseudorapidities of the leptons in this frame,
+$\Delta \eta_{\ell \ell} = \eta^+ - \eta^-$, where $\eta^+$ ($\eta^-$) refers to the
+pseudorapidity of the positively (negatively) charged lepton.
+The quantity \cosb is then defined as,
+\begin{align}
+    \cosb = \tanh ( \Delta \eta_{\ell\ell} / 2),
+    \label{eq:rjr_cosb}
+\end{align}
+and is discussed further in Ref.~\cite{Melia:2011cu}.
+As \cosb is sensitive to the projection angle of the lepton from its parent \stopone, it is
+sensitive to the spin of the \stopone.
+This can be seen in Figure~\ref{fig:rjr_cosb}, where we see that for the decay of the
+spin-zero \stopone, the angular distribution is flatter and peaks at 0.
+For the SM \ttbar~and $WW$ backgrounds, however, \cosb tends to peak at values $\pm 1$.
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.7\textwidth]{figures/search_stop2l/strategy/comp_plots/dfpresel_cosThetaB}
+        \caption{
+            Normalised distribution of the $\cosb$ variable for several $\stopone \rightarrow b W \ninoone$
+            signal hypotheses, labeled with respect to their assumed $(m_{\stopone}, m_{\ninoone})$ values in the
+            legend.
+            The SM \ttbar~and diboson ($VV$) background processes are also shown for comparison.
+        }
+        \label{fig:rjr_cosb}
+    \end{center}
+\end{figure}
+
+In addition to the potential separation power between the decays of scalar \stopone particles
+and the dominant SM backgrounds that \cosb exhibits in Figure~\ref{fig:rjr_cosb}, it should also
+be noted that it is a longitudinally boost-invariant quantity.
+It depends only on the \textit{difference} in pseudorapidities of the leptons, $\Delta \eta_{\ell\ell}$,
+and thus is insensitive to our ignorance of the overall $z$-momenta in the event.
+In this sense, the quantity \cosb follows very nicely the variables obtained from the RJR decay tree,
+which are also motivated by longitudinal (and contra-) boost invariance.
 
 \subsection{Signal Region Definitions}
 \label{sec:stop_signal_region}
