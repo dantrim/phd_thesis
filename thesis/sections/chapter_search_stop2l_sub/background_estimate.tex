@@ -59,12 +59,37 @@ made in the SRs.
 \subsection{Top-quark pair production}
 \label{sec:stop_ttbar_estimate}
 
+The CRs and VRs designed to derive and validate the semi-data-driven
+normalisation correction factor for the \ttbar~background process are called
+CR-Top and VR-Top, respectively, and are defined in Table~\ref{tab:stop_top_crvr}.
+The strategy for the CR and VR selections in the $(\cosb, \dpb)$ plane are described
+in the previous section.
+Several of the selections on the kinematic quantities relative to those in the SRs (c.f. Table~\ref{tab:stop_sr_def})
+are relaxed.
+In both CR-Top and VR-Top, the \mdr requirement is relaxed to $\mdr > 80$\,GeV and the requirement on the
+\gaminv quantity is removed.
+In VR-Top, the \rpt requirement is inverted relative to that used in the SRs.
+Given that the \ttbar~background is flavor symmetric, only different-flavor events
+are allowed to populate CR-Top and VR-Top, in order to avoid contamination from $Z$-boson processes.
+As a result, no additioanl requirement on $m_{\ell\ell}$ is made in these regions.
+For increased purity, CR-Top requires that there be at least one $b$-tagged jet,
+while VR-Top applies a veto in order to be orthogonal to CR-Top.
+
+VR-Top is defined to have zero $b$-tagged jets, while CR-Top requires at least one.
+In dedicated studies, it has been verified that the \ttbar~normalisation correction derived
+in the $b$-jet rich region CR-Top is well extrapolated to separate validation regions, and is rather
+independent of the $b$-tagged jet multiplicity.
+This gives confidence that VR-Top can be used as an appropriate check on the \ttbar~normalisation
+correct factor and that it's extrapolation to the SRs, which have differing requirements on the
+$b$-tagged jet multiplicity, is reasonable.
+
 \begin{table}[!htb]
     \begin{center}
         \caption{
             Definitions of the CR and VR for the \ttbar~background process for the
             \bWN search.
         }
+        \label{tab:stop_top_crvr}
         \begin{tabular}{l | c c}
             \hline
             \hline
@@ -74,8 +99,8 @@ made in the SRs.
             \hline
             Dilepton Flavor & \multicolumn{2}{c}{DF} \\
             $m_{\ell\ell}$ [GeV]    & \multicolumn{2}{c}{no req.} \\
-            Lead lepton \pT [GeV] & \multicolumn{2}{c}{$>25$} \\
-            Sub-lead lepton \pT [GeV] & \multicolumn{2}{c}{$>20$} \\
+            Lead lepton \pT~[GeV] & \multicolumn{2}{c}{$>25$} \\
+            Sub-lead lepton \pT~[GeV] & \multicolumn{2}{c}{$>20$} \\
             $b$-tagged jet multiplicity & $>0$ & Exactly 0 \\
             \mdr [GeV] & \multicolumn{2}{c}{$>80$} \\
             \rpt & $>0.7$ & $<0.7$ \\
@@ -87,6 +112,14 @@ made in the SRs.
         \end{tabular}
     \end{center}
 \end{table}
+
+\subsubsection{Kinematic Distributions in CR-Top}
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.48\textwidth]{figures/search_stop2l/bkg_est/crtop/crt_MDR}
+    \end{center}
+\end{figure}
 
 
 
@@ -118,8 +151,8 @@ made in the SRs.
             \hline
             Dilepton Flavor & DF & SF & DF & SF \\
             $m_{\ell\ell}$ [GeV]    & no req. & $|m_{\ell\ell} - 91.2| > 10$ & no req. & $|m_{\ell\ell} - 91.2| > 10$ \\
-            Lead lepton \pT [GeV] & $>25$ & $>25$ & $>25$ & $>25$ \\
-            Sub-lead lepton \pT [GeV] & $>20$ & $>20$ & $>20$ & $>20$ \\
+            Lead lepton \pT~[GeV] & $>25$ & $>25$ & $>25$ & $>25$ \\
+            Sub-lead lepton \pT~[GeV] & $>20$ & $>20$ & $>20$ & $>20$ \\
             $b$-tagged jet multiplicity & Exactly 0 & Exactly 0 & Exactly 0 & Exactly 0 \\
             \mdr [GeV] & $>50$ & $>70$ & $\in(50,95)$ & $\in(60,95)$ \\
             \rpt & $<0.5$ & $<0.5$ & $<0.7$ & $<0.4$ \\
