@@ -215,7 +215,7 @@ This will provide us with the last set of information regarding how the missing 
 is to be shared between the states $I_i$.
 Here, the RJR technique makes the assumption that $m_{V_a} = m_{V_b}$, which, in the context of the processes
 considered, is reasonable.
-As we are in the COM frame, this choice for the masses of the $V_i$ states dicates that the boosts of each of their
+As we are in the COM frame, this choice for the masses of the $V_i$ states dictates that the boosts of each of their
 individual reference frames be equal in magnitude and anti-parallel.
 For our decay tree, a possible solution for this is chosen to be:
 \begin{align}
@@ -482,5 +482,169 @@ and thus is insensitive to our ignorance of the overall $z$-momenta in the event
 In this sense, the quantity \cosb follows very nicely the variables obtained from the RJR decay tree,
 which are also motivated by longitudinal (and contra-) boost invariance.
 
+\FloatBarrier
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% SR DEF
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Signal Region Definitions}
 \label{sec:stop_signal_region}
+
+The definition of the SRs in the search for the three-body decay of the \stopone revolve around
+two observations:
+\begin{enumerate}
+    \item The $\stopone \rightarrow b W \ninoone$ kinematics change rapidly as one traverses from
+        the region near $\sdiff~ = ~m_{\text{top}}$ to that of $\sdiff~ = ~m_W$,
+        as illustrated in Figure~\ref{fig:stop_phase_space}
+    \item The angular quantities \cosb and \dpb,  sensitive to the presence of the scalar \stopone and massive
+        \ninoone, respectively, allow for tight separation between the \stopone signal and dominant
+        SM background processes
+\end{enumerate}
+The first item will ultimately result in the definition of two orthogonal SRs, one generally
+more sensitive to the $\bWN$ decays nearer to the $\sdiff = m_{\text{top}}$ boundary
+and the other being sensitive to those nearer to the $\sdiff = m_W$ boundary.
+The primary method for defining SRs targetting these differing regimes is motivated by Figure~\ref{fig:stop_nbjets},
+which shows that the \bWN decays with $\sdiff$ nearer to $m_W$, the reconstructed $b$-tagged
+jet multiplicity tends to 0.
+For this reason, the SRs targetting the $\sdiff \rightarrow m_W$ will require that the
+candidate events have zero $b$-tagged jets, i.e. they apply a $b$-tagged jet \textit{veto} (`$b$-veto').
+The SRs targetting the $\sdiff \rightarrow m_{\text{top}}$, on the other hand, will
+require that there be at least one $b$-tagged jet in the candidate events.
+
+The second item listed above is best illustrated by the distribution in Figure~\ref{fig:stop_corr2d_bveto}.
+These two-dimensional distributions illustrate that the \bWN signal tends to populate
+a different region in the two-dimensional space defined by $(\cosb, \dpb)$ than
+the dominant dilepton SM backgrounds composed of \ttbar~and diboson production.
+For this reason, the SRs will be further characterised by applying a selection within
+the two-dimensional basis defined by the \cosb and \dpb variables.
+Figure~\ref{fig:stop_corr2d_b} shows similar distributions as those presented in Figure~\ref{fig:stop_corr2d_bveto},
+but illustrates that the relationship observed in the latter persist after
+requiring that there be $b$-tagged jets in the events (the former distributions require a $b$-veto).
+The fact that the $(\cosb, \dpb)$ relationship holds roughly independent of the $b$-tagged
+jet multiplicity means that the same selection in this two-dimensional plane
+can be applied for the SRs targetting both \bWN regimes, $\sdiff \rightarrow m_W$ and
+$\sdiff \rightarrow m_{\text{top}}$.
+
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.48\textwidth]{figures/search_stop2l/strategy/corr2d/wwbveto_cosThetaB_DPB_vSS_ttbar_2d}
+        \includegraphics[width=0.48\textwidth]{figures/search_stop2l/strategy/corr2d/wwbveto_cosThetaB_DPB_vSS_vv_2d}
+        \includegraphics[width=0.48\textwidth]{figures/search_stop2l/strategy/corr2d/wwbveto_cosThetaB_DPB_vSS_bwn250_160_2d}
+        \caption{
+            Two-dimensional relationship between \dpb and \cosb for SM \ttbar~(\textit{upper left}),
+            SM diboson processes (\textit{upper right}), and the \bWN decay with $\msn = (250, 160)$\,GeV
+            (\textit{bottom}).
+            The selection applied to the events populating these distributions follows the DF Preselection outlined in Table~\ref{tab:stop_preselection}
+            with the additional requirement that there be no $b$-tagged jets in the event.
+            The distributions are normalized, so only the shapes are relevant for comparison.
+        }
+        \label{fig:stop_corr2d_bveto}
+    \end{center}
+\end{figure}
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.48\textwidth]{figures/search_stop2l/strategy/corr2d/wwbveto_cosThetaB_DPB_vSS_ttbar_2d}
+        \includegraphics[width=0.48\textwidth]{figures/search_stop2l/strategy/corr2d/wwb_cosThetaB_DPB_vSS_ttbar_2d}
+        \includegraphics[width=0.48\textwidth]{figures/search_stop2l/strategy/corr2d/wwbveto_cosThetaB_DPB_vSS_bwn250_160_2d}
+        \includegraphics[width=0.48\textwidth]{figures/search_stop2l/strategy/corr2d/wwb_cosThetaB_DPB_vSS_bwn300_150_2d}
+        \caption{
+            Two-dimensional relationship between \dpb and \cosb for SM \ttbar~(\textit{upper}),
+            the \bWN decay with $\msn = (250, 160)$\,GeV (\textit{lower left}),
+            and the \bWN decay with $\msn = (350, 150)$\,GeV (\textit{lower right}).
+            The selection applied to the events populating these distributions are
+            required to satisfy the DF Preselection outlined in Table~\ref{tab:stop_preselection},
+            with those on the left having an additional requirement that there be no $b$-tagged
+            jets in the events and those on the right requiring that there be at least one $b$-tagged
+            jet in the event.
+            The distributions are normalized, so only the shapes are relevant for comparison.
+        }
+        \label{fig:stop_corr2d_b}
+    \end{center}
+\end{figure}
+
+With the above discussion in mind, the complete basis of observables used to define the SRs are given by
+the following,
+\begin{table}[!htb]
+    \begin{center}
+        \begin{tabular}{c}
+            \hline
+            \hline
+                \textbf{Basis of Kinematic Observables for \bWN Search} \\
+                \hline
+                \rpt \\
+                \gaminv \\
+                \cosb \\
+                \dpb \\
+                \mdr \\
+                $b$-tagged jet multiplicity \\
+            \hline
+            \hline
+        \end{tabular}
+        \label{tab:stop_basis}
+    \end{center}
+\end{table}
+
+\FloatBarrier
+\subsubsection{Optimization Procedure}
+\label{sec:stop_opt}
+
+In order to choose the precise selection thresholds on the quantities listed in Table~\ref{tab:stop_basis},
+an optimization procedure is followed.
+The procedure used in the search for the \bWN decay is a brute force method, and is as follows.
+A multi-dimensional scan is performed over the subset of those quantities in listed in Table~\ref{tab:stop_basis},
+which are listed in Table~\ref{tab:stop_opt_scan_vars}.
+\begin{table}[!htb]
+    \begin{center}
+        \begin{tabular}{c}
+            \hline
+            \hline
+                \textbf{Kinematic Observables for \bWN Grid Search Optimization} \\
+                \hline
+                \rpt \\
+                \gaminv \\
+                m \\
+                b \\
+            \hline
+            \hline
+        \end{tabular},
+        \label{tab:stop_opt_scan_vars}
+    \end{center}
+\end{table}
+The quantities `m' and `b' are related to the slope and y-intercept of the line in the two-dimensional
+space $(\cosb, \dpb)$, as illustrated in Figure~\ref{fig:stop_2d_opt}.
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.5\textwidth]{figures/search_stop2l/strategy/stop_2d_optPDF}
+        \caption{
+        }
+        \label{fig:stop_2d_opt}
+    \end{center}
+\end{figure}
+For each of the quantites in Table~\ref{tab:stop_opt_scan_vars}, a fine-grained set of threshold
+steps is defined and a multi-dimensional scan over all allowed step values for all four quantities
+is performed
+At each step, a region is defined with the requirements as follows,
+\begin{align*}
+            \rpt &> \text{step}_{\{\rpt\}} \\
+            \gaminv &> \text{step}_{\{\gaminv\}} \\
+            \text{m} &= \text{step}_{\{\text{m}\}} \\
+            \text{b} &= \text{step}_{\{\text{b}\}},
+\end{align*}
+and a metric for evaluating the sensitivity to the \bWN process of the given region
+is calculated.
+The metric used in the search for the \bWN process is an approximation to the Gaussian significance
+associated with the discovery $p_0$-value.
+The larger this quantity is, the larger the expected sensitivy to the given \bWN decay.
+The significance is computed using the library \textsc{RooStats}, and takes only as input
+the predicted number of signal events, the predicted number of background events,
+and a level of uncertainty on the background event yield.\footnote{The precise
+significance metric used is the \href{https://root.cern.ch/doc/v606/namespaceRooStats_1_1NumberCountingUtils.html\#a4ac05df7796855dca2d8b24473bf7d4e}{RooStats::NumberCountingUtils::BinomialObsZ} %\href{https://root.cern.ch/doc/v606/namespaceRooStatas_1_1NumberCountingUtils.html#a4ac05df7796855dca2d8b24473bf7d4e}{RooStats::NumberCountingUtils::BinomialObsZ} quantity.
+}
+
