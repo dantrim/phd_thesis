@@ -372,6 +372,7 @@ corresponding to $P_i$ and has an endpoint following,
     {
         m_{P_i}
     },
+    \label{eq:mdr_endpoint}
 \end{align}
 which follows essentially from special relativistic kinematics.
 Distributions of $E_V^P$ are given in Figure~\ref{fig:rjr_MDR}.
@@ -573,11 +574,14 @@ With the above discussion in mind, the complete basis of observables used to def
 the following,
 \begin{table}[!htb]
     \begin{center}
+        \caption{
+            Basis of kinematic observables for the definition of analysis regions
+            in the \bWN search.
+        }
+        \label{tab:stop_basis}
         \begin{tabular}{c}
             \hline
             \hline
-                \textbf{Basis of Kinematic Observables for \bWN Search} \\
-                \hline
                 \rpt \\
                 \gaminv \\
                 \cosb \\
@@ -587,7 +591,6 @@ the following,
             \hline
             \hline
         \end{tabular}
-        \label{tab:stop_basis}
     \end{center}
 \end{table}
 
@@ -600,24 +603,29 @@ an optimization procedure is followed.
 The procedure used in the search for the \bWN decay is a brute force method, and is as follows.
 A multi-dimensional scan is performed over the subset of those quantities in listed in Table~\ref{tab:stop_basis},
 which are listed in Table~\ref{tab:stop_opt_scan_vars}.
+The scan is done using objects (leptons and jets) that satisfy the signal level criteria,
+detailed in Tables~\ref{tab:stop_lepton_def} and \ref{tab:stop_jet_def}.
+
 \begin{table}[!htb]
     \begin{center}
+        \caption{
+            Kinematic observables used in the \bWN grid search optimization procedure.
+        }
+        \label{tab:stop_opt_scan_vars}
         \begin{tabular}{c}
             \hline
             \hline
-                \textbf{Kinematic Observables for \bWN Grid Search Optimization} \\
-                \hline
                 \rpt \\
                 \gaminv \\
                 m \\
                 b \\
             \hline
             \hline
-        \end{tabular},
-        \label{tab:stop_opt_scan_vars}
+        \end{tabular}
     \end{center}
 \end{table}
-The quantities `m' and `b' are related to the slope and y-intercept of the line in the two-dimensional
+\noindent
+In Table~\ref{tab:stop_opt_scan_vars}, the quantities `m' and `b' are related to the slope and y-intercept of the line in the two-dimensional
 space $(\cosb, \dpb)$, as illustrated in Figure~\ref{fig:stop_2d_opt}.
 \begin{figure}[!htb]
     \begin{center}
@@ -629,7 +637,7 @@ space $(\cosb, \dpb)$, as illustrated in Figure~\ref{fig:stop_2d_opt}.
 \end{figure}
 For each of the quantites in Table~\ref{tab:stop_opt_scan_vars}, a fine-grained set of threshold
 steps is defined and a multi-dimensional scan over all allowed step values for all four quantities
-is performed
+is performed.
 At each step, a region is defined with the requirements as follows,
 \begin{align*}
             \rpt &> \text{step}_{\{\rpt\}} \\
@@ -642,9 +650,124 @@ is calculated.
 The metric used in the search for the \bWN process is an approximation to the Gaussian significance
 associated with the discovery $p_0$-value.
 The larger this quantity is, the larger the expected sensitivy to the given \bWN decay.
-The significance is computed using the library \textsc{RooStats}, and takes only as input
+The significance is computed using the \textsc{RooStats} library and takes as input
 the predicted number of signal events, the predicted number of background events,
 and a level of uncertainty on the background event yield.\footnote{The precise
-significance metric used is the \href{https://root.cern.ch/doc/v606/namespaceRooStats_1_1NumberCountingUtils.html\#a4ac05df7796855dca2d8b24473bf7d4e}{RooStats::NumberCountingUtils::BinomialObsZ} %\href{https://root.cern.ch/doc/v606/namespaceRooStatas_1_1NumberCountingUtils.html#a4ac05df7796855dca2d8b24473bf7d4e}{RooStats::NumberCountingUtils::BinomialObsZ} quantity.
+significance metric used is \href{https://root.cern.ch/doc/v606/namespaceRooStats_1_1NumberCountingUtils.html\#a4ac05df7796855dca2d8b24473bf7d4e}{RooStats::NumberCountingUtils::BinomialObsZ} 
 }
+Since the actual background uncertainty is unknown at the point of designing an analysis'
+search regions, it is usually taken to be a conservative value.
+In the the search described here, the relative background uncertainty, $\delta b_{\text{opt}}$, was taken to be,
+\begin{align*}
+    \delta b_{\text{opt}} = \sqrt{ (0.30)^2 + (\Delta S)^2 },
+\end{align*}
+where $\Delta S$ is the relative statistical uncertainty on the MC-simulated signal sample.
+
+The optimisation scan is performed using only the dominant expected backgrounds, SM \ttbar~ and diboson production,
+as input.
+For the signal samples used to provide the estimated signal yield input,
+the scan is performed three times for each of the three \textit{benchmark} signal samples with $\msn = (250, 160)$, $(300,150)$, and $(300,120)$\,GeV,
+in order to assess how well each of the regions in the step procedure perform
+across the three-body phase space with differing values for $\sdiff$.
+
+At the end of the scan, there are tens of thousands of different regions checked.
+The best region is chosen based on its maximization of the significance metric as well as
+maintaining that there be at most 30\% statistical uncertainty on the benchmark MC samples
+once selection for the associated region is applied.
+This choice is made taking into account the three benchmark points, with the hope
+of obtaining a continuous sensitivity throughout the three-body regime for samples
+with different values of $\sdiff$.
+
+\begin{table}[!htb]
+    \begin{center}
+        \caption{
+            Final values obtained after performing the brute-force scan
+            over the parameters listed in Table~\ref{tab:stop_opt_scan_vars}.
+        }
+        \label{tab:stop_scan_results}
+        \begin{tabular}{l | c}
+            \hline
+            \hline
+                \textbf{Quantity} & \textbf{Final Value Obtained from Scan} \\
+                \hline
+                \rpt & $0.7$ \\
+                \gaminv & $0.7$ \\
+                m   & $0.9$ \\
+                b   & $1.6$ \\
+            \hline
+            \hline
+        \end{tabular}
+    \end{center}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% SR DEF
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Final Signal Region Definitions}
+
+On top of the selections defined as a result of the brute-force scan, listed in Table~\ref{tab:stop_scan_results},
+an \mdr requirement is added.
+As the kinematic endpoint of the \mdr variable is sensitive to the (squared) mass differences
+between the \stopone and \ninoone (c.f. Equation~\ref{eq:mdr_endpoint}), it is expected that the specific cut value on this
+quantity will be lower for the \bWN decay scenarios with lower values of \sdiff.
+The specific values of \mdr are determined by running a similar optimisation scan as detailed
+in the previous section, but with only the \mdr quantity being scanned over
+and with all other cuts fixed to those detailed in Table~\ref{tab:stop_scan_results}.
+This is done twice, once for the benchmark signal point with $\msn = (250,160)$\,GeV and
+a second time with $\msn = (350,120)$\,GeV.
+The former (latter) defines the \mdr cut used for the SR targetting the \bWN decay scenarios with
+$\sdiff$ nearer to $m_W$ ($m_{\text{top}}$).
+
+The final SR definitions used in for the search for the three-body decay of the \stopone
+are detailed in Table~\ref{tab:stop_sr_def}.
+There are four SRs defined in total, two of which target the $\sdiff~\rightarrow~m_W$ region
+and two target the $\sdiff~=~m_{\text{top}}$ region.
+The former are defined by a $b$-tagged jet veto, and the latter are inclusive of
+events with $b$-tagged jets.
+Within each of these two categories, the SRs are further broken down by the dilepton flavor:
+whether the two leptons in the events have the same-flavor (SF) or different-flavor (DF).
+In order to reduce backgrounds in which the two leptons arise from the decays of $Z$-bosons,
+a $Z$-veto is applied to the SF SRs by requiring that the dilepton invariant mass be outside
+a 20\,\GeV window centered on the $Z$-boson mass.
+
+\begin{table}[!htb]
+    \begin{center}
+        \caption{
+            Final signal region definitions for the \bWN search.
+            The quantities `m' and `b' are illustrated in Figure~\ref{fig:stop_2d_opt} and refer to the two-dimensional selection:
+                $\dpb > m \times |\cosb| + b$.
+            The lepton \pT requirements are chosen so as to be on the dilepton trigger efficiency
+            plateau.
+        }
+        \label{tab:stop_sr_def}
+        \begin{tabular}{l | c  c  c  c}
+            \hline
+            \hline
+            \multicolumn{5}{c}{\textbf{Signal Region Definitions for the \bWN Search}} \\
+            \hline
+                    & \multicolumn{4}{c}{\textbf{Common Selection}} \\
+            \hline
+            Lead lepton \pT [GeV] & \multicolumn{4}{c}{$>25$} \\
+            Sub-lead lepton \pT [GeV] & \multicolumn{4}{c}{$>20$} \\
+            \rpt    & \multicolumn{4}{c}{$>0.7$} \\
+            \gaminv & \multicolumn{4}{c}{$>0.7$} \\
+            m   & \multicolumn{4}{c}{$0.9$} \\
+            b   & \multicolumn{4}{c}{$1.6$} \\
+            \hline
+                & \multicolumn{1}{c|}{\textbf{SRw-SF}} & \multicolumn{1}{c|}{\textbf{SRw-DF}} & \multicolumn{1}{c|}{\textbf{SRt-SF}} & \textbf{SRt-DF} \\
+            \hline
+            Dilepton invariant mass, $m_{\ell\ell}$ [GeV] & $|m_{\ell\ell} - 91.2| > 20$ & \multicolumn{1}{c|}{no req.} & $|m_{\ell\ell} - 91.2| > 20$ & no req. \\
+            $b$-tagged jet multiplicity & \multicolumn{2}{c|}{Exactly 0} & \multicolumn{2}{c}{$>0$} \\
+            \mdr    & \multicolumn{2}{c|}{$>95$} & \multicolumn{2}{c}{$>110$} \\
+            \hline
+            \hline
+        \end{tabular}
+    \end{center}
+\end{table}
 
