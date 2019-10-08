@@ -124,7 +124,7 @@ def main() :
         norm = LogNorm()
     )
     cbar = fig.colorbar(im)
-    cbar.set_label("Branching Fraction (relative to 4b)",
+    cbar.set_label("Branching fraction relative to 4b",
 		horizontalalignment = "right",
 		y = 1,
 		size = 14
@@ -160,10 +160,10 @@ def main() :
     ax.text(0.20, 2.58, r"0.4%", size = 7, weight = "bold", color = "k")
     ax.text(0.11, 2.33, r"(0.1%)", size = 7, weight = "bold", color = "k")
 
-    fig.show()
+    #fig.show()
     fig.savefig("hh_br.eps", bbox_inches = "tight")
     fig.savefig("hh_br.pdf", bbox_inches = "tight")
-    x = input()
+    #x = input()
     
 
     
