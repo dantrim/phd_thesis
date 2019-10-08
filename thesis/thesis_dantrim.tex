@@ -26,6 +26,7 @@
 \usepackage{tabularx}
 \usepackage{gensymb}
 \usepackage{bm}
+\usepackage{slashed}
 
 % plainpages=false fixes the "duplicate ignored" error with page counters
 % Set pdfborder to 0 0 0 to disable colored borders around PDF hyperlinks
@@ -329,6 +330,22 @@
 \newcommand*{\bbllX}{\ensreumath{bbWW^*+bbZZ^*+bb\tau\tau}\xspace}
 \newcommand*{\wwww}{\ensuremath{4W}\xspace}
 \newcommand*{\wwyy}{\ensuremath{WW^*\gamma\gamma}\xspace}
+\newcommand*{\bbwwtwo}{\ensuremath{\bbww,2\ell}\xspace}
+
+\newcommand*{\mll}{\ensuremath{m_{\ell\ell}}\xspace}
+\newcommand*{\ptll}{\ensuremath{p_{\text{T}}^{\ell\ell}}\xspace}
+\newcommand*{\dphimetll}{\ensuremath{\Delta \phi (\bm{p}_{\text{T}}^{\text{miss}}, \bm{p}_{\text{T}}^{\ell\ell})}\xspace}
+\newcommand*{\metll}{\ensuremath{\bm{p}_{\text{T}}^{\text{miss}} + \bm{p}_{\text{T}}^{\ell \ell}}\xspace}
+\newcommand*{\dphibb}{\ensuremath{\Delta \phi_{bb}}\xspace}
+\newcommand*{\httwo}{\ensuremath{H_{\text{T2}}}\xspace}
+\newcommand*{\htratio}{\ensuremath{H_{\text{T2}}^{R}}\xspace}
+\newcommand*{\mttwo}{\ensuremath{m_{\text{T2}}}\xspace}
+\newcommand*{\mtbb}{\ensuremath{m_{\text{T2}}^{bb}}\xspace}
+\newcommand*{\drll}{\ensuremath{\Delta R_{\ell\ell}}\xspace}
+\newcommand*{\dphill}{\ensuremath{\Delta \phi_{\ell\ell}}\xspace}
+
+\newcommand*{\htnum}{\ensuremath{|\bm{p}_{\text{T}}^{\text{miss}} + \bm{p}_{\text{T}}^{\ell,0} + \bm{p}_{\text{T}}^{\ell,1}| + | \bm{p}_{\text{T}}^{b,0} + \bm{p}_{\text{T}}^{b,1}|}\xspace}
+\newcommand*{\htden}{\ensuremath{|\bm{p}_{\text{T}}^{\text{miss}}| + |\bm{p}_{\text{T}}^{\ell,0}| + |\bm{p}_{\text{T}}^{\ell,1}| + |\bm{p}_{\text{T}}^{b,0}| + |\bm{p}_{\text{T}}^{b,1}|}\xspace}
 
 \DeclareMathAlphabet\mathbfcal{OMS}{cmsy}{b}{n}
 
@@ -357,7 +374,7 @@
 %\include{sections/chapter_object_reco}
 %\include{sections/chapter_nsw}
 %\include{sections/chapter_common_analysis_items}
-\include{sections/chapter_search_stop2l}
+%\include{sections/chapter_search_stop2l}
 \include{sections/chapter_search_hh}
 %\include{sections/chapter_conclusion}
 

@@ -1,0 +1,21 @@
+\RequirePackage{luatex85}
+\documentclass[preview, crop]{standalone}
+\usepackage[compat=1.1.0]{tikz-feynman}
+
+\begin{document}
+\feynmandiagram [small, layered layout, horizontal=a to b] { % Draw the top and bottom lines
+i1 [particle=\(g\)]
+-- [gluon] a
+-- [fermion] b
+-- [scalar] f1 [particle=\(H\)],
+i2 [particle=\(g\)]
+-- [gluon] c
+-- [anti fermion] d
+-- [scalar] f2 [particle=\(H\)],
+% Draw the two internal fermion lines
+{ [same layer] a -- [anti fermion, edge label'=\(t/b\)] c },
+{ [same layer] b -- [fermion] d},
+};
+
+\end{document}
+
