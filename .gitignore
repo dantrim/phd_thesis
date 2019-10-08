@@ -3,6 +3,14 @@
 # Private excludes can be found or put in .git/info/exclude
 # PDF files in top-level directory
 /*.pdf
+/thesis/*.pdf
+/graphics/*.pdf
+/graphics/stats/profile_examples/*.pdf
+/graphics/nsw/*.pdf
+/graphics/nsw/elx_and_calibration/*.pdf
+/potential_figures/
+/graphics/stats/cls/*.pdf
+/refs/
 # PDF files produced by epstopdf
 *-eps-converted-to.pdf
 
