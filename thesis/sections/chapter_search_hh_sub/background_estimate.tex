@@ -11,6 +11,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\FloatBarrier
 \subsection{Top Quark Backgrounds}
 \label{sec:cr_top}
 
@@ -257,12 +258,102 @@ over the \dhh observable.
     \end{center}
 \end{figure}
 
-For each region appearing in the analysis, a dedicated measurement of the quantities appearing in Equation~\ref{eq:ss_extrap_dhh}
-is made, so that the fake estimate in every region can be obtained.
-The measured values of all quantities needed for Equation~\ref{eq:ss_extrap_dhh} are reported in Table~\ref{tab:hh_fake_quant}.
-The measured values of these quantities are reported in Table~\ref{tab:hh_fake_quant}.
-In general, the amount of events arising as a result of sources of fake leptons are seen to be
-quite small.
+For each region appearing in the analysis, a dedicated measurement of the quantities appearing in
+Equation~\ref{eq:ss_extrap_dhh} is made, so that the fake estimate in every region can be obtained.
+The measured values of all quantities needed for Equation~\ref{eq:ss_extrap_dhh} are reported
+in Table~\ref{tab:hh_fake_quant}.
+For each region, the $f^{SS \rightarrow OS}$ extrapolation factors are assessed for their dependence on
+\dhh, to check whether or not any additional higher order correction to account for the change in the fake
+composition as one extrapolates across the \dhh selection.
+This is shown in Figure~\ref{fig:fake_val_os_ss_ratio} for SR-DF and SR-SF where it can be seen that there
+is no statistically significant dependence of the $f^{SS \rightarrow OS}$ quantity on \dhh.
+The same is found to hold for the CRs and VRs.
+Figure~\ref{fig:fake_val_os_ss_ratio} also indicate the $\pm 20\%$ uncertainty taken on the $f^{SS \rightarrow OS}$
+factors, defined as the typical spread of the $f^{SS \rightarrow OS}$ factors within each of the regions in 
+the analysis.
+
+In Tables~\ref{tab:fake_composition_srdf} and \ref{tab:fake_composition_srsf}, the breakdown of the sources
+of fake leptons in the SS and OS versions of the analysis' signal regions, SR-DF and SR-SF, are presented
+along with their associated $f^{SS \rightarrow OS}$ factors.
+The single largest component of the fake background, in the OS regions, is due to conversion electrons.
+However, considering both electrons and muons together, fake leptons are predominantly arising from
+heavy flavor sources, such as in-flight semileptonic decays of $b$- and $c$-flavored hadrons.
+
+\begin{figure}[!htb]
+    \begin{center}
+    \includegraphics[width=0.45\textwidth]{figures/search_hh/bkg_estimate/fake/fake_val_os_ss_ratio_NN_d_hh_sr_df}
+    \includegraphics[width=0.45\textwidth]{figures/search_hh/bkg_estimate/fake/fake_val_os_ss_ratio_NN_d_hh_sr_sf}
+    \caption{
+        The $f^{SS \rightarrow OS}$ factors for SR-DF (\textit{\textbf{left}}) and SR-SF (\textit{\textbf{right}}) as a function
+        of \dhh.
+        The middle blue dashed lines are the average $f^{SS \rightarrow OS}$ across the \dhh range and the outer blue lines
+        are the $\pm 20 \%$ shift about this average value.
+    }
+    \label{fig:fake_val_os_ss_ratio}
+    \end{center}
+\end{figure}
+
+\begin{table}[!htb]
+    \begin{center}
+    \caption{
+        Fake lepton sources based on truth level information in MC for the SS and OS different-flavor signal region selections,
+        with inverted $d_{hh}$ selection. Uncertainties are statistical only.
+        Shown also is the
+        total MC fake, total MC prompt (non-fake), and Total MC (fake + non-fake) yields. The last row
+        shows the observed number of events in each region. The right most column shows the
+        ratio of the opposite-sign to same-sign yields for each of the fake sources.
+    }
+    \label{tab:fake_composition_srdf}
+    \begin{tabular}{c | c c | c} % | c c}
+    \hline
+    \textbf{Source of Fake} & \textbf{SR-DF (SS, inverted $d_{hh}$)} & \textbf{SR-DF (OS, inverted $d_{hh}$)} & \textbf{OS/SS} \\
+    \hline
+    Heavy flavor $e$ & $35.70 \pm 2.67$ & $59.04 \pm 3.45$ & $1.65 \pm 0.16$ \\
+    Conversion $e$ & $49.72 \pm 3.16$ & $98.65 \pm 4.43$ & $1.98 \pm 0.15$ \\
+    Other $e$ & $6.16 \pm 1.11$ & $25.90 \pm 2.31$ & $4.20 \pm 0.85$ \\
+    Heavy flavor $\mu$ & $23.00 \pm 2.46$ & $52.84 \pm 3.27$ & $2.29 \pm 0.28$ \\
+    Other $\mu$ & $4.10 \pm 0.91$ & $13.77 \pm 1.67$ & $3.36 \pm 0.85$ \\
+    \hdashline
+    Total MC Fake & $118.67 \pm 5.02$ & $250.19 \pm 7.10$ & $2.10 \pm 0.11$ \\
+    Total MC Prompt & $18.28 \pm 1.37$ & $16784.73 \pm 58.34$ & -\\
+    \hline
+    Total MC & $136.95 \pm 5.20$ & $17034.92 \pm 58.77$ & - \\
+    Data & $158$ & $16720$ & - \\
+    \hline
+    \end{tabular}
+    \end{center}
+\end{table}
+
+\begin{table}[!htb]
+    \begin{center}
+    \caption{
+        Fake lepton sources based on truth level information in MC for the SS and OS same-flavor signal region selections,
+        with inverted $d_{hh}$ selection. Uncertainties are statistical only.
+        Shown also is the
+        total MC fake, total MC prompt (non-fake), and Total MC (fake + non-fake) yields. The last row
+        shows the observed number of events in each region. The right most column shows the
+        ratio of the opposite-sign to same-sign yields for each of the fake sources.
+    }
+    \label{tab:fake_composition_srsf}
+    \begin{tabular}{c | c c | c}
+    \hline
+    \textbf{Source of Fake} & \textbf{SR-SF (SS, inverted $d_{hh}$)} & \textbf{SR-SF (OS, inverted $d_{hh}$)} & \textbf{OS/SS} \\ 
+    \hline
+    Heavy flavor $e$ & $26.75 \pm 2.30$ & $44.37 \pm 2.97$ & $1.66 \pm 0.18$ \\
+    Conversion $e$ & $39.11 \pm 2.88$ & $70.57 \pm 3.81$ & $1.80 \pm 0.16$ \\
+    Other $e$ & $5.16 \pm 1.00$ & $16.04 \pm 1.75$ & $3.11 \pm 0.70$  \\
+    Heavy flavor $\mu$ & $22.15 \pm 2.26$ & $66.12 \pm 3.70$ & $2.99 \pm 0.35$ \\
+    Other $\mu$ & $7.82 \pm 1.31$ & $22.75 \pm 2.17$ & $2.91 \pm 0.56$ \\
+    \hdashline
+    Total MC Fake & $101.00 \pm 4.62$ & $219.87 \pm 6.70$ & $2.18 \pm 0.12$ \\
+    Total MC Prompt & $18.00 \pm 1.28$ & $17903.42 \pm 64.27$ & - \\
+    \hline
+    Total MC & $119.00 \pm 4.80$ & $18123.29 \pm  64.62$ & - \\
+    Data & $133$ & $17773$ & - \\
+    \hline
+    \end{tabular}
+    \end{center}
+\end{table}
 
 \begin{table}[!htb]
     \begin{center}
@@ -329,6 +420,7 @@ quite small.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\FloatBarrier
 \subsection{Background-only Fit}
 \label{sec:hh_bkg_only}
 
