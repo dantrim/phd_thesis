@@ -23,6 +23,26 @@ within the event, leading to events that do not typically exhibit the same back-
 topology as the \bbww signal process.
 This is illustrated in Figure~\ref{fig:hh_topo}.
 
+An additional feature of the dilepton $hh \rightarrow \bbww$ decay is related to the spin-structure
+of the $h \rightarrow WW^*$ decay.
+The Higgs boson is a fundamental scalar particle with spin-0 while the $W$ bosons are spin-1 particles.
+In the $h \rightarrow WW^*$ decay, then, the spins of the $W$ bosons must be oppositely aligned in order
+to conserve angular momentum.
+The spin-information encoded in the anti-aligned $W$-boson spins is preserved in their leptonic decays, governed by
+the parity-violating electroweak interaction.
+This is illustrated in Figure~\ref{fig:hdecay_ww}, showing the $h \rightarrow WW^* \rightarrow \ell \nu \ell \nu$
+decay chain for two possible orientations of the $W$ boson spins.
+The parity-violating weak decays require that the $\nu$ ($\bar{\nu}$) be left-(right-)handed which ultimately
+forces the charged leptons to emerge from the $W$-boson decays in the same direction.
+As a result, the charged leptons from the $WW^*$ decays will be relatively collinear,
+as will the neutrinos, which further enhances the Higgs hemisphere signature of the dilepton $hh \rightarrow \bbww$ final state.
+These effects are most clearly observed in the dilepton invariant mass, $m_{\ell \ell}$, and
+in the opening angle between the two leptons, $\dphill$, shown in Figure~\ref{fig:hh_kin_1}.
+The analyses studying single Higgs production in the $h \rightarrow WW^*$ channel rely primarily on these effects,
+particularly on their impact on the $m_{\ell \ell}$ distribution, in order to separate out the
+Higgs events from the SM backgrounds~\cite{Aaboud:2018jqu,Aad:2016lvc,ATLAS:2014aga}.
+
+
 The presence of these Higgs hemispheres in the signal, in which the momentum flow of the $WW^*$ system
 is correlated with that of the $bb$ system's, will be relied upon to inform the analysis' choice
 of kinematic observables that are sensitive to the dilepton $hh \rightarrow \bbww$ signal process.
@@ -40,6 +60,36 @@ of kinematic observables that are sensitive to the dilepton $hh \rightarrow \bbw
     \end{center}
 \end{figure}
 
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.75\textwidth]{figures/search_hh/signal_pheno/hdecay_wwPDF}
+        \caption{
+            Illustration of the correlation in lepton momentum direction as a result of the decay of the
+            spin-zero Higgs boson to $W$-boson pairs, which decay via the parity-volating electroweak interaction
+            to the final state leptons.
+            Double-lined arrows indicate the direction in which the particle travels and the
+            dashed red arrows indicate the orientation of the particle spin-angular momentum relative to their direction of travel.
+            \textit{\textbf{Top}}: Scenario with $W$-boson spins outward.
+            \textit{\textbf{Bottom}}: Scenario with $W$-boson spins inward.
+        }
+        \label{fig:hdecay_ww}
+    \end{center}
+\end{figure}
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.45\textwidth]{figures/search_hh/signal_pheno/shape_plots/hh_shape_plot_mll}
+        \includegraphics[width=0.45\textwidth]{figures/search_hh/signal_pheno/shape_plots/hh_shape_plot_dphi_ll}
+        \caption{
+            Normalized distributions showing the shapes of kinematic distributions for the SM
+            top-quark processes (\ttbar~and single-top $Wt$) and the dilepton $hh \rightarrow \bbww$ signal process.
+            \textit{\textbf{Left}}: Dilepton system invariant mass, $m_{\ell \ell}$.
+            \textit{\textbf{Right}}: $|\Delta \phi|$ between the two leptons, $|\dphill|$.
+        }
+        \label{fig:hh_kin_1}
+    \end{center}
+\end{figure}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -50,7 +100,7 @@ of kinematic observables that are sensitive to the dilepton $hh \rightarrow \bbw
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-In the following we present some kinematic distributions illustrating the unique topologies
+In the following we present additional kinematic distributions illustrating the unique topologies
 of the dilepton $hh \rightarrow \bbww$ signal process as compared to the dominant top-quark background
 processes.
 
@@ -63,7 +113,12 @@ For single-top $Wt$, similar trends as observed in \ttbar are observe but, since
 jet in the $Wt$ process is due to higher-order contributions (or a light-flavor jet mistakenly identified as a $b$-jet),
 the $b$-tagged jets are often more collinear.
 
-Figure~\ref{fig:hh_kin_1} shows a few distributions related to the dilepton, \met, and $\met$ + dilepton systems.
+%Figure~\ref{fig:hh_kin_1} shows distributions illustrating the collinear nature of the leptons arising from
+%the scalar decay of the $WW^*$ system.
+%As a result of the spin-correlation, described above, the leptons are collinear and result in small values
+%of $m_{\ell \ell}$ ($\dphill$) in the $hh$ signal process.
+
+Figure~\ref{fig:hh_kin_2} shows a few distributions related to the dilepton, \met, and $\met$ + dilepton systems.
 We can see from the $|\dphimetll|$ and \drll distributions that for the signal $hh$ process, the leptons
 are collinear as expected, with the leptons contained almost entirely within a cone of radius $\drll = 1$.
 For the top-quark backgrounds, there is a tendency for the leptons to be back-to-back, with $|\dphill| (\drll) \rightarrow \pi$.
@@ -88,9 +143,9 @@ $WW^*$ system to also become collinear so that it balances the $bb$ system.
     \end{center}
 \end{figure}
 
+
 \begin{figure}[!htb]
     \begin{center}
-        \includegraphics[width=0.45\textwidth]{figures/search_hh/signal_pheno/shape_plots/hh_shape_plot_dphi_ll}
         \includegraphics[width=0.45\textwidth]{figures/search_hh/signal_pheno/shape_plots/hh_shape_plot_dRll}
         \includegraphics[width=0.45\textwidth]{figures/search_hh/signal_pheno/shape_plots/hh_shape_plot_met}
         \includegraphics[width=0.45\textwidth]{figures/search_hh/signal_pheno/shape_plots/hh_shape_plot_dphi_met_ll}
@@ -102,7 +157,7 @@ $WW^*$ system to also become collinear so that it balances the $bb$ system.
             \textit{\textbf{Left, lower}}: Magnitude of the missing transverse momentum, \met.
             \textit{\textbf{Right, lower}}: $\Delta \phi$ between \met and dilepton system, $|\dphimetll|$.
         }
-        \label{fig:hh_kin_1}
+        \label{fig:hh_kin_2}
     \end{center}
 \end{figure}
 
