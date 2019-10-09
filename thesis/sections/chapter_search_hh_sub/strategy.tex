@@ -441,7 +441,7 @@ An early-stopping metric is imposed during the training phase such that, if the 
 begins to plateau, it will stop the training whether or not the maximum number of epochs has been
 reached.
 The metric used to determine whether the early-stopping criteria has been met is the neural network
-loss value as evaluated on the held-out validation events.
+loss value as evaluated on the held-out validation sample of events.
 The aim of the network, during the training phase, is to minimize the loss.
 Therefore, once the metric used for defining the early-stopping criteria hits a (minimum) plateau
 it will stop after a configurable number of epochs in which no new minimum is found.
