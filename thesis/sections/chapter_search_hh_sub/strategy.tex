@@ -1,4 +1,4 @@
-\section{Neural Network Signal Selection}
+\section{Neural Network Based Signal Selection}
 \label{sec:hh_strategy}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -54,7 +54,7 @@ library, using \textsc{Tensorflow}~\cite{tensorflow2015} as a backend.
 An illustration of the neural network architecture is given in Figure~\ref{fig:nn_arch}.
 The network inputs are passed through a dense (fully-connected) layer,  which
 is trained with a dropout layer, and then a second dense layer.
-The final activation is a softmax activation.
+The final activation is a softmax activation~\cite{GoodFellowBook}.
 
 \begin{figure}[!htb]
     \begin{center}
@@ -434,10 +434,18 @@ The pre-processing steps, happening at each event and in order, are as follows:
 \subsection{Training Procedure}
 \label{sec:nn_train_procedure}
 
+For illustration purposes, Figure~\ref{fig:nn_batches} illustrates the process of training
+a neural network with many batches of events, the sum total of which comprise the entirety
+of the events set aside for training.
+An epoch refers to the point at which every single event in the training sample has been fed into
+the network.
 The neural network classifier described in Section~\ref{sec:nn_arch} is trained using the 
 sample of events described in Section~\ref{sec:nn_train} using a batch size of 2,000 events,
 with a maximum number of training epochs set to a large number ($\mathcal{O}(100)$).
-An early-stopping metric is imposed during the training phase such that, if the network's learning
+
+Neural network classifiers typically train for many epochs, meaning that every event in the training
+sample is used multiple times in the training procedure.
+The training procedure used in the present analysis relies on an `early-stopping' metric that is imposed during the training phase such that, if the network's learning
 begins to plateau, it will stop the training whether or not the maximum number of epochs has been
 reached.
 The metric used to determine whether the early-stopping criteria has been met is the neural network
@@ -445,13 +453,24 @@ loss value as evaluated on the held-out validation sample of events.
 The aim of the network, during the training phase, is to minimize the loss.
 Therefore, once the metric used for defining the early-stopping criteria hits a (minimum) plateau
 it will stop after a configurable number of epochs in which no new minimum is found.
-This configurable number is set to 20 for the classifier used in the present analysis, leading
-to a typical training phase lasting for 80 to 110 epochs.
+This configurable number, referred to as the `patience', is set to 20 for the classifier used in the present analysis.
+%leading to a typical training phase lasting for 80 to 110 epochs.
+Figure~\ref{fig:nn_epoch_overtrain} shows several training performance metrics evaluated on both the
+training and held-out validation data, from which it can be seen that setting the patience parameter to 20
+allows the network to maximize its learning before effects of overtraining begin to set in.
 
 \begin{figure}[!htb]
     \begin{center}
         \includegraphics[width=1.0\textwidth]{figures/search_hh/mva/nn_batchesPDF}
         \caption{
+            A neural network training sample is broken into many sub-samples referred to as `batches'.
+            In the training phase of the neural network, the network parameters (weights and biases)
+            are only updated after each batch is fed into the network.
+            A training `epoch' refers to the point in the training at which all of the events
+            in the entire training sample have been fed forward through the network for training purposes.
+            The size of each batch (i.e. the number of events that are in a batch), as well as the number
+            epochs to train for, are configurable parameters that must be optimized.
+            See Ref.~\cite{GoodFellowBook} for more information.
         }
         \label{fig:nn_batches}
     \end{center}
@@ -462,6 +481,18 @@ to a typical training phase lasting for 80 to 110 epochs.
         \includegraphics[width=0.48\textwidth]{figures/search_hh/mva/overtrain_check_loss}
         \includegraphics[width=0.48\textwidth]{figures/search_hh/mva/overtrain_check_roc_auc}
         \caption{
+            \textit{\textbf{Left}}: The neural network loss as a function of the number of training epochs.
+                The solid lines report the loss evaluated on the held-out validation sample of events,
+                while the dashed lines report that evaluated using the sample of events used for training.
+                The larger discrepancy observed between the validation and training loss observed in the
+                cases where the training is allowed to proceed for a larger number of epochs indicate
+                larger amounts of overtraining.
+            \textit{\textbf{Right}}: Receiver operating characteristic area-under-the-curve (ROC AUC), evaluated using
+                the held-out validation sample of events, as a function of the number of training epochs.
+                Larger values of ROC AUC indicate better network classification performance.
+                The drop in ROC AUC observed in the green and red curves are a result of increased levels
+                of overtraining, resulting in the classifier being unable to generalize to data other than
+                that used for training.
         }
         \label{fig:nn_epoch_overtrain}
     \end{center}
@@ -477,8 +508,30 @@ to a typical training phase lasting for 80 to 110 epochs.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%\FloatBarrier
 \subsection{Classifier Discriminants}
 \label{sec:nn_discriminants}
+
+The multi-output classifier described in Section~\ref{sec:nn_arch} provides four outputs for each event
+once provided an input feature vector.
+In our case, the four outputs are taken to loosely represent the probabilities, or strengths, that the
+set of inputs correspond to one of the four labels for which the classifier has been trained to distinguish.
+We refer to these outputs, then, as \phh, \ptop, \pzsf, and \pztt
+for the $hh$, Top, $Z\rightarrow \{ee,\mu\mu\}$, and $Z\rightarrow \tau\tau$ process labels, respectively.
+Representative distributions for each of the $p_i$, for the corresponding signal and background processes,
+are shown in Figure~\ref{fig:nn_disc_p}.
+
+From the set of $p_i$, we build a set of four composite discriminants, each of which combines information
+contain within them all.
+These discriminants are log-ratio discriminants of the output scores, defined in Equation~\ref{eq:nn_disc_def}.
+Representative distributions for each of the composite discriminants are shown in Figure~\ref{fig:nn_disc_d}.
+The discriminant \dhh is the primary observable around which the SRs, CRs, and VRs are defined
+in the present analysis.
+
+\begin{align}
+    d_Q = \ln \left( \frac{p_Q}{p_X + p_Y + p_Z} \right)
+    \label{eq:nn_disc_def}
+\end{align}
 
 \begin{figure}[!htb]
     \begin{center}
@@ -487,6 +540,11 @@ to a typical training phase lasting for 80 to 110 epochs.
         \includegraphics[width=0.48\textwidth]{figures/search_hh/nn_disc/pi_plot_NN_p_zsf}
         \includegraphics[width=0.48\textwidth]{figures/search_hh/nn_disc/pi_plot_NN_p_ztt}
         \caption{
+            Normalized distributions of the four network outputs,
+            shown for the dilepton
+            $hh \rightarrow \bbww$ signal (black), Top (blue), $Z \rightarrow \{ee,\mu\mu\}$ (yellow),
+            and $Z\rightarrow \tau\tau$ (orange) processes.
+            From the top left and moving clock-wise: \phh, \ptop, \pztt, and \pzsf.
         }
         \label{fig:nn_disc_p}
     \end{center}
@@ -499,7 +557,75 @@ to a typical training phase lasting for 80 to 110 epochs.
         \includegraphics[width=0.48\textwidth]{figures/search_hh/nn_disc/pi_plot_NN_d_zsf}
         \includegraphics[width=0.48\textwidth]{figures/search_hh/nn_disc/pi_plot_NN_d_ztt}
         \caption{
+            Normalized distributions of the four composite discriminants,
+            shown for the dilepton
+            $hh \rightarrow \bbww$ signal (black), Top (blue), $Z \rightarrow \{ee,\mu\mu\}$ (yellow),
+            and $Z\rightarrow \tau\tau$ (orange) processes.
+            From the top left and moving clock-wise: \dhh, \dtop, \dztt, and \dzsf.
         }
         \label{fig:nn_disc_d}
     \end{center}
 \end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% SR DEFINITION
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Signal Region Definition}
+\label{sec:hh_sr_def}
+
+The definitions of the SRs, SR-SF and SR-DF, targetting the dilepton $hh \rightarrow \bbww$ signal process are tabulated
+in Table~\ref{tab:hh_sr_def} and are as follows.
+The dominant expected backgrounds in the analysis are those for which separate output labels
+have been defined in the construction of the neural network classifier described in the previous sections:
+SM top-quark processes (\ttbar~and single-top $Wt$) and $Z$+jets processes.
+The top-quark processes are flavor symmetric, however the $Z$+jets processes tend primarily to populate
+only the same-flavor dilepton final states, with a smaller component in the different-flavor dilepton
+final state due to the leptonic $\tau$ decays in the $Z\rightarrow \tau \tau$ process.
+For this reason, we define two classes of SR: one requiring SF dilepton events and the
+other requiring DF dilepton events.
+The SR events are additionally required to have at least two $b$-tagged jets, with
+the invariant mass of the two leading $b$-tagged jets having an invariant mass consisent with the
+mass of the Higgs boson, $m_{bb} \in [110, 140]$ GeV.
+Taking advantage of the lepton correlations, illustrated by Figure~\ref{fig:hh_kin_1},
+we further require that the dilepton invariant mass of the SR events be relatively low: $m_{\ell \ell} < 60$ GeV.
+This requirement on $m_{\ell \ell}$ effectively acts to remove the majority of background events
+arising from $Z$-boson processes.
+
+The SR definitions further rely on placing a cut on the $d_{hh}$ discriminant.
+The specific choice of cut, in both SR-SF and SR-DF, are determined by computing the expected 95\% CL cross-section upper-limit
+with the selections described in the previous paragraph applied while scanning over varying selections
+made on the $d_{hh}$ discriminant.
+The cut thresholds on the $d_{hh}$ discriminant in both SR-SF and SR-DF that minimize the the cross-section
+upper-limit value are chosen as the final values to define SR-SF and SR-DF, and are indicated in Table~\ref{tab:hh_sr_def}.
+
+
+\begin{table}[!htb]
+    \begin{center}
+        \caption{
+            SRs for the search for the dilepton $hh \rightarrow \bbww$ process.
+        }
+        \label{tab:hh_sr_def}
+        \begin{tabular}{l | c c}
+        \hline
+        \hline
+                & \multicolumn{2}{c}{\textbf{Region}} \\
+            \cline{2-3}
+            \textbf{Observable} & \textbf{SR-SF} & \textbf{SR-DF} \\
+            \hline
+            Dilepton Flavor & $ee$ or $\mu\mu$ & $e\mu$ or $\mu e$ \\
+            $b$-tagged jet multiplicity & $\ge 2$ & $\ge 2 $ \\
+            $bb$-system invariant mass, $m_{bb}$ [GeV] & $\in [110, 140]$ & $\in [110, 140]$ \\
+            Dilepton invariant mass, $m_{\ell \ell}$ [GeV] & $<60$ & $<60$ \\
+            \dhh & $>5.45$ & $>5.55$ \\
+        \hline
+        \hline
+        \end{tabular}
+    \end{center}
+\end{table}
