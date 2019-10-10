@@ -35,9 +35,9 @@ which shows the results of indirect measurements of the $W$-boson and top-quark 
 on fits to electroweak precision data.
 When all measurements other than those on $m_h$ are included, the constraints of the SM
 only allow for a small region of the $(m_{\text{top}}, M_W)$ parameter space.
-Adding the Higgs measurements results~\cite{HMassATLAS,HMassCMS} only shrinks this allowed area.
+Adding the Higgs measurements results only shrinks this allowed area.
 The fact that these indirect measurements agree so well with the direct measurements paints a picture
-of the SM being a fundamentally complete picture of the known physical phenomena.
+of the SM as being a fundamentally complete picture of the known physical phenomena.
 If the SM were not accounting for particular types of interactions or known fields,
 the level of agreement between the direct measurements and those obtained indirectly via
 fits to electroweak precision data would not be to the level seen in Figure~\ref{fig:mw_mt_scan}.
@@ -110,12 +110,11 @@ made by the ATLAS and CMS experiments are so far in fairly good agreement with t
 of a $m_h = 125$ GeV Higgs boson~\cite{HProp0,HProp1,HProp2,HProp3,HProp4,HProp5,HProp6,HProp7,HProp8}.
 The agreement with the SM prediction, over a wide variety of measurements, is illustrated in
 Figure~\ref{fig:higgs_measurements} which shows the measurements of the fermion and gauge
-couplings and of the cross-sections of the leading Higgs production mechanism and decay
+couplings and of the cross-sections of the leading Higgs production mechanisms and decay
 branching ratios.
 Within the precision of these measurements, the SM is fully supported by the experiments
 and it appears as though the particle discovered in 2012 is in fact the particle as predicted
 by BEH.
-
 
 \begin{figure}[!htb]
     \begin{center}
@@ -148,6 +147,47 @@ by BEH.
     \end{center}
 \end{figure}
 
+In addition to the Higgs couplings to the SM fermions and gauge bosons, the SM Lagrangian
+predicts terms describing the Higgs \textit{self}-couplings.
+These terms are described by the $\lambda$ parameter in Equation~\ref{eq:higgs_potential}
+and appearing in Table~\ref{tab:sm_content_EWSB}.
+The Higgs self-coupling parameter $\lambda$ has a value predicted by the SM, as seen in 
+Equation~\ref{eq:higgs_self_couplings}, which is fixed by the Higgs boson mass.
+The parameter $\lambda$ is directly responsible for providing the structure of the Higgs potential,
+indicated by Equation~\ref{eq:higgs_potential_self_int}, and therefore plays a fundamental
+role in EWSB.
+Measuring how the 125\,GeV Higgs boson couples and decays to the SM fermions and gauge bosons,
+then, is only a necessary requirement for confirming that the particle is the one predicted by
+the SM: it is not sufficient.
+To truly confirm that the 125\,GeV boson is indeed that predicted by the SM, and that EWSB
+is described by the BEH mechanism, the Higgs self-coupling parameter will have to be measured
+experimentally and confirmed to take its predicted value given by Equation~\ref{eq:higgs_self_couplings}.
+
+Direct measurement of $\lambda$ proceeds only through the observation of events in which Higgs bosons
+are produced in pairs.
+At the LHC, this process occurs predominantly via gluon-gluon fusion through the two diagrams illustrated
+in Figure~\ref{fig:hh_feynman}.
+The triangle and box diagrams shown in Figure~\ref{fig:hh_feynman} represent destructively interfering amplitudes.
+As a result, the cross-sections associated with the production of Higgs boson pairs is exceedingly low
+and statistically significant observation of this process is not expected to occur until
+near the end of the lifetime of the LHC.
+The study of Higgs boson pairs is the subject of the analysis to be presented in Chapter~\ref{chap:search_hh}.
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.7\textwidth]{figures/search_hh/feynman_diagrams/fdiagram_triangle}
+        \includegraphics[width=0.55\textwidth]{figures/search_hh/feynman_diagrams/fdiagram_box}
+        \caption{
+            Representative Feynman diagrams that contribute at leading order in QCD to the non-resonant
+            production of Higgs boson pairs.
+            {\textbf{\textit{Top}}}: The `triangle' diagram, sensitive to the Higgs self-coupling, $\lambda$.
+            {\textbf{\textit{Bottom}}}: The `box' diagram, sensitive to the (squared) Yukawa couplings to the third generation
+            fermions entering the loop.
+        }
+        \label{fig:hh_feynman}
+    \end{center}
+\end{figure}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -157,5 +197,67 @@ by BEH.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\FloatBarrier
+\subsection{Perceived Shortcomings of the SM and Open Questions}
+\label{sec:sm_shortcomings}
+
+Despite the impressive results and predictive power of the SM illustrated in the previous
+section, the SM is unable to provide a complete picture of what we now consider the observed
+universe.
+A few items that are clearly not explainable under the framework of the SM are described below.
+Chapter~\ref{chap:bsm} goes on to introduce an extension to the SM that provides explanations
+for many of these short comings of the SM.
+
+\begin{description}
+    \item[] \textbf{Existence of Dark Matter (DM) and Dark Energy (DE)} \\
+        Most of the experimental evidence that we currently have that supports the notion that
+        physics beyond the SM (BSM) exists comes not from collider-based particle physics experiments,
+        but from astrophysical observations.
+        Astrophysical observations suggest that the majority of the matter content of the universe
+        is composed of a non-luminous, weakly interacting type of matter referred to as `Dark Matter' (DM)
+        and that the expansion of the universe is accelerating, perhaps due to presence of
+        `Dark Energy' (DE)~\cite{Davis:2014csa,PlanckCollab}.
+        There has not yet been experimental proof of the particle nature of DM, but there
+        many theories suggest that it fall under the class of `Weakly Interacting Massive Particle' (WIMPs) (`WIMP-like DM').
+        The particle nature of DE is completely unknown and without a fundamental description.
+    \item[] \textbf{Massive Neutrinos} \\ The observation of neutrino oscillations~\cite{Fukuda:1998mi} provides evidence
+        in support neutrinos having nonzero masses, and contradicts the massless neutrino hypothesis of the SM.
+    \item[] \textbf{Matter-Antimatter Asymmetry} \\
+        The only parameter in the SM that allows for CP violation is the CP-violating phase in the CKM matrix,
+        which is unable to account for the amount of CP violation needed to account for the
+        observed asymmetry in the amount of matter over antimatter in the universe.
+        Additional CP violating effects are necessary to account for this asymmetry and should be relevant
+        to early universe cosmology~\cite{Sakharov_1991}.
+    \item[] \textbf{The Hierarchy Problem} \\
+        The Hierarchy Problem refers to the fact that the electroweak sector, through the scalar Higgs boson,
+        is sensitive to high energy cut-off scales nearing the Planck Mass, $M_{P} \approx 10^{18}--10^{19}$\,GeV.
+        This is evident when computing the higher-order corrections to the Higgs mass,
+        \begin{align*}
+            m_h^2 = m_{h,\,0}^2 + \Delta m_h^2,
+        \end{align*}
+        which are found to be quadratically divergent due to the fact that the Higgs is not protected by any fundamental
+        internal symmetries:
+        %\vspace{-1.2cm}
+        \begin{align}
+            \Delta m_h^2 = -\frac{ |y_f|^2 }{16 \pi^2} \left[ 2 \Lambda^2  + \mathcal{O} \left( m_f^2 \ln \left( \frac{\Lambda}{m_f} \right) \right) \right],
+        \end{align}
+        where $y_f$ is the fermion Yukawa coupling, $m_f$ is the associated fermion mass, and $\Lambda$ is the
+        ultra-violate cut-off scale.
+        Similar terms also appear for the SM gauge bosons, but given the near-unity Yukawa coupling of the top-quark,
+        the divergence is most sensitive to the fermion terms appearing in the above via $y_t$.
+        The apparent fact that the electroweak scale at which the Higgs boson is experimentally known to exist
+        should be unavoidably sensitive to $M_P$, attempting to drive the Higgs boson mass to values 16 orders
+        of magnitude larger than the measured one,
+        is at the heart of the Hierarchy Problem.
+        The high energy scales at which SM calculations fail are typically assumed to be the scales
+        at which new physics arise and take over as a more complete description of high energy pheneomena.
+        That the Higgs boson is apparently driven to these scales motivates the arguments in favor
+        of their being new physics at or near the electroweak scale which cancel the quadratically
+        divergent terms appearing in the Higgs mass corrections.
+        That cancellations of terms on the order of $10^{30}$ ($\Lambda^2$) should be possible introduces the
+        philosophical concerns of \textit{naturalness}, which ponder whether or not Nature is such
+        that the additional sources of high energy physics --- not accounted for by the SM --- can conspire in such a way as to
+        allow for such apparently perfectly-tuned cancellation.
+\end{description}
 
 %eq:higgs_potential
