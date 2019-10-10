@@ -1,4 +1,161 @@
 \section{The Complete Standard Model, Successes and Shortcomings}
 \label{sec:final_sm_description}
 
+The physical field content of the SM, after EWSB, is detailed in Table~\ref{tab:sm_content_EWSB}
+Also shown in Table~\ref{tab:sm_content_EWSB} are the electric charge associated with each
+particle field, $Q$, the relevant couplings, and particle masses.
+
 \input{tables/tab_sm_content_EWSB}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% SUCCESSES
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Successes of the Standard Model}
+\label{sec:sm_successes}
+
+The particle content presented in Table~\ref{tab:sm_content_EWSB} represents the current
+picture of the visible matter content of the universe.
+It is a concise picture.
+With this particle content in hand, and the description of their fundamental particle interactions (Equation~\ref{eq:sm_lagrangian}),
+the predictive power of the SM is immense.
+
+Figure~\ref{fig:sm_xsec_summary} shows a summary of LHC measurements of cross-sections
+for various production processes at 7, 8, and 13\,TeV.
+The agreement of these measurements with the theoretical predictions provided by the SM, spanning over 10 orders of magnitude,
+is an incredible testament to the power of the SM and the toolkit provided by QFT.
+The power of the SM, and its internal consistency, is illustrated in Figure~\ref{fig:mw_mt_scan},
+which shows the results of indirect measurements of the $W$-boson and top-quark masses based
+on fits to electroweak precision data.
+When all measurements other than those on $m_h$ are included, the constraints of the SM
+only allow for a small region of the $(m_{\text{top}}, M_W)$ parameter space.
+Adding the Higgs measurements results~\cite{HMassATLAS,HMassCMS} only shrinks this allowed area.
+The fact that these indirect measurements agree so well with the direct measurements paints a picture
+of the SM being a fundamentally complete picture of the known physical phenomena.
+If the SM were not accounting for particular types of interactions or known fields,
+the level of agreement between the direct measurements and those obtained indirectly via
+fits to electroweak precision data would not be to the level seen in Figure~\ref{fig:mw_mt_scan}.
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.75\textwidth]{figures/chapter1/sm_final/sm_xsec_summary}
+        \caption{
+            Summary of several Standard Model total production cross section measurements,
+            corrected for branching fractions, compared to the corresponding theoretical expectations. 
+        }
+        \label{fig:sm_xsec_summary}
+    \end{center}
+\end{figure}
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.75\textwidth]{figures/chapter1/sm_final/mw_vs_mt_indirect}
+        \caption{
+            Contours at 68\% and 95\% CL obtained from scans of $M_W$ versus $m_{\text{top}}$,
+            for the global electroweak fit including the Higgs boson mass ($m_h$) measurements~\cite{HMassATLAS,HMassCMS} (blue)
+            and excluding the $m_h$ measurements (grey), as compared t the direct
+            measurements of these quantities (green bands and ellipses).
+            From Ref.~\cite{GFitter}.
+        }
+        \label{fig:mw_mt_scan}
+    \end{center}
+\end{figure}
+
+With the discovery a Higgs boson like particle with a mass at 125\,GeV in 2012~\cite{HDiscoveryATLAS,HDiscoveryCMS},
+the final piece of the SM described by Equation~\ref{eq:sm_lagrangian} is potentially found.
+The 2012 Higgs discovery meant the start of a very long experimental program began, focused
+on studying this new particle and confirming its role as being the fundamental scalar boson, $\phi$,
+appearing in Equation~\ref{eq:sm_lagrangian}.
+
+It should be stressed that the terms associated with the Higgs potential appearing in the SM
+Lagrangian, given by Equation~\ref{eq:higgs_potential}, are by no means fundamental.
+They did (and do) not have to appear in this way.
+The terms appearing in Equation~\ref{eq:higgs_potential} take the form they do since they
+could lead to masses for the fermions and gauge bosons.
+There is no fundamental symmetry motivating their form or appearance.
+The BEH mechanism is inspired by the formation of composite (i.e. not elementary) scalar particles
+appearing in super-conductivity (Cooper pairs).
+The fact that the same type of phase transition should describe the generation of masses for
+the elementary particles of the SM, and that it should presuppose the existence of an \textit{elementary}
+scalar boson, was simply left as one of the last open questions of the SM.
+In a sense, the truth of the form underlying Equation~\ref{eq:higgs_potential} was not important to BEH.
+The more important takeaway was that there \textit{could} be a mechanism by which the SM particles acquired
+mass without disrupting the gauge structure that had already held up to experimental scrutiny.
+%In a certain sense, this is reflected by the fact that BEH were awarded the Nobel prize only \textit{after} the discoveries of the ATLAS and CMS experiments
+%in 2012, whereas GWS were awarded theirs several years \textit{before} the experimental verification of
+%the existence of the $W$ and $Z$ bosons.
+
+It is then up to the experiments to verify that the 125\,GeV scalar boson discovered in 2012
+is responsible for the BEH mechanism as described in Section~\ref{sec:higgs_description}.
+The form of the Higgs potential as defined in Equation~\ref{eq:higgs_potential} makes
+very clear predictions on the form and strengths of the couplings to the known fundamental particles:
+the fermions and gauge bosons, with couplings to the Higgs predicted to take the forms
+of Equations~\ref{eq:higgs_fermion_coupling} and \ref{eq:higgs_gauge_couplings}, respectively.
+It is then up to the ATLAS and CMS experiments to verify that the new particle couples
+to these `old' particles just as predicted.
+The coupling strengths also dictate the Higgs decay rates into specific SM particles, as indicated
+in Figure~\ref{fig:higgs_br_sm}.
+Any deviation in the measured values of the SM-predicted Higgs decay branching ratios or
+in the predicted values of the fermion or gauge coupling strengths, and their dependence on the
+particle masses, would indicate that the particle discovered in 2012 is not the Higgs boson as predicted
+in the SM.
+
+All of the measurements of the properties of the 125 GeV particle
+made by the ATLAS and CMS experiments are so far in fairly good agreement with the SM prediction
+of a $m_h = 125$ GeV Higgs boson~\cite{HProp0,HProp1,HProp2,HProp3,HProp4,HProp5,HProp6,HProp7,HProp8}.
+The agreement with the SM prediction, over a wide variety of measurements, is illustrated in
+Figure~\ref{fig:higgs_measurements} which shows the measurements of the fermion and gauge
+couplings and of the cross-sections of the leading Higgs production mechanism and decay
+branching ratios.
+Within the precision of these measurements, the SM is fully supported by the experiments
+and it appears as though the particle discovered in 2012 is in fact the particle as predicted
+by BEH.
+
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.6\textwidth]{figures/chapter1/sm_final/higgs_br_sm}
+        \caption{
+            Predicted branching ratios for an SM-like Higgs boson with $m_{h} = 125\,\GeV$.
+        }
+        \label{fig:higgs_br_sm}
+    \end{center}
+\end{figure}
+
+\begin{figure}[!htb]
+    \begin{center}
+        \raisebox{1cm}{\includegraphics[width=0.49\textwidth]{figures/chapter1/sm_final/higgs_kappa_v_f}}
+        \includegraphics[width=0.49\textwidth]{figures/chapter1/sm_final/higgs_kappa_vs_mass}
+        \includegraphics[width=0.49\textwidth]{figures/chapter1/sm_final/higgs_prod_and_br}
+        \caption{
+            Higgs precision measurements of couplings to SM particles.
+            Figures from Ref.~\cite{HiggsProps}.
+            \textit{\textbf{Left}}: Combined measurement of fermion and gauge-boson Higgs coupling modifiers, $\kappa_f$
+                and $\kappa_V$ (assumed to be universal across fermion and gauge-boson species in the result pictured).
+                Values of $\kappa_f$ or $\kappa_V$ equal to 1 correspond to the SM prediction for the Higgs' couplings to
+                these particles.
+            \textit{\textbf{Right}}: Measured values of the Higgs fermion and gauge-boson coupling parameters
+                as a function of the fermion and gauge-boson masses.
+                The blue dashed line shows the SM prediction (Equations~\ref{eq:higgs_gauge_couplings} and \ref{eq:higgs_fermion_coupling}).
+            \textit{\textbf{Bottom}}: Measurements of Higgs production cross sections and (relative) decay branching ratios.
+        }
+        \label{fig:higgs_measurements}
+    \end{center}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% SHORTCOMINGS
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%eq:higgs_potential
