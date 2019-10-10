@@ -90,10 +90,113 @@ This is one-diminsional SR case is illustrated in Figure~\ref{fig:sr_search_v}.
 % GATHER THE DATA
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \FloatBarrier
+\subsection{Gather the Data and Define the Event Sample}
+\label{sec:gather_data}
+
+\subsubsection{Trigger Strategy}
+
+Once an analysis understands the final state and its kinematics that it will be searching for,
+the strategy for gathering the $pp$ collision data consistent with that final state must be defined.
+This requires that the analysis make a choice about which triggers to use for recording
+the collision events in ATLAS, a process referred to as defining the analysis' \textit{trigger strategy}.
+The analyses to be presented in Chapters~\ref{chap:search_stop} and \ref{chap:search_hh} are based
+on searches for signals with leptons (electrons or muons) in the final state.
+As a result, the triggers these analyses use are all based on signatures of high-\pT~leptons.
+
+The lepton triggers used in the analyses to be presented trigger are based on the \pT~of the leptons.
+They are configured to have a given \pT~threshold and if a lepton is identified in the online trigger
+system during the $pp$ collisions to have a \pT~value at or above this threshold, the trigger `fires' and the
+event is recorded (see Section~\ref{sec:tdaq}).
+Lepton triggers are characterised by a sharp `turn-on', meaning that they become fully efficient
+very near the online threshold at which they operate. 
+Here, `efficiency' is defined as the ability for the trigger to make a decision to record the event
+when there is actually an object satisfying its requirements. A trigger is 100\% efficiency if it
+has a threshold of 10\,GeV and it fires for every single lepton with a \pT~at or above 10\,GeV.
+The maximum attainable trigger efficiency is never exactly 100\% due to non-100\% coverage of the
+trigger system, however.
+Examples of the trigger efficiencies, measured in data and in MC, are shown in Figure~\ref{fig:trig_example} which shows
+the trigger efficiency turn-on curves for representative electron and muon triggers.
+It can be seen, for example, that the electron trigger efficiency reaches a plateau very near
+its configured threshold of 28\,GeV.
+As described in Section~\ref{sec:tdaq}, the trigger system has two-levels: Level 1 (L1) and HLT.
+The efficiencies for the trigger at L1 and HLT differ, primarily due to the lower lepton momentum resolution
+achieved at L1.
+This can be seen in the right side of Figure~\ref{fig:trig_example}, which shows the trigger
+efficiency turn-on also for the L1 trigger that seeds the HLT trigger.
+The rise in efficiency, with respect to the offline reconstructed object's \pT, is shallower
+at L1 than at the HLT as a result of the poorer muon momentum resolution at L1.
+
+As can be seen in the left side of Figure~\ref{fig:trig_example}, the MC description of the trigger
+response is fairly good.
+However, analyses typically require that their offline reconstructed objects on which they base
+their trigger strategy have \pT~values that lie on the trigger efficiency plateau.
+This is because the trigger efficiency plateau represents a region in which the trigger response
+is stable (i.e. unchanging) in both data and MC and can therefore be easily calibrated in the offline analysis
+with scale-factors that account for differences in the measured trigger efficiencies in data and in MC simulation.
+The description in the MC of the region at the trigger threshold, which has non-vertical rise,
+is potentially difficult to model accurately and thefore the calibrations are not typically
+derived for these regions in which the efficiency is not at its plateau.
+This is illustrated in Figure~\ref{fig:trig_plateau_cartoon}, showing the typical case of a stable
+and flat response in both the observed data and MC in the region of the trigger efficiency
+plateau but a potentially difficult to characterise response during the turn-on phase of the trigger
+efficiency.
+Given, however, the relatively good momentum resolution for leptons at L1, the offline \pT~requirements on leptons
+can be kept very near the online \pT~thresholds, typically within 1\,GeV or so.
+Triggers based on jets or on the missing transverse momentum, however, typically require offline \pT~requirements
+that are significantly higher than the online thresholds due to the fact that the online reconstruction of these
+objects in the trigger is not at the level of precision attainable in the offline reconstruction.
+This is illustrated by the trigger efficiency curves shown in Figure~\ref{fig:met_trig_example}, showing
+the efficiency curves for triggers based on the reconstruction of the missing transverse momentum.
+These \met-based triggers all have online thresholds near $80\,\GeV$, but they do not reach their
+efficiency plateau until offline \met values nearing 250\,GeV.
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.48\textwidth]{figures/common_ana/trig/egam_trig_example} 
+        \includegraphics[width=0.48\textwidth]{figures/common_ana/trig/muon_trig_example} 
+        \caption{
+            Figures showing the measured trigger efficiency as a function of the associated
+            offline object for a representative electron trigger (\textbf{\textit{left}})
+            and muon trigger (\textbf{\textit{right}}).
+        }
+        \label{fig:trig_example}
+    \end{center}
+\end{figure}
+
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.75\textwidth]{figures/common_ana/trig_plateauPDF}
+        \caption{
+            Cartoon illustrating the principle of a trigger efficiency `turn on' curve.
+            The efficiency for the lepton to fire the trigger, as a function of the \pT~of the offline object, is plotted
+            as a function of the offline object's \pT.
+            At the online level, given the typically poorer lepton momentum resolution, there is generally
+            not a perfectly sharp (i.e. vertical) turn on at the \pT~threshold of the trigger.
+            Instead there is an `S'-curve, with the efficiency increasing with a steep slope
+            until it reaches a point where it flattens out.
+            This latter point is referred to as the trigger efficiency `plateau'.
+            Offline analyses typically apply offline \pT~requirements on their objects
+            such that they are always on the plateau of the associated trigger used for event selection.
+        }
+        \label{fig:trig_plateau_cartoon}
+    \end{center}
+\end{figure}
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.6\textwidth]{figures/common_ana/trig/met_trig_example}
+        \caption{
+            Trigger efficiency turn-on curve for typical triggers based on the missing transverse momentum.
+        }
+        \label{fig:met_trig_example}
+    \end{center}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % THE CONTROL REGION METHOD
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\FloatBarrier
 \subsection{Background Estimation and the Control Region Method}
 \label{sec:control_region_method}
 
