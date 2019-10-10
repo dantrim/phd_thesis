@@ -40,7 +40,31 @@ distribution is used as input to the hypothesis tests --- as opposed to simply \
 and defining simple signal regions as in Table~\ref{tab:hh_sr_def} --- is expected to increase the sensitivity to the $hh \rightarrow \bbww$ signal process
 substantially.
 
-
+One question that the searches for Higgs boson pair production should being thinking about,
+as they start preparing for the time when they begin to make observation of Higgs boson pairs,
+is whether or not they are designed in such a way as to make meaningful statements about the
+Higgs self-coupling parameter, $\lambda$.
+As shown in Figure~\ref{fig:hh_feynman}, the leading contributions to Higgs boson pair production
+at the LHC proceeds via two diagrams, only one of which is sensitive to $\lambda$.
+The final state kinematics resulting from Higgs bosons originating from the decay of the box-diagram
+process tend to be much harder, due to the massive top-quark loops.
+As a result, analyses are typically more sensitive to this process as the final state objects are
+more directly observable and more efficiently reconstructed.
+This is the case for the analysis presented in this chapter, a fact that is illustrated in Figure~\ref{fig:mhh_sel_eff}.
+The $hh$ system invariant mass in the box-diagram decays
+tends to be larger than that of the triangle diagram.
+An indication, then, of whether an analysis is tuned to be sensitive to decays relevant
+for the measurement of $\lambda$ is whether or not they are sensitive to the the lower portion of the $m_{hh}$ distribution.
+From Figure~\ref{fig:mhh_sel_eff}, it is clear that the present analysis is more sensitive to the decays from the box-diagram.
+Given the early stages of the $hh$ search program in ATLAS, however, this is not currently
+an urgent issue.
+The preliminary aim for the $hh$ seach program has been to define exactly which channels will be effective
+at observing $hh$ signal events, in general, and to design analyses that can optimally search
+for the many potential sources of \textit{enhanced} Higgs boson pair production.
+As the searches become sensitive to the $hh$ production process, as predicted in the SM,
+the next steps will be to understand how to design the analyses such that they maximally
+discriminate between the box-type and triangle-type kinematics so as to improve the overall prospects
+for the measurement of the Higgs self-coupling parameter.
 
 \begin{table}[!htb]
     \begin{center}
@@ -196,28 +220,46 @@ substantially.
     \end{center}
 \end{figure}
 
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.6\textwidth]{figures/search_hh/mhh_sel_eff_nice_jul30}
+        \caption{
+            Analysis selection efficiency for the dilepton $hh \rightarrow \bbww$ signal process
+            as a function of the truth-level $hh$ system invariant mass, $m_{HH}$.
+            Each color indicates an additional selection applied sequentially, and in the order indicated
+            in the legend, with respect to the starting sample of events satisfying the
+            analysis' preselection requirements and having at least two $b$-tagged jets.
+            For reference, overlaid in grey color, and with arbitrary normalisation, is the truth-level
+            $m_{HH}$ distribution.
+        }
+        \label{fig:mhh_sel_eff}
+    \end{center}
+\end{figure}
+
 In addition to the 95\% CL cross-section UL reported in Table~\ref{tab:hh_bbww_xsec_ul}, we also perform
-a scan over the Higgs self-coupling parameter employed in the dilepton $hh \rightarrow \bbww$ signal MC sample
-so that we may re-run the analysis for various non-SM hypotheses for the value of the Higgs self-coupling parameter,~$\lambda$.
+a scan over the Higgs self-coupling parameter, $\lambda$, employed in the dilepton $hh \rightarrow \bbww$ signal MC sample
+so that we may re-run the analysis for various non-SM hypotheses for the value of $\lambda$.
 The variations in the Higgs self-coupling are parametrized by $\kappa_{\lambda} = \lambda / \lambda_{SM}$, and this
 value is scanned across the values $\kappa_{\lambda} \in [-20, 20]$.
 Changing the value of $\kappa_{\lambda}$ changes the relative strength of the competing triangle
 and box diagrams that lead to $hh$ production at LO at the LHC, with only the former sensitive to
-the Higgs self-coupling parameter (c.f. Figure~\ref{fig:hh_feynman}).
+the Higgs self-coupling parameter.
 Variations in $\kappa_{\lambda}$ can lead to either the box diagram or the triangle diagram being the dominant source of Higgs boson pairs.
 %The signal kinematics can therefore change significantly as a result of variations in $\kappa_{\lambda}$.
-Given the presence of the massive top-quarks, the Higgs bosons from the box diagram tend to have a harder transverse momenta
+The Higgs bosons from the box diagram tend to have a harder transverse momenta
 as compared to those from the triangle diagram, for example.
-The Higgs bosons from predominantly box diagram production scenarios, then, lead to harder visible final state objects.
+The Higgs bosons from predominantly box diagram production scenarios, then, lead to harder visible final state objects
+and a different acceptance to the $hh$ signal as compared to the case in which the Higgs bosons arise predominantly
+from the triangle diagram.
 Further discussion about the effects of varying $\kappa_{\lambda}$ on the Higgs bosons' kinematics can
 be found in Ref.~\cite{HHComb36}.
 
-It should be stressed then, that the present analysis is in no way optimized for non-SM values of $\kappa_{\lambda}$.
+It should be stressed, however, that the present analysis is in no way optimized for non-SM values of $\kappa_{\lambda}$.
 For each new value of this parameter we simply perform the hypothesis tests using the same
 sets of SRs and CRs described in the sections above.
-The result of this $\kappa_{\lambda}$ scan are shown in Figure~\ref{fig:hh_lambda_scan}.
+The results of this $\kappa_{\lambda}$ scan are shown in Figure~\ref{fig:hh_lambda_scan}.
 It can be seen that the anaysis has little constraining power on the Higgs self-coupling parameter, with
-the NLO theory prediction for alternative $\kappa_{\lambda}$ hypotheses described in the caption of Figure~\ref{fig:hh_lambda_scan}.
+the NLO theory prediction for alternative $\kappa_{\lambda}$ hypotheses described in the figure caption.
 The lack of ability to more powerfully exclude non-SM values of $\kappa_{\lambda}$ lies in the
 fact that the analysis is optimized for the SM case, in particular.
 This is illustrated in Figure~\ref{fig:dhh_vs_lambda}, showing the change in \dhh as a function
@@ -270,3 +312,4 @@ the classifier that has been trained using the $hh$ signal with that value for i
         \label{fig:dhh_vs_lambda}
     \end{center}
 \end{figure}
+
