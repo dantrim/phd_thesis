@@ -35,10 +35,10 @@ which shows the results of indirect measurements of the $W$-boson and top-quark 
 on fits to electroweak precision data.
 When all measurements other than those on $m_h$ are included, the constraints of the SM
 only allow for a small region of the $(m_{\text{top}}, M_W)$ parameter space.
-Adding the Higgs measurements results only shrinks this allowed area.
+Adding the Higgs mass measurement results only shrinks this allowed area.
 The fact that these indirect measurements agree so well with the direct measurements paints a picture
 of the SM as being a fundamentally complete picture of the known physical phenomena.
-If the SM were not accounting for particular types of interactions or known fields,
+It is likely that if the SM were not accounting for particular types of interactions or fields,
 the level of agreement between the direct measurements and those obtained indirectly via
 fits to electroweak precision data would not be to the level seen in Figure~\ref{fig:mw_mt_scan}.
 
@@ -60,7 +60,7 @@ fits to electroweak precision data would not be to the level seen in Figure~\ref
             Contours at 68\% and 95\% CL obtained from scans of $M_W$ versus $m_{\text{top}}$,
             for the global electroweak fits in comparison to the direct measurements.
             \textit{\textbf{Left}}: Including Higgs boson mass measurements in the indirect fit~\cite{HMassATLAS,HMassCMS} (blue)
-                or excluding them. From Ref.~\cite{GFitter}.
+                or excluding them (grey). From Ref.~\cite{GFitter}.
             \textit{\textbf{Right}}: Including the latest precision $W$-boson mass measurement from the ATLAS
                 experiment. From Ref.~\cite{ATLASWMass}.
 %            for the global electroweak fit including the Higgs boson mass ($m_h$) measurements~\cite{HMassATLAS,HMassCMS} (blue)
@@ -74,7 +74,7 @@ fits to electroweak precision data would not be to the level seen in Figure~\ref
 
 With the discovery a Higgs boson like particle with a mass at 125\,GeV in 2012~\cite{HDiscoveryATLAS,HDiscoveryCMS},
 the final piece of the SM described by Equation~\ref{eq:sm_lagrangian} is potentially found.
-The 2012 Higgs discovery meant the start of a very long experimental program began, focused
+The 2012 Higgs discovery meant the start of a very long experimental program, focused
 on studying this new particle and confirming its role as being the fundamental scalar boson, $\phi$,
 appearing in Equation~\ref{eq:sm_lagrangian}.
 
@@ -83,7 +83,7 @@ Lagrangian, given by Equation~\ref{eq:higgs_potential}, are by no means fundamen
 They did (and do) not have to appear in this way.
 The terms appearing in Equation~\ref{eq:higgs_potential} take the form they do since they
 could lead to masses for the fermions and gauge bosons.
-There is no fundamental symmetry motivating their form or appearance.
+There is no fundamental symmetry motivating their precise form.
 The BEH mechanism is inspired by the formation of composite (i.e. not elementary) scalar particles
 appearing in super-conductivity (Cooper pairs).
 The fact that the same type of phase transition should describe the generation of masses for
@@ -106,8 +106,8 @@ It is then up to the ATLAS and CMS experiments to verify that the new particle c
 to these `old' particles just as predicted.
 The coupling strengths also dictate the Higgs decay rates into specific SM particles, as indicated
 in Figure~\ref{fig:higgs_br_sm}.
-Any deviation in the measured values of the SM-predicted Higgs decay branching ratios or
-in the predicted values of the fermion or gauge coupling strengths, and their dependence on the
+Any deviation with respect to the SM-predicted values in the measurement of the Higgs decay branching ratios or
+in the values of the fermion or gauge coupling strengths, and their dependence on the
 particle masses, would indicate that the particle discovered in 2012 is not the Higgs boson as predicted
 in the SM.
 
@@ -246,11 +246,26 @@ for many of these short comings of the SM.
         %\vspace{-1.2cm}
         \begin{align}
             \Delta m_h^2 = -\frac{ |y_f|^2 }{16 \pi^2} \left[ 2 \Lambda^2  + \mathcal{O} \left( m_f^2 \ln \left( \frac{\Lambda}{m_f} \right) \right) \right],
+            \label{eq:higgs_divergence}
         \end{align}
         where $y_f$ is the fermion Yukawa coupling, $m_f$ is the associated fermion mass, and $\Lambda$ is the
         ultra-violate cut-off scale.
-        Similar terms also appear for the SM gauge bosons, but given the near-unity Yukawa coupling of the top-quark,
-        the divergence is most sensitive to the fermion terms appearing in the above via $y_t$.
+        Similar terms also appear for the SM gauge bosons, resulting in their own contributions like Equation~\ref{eq:higgs_divergence}, but given the near-unity Yukawa coupling of the top-quark,
+        the divergence is most evident from the top-quark loop contributions to $\Delta m_h^2$, such as that shown in Figure~\ref{fig:higgs_mass_correction}.
+        %the divergence is most sensitive to the fermion terms appearing in the above via $y_t$.
+        \begin{figure}[!htb]
+        \hspace{1.8cm}
+        \begin{minipage}{0.8\textwidth}
+            \begin{center}
+                \includegraphics[width=0.6\textwidth]{figures/higgs_corr/higgs_mass_correctionsPDF}
+                \caption{
+                    Top-quark loop contribution to the higher-order computation of the Higgs mass that
+                    leads to unregulated divergent terms such as Equation~\ref{eq:higgs_divergence}.
+                }
+                \label{fig:higgs_mass_correction}
+            \end{center}
+        \end{minipage}
+        \end{figure}
         The apparent fact that the electroweak scale at which the Higgs boson is experimentally known to exist
         should also be unavoidably sensitive to $M_P$, attempting to drive the Higgs boson mass to values 16 orders
         of magnitude larger than the measured one,
