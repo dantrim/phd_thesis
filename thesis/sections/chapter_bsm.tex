@@ -4,13 +4,117 @@
 %\epigraph{\textit{All models are wrong, but some are useful.}}{--George Box}
 \epigraph{\textit{The only consolation he drew from the present chaos was that his theory managed to explain it.}}{--Thomas Pynchon, \textit{V.}}
 
-As seen in the previous section, the SM is not an adequate theory to describe the entirety of the
-observable phenomena in the universe. However, it is still exceedingly useful in describing
-the... and predicting...
+%As seen in the previous section, the SM is not an adequate theory to describe the entirety of the
+%observable phenomena in the universe. However, it is still exceedingly useful in describing
+%the... and predicting...
+%
+%There are a multitude of theories describing phsyics beyond the standard model, each attempting to
+%explain the shortcomings of the SM either in part or in whole, though none have so far appeared to be
+%useful in the sense of being able to extend our current understanding of the the universe by providing
+%objectively falsifiable prediction.
 
-There are a multitude of theories describing phsyics beyond the standard model, each attempting to
-explain the shortcomings of the SM either in part or in whole, though none have so far appeared to be
-useful in the sense of being able to extend our current understanding of the the universe by providing
-objectively falsifiable prediction.
 
-\section{Supersymmetry}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% GENERAL
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\cite{2HDMPheno,EWSBMSSM,SUSYPrimer,LightStopsHiggs}
+\cite{EWSBProbeRho,PDGRef}
+\cite{ColemanMandula,WessZuminoModel,HaagSUSY}
+
+As seen in Section~\ref{sec:final_sm_description}, the SM provides an incredible toolkit
+from which the majority of the observed physical phenomena can be described.
+As we saw, however, there are several glaring open questions whose answers must be pursued
+if we are to truly understand the underlying nature of the Universe.
+Given the scope of these open questions, and the apparent inconsistencies exposed by the Hierarchy Problem,
+their solutions are all but guaranteed to further revolutionize our view of the Universe.
+As a result, there have been a multitude of proposals of new theories of particles and fields over the preceding decades that attempt
+to solve some of these remaining mysteries.
+
+
+With the discovery of the 125\,GeV Higgs boson, the physics community is seemingly
+on the verge of gaining further insight into the nature of these problems.
+Any new source of physics beyond the SM (BSM) will necessarily have much to say
+about the electroweak and Higgs sectors of the SM,
+especially in view of the Hierarchy Problem's hinting at the electroweak scale
+being so near the portal to new physics.
+These sectors tightly constrain the forms that BSM physics can take, as well, if they
+are to remain consistent with the precise confirmation of the SM predictions
+over the past 50-60 years.
+One such constraint, a beautiful result of the electroweak theory and one that
+is fundamental to the nature of EWSB, is that of the $\rho$ parameter of the SM,
+defined in Equation~\ref{eq:rho_sm}.
+The precise equality of Equation~\ref{eq:rho_sm} can be seen to hold by using the relationships
+between the electroweak gauge mixings and couplings in Equations~\ref{eq:weinberg_angles} and \ref{eq:gauge_boson_masses}.
+The $\rho = 1$ equality holds to very high precision even when including higher order
+corrections to the gauge boson masses and interactions, a fact that his been verified
+by precision measurements~\cite{EWSBProbeRho,PDGRef}.
+
+\begin{align}
+    \rho = \frac{
+                M_W
+            }
+            {
+                M_Z \cos \theta_W
+            }
+        \underset{\text{\tiny{SM}}}{=} 1
+    \label{eq:rho_sm}
+\end{align}
+The requirement that $\rho = 1$ restricts the form any new BSM physics attempting to alter
+the electroweak sector can take.
+In fact, the relation holds for Higgs sectors that are more complex than the minimal one
+predicted by the SM.
+It can be shown that extended Higgs sectors, composed of \textit{multiple} scalar Higgs doublets
+so long as their \SUtwo~and \Uone~gauge structure satisfies the fundamental relation in Equation~\ref{eq:rho_general},
+\begin{align}
+    \rho = \frac{
+                \sum\limits_{i = 1}^n \, \left[ T_{3,i} \left( T_{3,i} + 1 \right) - Y_i^2 \right ] v_i
+            }
+            {
+                \sum\limits_{i=1}^n \, 2 Y_i^2 v_i
+            },
+    \label{eq:rho_general}
+\end{align}
+where $n$ runs over the number of scalar Higgs doublets in the theory, $T_{3}$ and $Y$ are the \SUtwo~and \Uone~gauge
+quantum numbers, respectively, associated with each doublet, and the $v$ are each of their vacuum expectation values.
+In the SM, with only the single Higgs doublet having $Y = 1/2$ and $T_3 = 1/2$ (Table~\ref{tab:sm_content}),
+the equality clearly holds.
+
+The possibility that the Higgs sector may be more complex without disrupting strict relationships
+predicted very cleary by the SM has led to the development of many fields of research.
+One such potential for BSM physics is the class of theories that minimally extend the
+Higgs sector by only including a single additional scalar double ($n = 2$ in Equation~\ref{eq:rho_general}).
+Such theories are referred to as Two Higgs-Doublet Models (`2HDMs'), and their
+phenomenology is rich~\cite{2HDMPheno}.
+The two Higgs doublets are typically referred to as `$H_u$' and `$H_d$', where the subscripts
+indicate to which component of the \SUtwo~fermions they couple and give mass, are complex scalar
+fields with eight degrees of freedom.
+In these models, the three degrees of freedom needed for the $W^{\pm}$ and $Z$ bosons
+to acquire mass after EWSB leave open five additional degrees of freedom.
+As a result, 2HDMs are characterized by an extended Higgs sectors in which there are \textit{five
+physical massive Higgs bosons}: two neutral components ($h^0$ and $H^0$), one netural pseudoscalar particle ($A^0$),
+and two that are electrically charged ($H^{\pm}$).
+The neutral component $h^0$ is typicaly considered to be lightest Higgs boson and is identified as the
+125\,GeV boson discovered in 2012.
+Other than this assumption on $h^0$, the mass spectrum of these five Higgs bosons and their 
+phenomenology is dependent on the specific instantiation of the 2HDM in question.
+As it turns out, one of the most promising all-encompassing theories of new physics,
+Supersymmetry (SUSY), is a 2HDM.
+Section~\ref{sec:susy} provides a brief introduction to SUSY that will be relevant
+as background to the analyses presented in Chapters~\ref{chap:search_stop} and \ref{chap:search_hh}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% SUSY
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{sections/chapter_bsm_sub/bsm_susy}
