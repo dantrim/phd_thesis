@@ -363,3 +363,107 @@ The final response correction as a function of jet \pT~derived using these in-si
     \end{center}
 \end{figure}
 \FloatBarrier
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% JVT
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Pileup Jet Suppression}
+\label{sec:jvt}
+
+Pileup interactions often result in reconstructed jets in the final state that are not associated with the
+primary hard-scatter vertex.
+Such jets act to contaminate the selection of jets for analyses targetting physics processes that
+naturally lead to jets.
+A multivariate algorithm has been defined that allows analyses to discriminate between these pileup jets
+and hard-scatter jets such that the former may be discarded from the collection of reconstructed
+jets and the purity of the latter may be increased.
+This algorithm is called the `Jet Vertex Tagger' (JVT) and it relies on using the tracks
+associated with reconstructed jets in order to give an indication of how likely a jet
+is to be due to a pileup interaction or not~\cite{JVT}.
+
+JVT is based on two quantities, `corrJVF' and `$R_{\pT}$', to build a $k$-nearest neighbors ($k$-NN)
+multivariate discriminant.\footnote{The quantity `JVF', appearing in corrJVF, stands for `Jet Vertex Fraction'.}
+These two quantities are based on the tracks that are associated with the reconstructed jets.
+As tracks naturally provide clear indication as to their originating interaction point, 
+the idea is that jets with tracks predominantly arising from the primary hard-scatter vertex
+are more likely to be true hard-scatter jets, and not pileup jets.
+
+The quantity `corrJVF' is defined as follows,
+\begin{align}
+    \text{corrJVF} = \frac{
+                        \sum\limits_{k}\, \pT^{\text{trk}_k} \left( \text{PV}_0 \right)
+                    }
+                    {
+                        \sum\limits_{\ell} \, \pT^{\text{trk}_{\ell}} \left( \text{PV}_0 \right) +  \langle \pT^{\text{PU}} \rangle
+                    },
+    \label{eq:corrJVF}
+\end{align}
+with the numerator and first term in the denominator being the scalar \pT~sum of the tracks that are associated
+with the jet and that originate from the primary hard-scatter vertex ($\text{PV}_0$).
+The term $\langle \pT^{\text{PU}} \rangle$ is a term proportional to the average scalar \pT~sum of the tracks
+that are associated with the jet but that originate from pileup vertices.
+The quantity `corrJVF' is expected to have values near one for jets originating from the hard-scatter and values
+near zero for pileup jets.
+
+The second quantity, $R_{\pT}$, is defined as follows,
+\begin{align}
+    R_{\pT} = \frac{
+                    \sum\limits_k \, \pT^{\text{trk}_k} \left( \text{PV}_0 \right)
+                }
+                {
+                    \pT^{\text{jet}}
+                },
+\end{align}
+and represents the \pT~sum of the tracks associated with the jet and that originate from $\text{PV}_0$
+divided by the jet's calibrated transverse momentum that includes the pileup subtraction (Section~\ref{sec:jet_calib}).
+$R_{\pT}$ is peaked at zero for pileup jets, where little to no \pT~from tracks from $\text{PV}_0$ are expected.
+For jets arising from the primary hard-scatter, $R_{\pT}$ is the charged \pT~fraction and generally has larger values
+than for pileup jets.
+Distributions of the corrJVF and $R_{\pT}$ quantities are shown in Figure~\ref{fig:jvt_vars}.
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.48\textwidth]{figures/chapter3/jets/jvt_corrJVF}
+        \includegraphics[width=0.48\textwidth]{figures/chapter3/jets/jvt_rpt}
+        \caption{
+            Distributions of the variables used in the definition of JVT for pileup and hard-scatter jets.
+            \textit{\textbf{Left}}: corrJVF. Values of $-1$ are assigned to jets with no associated tracks.
+            \textit{\textbf{Right}}: $R_{\pT}$.
+        }
+        \label{fig:jvt_vars}
+    \end{center}
+\end{figure}
+
+The JVT discriminant is constructed using corrJVF and $R_{\pT}$ to construct a two-dimensional likelihood,
+based on a $k$-NN algorithm trained on samples of pileup and hard-scatter jets.
+Each point in the two-dimensional plane gives the relative probabilty for the jet to be a hard-scatter jet.
+Distributions of the final two-dimensional likelihood and JVT for a sample of pileup
+and hard-scatter jets are shown in Figure~\ref{fig:jvt_disc}.
+JVT values nearer one indicate a higher probability for the given jet to be a hard-scatter jet, whereas
+lower values indicate that the jet is likely to be a pileup jet.
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.48\textwidth]{figures/chapter3/jets/jvt_2d}
+        \includegraphics[width=0.48\textwidth]{figures/chapter3/jets/jvt_disc}
+        \caption{
+            \textit{\textbf{Left}}: The two-dimensional JVT likelihood based on the corrJVF and $R_{\pT}$ variables.
+            \textit{\textbf{Right}}: A distribution of JVT for a sample of pileup and hard-scatter jets. Negative JVT values
+                correspond to jets having no associated tracks.
+        }
+        \label{fig:jvt_disc}
+    \end{center}
+\end{figure}
+
+In order to suppress pileup jets in the physics analyses to be described in Chapters~\ref{chap:search_stop} and \ref{chap:search_hh},
+each jet is required to satisfy $\text{JVT} > 0.59$ which gives a 92\% selection efficiency for hard-scatter jets.
+This requirement is applied only to jets with $\pT<60$\,GeV and within the tracking volume of the ID ($| \eta | < 2.4$)
+since the contribution of pileup jets at higher \pT~values is considered to be negligible.
+The efficiencies and corresponding data-to-MC efficiency correction scale-factors (SFs), correcting the MC efficiency
+to that of the observed data, of this cut are derived using $Z \rightarrow \mu \mu$ events.

@@ -141,6 +141,15 @@ to be 93\%, 88\%, and 80\% for the \textsc{Loose}, \textsc{Medium}, and \textsc{
     \end{center}
 \end{figure}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% MUONS
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Muons}
 \label{sec:muons}
 
@@ -271,5 +280,92 @@ than one MDT hole are allowed. The ME \text{Medium} muons are required to have a
     \end{center}
 \end{figure}
 
-\FloatBarrier
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Lepton Isolation
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Lepton Isolation}
+\label{sec:lepton_isolation}
+
+Prompt electrons and muons originating from the decays of heavy particles, such as $W$, $Z$, or Higgs bosons,
+are often produced well isolated from other particles.
+Leptons originating from non-prompt sources, such as from the semileptonic decay of $b$-hadrons
+within a $b$-jet (Section~\ref{sec:flavor_tagging}) are embedded within a jet (Section~\ref{sec:jets}) and are typically
+surrounded by many additional tracks or calorimeter energy deposits.
+In order to ensure that the leptons selected in the analyses are leptons arising from prompt sources
+from the primary $pp$ hard-scatter vertex, leptons must satisfy specific \textit{isolation criteria}.
+The isolation criteria relevant to the present thesis are based on track- and calorimeter-based isolation variables.
+The track-based isolation variables, $\pT^{\text{varconeXX}}$, are defined as the sum of the \pT~of selected
+tracks within a cone centered around the lepton, excluding that lepton's tracks, where the surrounding cone
+has a variable radius to compensate for boosted leptons defined as follows,
+\begin{align}
+    \Delta R = \min \left( \frac{10}{\pT\,[\text{GeV}]},\,\Delta R_{\text{max}} \right)
+    \label{eq:varcone_iso}
+\end{align}
+where $\Delta R_{\text{max}}$ is the maximum cone size.
+The variable $\pT^{\text{varcone20}}$ ($\pT^{\text{varcone30}}$) has $\Delta R_{\text{max}} = 0.2$ ($0.3$).
+The calorimeter-based isolation variables are similarly defined as the track-based ones, but are
+based on the transverse calorimeter energy deposits within a surround cone (and not associated with the lepton).
+The calorimeter-based isolation variable considered for the present thesis is $E_T^{\text{topocone20}}$, and has
+a surrounding cone with a fixed radius of $\Delta R = 0.2$.
+The isolation criteria that all leptons relevant to the present these must satisfy is based
+on a two-dimensional, varying selection on track- and calorimeter-based isolation variables
+and is called the `GradientLoose' isolation working point.
+The GradientLoose isolation working point, and its associated isolation variables used
+for the two-dimensional selection, are defined in Table~\ref{tab:isolation_selection}.
+
+\begin{table}[!htb]
+    \begin{small}
+    \begin{center}
+        \caption{
+            Isolation variables (second and third columns) and the isolation criteria (right column) for the electrons
+            and muons relevant to the present thesis.
+            When the isolation variables are divided by the associated lepton's \pT, they are referred to as
+            `relative isolation variables'.
+        }
+        \label{tab:isolation_selection}
+        \begin{tabular}{c | c c | c}
+            \hline
+            \hline
+                & \multicolumn{2}{c|}{\textbf{Isolation Variables}} & \textbf{Isolation Selection} \\
+                \hline
+                & \textbf{Electrons} & \textbf{Muons} & \textbf{GradientLoose}\\
+                \cline{2-4}
+                Track-based & $\pT^{\text{varcone20}}/\pT^e$ & $\pT^{\text{varcone30}}/\pT^{\mu}$ & 2D selection such that: \\ %$\ge 95\%$ ($\ge 99\%$) efficient at 25 (60) GeV \\
+                Calorimeter-based & $E_T^{\text{topocone20}}/\pT^e$ &  $E_T^{\text{topocone20}}/\pT^{\mu}$ & $\ge 95\%$ ($\ge 99\%$) efficient at $\pT \ge 25$ ($\ge 60$) GeV \\
+            \hline
+            \hline
+        \end{tabular}
+    \end{center}
+    \end{small}
+\end{table}
+
+The efficiency for leptons to satisfy the isolation criteria outlined in Table~\ref{tab:isolation_selection}
+are measured both in MC and in data, as shown in Figure~\ref{fig:muon_iso_eff} (in the specific case of muons), using $Z/\gamma^* \rightarrow \ell \ell$ (high-\pT)
+and $J/\psi \rightarrow \ell \ell$ events (low-\pT).
+Data-to-MC SFs are derived  as the ratio of the data and MC efficiencies (bottom panel of Figure~\ref{fig:muon_iso_eff}) and are applied
+during the analyses, on a \textit{per lepton} basis, to correct
+the MC-based efficiency to satisfy the isolation selection criteria.
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=0.65\textwidth]{figures/chapter3/iso_eff_muon}
+        \caption{
+            Isolation selection efficiency for the GradientLoose isolation working point for muons satisfying
+            the Medium identification,
+            measured in data and in MC, as a function of the muon \pT.
+            The bottom panel shows the ratio of efficiencies measured in data and in MC, giving
+            the efficiency scalefactor.
+            Figure from Ref.~\cite{Aad:2016jkr}.
+        }
+        \label{fig:muon_iso_eff}
+    \end{center}
+\end{figure}
+
+\FloatBarrier
