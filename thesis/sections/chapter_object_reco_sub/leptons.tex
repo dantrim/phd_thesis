@@ -303,18 +303,20 @@ from the primary $pp$ hard-scatter vertex, leptons must satisfy specific \textit
 The isolation criteria relevant to the present thesis are based on track- and calorimeter-based isolation variables.
 The track-based isolation variables, $\pT^{\text{varconeXX}}$, are defined as the sum of the \pT~of selected
 tracks within a cone centered around the lepton, excluding that lepton's tracks, where the surrounding cone
-has a variable radius to compensate for boosted leptons defined as follows,
+has a variable radius, is defined as follows,% to compensate for boosted leptons defined as follows,
 \begin{align}
     \Delta R = \min \left( \frac{10}{\pT\,[\text{GeV}]},\,\Delta R_{\text{max}} \right)
     \label{eq:varcone_iso}
 \end{align}
 where $\Delta R_{\text{max}}$ is the maximum cone size.
-The variable $\pT^{\text{varcone20}}$ ($\pT^{\text{varcone30}}$) has $\Delta R_{\text{max}} = 0.2$ ($0.3$).
+The variable radius compensates for the fact that leptons produced in the decay of high-momentum heavy particles
+tend to have other decay produces very close to the lepton's direction of travel.
+The isolation variable $\pT^{\text{varcone20}}$ ($\pT^{\text{varcone30}}$) has $\Delta R_{\text{max}} = 0.2$ ($0.3$).
 The calorimeter-based isolation variables are similarly defined as the track-based ones, but are
-based on the transverse calorimeter energy deposits within a surround cone (and not associated with the lepton).
+based on the transverse calorimeter energy deposits within a surrounding cone (and not associated with the lepton).
 The calorimeter-based isolation variable considered for the present thesis is $E_T^{\text{topocone20}}$, and has
 a surrounding cone with a fixed radius of $\Delta R = 0.2$.
-The isolation criteria that all leptons relevant to the present these must satisfy is based
+The isolation criteria that all leptons relevant to the present thesis must satisfy is based
 on a two-dimensional, varying selection on track- and calorimeter-based isolation variables
 and is called the `GradientLoose' isolation working point.
 The GradientLoose isolation working point, and its associated isolation variables used
