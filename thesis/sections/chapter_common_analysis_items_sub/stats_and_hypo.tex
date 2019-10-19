@@ -50,11 +50,11 @@ The hypothesis $H_1$ is commonly referred to as the signal-plus-background (S+B)
 In both searches presented in Chapters~\ref{chap:search_stop} and \ref{chap:search_hh},
 $H_0$ is taken to be the SM.
 In the search presented in Chapter~\ref{chap:search_stop}, $H_1$ is taken to be a specific
-instantiation of the MSSM ({\color{red}{Section XXX}}), with specific masses of the
+instantiation of the MSSM (Section~\ref{sec:susy}), with specific masses of the
 stop quark and LSP.
 In the search presented in Chapter~\ref{chap:search_hh}, $H_1$ is taken to be the
 non-resonant production of Higgs boson pairs.
-In this latter case, the $H_1$ hypothesis is indeed a process predicted by the SM ({\color{red}{SECTION XXX about HH pheno and EWSB}}) but
+In this latter case, the $H_1$ hypothesis is indeed a process predicted by the SM but
 it is one that is not included in the $H_0$ hypothesis.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -310,7 +310,7 @@ constructed as a product of Poisson probability terms:
 \end{align}
 where $N_r^{\text{obs}}$ is the observed data yield in region $r$.
 
-{\color{red}{REORDER THIS TEXT}} It is standard practice to parametrize the systematic uncertainties associated with the measurements
+It is standard practice to parametrize the systematic uncertainties associated with the measurements
 of the $N_r^{\text{exp}}$ in such a way that $\bm{\theta} = 0$ (all of the $\theta_i$ equal to zero) corresponds to the central (nominal) value
 of the set of parameters associated with the uncertainty (e.g. the nominal value of JES).
 The values $\theta_i = \pm 1$ represent shifts in the parameter values by their $\pm 1\sigma$
@@ -323,11 +323,11 @@ numbers of predicted events as the $\theta$ parameters vary continously between 
 are provided by the \textsc{HistFactory} toolkit~\cite{HistFactory}.
 The effects of the NP associated with each of the analysis' systematic uncertainties
 are implemented as \textit{constraint terms} in the likelihood appearing in Equation~\ref{eq:likelihood_main}.
-These terms are typically implemented as Gaussians centered on zero and with a width of 1:
+These terms are typically implemented as Gaussians centered on zero and with a width of one:
 %are implemented as Gaussian \textit{constraint terms}, with wi in the likelihood defined in Equation~\ref{eq:likelihood_main}:
 \begin{align}
     L(\mu_{\text{sig}}, \bm{\mu_{\text{bkg}}}, \bm{\theta}) = L_0(\mu_{\text{sig}}, \bm{\mu_{\text{bkg}}}, \bm{\theta})
-        \, \cdot \, \prod\limits_{i = 1}^{n} \frac{1}{\sqrt{2 \pi}} \, \exp \left( - \frac{\theta_i^2}{2} \right).
+        \, \cdot \, \underbrace{\prod\limits_{i = 1}^{n} \frac{1}{\sqrt{2 \pi}} \, \exp \left( - \frac{\theta_i^2}{2} \right)}_{\text{Constraints}}.
     \label{eq:full_likelihood}
 \end{align}
 %The constraint terms represent Gaussians centered on 0 and with a width of 1.

@@ -19,13 +19,11 @@ in the ID with those tracks independently reconstructed in the MS layers at larg
 \subsubsection{Electron Reconstruction}
 \label{sec:electron_reco}
 
-{\color{red}{After 2016 they replaced sliding window algorithm with supercluster-based reco}}
-
 The reconstruction of electron candidates is based on three components which
 characterise the signature of electrons: localised clusters of energy
 deposits found within the EM calorimeter, charged-particle tracks
 identified in the ID, close-matching (in ($\eta,\phi$)) of the tracks to the clusters
-that form the final electron candidates~\cite{Aad:2019tso}.
+that form the final electron candidates~\cite{Aaboud:2657964}.
 It is generally possible to match multiple tracks to the same electrogmagnetic cluster,
 all originating from the same primary electron produced in the hard-scatter.
 This is due to the fact that electrons lose significant amounts of energy to bremsstrahlung
@@ -39,7 +37,7 @@ The search for localised energy deposits in the EM calorimeter is performed
 by following a sliding window algorithm over the individual cells whose dimensions are
 defined by the second sampling layer of the EM calorimeter (Figure~\ref{fig:em_calo_section}).
 Electron candidates are seeded by localised energy deposits whose summed transverse energy,
-across all layers of the EM calorimeter, is greater than $2.5\,\GeV$~\cite{Aad:2019tso}.
+across all layers of the EM calorimeter, is greater than $2.5\,\GeV$~\cite{Aaboud:2657964}.
 These clusters act as seeds for the matching of reconstructed ID tracks.
 The reconstructed tracks are refit using a Gaussian Sum Filter (GSF) method~\cite{ATLAS-CONF-2012-047} 
 that accurately accounts for the bremsstrahlung energy losses characteristic of
@@ -49,6 +47,12 @@ If there is no GSF-track candidate matching to the EM calorimeter cluster seed, 
 the cluster is marked as an unconverted photon. The cluster is marked as a
 converted photon if a matched GSF-track candidate exists but is not associated
 with the primary hard-scatter vertex.
+
+Starting after 2016, the ATLAS electron reconstruction algorithm was updated to reconstruct
+electron energy deposits using a dynamic EM topo-clustering algorithm similar to that used
+in jet reconstruction (Section~\ref{sec:jets})~\cite{Aad:2019tso}, as opposed to the sliding window
+algorithm described above.
+
 
 \subsubsection{Electron Identification}
 \label{sec:electron_id}
@@ -69,6 +73,8 @@ calorimetric information, and quantities that combine the tracking and calorimet
     \begin{center}
         \includegraphics[width=0.9\textwidth]{figures/chapter3/egamma/egamma_lh_input_desc}
         \caption{
+            Cartoon illustrating the quantities going into the electron identification algorithm,
+            listed in Table~\ref{tab:egamma_lh_inputs}.
         }
         \label{fig:egamma_lh_input_desc}
     \end{center}
@@ -124,7 +130,7 @@ to be 93\%, 88\%, and 80\% for the \textsc{Loose}, \textsc{Medium}, and \textsc{
         \raisebox{1.35cm}{\includegraphics[width=0.48\textwidth]{figures/chapter3/egamma/egamma_reco_eff_Et}}
         \includegraphics[width=0.48\textwidth]{figures/chapter3/egamma/egamma_id_eff_Et}
         \caption{
-            {\color{red}{2015-2016}}
+            Electron reconstruction and identifiation efficiencies as measured in 2015--2016.
             \textbf{\textit{Left}}: Electron candidate reconstruction efficiency, measured in simulation and in data, as
                 a function of the candidate $E_T$.
             \textbf{\textit{Right}}: Electron identification efficiency measured in data, as a function of electron $E_T$,
@@ -230,6 +236,10 @@ than one MDT hole are allowed. The ME \text{Medium} muons are required to have a
 
 \begin{table}[!htb]
     \begin{center}
+        \caption{
+            Quantities used in the muon identification.
+        }
+        \label{tab:muon_id_vars}
         \begin{tabularx}{\textwidth}{l|X|X}
         \hline
         \hline
@@ -248,15 +258,13 @@ than one MDT hole are allowed. The ME \text{Medium} muons are required to have a
         \hline
         \end{tabularx}
     \end{center}
-    \caption{
-    }
-    \label{tab:muon_id_vars}
 \end{table}
 
 \begin{figure}[!htb]
     \begin{center}
         \includegraphics[width=0.7\textwidth]{figures/chapter3/muon/muon_reco_eff_medium}
         \caption{
+            Reconstruction efficiency for Medium muons, based on data collected in 2015.
             From Ref.~\cite{Aad:2016jkr}.
         }
         \label{fig:muon_reco_eff}

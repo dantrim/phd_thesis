@@ -113,7 +113,8 @@ and computes the quantities,
         d_{iB} = \frac{1}{k_{T,i}^2},
         \label{eq:antikt_1}
 \end{align}
-with $\Delta R_{ij}^2 = (\eta_i - \eta_j)^2 + (\phi_i - \phi_j)^2$, {\color{red}{its rapidity, right?}} $R$ is a parameter whose value regulates the radial extent of
+%with $\Delta R_{ij}^2 = (\eta_i - \eta_j)^2 + (\phi_i - \phi_j)^2$, {\color{red}{its rapidity, right?}} $R$ is a parameter whose value regulates the radial extent of
+with $\Delta R_{ij}^2 = (y_i - y_j)^2 + (\phi_i - \phi_j)^2$, $R$ is a parameter whose value regulates the radial extent of
 the jet, and $k_{T,i}$ is the transverse momentum of the $i^{th}$ constituent.
 The $d_{ij}$ and $d_{iB}$ quantities are `distance' metrics used in the clustering of input topo-cluster constituents.
 The former represents the `distance' between the $i^{th}$ and $j^{th}$ constituent while latter represents the
@@ -259,7 +260,8 @@ particles at the end of the hadronisation step as the input constituents, and th
 its interaction with the calorimeter (see Figure~\ref{fig:jet_formation}).
 The correction accounts for mismodelling of the inactive material within the detector, radiation not accounted for
 in the reconstructed calorimeter-based jet due to the clustering algorithm not accepting it (`out-of-cone radiation`),
-non-compensation of the hadronic calorimeters\footnote{ {\color{red}{Compensating...}}}, and for effects
+non-compensation of the hadronic calorimeters, and for effects
+%non-compensation of the hadronic calorimeters\footnote{ {\color{red}{Compensating...}}}, and for effects
 related to detector geometry or transitions between calorimeter technologies.
 
 The correction is derived by matching the EM-scale reconstructed jets, in simulation, to the particle-level

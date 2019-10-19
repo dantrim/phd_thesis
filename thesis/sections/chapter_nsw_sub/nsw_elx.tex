@@ -7,8 +7,8 @@ both use the VMM...?}}
 To a very large extent, high-performance detectors are realised and made
 possible only by their interfacing to equally high-performance readout electronics;
 that is, high quality electronics enable high quality detectors.
-{\color{red}{See Appendix XXX for a discussion on the general characteristics of
-detector readout electronics.}}
+%{\color{red}{See Appendix XXX for a discussion on the general characteristics of
+%detector readout electronics.}}
 In this section, therefore, an introduction to the frontend electronics\footnote{`Frontend' electronics
 are those housed directly on the detectors themselves and are responsible for reading out the
 detector signals and potentially many other responsibilities, such as calibration, configuration, and
@@ -57,11 +57,11 @@ on the RD51 collaboration, visit their homepage: \url{http://rd51-public.web.cer
 In Section~\ref{sec:nsw_boards}, then, a description of the relevant front-end boards used in the
 study, validation, and integration of the VMM ASIC, as well as those that will be used in
 the MM detectors of the NSW, will be given.
-The analgogous VMM-based frontend boards for the sTGC detectors are objectively more complicated than those
+The analogous VMM-based frontend boards for the sTGC detectors are objectively more complicated than those
 of the MM detectors for purely technical and uninteresting reasons.
 The discussion below, however, is detector-technology agnostic and
 the sTGC frontend description can be found elsewhere~\cite{NSWTDR}.
-{\color{red}{Maybe change how I describe why I am focused on MM detectors etc...}}
+%{\color{red}{Maybe change how I describe why I am focused on MM detectors etc...}}
 
 \subsection{The VMM ASIC}
 \label{sec:vmm}
@@ -197,18 +197,19 @@ When placed directly on the frontend boards, their proximity to the sensitive re
 elements means that the matter of their placement and shielding needs to be handled carefully.
 
 The types of boards discussed here have allowed for the study of the VMM ASIC both on- and off-detector,
-where in the latter case prototype MM detectors were used ({\color{red}{More to say in Section XXX}}).
+where in the latter case prototype MM detectors were used.
 Over the timespan of the present thesis, many iterations of each type of frontend board
 were encountered, with subsequent iterations adapting to the evolution of the VMM, for example (Figure~\ref{fig:vmms_silicon}).
 In addition to housing the VMM ASIC, the frontend boards house a
 \textsc{Xilinx} field-programmable gate array (FPGA). 
 One of the main purposes of the FPGA is to aggregate the data being output from the VMM
-and prepare it for being sent off-board via standard network protocols over Ethernet to the
-backend data-acquisition system ({\color{red}{Section XXX}}).
+and prepare it for being sent off board via standard network protocols over Ethernet to the
+backend data-acquisition system. 
 Additionally, the FPGA responds to commands and requests submitted by users via the software
-interface ({\color{red}{Section XXX}}).
+interface.
 Such commands may have as endpoint the FPGA itself or they may require the FPGA to forward
 them to the VMM ASIC.
+These concepts are described further in Section~\ref{sec:verso}.
 %may have as end and either adjusts its own configuration parameters or
 %forwards the commands to the VMM such that it itself may respond.
 
