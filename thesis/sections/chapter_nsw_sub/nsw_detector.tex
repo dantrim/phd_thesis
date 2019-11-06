@@ -1,19 +1,14 @@
 \section{The New Small Wheel Detector}
 \label{sec:nsw_detector}
 
-%The inability of the current Small Wheel to cope with the foreseen challenges
-%of Run 3 and the HL-LHC have been briefly discussed in the
-%previous sections.
 In this section, a description of the NSW will be presented.
 The layout of the NSW will be described in Section~\ref{sec:nsw_geo}
 and then a description of the \micromegas (MM)~\cite{Giomataris:1995fq} and Small-strip Thin Gap Chamber (sTGC)
 detector technologies that will compose the NSW
 will be given in Sections~\ref{sec:nsw_mm} and \ref{sec:nsw_stgc}, respectively.
-The MM are throught of as providing primarily high presicion muon tracking
+The MM are thought of as providing primarily high precision muon tracking
 while the sTGC are thought of as primarily providing trigger primitives for the forward Level-1 muon trigger system.
 As will be seen, though, both the MM and sTGC technologies will provide both high-quality tracking and trigger primitives.
-%The MM detectors are primarily precision tracking detectors and the sTGC
-%will serve as trigger detectors, though each provide both tracking and trigger primitives.
 The NSW must last for the remainder of the ATLAS detector's lifetime, throughout
 both Run 3 and the entirety of the HL-LHC era.
 In the following sections, the design decisions of the NSW --- related to both its layout 
@@ -43,7 +38,7 @@ nearly 10\,m.
 
 The current Small Wheel muon system covers the range $1.0 < \lvert \eta \rvert < 2.7$, shown
 in Figure~\ref{fig:muon_plan_view_eta}.
-The NSW will not cover the entirey of this range, however, and will only cover the
+The NSW will not cover the entirety of this range, however, and will only cover the
 range $1.3 < \lvert \eta \rvert < 2.7$ while the already-existing MDT chambers in the Small Wheel at $1.0 < \lvert \eta  \rvert < 1.3$
 will remain in operation after the NSW installation.
 The NSW will additionally extend the Level-1 muon trigger system acceptance to include
@@ -59,12 +54,6 @@ becomes non-functioning, the tracking and/or trigger responsibilities of the los
 will be partially covered by the presence of the still-functioning quadruplet(s)/layer(s) of the other
 detector technology covering the same or overlapping
 $\eta$ range.
-%There is additional redundancy provided by the fact that \textit{both} the MM and sTGC detectors
-%will provide both tracking and trigger primitives: if an entire or part of a quadruplet becomes
-%non-functioning, then the functionalities of the lost detector will be partially covered
-%by that of the still-functioning quadruplet(s) in the same $\lvert \eta \rvert$ range.
-%That is, although the MM and sTGC are described as being specialised for tracking and trigger functionalities,
-%respectively, each technology provides quality inputs for both functions.
 The degree of redundancy built into the NSW detector is such that the performance goals
 of ATLAS with respect to the forward muon system can be met for the remainder of the experiment's
 lifetime of 15 years or more.
@@ -109,17 +98,11 @@ a necessity for these timescales.
 \label{sec:nsw_mm}
 
 As mentioned above, the MM detectors are primarily designed with the high-precision tracking
-requirements of the HL-LHC in mind, requring a per-layer spatial hit resolution better than $100\,\micron$.
+requirements of the HL-LHC in mind, requiring a per-layer spatial hit resolution better than $100\,\micron$.
 The MM detectors are characterised by readout strips with very fine segmentation and good
 time resolution.
 Due to this fine time resolution, they will be able to complement the trigger scheme based
 on the sTGC detector technology.
-
-%The MM detectors are designed with the high-precision tracking requirements of the HL-LHC
-%in mind, requiring a spatial precision better than $100\,\micron$.
-%They are characterised by readout strips with very fine segmentation and good
-%time resolution and can be exploited to complement the trigger scheme based on the sTGC, as
-%described above.
 
 MM detectors are characterised by two asymmetric regions.
 The standard MM detector consists of a planar \textit{drift} electrode, a gas gap of
@@ -140,14 +123,12 @@ layer over the readout electrodes.
 The insulating layer acts to protect the sensitive readout electrodes from sparking events that
 reduce the detector performance over time and that are expected to happen frequently given
 the very large gas amplification.
-%Such sparking events can happen frequently given the very large gas amplifications and high electric potentials
-%present in the amplification region.
 Resistive strips on top of the insulating layer collect the avalanche electrons and induce
 signals on copper readout strips embedded beneath the insulating layer.
 The geometry (strip pitch and width) of the copper readout strips need not necessarily be the
 same as that of the resistive strips.
-Resistrive-strip MM detectors are able to sustain higher amplification and particle rates, a necessary
-characteristic for targetting the high-luminosities foreseen at the HL-LHC.
+Resistive-strip MM detectors are able to sustain higher amplification and particle rates, a necessary
+characteristic for targeting the high-luminosities foreseen at the HL-LHC.
 The design and principle of operation of the resistive-strip MM technology is shown in Figure~\ref{fig:nsw_mm_principle},
 in which incident MIPs traversing perpendicular and at an angle relative to the detector plane
 are illustrated.
@@ -190,15 +171,10 @@ each MM layer can be defined, as illustrated on the left side of Figure~\ref{fig
 In the NSW, the MM hit location will be determined through the combined use of both the
 charge-centroid and $\mu$-TPC methods, allowing for sufficient spatial resolution spanning the relevant
 incident angles, as illustrated on the right side of Figure~\ref{fig:mm_tpc_hit_loc}.
-%This combined 
-%From this mini-track a well-defined metric for defining the hit location for inclined tracks on each MM layer can be defined,
-%as illustrated in Figure~\ref{fig:mm_tpc_hit_loc}.
-
 
 \begin{figure}[!htb]
     \begin{center}
         \includegraphics[width=0.75\textwidth]{figures/nsw/nsw_mm_principle}
-       % \raisebox{1.12cm}{\includegraphics[width=0.37\textwidth]{figures/nsw/mm_tpc_hit_loc}}
         \caption{
         }
         \label{fig:nsw_mm_principle}
@@ -207,7 +183,6 @@ incident angles, as illustrated on the right side of Figure~\ref{fig:mm_tpc_hit_
 
 \begin{figure}[!htb]
     \begin{center}
-        %\includegraphics[width=0.8\textwidth]{figures/nsw/mm_ghost_stereoPDF}
         \includegraphics[width=0.8\textwidth]{figures/nsw/mm_stereo_cartoonPDF}
         \caption{
             \textbf{\textit{Left}}: Illustration of the small-angle stereo two-dimensional readout principle.
@@ -243,7 +218,7 @@ incident angles, as illustrated on the right side of Figure~\ref{fig:mm_tpc_hit_
         \includegraphics[width=0.48\textwidth]{figures/nsw/tpc_vs_centroid_res}
         \caption{
             \textbf{\textit{Left}}: Illustration of the `$x_{\text{half}}$' method of defining a hit position for
-                an inclinded track: the hit position is defined as the position on the readout plane
+                an inclined track: the hit position is defined as the position on the readout plane
                 corresponding to the half-height location along the reconstructed tracklet in the MM conversion gap.
             \textbf{\textit{Right}}: Expected MM spatial resolution with charge centroid method (blue triangles), $\mu$-TPC
                 method (filled red circles), and the combination of the two (black open circles) as a function
@@ -287,7 +262,7 @@ of the muon system.
             Due to the very thin gap and the intense electric field applied,
             $\approx95$\,\% of the measured drift times of passing MIPs are
             confined within a window of 25\,ns, showing that the sTGC
-            are capable of relaible bunch crossing assignment.
+            are capable of reliable bunch crossing assignment.
         }
         \label{fig:stgc_timing}
     \end{center}

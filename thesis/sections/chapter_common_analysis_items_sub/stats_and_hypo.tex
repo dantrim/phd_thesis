@@ -169,19 +169,6 @@ $p_0$-value criterion adopted by the particle physics community.
     \end{center}
 \end{figure}
 
-%The process of performing a hypothesis test, then, is specified by the following procedure:
-%\begin{enumerate}
-%    \item Unambiguously define the background-only (the SM prediction) and signal-plus-background (the prediction of the SM with BSM physics added)
-%            hypotheses, $H_0$ and $H_1$.
-%    \item Define an appropriate test statistic, $t(x)$ (see Section~\ref{sec:likelihood}).
-%    \item Construct the distribution of the test statistic under the background-only hypothesis, $g(t|H_0)$.
-%    \item Define the desired significance level of the hypothesis, $\alpha$
-%    \item Obtain the value of $t(x)$ as observed in data
-%    \item If the observed value of $t(x)$ is within the critical region defined by $\alpha$ as in Equation~\ref{eq:sig_level} ($t_{\text{obs}} > t_c$), reject $H_0$.
-%            Otherwise, $H_0$ cannot be rejected.
-%\end{enumerate}
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -233,10 +220,6 @@ to smaller signal cross-sections, are still consistent with the observed data an
 be excluded.
 The process of scanning $\mu$ hypotheses and computing the \cls in order to find
 an upper limit on $\mu$ is illustrated in Figure~\ref{fig:upper_limit_scan_cartoon}.
-%An upper limit on a given signal hypothesis specified by $\mu$ is
-%the value of $\mu$ at which $\cls = 0.05$.
-%An illustration of how an upper limit is obtained is provided by Figure~\ref{fig:upper_limit_scan_cartoon}.
-%%the largest value of $\mu$ describing the signal process that satisfies $\cls \le 0.05$.
 
 \begin{figure}[!htb]
     \begin{center}
@@ -319,24 +302,16 @@ The systematic uncertainties described in Section~\ref{sec:common_systematics} a
 computed such that, at the level of performing a physics analysis, only the $\pm 1 \sigma$ shifts about the central value
 in the associated parameter are known.
 Means of interpolation and extrapolation, needed to obtain a smoothly varying response in the
-numbers of predicted events as the $\theta$ parameters vary continously between their $\pm 1 \sigma$ values,
+numbers of predicted events as the $\theta$ parameters vary continuously between their $\pm 1 \sigma$ values,
 are provided by the \textsc{HistFactory} toolkit~\cite{HistFactory}.
 The effects of the NP associated with each of the analysis' systematic uncertainties
 are implemented as \textit{constraint terms} in the likelihood appearing in Equation~\ref{eq:likelihood_main}.
 These terms are typically implemented as Gaussians centered on zero and with a width of one:
-%are implemented as Gaussian \textit{constraint terms}, with wi in the likelihood defined in Equation~\ref{eq:likelihood_main}:
 \begin{align}
     L(\mu_{\text{sig}}, \bm{\mu_{\text{bkg}}}, \bm{\theta}) = L_0(\mu_{\text{sig}}, \bm{\mu_{\text{bkg}}}, \bm{\theta})
         \, \cdot \, \underbrace{\prod\limits_{i = 1}^{n} \frac{1}{\sqrt{2 \pi}} \, \exp \left( - \frac{\theta_i^2}{2} \right)}_{\text{Constraints}}.
     \label{eq:full_likelihood}
 \end{align}
-%The constraint terms represent Gaussians centered on 0 and with a width of 1.
-%This is equivalent to:
-%\begin{align}
-%    \theta^{\prime} = \frac{ \theta - \hat{\theta} } {\sigma},
-%\end{align}
-%allowing for the post-fit NP to be easily compared with the pre-fit ones in the following manner.
-%A post-fit value and uncertainty of the NP near 0 and 1, respectively, indicate that the data
 The best estimates (maximum likelihood estimates, MLE) for the parameters ($\mu_{\text{sig}}$, $\bm{\mu_{\text{bkg}}}$, $\bm{\theta}$)
 are determined in the fit to the observed data, $\bm{N^{\text{obs}}}$, via the maximization
 of the likelihood function given by Equation~\ref{eq:full_likelihood}. 
@@ -375,13 +350,11 @@ which is used to perform the hypothesis tests described in Section~\ref{sec:hypo
 
 \subsubsection{Profile Likelihood Fit Determination of Background Constraints}
 
-We note here that the quantites described by $\bm{\mu_{\text{bkg}}}$ in Equations~\ref{eq:test_stat_n_r}--\ref{eq:pll_test_stat} correspond to normalisation correction
+We note here that the quantities described by $\bm{\mu_{\text{bkg}}}$ in Equations~\ref{eq:test_stat_n_r}--\ref{eq:pll_test_stat} correspond to normalisation correction
 factors for a given SM background process.
 In the analyses to be presented in Chapters~\ref{chap:search_stop} and \ref{chap:search_hh},
 for the background processes for which a dedicated CR is not defined, the associated $\mu_b$ are
 set to 1 and are not allowed to vary during the fit (i.e. their pre-fit and post-fit values are equal).
-%these values are set to one for all background processes that do not have a dedicated
-%CR and are not allowed to vary from this value during the fit procedure.
 For those processes for which a dedicated CR is defined, the associated $\mu_b$ parameters
 are analogous to the normalisation correction factors described in Section~\ref{sec:control_region_method} and
 are unconstrained in the fit procedure.
@@ -414,7 +387,7 @@ that the data was not able to adjust the NP.
 Changes in the post-fit NP values (uncertainties) are referred to as NP `pulling' (`profiling').
 NP values may be pulled far from zero in order to maximize the overall agreement of the background prediction
 with data during the fit procedure.
-NP may be profiled in such a way that the post-fit uncertainties on the NP are smaller than the
+NP may be profiled in such a way that the post-fit uncertainties on the NP are smaller than
 the initial estimate of the uncertainty provided by auxiliary measurements and data.
 Such a case indicates that the initial prior on the impact of the systematic uncertainty was too
 large and that the uncertainties may be reduced so as to be more compatible  with the range allowed by
@@ -555,8 +528,6 @@ The smaller uncertainty on Bkg. 1's prediction in this example, as compared to E
 to a higher level of confidence in its pre-fit value.
 The associated NP constraint term, therefore, should not be allowed the freedom to contradict this
 high degree of confidence by shifting the prediction to the same extent as that in Example 1a.
-%This is unlike the case of Example 1a,
-%where there was relatively little confidence in the pre-fit prediction of Bkg. 1.
 
 \begin{figure}[!htb]
     \begin{center}
@@ -579,8 +550,6 @@ In this example we again set up the same fit configuration as in Example 1a.
 However, a signal process `Signal' with 20 events predicted in Region 1 is added.
 The signal-strength parameter $\mu_{\text{sig}}$, acting as a freely floating normalisation
 term for the signal process, is now included in the fit as well.
-%A freely floating normalisation correction term is added to the fit,
-%associated with this newly added background (hence its name).
 A profile-likelihood fit to the observed data is once again performed.
 The pre- and post-fit distributions of the observed data and predicted backgrounds,
 with their uncertainties, are shown in Figure~\ref{fig:prof_ex_2_pre}.
@@ -609,10 +578,6 @@ This compensation allows for the background precision in Region 1 to be reduced 
 that of the data statistics, as seen in Figure~\ref{fig:prof_ex_2_pre},
 and is characterised by the nearly perfect anti-correlation between the $\mu_{\text{sig}}$ and
 Bkg. 1 NP constraint terms, shown in the right side of Figure~\ref{fig:prof_ex_2_pulls}.
-%This is illustrated in the right side of Figure~\ref{fig:prof_ex_2_pulls},
-% the post-fit
-%correlation between Bkg. 1's NP constraint and $\mu$ terms,
-%where it can be seen that Bkg. 1's NP constraint and $\mu$ terms exhibit almost perfect anti-correlation.
 This ability for $\mu_{\text{sig}}$ to compensate the NP by preventing it from being pulled is a general
 feature of the addition of unconstrained normalisation-scaling $\mu$ terms in these types of fits, regardless
 of whether they are associated with signal or background processes.
@@ -659,10 +624,6 @@ statements about the compatibility of the signal-plus-background hypotheses with
 
 As an illustration, Figure~\ref{fig:cls_scan_uncert} shows the CL$_s$ computed as a function of varying signal-to-background ratio, for several background uncertainty hypotheses,
 for a fixed number of predicted background and data events in a single-region analysis.
-%This is shown in Figure~\ref{fig:cls_scan_uncert}, 
-%The scenario shown in Figure~\ref{fig:cls_scan_uncert} is not unlike those to be
-%presented in Chapters~\ref{chap:search_stop} and \ref{chap:search_hh}, in which the predicted
-%and observed event counts are relatively low.
 The number of signal events needed to cross into the critical CL$_s <0.05$ region,
 at which point a signal hypothesis may be considered excluded at 95\% CL, is quite sensitive to the uncertainty
 on the background prediction.
@@ -679,24 +640,15 @@ At a level of background uncertainty of $30\%$, with a CL$_s \approx 0.35$, this
 to be excluded nor to actually exist.
 At this background uncertainty, the analysis would find an upper-limit on the signal process' $\mu_{\text{sig}}$ term nearing a value of 2,
 since the CL$_s$ crossing point is near $S/B = 0.8$.
-%only be sensitive to the type of process
-%described by the sought-for signal if it had a cross-section nearly twice that of the predicted
-%one, since the CL$_s$ crossing point is near $S/B = 0.8$.
 Using this terminology, then, when no meaningful discrepancies (characterised by very low $p_0$-values) between the predicted background and observed event counts
 are seen, the upper-limit value under the hypothesis for a
 given signal process gives a measure of `how far' the analysis is from being sensitive to that process.
-%quantifies the analysis'
-%sensitivity to that process.
 If the upper-limit value is $200$ times the predicted cross-section, the analysis is not sensitive to the process at all.
 However, if the upper-limit value is $\mathcal{O}(1)$ times the process' predicted cross-section, the analysis
 is entering the regime wherein it will be able to resolve the presence of the signal and can begin to make meaningful statements about
 its likelihood of existence.
-%can begin to make meaningful statements about its existence
-%is nearing the regime in which meaningful statements about the existence of that process, at its predicted cross-section, can begin to be made.
 If an upper-limit value corresponds to a cross-section value that is \textit{less} than the predicted one,
 the process --- as predicted --- is excluded.
-%Thinking in these terms is relevant to the search presented in Chapter~\ref{chap:search_hh},
-%in which a search for Standard Model Higgs boson pair production is presented.
 
 \begin{figure}[!htb]
     \begin{center}

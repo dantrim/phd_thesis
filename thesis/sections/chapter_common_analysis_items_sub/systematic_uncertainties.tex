@@ -56,8 +56,6 @@ For this reason, the searches described in Chapters~\ref{chap:search_stop} and \
 used a reduced set of JES and JER uncertainties that are derived following a Principal Component Analysis (PCA)
 designed to capture only the dominant components --- and their correlations --- of the total set of JES and JER uncertainty components
 that are relevant to the phase space being probed by the analyses.
-%to group together only those components of the overall uncertainty that are relevant to the phase
-%space being probed by the analyses.
 In the analysis presented in Chapter~\ref{chap:search_stop} (\ref{chap:search_hh}), this uncertainty reduction
 process leads to only 4 (34) separate components of the combined JES and JER systematic uncertainty.
 
@@ -110,7 +108,7 @@ They are as follows:
         in Chapter~\ref{chap:search_stop}.
         The first is related to the limited statistics in the region(s) used for the determination of the
         fake efficiencies, $\varepsilon_r$ and $\varepsilon_f$.
-        The second is related to the `prompt subraction': the evaluation of the portion of real events contaminating the
+        The second is related to the `prompt subtraction': the evaluation of the portion of real events contaminating the
         regions in which the fake efficiencies are derived, which is evaluated using the MC simulation.       
         The component of real lepton sources is varied by $\pm 30$\% and the impact on the resulting
         fake efficiencies is propagated to to the final analysis. 
@@ -122,7 +120,7 @@ They are as follows:
         is used to define an uncertainty.
     \item{Same-sign Extrapolation Method (Section~\ref{sec:same_sign_extrap}):} As with the Matrix Method,
         there are three primary sources of uncertainty prescribed to the fake background estimate derived using
-        the Same-sign Exrtrapolation Method. The first, as with the Matrix Method, is related to the prompt subtraction
+        the Same-sign Extrapolation Method. The first, as with the Matrix Method, is related to the prompt subtraction
         in which the rate of contamination of prompt processes is varied.
         In the analysis described in Chapter~\ref{chap:search_hh}, the real contamination in the same-sign
         regions is varied by $\pm 50$\%, and the impact on the final fake background estimate is used to quantify
@@ -164,9 +162,6 @@ are similar.
 The more dissimilar the phase space being probed by the CR and SR, the larger
 the expected impact of a given systematic variation due to the larger kinematic
 extrapolation required.
-% for example, a systematic shift
-%of some underlying modelling parameter may result in an upward fluctuation of the process'
-%prediction in the CR but a downward shift in the SR.
 This can conceptually be seen by considering Equation~\ref{eq:cr_tf}:
 \begin{align}
     N_{p}^{\text{SR}} &= \mu_p \times N_{p,\,\text{MC}}^{\text{SR}} \nonumber \\
@@ -300,15 +295,8 @@ used for the \zhf~simulation.
 To assess the impact of different MC hard-scatter generation and fragmentation models, the 
 nominal sample produced using \textsc{Sherpa} is compared to a \zhf~simulation produced using
 \textsc{Madgraph+aMC@NLO} for the hard-scatter generation.
-%This last uncertainty prescription provides a measure of the uncertainty in the prediction
-%of the phase space probed by the \zhf~process, which is known to be theoretically challenging.
-%Experimentally, it is found that the theoretical predictions for the \zhf~process tend to
-%under-predict the observed data by 20-30\% in regions in which the $b$-tagged jets
-%tend to be collinear~\cite{CMS-EWK-11-015,STDM-2012-15}.
 This last source of uncertainty is important for the analysis described in Chapter~\ref{chap:search_hh}
 and amounts to an uncertainty of $\pm 15$\% on the \zhf~background estimate in the analysis' SRs.
-%This region of phase space is important for the analysis presented in Chapter~\ref{chap:search_hh} and
-%amounts to an uncertainty $\pm 15$\%.
 The other sources of uncertainty on the \zhf~background are minor in comparison.
 
 \subsubsection{Diboson Production}
@@ -316,10 +304,10 @@ The other sources of uncertainty on the \zhf~background are minor in comparison.
 The SM production of boson pairs --- diboson production (`$VV$') --- plays an important role only in the
 analysis described in Chapter~\ref{chap:search_stop}.
 The nominal $VV$ background estimate is simulated using the \textsc{Sherpa} MC generator.
-Uncertainties arising as a result of variations in the factorziation and renormalization scales,
+Uncertainties arising as a result of variations in the factorization and renormalization scales,
 PDF variations, and uncertainties in the CKKW merging scales are considered.
-The methods by which these uncertainteis are quantified are described above.
-These systematic uncertainteis amount to about a $\pm 9$\% uncertainty in the SR prediction
+The methods by which these uncertainties are quantified are described above.
+These systematic uncertainties amount to about a $\pm 9$\% uncertainty in the SR prediction
 in the analysis described in Chapter~\ref{chap:search_stop}, but are generally smaller than
 the modelling uncertainties on the \ttbar~background process.
 

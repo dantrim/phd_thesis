@@ -24,14 +24,14 @@ characterise the signature of electrons: localised clusters of energy
 deposits found within the EM calorimeter, charged-particle tracks
 identified in the ID, close-matching (in ($\eta,\phi$)) of the tracks to the clusters
 that form the final electron candidates~\cite{Aaboud:2657964}.
-It is generally possible to match multiple tracks to the same electrogmagnetic cluster,
+It is generally possible to match multiple tracks to the same electromagnetic cluster,
 all originating from the same primary electron produced in the hard-scatter.
 This is due to the fact that electrons lose significant amounts of energy to bremsstrahlung
 photons as they interact with and traverse the ID.
 These radiated photons can then undergo conversion to electron-positron pairs,
 which, too, can undergo further bremsstrahlung.
 The positrons, electrons, and photons are usually emitted in a very collimated fashion
-and thus deposit most of their energy in a localised fashion within the calorimter.
+and thus deposit most of their energy in a localised fashion within the calorimeter.
 
 The search for localised energy deposits in the EM calorimeter is performed
 by following a sliding window algorithm over the individual cells whose dimensions are
@@ -62,7 +62,7 @@ levels of identification.
 A further set of identification criteria is required on top of the reconstruction
 so as to improve the selection of true electrons originating from the primary hard-scatter
 vertex --- so-called \textit{prompt} electrons --- over \textit{non-prompt} sources
-of reconstructed electrons such as those originating from photon conversions or the misidentifiation
+of reconstructed electrons such as those originating from photon conversions or the misidentification
 of charged pions that leave electron-like tracks in the ID.
 This identification criteria is based on the construction of a multivariate likelihood (LH) and
 is referred to as the \textit{electron likelihood identification}.
@@ -105,7 +105,7 @@ motivated by the need to have well-defined working points based on selections on
 There are four such fixed values of the final LH discriminant that are used to define
 four working points corresponding to increasing thresholds on the final LH discriminant:
 \textsc{VeryLoose}, \textsc{Loose}, \textsc{Medium}, and \textsc{Tight}.
-The efficiencies to identifiy prompt electron candidates are measured using samples of $Z\rightarrow ee$ and
+The efficiencies to identify prompt electron candidates are measured using samples of $Z\rightarrow ee$ and
 $J/\psi \rightarrow ee$ following a tag-and-probe approach.
 They are found, for electron candidates with $E_T > 40\,\GeV$,
 to be 93\%, 88\%, and 80\% for the \textsc{Loose}, \textsc{Medium}, and \textsc{Tight} working points, respectively~\cite{Aad:2019tso}.
@@ -114,7 +114,7 @@ to be 93\%, 88\%, and 80\% for the \textsc{Loose}, \textsc{Medium}, and \textsc{
     \begin{center}
     \includegraphics[width=0.7\textwidth]{figures/chapter3/egamma/egamma_lh_discriminant}
     \caption{
-        Transformed LH-based electron identification discrimiant for electron candidates
+        Transformed LH-based electron identification discriminant for electron candidates
         with $30\,\GeV < E_T < 35\,\GeV$ and $\lvert \eta \rvert < 0.6$.
         From Ref.~\cite{Aad:2019tso}.
     }
@@ -130,7 +130,7 @@ to be 93\%, 88\%, and 80\% for the \textsc{Loose}, \textsc{Medium}, and \textsc{
         \raisebox{1.35cm}{\includegraphics[width=0.48\textwidth]{figures/chapter3/egamma/egamma_reco_eff_Et}}
         \includegraphics[width=0.48\textwidth]{figures/chapter3/egamma/egamma_id_eff_Et}
         \caption{
-            Electron reconstruction and identifiation efficiencies as measured in 2015--2016.
+            Electron reconstruction and identification efficiencies as measured in 2015--2016.
             \textbf{\textit{Left}}: Electron candidate reconstruction efficiency, measured in simulation and in data, as
                 a function of the candidate $E_T$.
             \textbf{\textit{Right}}: Electron identification efficiency measured in data, as a function of electron $E_T$,
@@ -191,8 +191,8 @@ each based on the subdetectors used in their construction:
         are used when a muon candidate crosses only one layer of the MS chambers, either because of their
         low \pT~or because they fall into un-instrumented regions of the MS.
     \item{\textbf{Calorimeter-tagged Muon (CT)}} An ID track is classified as a muon if it is matched to an
-        energy deposit in the caloriemter that is compatible with a minimum ionising particle.
-        Calorimter-tagged muons have the lowest purity, but recover acceptance in regions of the MS
+        energy deposit in the calorimeter that is compatible with a minimum ionising particle.
+        Calorimeter-tagged muons have the lowest purity, but recover acceptance in regions of the MS
         that are only partially instrumented to allow for cabling and services to the calorimeter and ID systems,
         particularly in the region $\lvert \eta \rvert < 0.1$.
     \item{\textbf{Extrapolated Muon (ME)}} This type of muon is based only on the track candidates formed in the MS
@@ -204,7 +204,7 @@ each based on the subdetectors used in their construction:
 \subsubsection{Muon Identification}
 \label{sec:muon_id}
 
-Muon identification refers to the act of applying aditional quality criteria on
+Muon identification refers to the act of applying additional quality criteria on
 the reconstructed muon candidates in order to mainly suppress contamination from
 background sources that mimic muon signatures, such as pion and kaon decays, 
 while ensuring high rates for the acceptance of prompt muons.
@@ -363,7 +363,7 @@ the MC-based efficiency to satisfy the isolation selection criteria.
             the Medium identification,
             measured in data and in MC, as a function of the muon \pT.
             The bottom panel shows the ratio of efficiencies measured in data and in MC, giving
-            the efficiency scalefactor.
+            the efficiency scale-factor.
             Figure from Ref.~\cite{Aad:2016jkr}.
         }
         \label{fig:muon_iso_eff}

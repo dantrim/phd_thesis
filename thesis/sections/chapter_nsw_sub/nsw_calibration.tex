@@ -26,7 +26,7 @@ the frontend electronics.
 The types of signals being collected on the NSW detectors are characterised by
 very low signal amplitudes and are therefore typically noise dominated, with
 much of the noise component derived mainly from the frontend electronics themselves.
-It is therefore necessary to optimise the readout functionality of the
+It is therefore necessary to optimise the readout functionality of
 the VMM ASIC by calibrating it and ensuring that its signal-to-noise
 ratio, $S/N$, is maximised during data taking.
 Additionally, to achieve the best performance in the reconstruction of particle
@@ -82,9 +82,6 @@ same \textit{absolute} threshold or to inject test pulses with common amplitudes
 Given the known capacitance of the test-pulse injection capacitor of the VMM channels,
 the value of the injected charge for a configured test-pulse amplitude can be obtained via the $Q = C \cdot V$
 relation, where $C$ is the injection capacitor's capacitance and $V$ is the test-pulse DAC output amplitude.%\footnote{
-%The quoted capacitance value of the VMM channel's test-pulse injection capacitor, 3\,pF, is that of the
-%VMM3 series of VMM. Earlier versions had lower capacitances.
-%}
 
 \begin{figure}[!htb]
     \begin{center}
@@ -134,7 +131,7 @@ MM detector having $\sim$30\,pF capacitance.
         \includegraphics[width=0.53\textwidth]{figures/nsw/calibration/calib_baselines_vmm_summary}
         \caption{
             \textbf{\textit{Left}}: 1000 xADC measurements of a single VMM channel's input baseline.
-                The width of the gaussian fit (red) gives the channel's noise level.
+                The width of the Gaussian fit (red) gives the channel's noise level.
             \textbf{\textit{Right}}: Summary of the baseline measurements for 24 channels of a VMM.
                 The error on the reported mean baseline, which is indicated by the blue line, is given by the RMS spread of the baseline measurements
                 across all channels and is indicated by the red dashed lines.
@@ -281,7 +278,7 @@ relies primarily on the $\mu$-TPC reconstruction method, as illustrated on the r
 The TDO output must then be calibrated if high resolution track-primitives are to
 be constructed.
 
-The TDO provides signal timing information and is the the amplitude of a latched
+The TDO provides signal timing information and is the amplitude of a latched
 time-to-analog converter (TAC) voltage ramp that is initiated either when the signal peak
 amplitude is found (coinciding with the time at which the PDO value is latched)
 or when the signal amplitude first crosses above threshold.
@@ -335,7 +332,7 @@ The timewalk effects are exaggerated for timing-at-threshold since the point at 
 given signal rises above threshold is more susceptible to noise, in addition to the integration
 time effects described previously.
 For a given timing configuration, the measurement of the timewalk for a given signal amplitude
-is used to correct the timing information provided by the the VMM TDO measurement and can thus
+is used to correct the timing information provided by the VMM TDO measurement and can thus
 improve the subsequent track-primitive reconstruction.
 
 \begin{figure}[!htb]
@@ -359,17 +356,6 @@ improve the subsequent track-primitive reconstruction.
             next falling edge halts the TAC voltage ramp.
             In the fixed latency mode, the TAC can ramp to its maximal configured value (60, 100, 350, or 650\,ns in the VMM3)
             if the configured BC latency is at least as large as this value.
-            %Illustration of the TDO measurement for injected test pulses.
-            %Here, the TAC ramp begins once the signal peak is found and halts at the next
-            %falling edge of the bunch-crossing clock which drives the readout of the VMM.
-            %CKTP is the clock driving test-pulse injection, CKBC is the bunch-crossing clock.
-            %The TDO is the digitised voltage value corresponding to the latched TAC ramp.
-            %In the nominal VMM operation mode, with a fixed CKBC frequency, the
-            %window between the peak found and CKBC is bounded by the CKBC period (25\,ns for the 40\,MHz LHC bunch-crossing clock).
-            %In the fixed-latency mode of operation described in the text, the CKBC is halted
-            %for a fixed amount of time once the TAC ramp begins.
-            %In this scenario, the TAC can ramp to its maximal value if the latency is set to
-            %be longer than this value.
         }
         \label{fig:tdo_illustration}
     \end{center}

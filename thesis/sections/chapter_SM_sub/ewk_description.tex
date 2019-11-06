@@ -38,20 +38,15 @@ and right-handed components projected out using the $P_L$ and $P_R$ projection o
 
 Focusing only on the first generation of the leptons (the discussion holds equally well
 for the second and third generations, as well as for the quarks), we can gather the
-\Uone~terms of Eqn.~\ref{eq:sm_lagrangian},
+\Uone~terms of Equation~\ref{eq:sm_lagrangian},
 \begin{align}
     -\mathcal{L}_{\text{ferm}}(\mathcal{U}(1), \text{leptons}) &= \bar{L} i \gamma^{\mu} (i g_1 \frac{Y_L}{2} B_{\mu})L + \bar{e}_R i \gamma^{\mu} (i g_1 \frac{Y_R}{2} B_{\mu}) e_R \nonumber \\
     &= \frac{g_1}{2} [ Y_L ( \bar{\nu}_L \gamma^{\mu} \nu_L + \bar{e}_L \gamma^{\mu} e_L) + Y_R \bar{e}_R \gamma^{\mu} e_R ] B_{\mu},
     \label{eq:ferm_L_u1}
 \end{align}
 where $L = (\nu_L, e_L)$ is used in going from the first to second line. 
-%Where we use the fact that $L = (\nu_L, e_L)$ in going from the first to second line of
-%Eqn.~\ref{eq:ferm_L_u1}.
 Likewise, gathering the associated \SUtwo~terms and noting that $\tau^i W^i$ is a
 $2\times2$ matrix since the $\tau^i$ are \SUtwo~generators (e.g. the Pauli matrices) gives,
-%Gathering together the 
-%Taking the associated \SUtwo~terms of Eqn.~\ref{eq:sm_lagrangian}, and noting
-%that, since the $\tau^i$ are the Pauli matrices, $\tau^i W^i$ is a $2\times2$ matrix, we get:
 
 \begin{equation}
 	\begin{multlined}
@@ -65,13 +60,6 @@ where we have used the following re-definitions of the \SUtwo~gauge fields,
 	W_{\mu}^+ = \frac{1}{\sqrt{2}} \left( -W_{\mu}^1 + i W_{\mu}^2 \right) \hspace{1cm} W_{\mu}^- = \frac{1}{\sqrt{2}} \left( -W_{\mu}^1 - i W_{\mu}^2 \right) \hspace{1cm} W_{\mu}^0 = W_{\mu}^3.
 \end{equation}
 
-%\begin{align}
-%	-\mathcal{L}_{\text{ferm}}(\mathcal{SU}(2), \text{leptons}) &= \bar{L} i \gamma^{\mu} [i g_2 \frac{\tau^i}{2} \mathcal{W}_{\mu}^i ] L \notag \\
-%	&= -\frac{g_2}{2} (\bar{\nu}_L, \bar{e}_L) \gamma^{\mu} \left( \begin{matrix} \mathcal{W}_{\mu}^3 & \mathcal{W}_{\mu}^1 - i\mathcal{W}_{\mu}^2 \\ \mathcal{W}_{\mu}^1 + i \mathcal{W}_{\mu}^2  & - \mathcal{W}_{\mu}^3\end{matrix} \right) \left( \begin{matrix} \nu_L \\ e_L \end{matrix} \right) \notag \\
-%	&= -\frac{g_2}{2} \left[ \bar{\nu}_L \gamma^{\mu} \nu_L \mathcal{W}_{\mu}^0 - \sqrt{2}  \bar{\nu}_L \gamma^{\mu} e_L \mathcal{W}_{\mu}^+ - \sqrt{2} \bar{e}_L \gamma^{\mu} \nu_L \mathcal{W}_{\mu}^- - \bar{e}_L \gamma^{\mu} e_L \mathcal{W}_{\mu}^0 \right]
-%\end{align}
-%Where Eqn.~\ref{eq:w_redefine} has been used in getting to the last line of Eqn.~\ref{eq:ferm_L_su2}.
-
 In principle, Equations~\ref{eq:ferm_L_u1} and \ref{eq:ferm_L_su2} describe completely
 all electroweak interactions
 between matter and the gauge fields of \SUewk. We would like to make the correspondence
@@ -79,7 +67,7 @@ between these equations and what we know to empirically exist: the electromagnet
 and the presence of a massive, charged mediator of the weak nuclear force responsible
 for nuclear $\beta$-decay, for example. From the theory of QED, it is a-priori known what the
 form of the interaction of the neutral photon and the electron should look like.
-Inspecting all charge-preserving (i.e. neutral) terms of Eqn.~\ref{eq:ferm_L_u1} and \ref{eq:ferm_L_su2},
+Inspecting all charge-preserving (i.e. neutral) terms of Equation~\ref{eq:ferm_L_u1} and \ref{eq:ferm_L_su2},
 it can be seen that the \fieldB$_{\mu}$ and \fieldWzero$_{\mu}$ fields have this expected
 fermion coupling, suggesting a re-definition as follows,
 \begin{equation}
@@ -95,38 +83,6 @@ The angle $\theta_W$  is known as the \textit{Weinberg angle}. It quantifies the
 \textit{gauge mixing} that occurs between the neutral
 \SUewk~gauge fields, \fieldB$_{\mu}$ and \fieldWzero$_{\mu}$.
 
-%Considering only those terms which are charge-neutral in Eqn.~\ref{eq:ferm_L_u1} and Eqn.~\ref{eq:ferm_L_su2}, one can consider performing a second field-redefinition using
-%\fieldB~ and \fieldWzero:
-%\begin{align}
-%	A_{\mu} &= \frac{g_2 \mathcal{B}_{\mu} - g_1 Y_L \mathcal{W}_{\mu}^0}{\sqrt{g_2^2 + g_1^2 Y_L^2}} \hspace{1cm} Z_{\mu} = \frac{g_1 Y_L \mathcal{B}_{\mu} + g_2 \mathcal{W}_{\mu}^0}{\sqrt{g_2^2 + g_1^2 Y_L^2}} \notag \\
-%	\hookrightarrow B_{\mu} &= \frac{g_2 A_{\mu} + g_1 Y_L Z_{\mu}}{\sqrt{g_2^2 + g_1^2 Y_L^2}} \hspace{1cm} \mathcal{W}_{\mu}^0 = \frac{-g_1 Y_L A_{\mu} + g_2 Z_{\mu}}{\sqrt{g_2^2 + g_1^2 Y_L^2}}
-%\end{align}
-%Using this last result for the re-defined \fieldB~and \fieldWzero~in terms the
-%fields $A_{\mu}$ and $Z_{\mu}$ to re-write the terms in Eqn.~\ref{eq:ferm_L_u1} and~\ref{eq:ferm_L_su2} involving $\bar{e}_{L,R} \gamma^{\mu} e_{L,R}$, allows
-%one to see that $A_{\mu}$ should correspond to the photon of electromagnetism if we fix,
-%\begin{align}
-%	-e = \frac{g_1 g_2 Y_L} {\sqrt{g_2^2 + g_1^2 Y_L^2}} \hspace{1cm} -e = \frac{g_1 g_2 Y_R}{2 \sqrt{g_2^2 + g_1^2 Y_L^2}} \nonumber
-%\end{align}
-%where $e$ is the charge of the positron. Setting $Y_L = -1$ then allows to formulate
-%the positron charge in terms of the weak couplings $g_1$ and $g_2$ simply as,
-%\begin{align}
-%	\label{eq:e_charge_coupling}
-%	e = \frac{g_1 g_2}{\sqrt{g_1^2 + g_2^2}}
-%\end{align}
-%Eqn.~\ref{eq:e_charge_coupling} leads one to introduce the following relations,
-%\begin{align}
-%	\sin \theta_W = \frac{g_1}{\sqrt{g_1^2 + g_2^2}} \hspace{1cm} \cos \theta_W = \frac{g_2}{\sqrt{g_1^2 + g_2^2}}
-%\end{align}
-%The angle $\theta_W$ is the \textit{Weinberg angle} {\color{red}{What is it's value? -- point to table}}, and it represents the amount of mixing
-%occuring between the \SUtwo~and \Uone~gauge fields $\mathcal{W}_{\mu}^0$ and $\mathcal{B}_{\mu}$, respectively. Using Eqn.~\ref{eq:e_charge_coupling} gives,
-%\begin{align}
-%	g_1 = \frac{e}{\cos \theta_W} \hspace{1cm} g_2 = \frac{e}{\sin \theta_W}
-%\end{align}
-%This defines the gauge couplings, $g_1$ and $g_2$, of the electroweak theory purely
-%in terms of known or measurable quantities.\footnote{We do not describe this in detail, but $\theta_W$
-%can in principle be determined once the masses of the $\mathcal{W^{\pm}}$ and $\mathcal{Z}$ bosons
-%are measured.}
-
 The above algebra allows to re-write the electroweak Lagrangian, now
 describing interactions between the fermions and the newly defined $A_{\mu}$, \fieldZ,
 and \fieldWpm, as,
@@ -141,32 +97,23 @@ and \fieldWpm, as,
 \end{multlined}
 \label{eq:ewk_L_za}
 \end{equation}
-The first term of Eqn.~\ref{eq:ewk_L_za} has the expected form expected from QED, describing the
+The first term of Equation~\ref{eq:ewk_L_za} has the expected form expected from QED, describing the
 interaction between a neutral gauge boson and fermions and allows us to interpret
-the parameter $e$, introduced in Eqn.~\ref{eq:weinberg_angles}, as the coupling
+the parameter $e$, introduced in Equation~\ref{eq:weinberg_angles}, as the coupling
 of electromagnetism (electric charge) with $Q_f$ as the fermion's electric charge quantum number
-(in units of $e$). The $A_{\mu}$ arrived at via the gauge mixing of Eqn.~\ref{eq:su2rotation}
+(in units of $e$). The $A_{\mu}$ arrived at via the gauge mixing of Equation~\ref{eq:su2rotation}
 then must correspond to the photon of electromagnetism.
-The second term of Eqn.~\ref{eq:ewk_L_za} predicts the existence of an additional
+The second term of Equation~\ref{eq:ewk_L_za} predicts the existence of an additional
 neutral gauge boson, the \fieldZ~boson, with its couplings to the left- and right-handed
 fermions dictated by the \SUewk~gauge mixing. The quantity $T_f^3$ is the fermion field's quantum
 number associated with the third component of weak-isospin (\SUtwo).
-The third term of Eqn.~\ref{eq:ewk_L_za} involves charged weak-interactions
+The third term of Equation~\ref{eq:ewk_L_za} involves charged weak-interactions
 involving the \fieldWpm$_{\mu}$ gauge bosons that transform the up- and down-type fields of
 the left-handed \SUtwo~doublet fields into each other. 
 
-%In Eqn.~\ref{eq:ewk_L_za}, $T_f^3$ ($Q_f$) is the third component of the weak-isospin (electric charge)
-%of the fermion species $f$. These last terms are related via the Gell-Mann-Nishijima relation,
-%\begin{align}
-%	Q_f = T_f^3 + \frac{1}{2}Y
-%	\label{eq:gell_mann_nishijima}
-%\end{align}
-%which can be deduced by following the algebra above, and our having fixed $Y_L = -1$ for
-%the $(\nu_L, e_L)$ \SUtwo~doublet.
-
-The terms involving \fieldWpm$_{\mu}$ in Eqn.~\ref{eq:ewk_L_za} are
+The terms involving \fieldWpm$_{\mu}$ in Equation~\ref{eq:ewk_L_za} are
 of the form $\bar{\nu}_L \gamma^{\mu} e_L$
-which, using the chiral projection operators (Eqn.~\ref{eq:chiral_projection}), can be
+which, using the chiral projection operators (Equation~\ref{eq:chiral_projection}), can be
 written as follows,
 \begin{align}
 	\bar{\nu}_L \gamma{\mu} e_L = \frac{1}{2} \bar{\nu} \gamma^{\mu}(1-\gamma_5) e,
@@ -211,36 +158,3 @@ not evident how the SM can support the experimental fact that fermions have mass
 the predicted mediator of the charged weak-nuclear force (the \fieldWpm$_{\pm}$) \textit{must}
 be massive given the very short range of the interaction. In order for such mass terms to
 be allowed in \SML, we need the Higgs mechanism.
-
-%However,
-%it has not yet been shown how the fermions or the \fieldWpm$_{\mu}$ acquire mass
-%
-%
-%What we have principally shown in this section is that the gauge fields satisfying the
-%\SUewk~gauge symmetry of the SM Lagrangian mix
-%
-%What we have shown in this section is that, due to mixing of the SM \SUtwo$_L$
-%and \Uone$_Y$ gauge fields, we can arrive at an electroweak theory that supports
-%the known fact that their exists an electromagnetic force that is mediated
-%by a neutral boson $A_{\mu}$ (the photon) that couples to electrically charged fields: this is what
-%is shown in the first line of Eqn.~\ref{eq:ewk_L_za}. The field re-definitions described above
-%also introduce the \fieldWpm~boson as the mediators of the charged electroweak interaction,
-%responsible for radioactivity, and an additional neutral electroweak interaction mediated
-%by the \fieldZ~boson.
-%The fact that the \SUtwo$_L$ and \Uone$_Y$ gauge fields mix, by an amount dictated by $\theta_W$,
-%suggest that the weak and electromagnetic interactions can be unified into the single
-%electroweak interaction, as mentioned at the beginning of this section. Later on, we will see
-%that (gauge) unification such as this plays a large role in our current understanding
-%of how the universe works.
-%
-%We have thus shown that the SM predicts the existence of the familiar electromagnetic force,
-%which is not immediately apparent based on \SML~of Eqn.~\ref{eq:sm_lagrangian}. 
-%%However, 
-%%neither the fermions nor the \fieldWpm~or \fieldZ~ appear to have mass -- they still
-%%have no mass terms appearing in their respective sectors of \SML.
-%However, it is still not evident how it can
-%support the experimental fact that fermions have mass and that the mediators of the
-%weak-nuclear force (the \fieldWpm) \textit{must} be massive given the very short
-%range of the interaction, a fact known
-%even before the formulation of QED. No such mass terms
-%have been provided for in the SM Lagrangian described by Eqn.~\ref{eq:sm_lagrangian}. To resolve this, we need the Higgs mechanism.

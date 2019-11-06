@@ -2,7 +2,7 @@
 \label{sec:tracks_and_vertices}
 
 The reconstruction of charged-particle tracks (`tracking') and primary interaction
-vertices (`vertexing') is based on information provided by the ID, primarily by the
+vertices (`vertexing') is based on information provided by the ID, primarily by
 the pixel and SCT subdetectors~\cite{NEWTracking,TIDE,Aaboud:2016rmg,ATLAS-CONF-2010-069,Piacquadio_2008}.
 Charged-particles produced in $pp$ collisions will leave signals --- \textit{hits} ---
 on the different layers of the ID.
@@ -43,16 +43,13 @@ for example, in the case of photon
 conversions or long-lived neutral particle decays.
 
 The collection of reconstructed tracks is used as input to the primary vertex reconstruction.
-%A properly reconstructed primary vertex, from which a set of charged-particle tracks originate,
-%indicates the likely position of a hard $pp$ interaction and around which subsequent event reconstruction
-%will take place~\cite{Aaboud:2016rmg,Piacquadio_2008}.
 Primary vertex reconstruction follows a so-called \textit{adaptive vertex fitting} (AVF)~\cite{Aaboud:2016rmg,Piacquadio_2008}
 procedure and occurs in two steps: primary vertex finding,
 in which tracks are associated to a particular vertex candidate, and vertex fitting,
 which involves the reconstruction of the actual vertex position and its errors.
 After the vertex fitting stage, the tracks associated with a given vertex are refit
 with the constraint of the vertex position and its errors. The track refitting can update
-the track parameters (Eqn.~\ref{eq:track_parameters}) associated with the tracks.
+the track parameters (Equation~\ref{eq:track_parameters}) associated with the tracks.
 Only vertices with at least two charged particle tracks with $\pT > 400\,\MeV$ are
 considered.
 
@@ -91,7 +88,7 @@ important and will be described in Section~\ref{sec:flavor_tagging}.
             \textbf{\textit{Right,\,lower}}: View in $r-z$ of the same $pp$ bunch-crossing event as on the left.
                 Two reconstructed primary vertices are clearly observed.
                 On average, in Run 2 there were roughly 30 primary vertices reconstructed per event, with
-                up to $\approx65$ occuring at maximum.
+                up to $\approx65$ occurring at maximum.
         }
         \label{fig:id_event_display}
     \end{center}

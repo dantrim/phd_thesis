@@ -7,9 +7,9 @@ and analyses being done at the large LHC experiments.
 The SM top-quark is the heaviest known elementary particle, the second-most recent elementary particle to be discovered,
 and, given its importance to electroweak and Higgs physics, is an object subjected to high levels
 of precise study at the LHC.
-The top-quark decays before hadronisation timescales and therefore its decay products, which
+The top-quark decays before hadronization timescales and therefore its decay products, which
 are a $W$-boson and a $b$-quark nearly 100\% of the time, carry away information characterising its properties.
-Being able to characterise the jets initiated by the hadronisation of these $b$-quarks, then,
+Being able to characterise the jets initiated by the hadronization of these $b$-quarks, then,
 is of critical import if the physics of the top-quark wish to be understood.
 The recent discovery of an SM-like Higgs boson, with a mass of $m_h = 125\,\GeV$, decays
 to a pair of $b$-quarks nearly 60\% of the time.
@@ -19,7 +19,7 @@ Additionally, we will see in subsequent chapters that the presence of $b$-quark 
 a characteristic signature of many BSM physics scenarios.
 The identification of these types of jets, a process referred to as `flavor tagging', is of the utmost importance
 to analyses performed with the ATLAS detector as well as in the work to be presented in this thesis.
-Jets tagged as having likely arisen as a result of the hadronisation of an initiating $b$-($c$-)quark
+Jets tagged as having likely arisen as a result of the hadronization of an initiating $b$-($c$-)quark
 are referred to as `$b$-tagged jets` (`$c$-tagged jets'), or simply as `$b$-jets` (`$c$-jets').
 All other jets then are assumed to have arisen from the decay of light-flavor quarks and are referred to as `light-flavor jets' (`light-jets').
 
@@ -46,9 +46,6 @@ high-level tagger, used in the analyses to be presented in this thesis, will be 
 
 
 %%%%%
-
-%As in Ref.~\cite{ATL-PHYS-PUB-2017-013}.
-
 
 \begin{figure}[!htb]
     \begin{center}
@@ -93,11 +90,10 @@ high-level tagger, used in the analyses to be presented in this thesis, will be 
     \end{center}
 \end{figure}
 
-%\FloatBarrier
 \subsubsection{Low Level Taggers and Inputs}
 \label{sec:ftag_low_level}
 
-The final algorithm used to identifiy $b$-tagged jets take as input the outputs from several low-level
+The final algorithm used to identify $b$-tagged jets take as input the outputs from several low-level
 $b$-tagging algorithms.
 There are two classes of low-level algorithms: those that rely on the impact parameter information of the
 tracks associated with the jets and those that rely on the explicit reconstruction of secondary decay vertices
@@ -123,15 +119,6 @@ within the jet~\cite{FTAG2019}:
         reconstructed set of vertices are used to build templates for $b$-, $c$-, and light-flavor jets.
 \end{itemize}
 
-%\begin{figure}[!htb]
-%    \begin{center}
-%        \includegraphics[width=0.5\textwidth]{figures/chapter3/ftag/bhadron_signed_d0PDF}
-%        \caption{
-%        }
-%        \label{fig:btag_signed_d0}
-%    \end{center}
-%\end{figure}
-
 Figure~\ref{fig:ftag_low_level_var} provides an example of a few observables provided by the low-level tagging algorithms.
 
 \begin{figure}[!htb]
@@ -143,17 +130,16 @@ Figure~\ref{fig:ftag_low_level_var} provides an example of a few observables pro
             Examples of a few low-level quantities used in the ATLAS flavor tagging algorithms.
             The blue histograms are distributions associated with $b$-jets, green are those of $c$-jets, and red
             are those of light-flavor jets.
+            Figures taken from Ref.~\ref{ATL-PHYS-PUB-2016-022}.
             \textbf{\textit{Left}}: Two-dimensional (signed) $d_0$ significance for tracks matched to jets.
             \textit{Middle}: IP2D $b$-jet log-likelihood ratio.
             \textbf{\textit{Right}}: Energy fraction, defined as the energy of the tracks in the displaced
                 vertex reconstructed by the SV1 algorithm relative to the energy of all tracks in the jet.
-%            Figures taken from Ref.~\ref{ATL-PHYS-PUB-2016-022}.
         }
         \label{fig:ftag_low_level_var}
     \end{center}
 \end{figure}
 
-%\FloatBarrier
 \subsubsection{High Level Tagger: MV2}
 \label{sec:ftag_high_level}
 
@@ -196,7 +182,7 @@ and light-flavor jets.
                 based on the full Run 2 dataset collected by ATLAS.
             \textbf{\textit{Right}}: Distribution of the BDT-based MV2 $b$-tagging algorithm output score, shown for
                 $b$-jets (blue), $c$-jets (green), and light-flavor jets (red).
-%            Figures taken from Ref.~\ref{ATL-PHYS-PUB-2016-012}.
+            Figures taken from Ref.~\ref{ATL-PHYS-PUB-2016-012}.
         }
         \label{fig:ftag_mv2c10_disc}
     \end{center}
@@ -240,7 +226,7 @@ and light-flavor jets.
 As the efficiencies for the MV2 algorithm detailed in Table~\ref{tab:btag_wp} are based entirely
 on MC simulation, a calibration procedure is performed to correct the MC-based efficiencies to
 those observed in data.
-This is necessary to get an accurate prediction in simulation of the rate of $b$-tagged jets occuring in data.
+This is necessary to get an accurate prediction in simulation of the rate of $b$-tagged jets occurring in data.
 The efficiencies (and rejection factors) in Table~\ref{tab:btag_wp} are therefore measured in
 data.
 The result of the calibration is a correction scale-factor, applied on a per-jet basis, that is defined as
@@ -251,7 +237,7 @@ The $b$-tagging efficiencies in MC and data as well as the data-to-MC efficiency
 The rate of $c$-, $\tau$-, and light-flavor jets to be identified as $b$-tagged jets corresponding to the rejection factors
 listed in Table~\ref{tab:btag_wp}, also have corresponding correction scale-factors using events
 in data enriched in $c$-jets and mis-tagged light-flavor jets~\cite{FTAG2019,FTAGCJetCalib,FTAGLightFlavorCalib}.
-These latter scale-factors correct the rate of mis-tagging (i.e. rate of identifiying jets as $b$-jets when they are
+These latter scale-factors correct the rate of mis-tagging (i.e. rate of identifying jets as $b$-jets when they are
 not initiated by $b$-hadrons).
 
 \begin{figure}[!htb]
@@ -270,7 +256,5 @@ not initiated by $b$-hadrons).
         \label{fig:btag_eff_sf}
     \end{center}
 \end{figure}
-
-
 
 \FloatBarrier

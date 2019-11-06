@@ -7,14 +7,12 @@ both use the VMM...?}}
 To a very large extent, high-performance detectors are realised and made
 possible only by their interfacing to equally high-performance readout electronics;
 that is, high quality electronics enable high quality detectors.
-%{\color{red}{See Appendix XXX for a discussion on the general characteristics of
-%detector readout electronics.}}
 In this section, therefore, an introduction to the frontend electronics\footnote{`Frontend' electronics
 are those housed directly on the detectors themselves and are responsible for reading out the
 detector signals and potentially many other responsibilities, such as calibration, configuration, and
 detector controls (temperature monitoring, etc...). `Backend' electronics refer to those
 not necessarily located in the experimental cavern housing the detectors but are in the nearby
-service areas or on the surface (c.f. Figu:e~\ref{fig:p1}) and are dedicated, for example, to the implementation of detector trigger logic
+service areas or on the surface (c.f. Figure~\ref{fig:p1}) and are dedicated, for example, to the implementation of detector trigger logic
 and data decoding and event building (i.e. gathering all data from detector hits associated with a given event).}
 relevant to the NSW will be given.
 There is a large set of both frontend and backend electronics specifically
@@ -24,7 +22,6 @@ The NSW frontend electronics revolve around the operation of a family
 of rather complex application specific integrated circuits (ASICs),
 each targetting a specific (set of) purpose(s) related to data-acquisition or
 constructing trigger primitives:
-%including a family of application specific integrated circuits (ASICs):
 
 \begin{description}
     \item[] \textbf{VMM}~\cite{VMM1GDG,VMMASIC,VMM3George} Frontend readout ASIC used for precision and fast trigger data signal collection in both MM and sTGC detectors\footnote{The acronym for which `VMM' stands is not informative as in the case of the other NSW ASICs.
@@ -35,7 +32,7 @@ to name his projects based on the initial person requesting the project to be de
 purpose.
 }
     \item[] \textbf{ROC}~\cite{NSWTDR,NSWFrontEndChristos} `ReadOut Controller' ASIC, responsible for buffering and aggregating precision data from the VMM
-    \item[] \textbf{TDS}~\cite{TDS} `Trigger Data Serialiser' ASIC, processes trigger signals from VMMs on the sTGC detectors and prepares trigger primitives for the NSW Level-1 muon trigger logic
+    \item[] \textbf{TDS}~\cite{TDS} `Trigger Data Serializer' ASIC, processes trigger signals from VMMs on the sTGC detectors and prepares trigger primitives for the NSW Level-1 muon trigger logic
     \item[] \textbf{ART}~\cite{NSWTDR,ARTASIC} 'Address in Real Time' ASIC, processes trigger signals from VMMs on the MM detectors and prepares trigger primitives for the NSW Level-1 muon trigger logic
 \end{description}
 
@@ -61,7 +58,6 @@ The analogous VMM-based frontend boards for the sTGC detectors are objectively m
 of the MM detectors for purely technical and uninteresting reasons.
 The discussion below, however, is detector-technology agnostic and
 the sTGC frontend description can be found elsewhere~\cite{NSWTDR}.
-%{\color{red}{Maybe change how I describe why I am focused on MM detectors etc...}}
 
 \subsection{The VMM ASIC}
 \label{sec:vmm}
@@ -106,12 +102,6 @@ rely primarily on the $\mu$-TPC hit reconstruction method, as illustrated in Fig
 For the sTGC, the accurate timing information is not required for precision tracking and,
 to increase readout bandwidth, the timing information will likely not be serialised
 in the data output from the sTGC frontend electronics.
-%{\color{red}{For the precision hit reconstruction, the timing information is critical only for the MM
-%detectors which rely on the $\mu$-TPC hit reconstruction method which requires
-%precision time measurements for building the tracklets within the drift region of the
-%MM detector. For the sTGC the accurate timing information is not required
-%for precision tracking and, to increase readout bandwidth, the timing information will not be
-%serialised.}}
 
 In addition to the precision data useful for reconstructing high-level muon tracks provided by
 the PDO and TDO measurements, the VMM can also operate at a faster mode used for
@@ -210,8 +200,6 @@ interface.
 Such commands may have as endpoint the FPGA itself or they may require the FPGA to forward
 them to the VMM ASIC.
 These concepts are described further in Section~\ref{sec:verso}.
-%may have as end and either adjusts its own configuration parameters or
-%forwards the commands to the VMM such that it itself may respond.
 
 The GPVMM board has a simple connector designed in such a way that lends itself to
 be easily adapted to many types of detectors in labs and teststands.
@@ -220,10 +208,6 @@ on ZEBRA-type connectors can be found online at \url{https://en.wikipedia.org/wi
 connector that allows for a seamless interconnect between the readout strips on the MM detector layers
 and the VMM channel inputs.
 The principle of the ZEBRA connector is illustrated in Figure~\ref{fig:zebra_connector}.
-%In the final version of the MMFE8 frontend board to be used for interfacing with the MM detectors,
-%the Ethernet readout will be replaced b
-%the role of the FPGA will be replaced by the combination of the ROC ASIC, mentioned in the previous section,
-%and the CERN-provided Slow Control Adapter (SCA) ASIC~\cite{GBTASIC}
 
 \begin{figure}[!htb]
     \begin{center}
@@ -294,7 +278,6 @@ A drawing of a complete MM quadruplet with frontend electronics boards is shown 
 
 \begin{figure}[!htb]
     \begin{center}
-        %\raisebox{2.0cm}{\includegraphics[width=0.6\textwidth]{figures/nsw/frontend/mm_quad_elx}}
         \includegraphics[width=0.6\textwidth]{figures/nsw/frontend/mm_quad_elx}
         \includegraphics[width=0.48\textwidth]{figures/nsw/frontend/mmfe8_sm0_labelledPDF}
         \includegraphics[width=0.48\textwidth]{figures/nsw/frontend/mmfe8_lm2_labelledPDF}

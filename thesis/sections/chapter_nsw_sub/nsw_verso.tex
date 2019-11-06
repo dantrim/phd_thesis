@@ -10,7 +10,7 @@ The high-level software suite containing these functionalities is referred
 to as `VERSO', an acronym for `VMM Embedded ReadOut Software'.
 In this section an overview of VERSO's role within the VRS system will be provided.
 
-The user interface (UI) and software backend to VERSO are written entirely in the C++ programming langauge,
+The user interface (UI) and software backend to VERSO are written entirely in the C++ programming language,
 with the graphical user interface (GUI) relying primarily on the use of the Qt framework~\cite{QtCompany}.
 The VERSO GUI is shown in Figure~\ref{fig:verso_main}.
 VERSO has two main responsibilities: orchestrating configuration processes and
@@ -64,14 +64,10 @@ The FPGA sends acknowledgement packets over the network to VERSO upon each messa
 indicating whether it was able to successfully perform the requested configuration action or not.
 If not, VERSO can log this information and re-attempt transmission of the lost or mis-handled packet
 containing the configuration specification.
-%The configuration of the VMM ASICs is forwarded by the FPGA via the Serial Peripheral Interface (SPI) protocal
-%to the VMMs.
-The VMM ASIC recieves its own configuration following a Serial Peripheral Interface (SPI) protocol.\footnote{\url{https://en.wikipedia.org/wiki/Serial_Peripheral_Interface}}
+The VMM ASIC receives its own configuration following a Serial Peripheral Interface (SPI) protocol.\footnote{\url{https://en.wikipedia.org/wiki/Serial_Peripheral_Interface}}
 An individual VMM ASIC configuration specification is rather large and is nearly 2 kilobits long.
 This large configuration bitstream is due to the highly configurable nature of the VMM ASIC, especially
 so given that each of the 64 channels of a single VMM has 24 bits worth of configuration information.
-%An individual VMM ASIC configuration is rather large, given its highly configurable nature, and is
-%nearly 2 kilobits long.
 The specification of the VMM configuration bitstreams is set by the user in the `Global' and `Channel' configuration
 panels on the GUI, shown in Figure~\ref{fig:verso_main}.
 The `Global' VMM parameters are those that are not specific to an individual channel; for example,
@@ -107,7 +103,7 @@ a custom addressing dataframe parsed by the FPGA that VERSO prepends to each con
         \caption{
             The VERSO `Channel Registers' panel, showing the configuration specification
             of each of the 64 channels of an individual VMM.
-            The `ST' (`SM') flags activate the corresonding channel's internal test-charge
+            The `ST' (`SM') flags activate the corresponding channel's internal test-charge
             capacitor (masking).
             In the example shown, VMM channels 10-13 (inclusive) will have their
             test-charge capacitor activated. All other channels are masked and
@@ -133,7 +129,7 @@ VERSO's DAQ functionalities are implemented following a single-producer/single-c
 architecture.
 In such an architecture, at the start of each run, the software constructs two threads with independent
 tasks: a `listener' thread and an `event builder' thread.
-The listener thread is reponsible for receiving the raw digitised data packets over the network from the
+The listener thread is responsible for receiving the raw digitised data packets over the network from the
 frontend electronics and buffering them in a queue.
 The listener thread indexes each of the data fragments in the queue based on their corresponding
 event or trigger identifier.
@@ -148,15 +144,6 @@ It is this latter aspect --- the gathering together of all data fragments corres
 that is referred to as `event building'.
 Once such an event is built, VERSO stores it on disk in the ROOT \texttt{TTree} format
 so that it may be used in later offline analysis.
-%The event builder thread is responsible for taking all the data fragments from a given trigger identifier,
-%The second thread is responsible for taking all the data fragments received for each corresponding
-%trigger, decoding and inspecting the raw data contained therein, and building output
-%data fragments that represent high level constructs that associate the VMM hits
-%with specicific frontend boards and/or detector readout elements.
-%This latter aspect --- the gathering together of all data fragments corresponding to a
-%specific trigger --- is referred to as `event building'.
-%Once an event is built, VERSO stores it on disk in the ROOT \texttt{TTree} format
-%for later analysis.
 
 Given the asynchronous nature of the network communication, as well as the fact that the UDP/IP
 network protocol does not ensure a fixed latency, events based on the same trigger

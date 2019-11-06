@@ -62,7 +62,7 @@ As an example, take the case where there is a single discriminating variable in 
 basis of useful kinematic observables.
 One would apply a selection on this observable in such a way that $pp$ collision events
 satisfying this selection are likely to be enhanced in signal events.
-This is one-diminsional SR case is illustrated in Figure~\ref{fig:sr_search_v}.
+This is one-dimensional SR case is illustrated in Figure~\ref{fig:sr_search_v}.
 
 \begin{figure}[!htb]
     \begin{center}
@@ -132,7 +132,7 @@ This is because the trigger efficiency plateau represents a region in which the 
 is stable (i.e. unchanging) in both data and MC and can therefore be easily calibrated in the offline analysis
 with scale-factors that account for differences in the measured trigger efficiencies in data and in MC simulation.
 The description in the MC of the region at the trigger threshold, which has non-vertical rise,
-is potentially difficult to model accurately and thefore the calibrations are not typically
+is potentially difficult to model accurately and therefore the calibrations are not typically
 derived for these regions in which the efficiency is not at its plateau.
 This is illustrated in Figure~\ref{fig:trig_plateau_cartoon}, showing the typical case of a stable
 and flat response in both the observed data and MC in the region of the trigger efficiency
@@ -244,9 +244,6 @@ therein.
 The former results in a failure in the overall predicted \textit{rate}, or normalisation, of a specific backgrounds' contribution
 to the event yields in the regions
 and the latter results in a failure in predicting the background process' \textit{acceptance}.
-%Indeed, the tails of many observables are highly sensitive to theoretical parameters used as
-%inputs to the MC simulation process which leads the background estimation being sensitive to these
-%parameters.
 In order to increase the confidence in the background estimates in such SR(s), the analyses in the present
 thesis make use of the so-called \textit{control region method}.
 This method is characterised by defining a (set of) region(s) in which there is (are) high purities
@@ -264,7 +261,6 @@ data yield and MC prediction for the process in question:
 \begin{align}
     \mu_{p} = \frac{  N_{\text{data}}^{\text{CR}} - \sum\limits_{\substack{i \\ i\ne p}} N_{\text{MC},\,i}^{\text{CR}}} { N_{\text{MC},\,p}^{\text{CR}}},
     \label{eq:mu_fac}
-    %\mu = \frac{ \left( N_{\text{obs}}^{\text{CR}} - \sum\limits_{i_{i\ne \text{proc}}} \right)} {4}
 \end{align}
 where `$p$' indicates the process for which the CR is defined, $N_{\text{data}}^{\text{CR}}$ is the observed
 data yield in the CR, and $N_{\text{MC},\,j}^{\text{CR}}$ is the predicted yield in MC for the background
@@ -324,7 +320,6 @@ If this is not the case, then the extrapolation from the CR to the SR suffers.
 This is illustrated in Figure~\ref{fig:crvr_extrap_shape} for two scenarios in which
 the MC-based background prediction of the shape of the observable used for defining
 the various regions both agrees and does not agree with the observed data.
-%in the regions used to derive and validate the normalisation correction.
 If the MC simulation for the specific background for which a normalisation correction is being derived
 has monotonic shape mis-modellings, as in the case of Scenario B in Figure~\ref{fig:crvr_extrap_shape},
 the normalisation correction will generally not be applicable in the SR and may lead to
@@ -364,7 +359,7 @@ and/or when one wishes to define several CRs to correct multiple processes' norm
             In Scenario A (green data) the predicted shape of the discriminating variable
             used to define the CR, VR, and SR agrees well with the observed data
             in both the CR and VR, as seen by the flat data-to-background ratio in the bottom.
-            In Scenario B (red data) the predicted shape of the discriminanting variable
+            In Scenario B (red data) the predicted shape of the discriminating variable
             differs with respect to that of the observed data, leading to an observed
             slope in the data-to-background ratio.
             In Scenario A, the normalisation correction derived for the background process

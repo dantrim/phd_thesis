@@ -12,7 +12,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-The current analysis makes use of a multi-output classifier, one that does not simply classifry
+The current analysis makes use of a multi-output classifier, one that does not simply classify
 a single process against a single background label, but rather a classifier that provides multiple
 output labels with each pertaining to a distinct class or process.
 One of the easiest ways to build such a classifier is to take a multi-variate approach that
@@ -40,15 +40,6 @@ to those from the direct decays of the $Z$-bosons.
 Allowing the classifier to learn how to distinguish between these $Z$ decays improves its overall performance
 to separate the $hh$ signal process from the backgrounds.
 
-%The dominant SM top-quark backgrounds, \ttbar~and single-top $Wt$ are combined into a single
-%process during the training of the classifier since these two top-quark processes are found
-%to have similar enough kinematics in the regions of high signal purity that separating them
-%at the point of training has little effect.
-%Additionally, in regions where there is large contributions from both SM \ttbar~and single-top $Wt$
-%processes, particularly in the $WWbb$ final state, the two processes have non-trivial quantum
-%interferene and it becomes difficult to define them separately.
-%For this reason, we consider the sum of these two processes as a single background.
-
 We construct the neural network architecture using the \textsc{Keras}~\cite{chollet2015keras}
 library, using \textsc{Tensorflow}~\cite{tensorflow2015} as a backend.
 An illustration of the neural network architecture is given in Figure~\ref{fig:nn_arch}.
@@ -62,7 +53,7 @@ The final activation is a softmax activation~\cite{GoodFellowBook}.
         \caption{
             Illustration of the neural network graph employed in the analysis.
             The input feature vector has a length of 35 and the output vector is length 4,
-            one for each of the targetted processes.
+            one for each of the targeted processes.
         }
         \label{fig:nn_arch}
     \end{center}
@@ -82,7 +73,7 @@ is not over the full set of processes that will be provided as input to the netw
 in the analysis.
 The sum is only over those processes that we have decided to train the classifier to provide labels for.
 Additionally, the labelled
-processes are presented in artificial proportations during the training process, described in Section~\ref{sec:nn_train},
+processes are presented in artificial proportions during the training process, described in Section~\ref{sec:nn_train},
 which may further prevent the network output's from being viewed as proper probabilities.
 }
 for the output's associated class ($hh$, Top, $Z \rightarrow \{ee,\mu\mu\}$,
@@ -99,9 +90,9 @@ It can be seen that if one sums over all outputs of a layer whose activation is 
 that the sum is equal to one.
 Thus, the outputs of the softmax layer can be seen as a probability distribution.
 For this reason, in the discussion to follow, we refer to the outputs of our neural network as `$p_i$',
-where $i$ has four possibiities for each of the four outputs: $i \in \{ hh, \text{Top}, Z\rightarrow ee/\mu\mu, Z\rightarrow \tau\tau \}$.
+where $i$ has four possibilities for each of the four outputs: $i \in \{ hh, \text{Top}, Z\rightarrow ee/\mu\mu, Z\rightarrow \tau\tau \}$.
 
-The use of dropout layers during the training process of is a form of statistical learning regularization that is reminiscient
+The use of dropout layers during the training process of is a form of statistical learning regularization that is reminiscent
 of ensemble methods in the non-deep-learning arena, such as random forests~\cite{RandomForestsBreiman2001}.
 They act to randomly disable a tunable fraction of inputs during various points in the training stage~\cite{JMLRDropout}.
 This tunable fraction is referred to as the \textit{dropout rate}.
@@ -173,7 +164,7 @@ on categorical cross-entropy: \href{https://ml-cheatsheet.readthedocs.io/en/late
 \subsection{Definition of the Training Sample}
 \label{sec:nn_train}
 
-Prior to training a multi-variate classifer, such as the neural network described in Section~\ref{sec:nn_arch},
+Prior to training a multi-variate classifier, such as the neural network described in Section~\ref{sec:nn_arch},
 a well-defined set of simulated events for all labelled processed must be set aside for use in the training.
 Ideally, these events are not to be used in the actual analysis, when the trained classifier is used only
 for inference.
@@ -192,12 +183,12 @@ of the training performance.
         \caption{
             Illustration of the sample split used for training and testing the classifier.
             `Test' refers to the sample of events used at the analysis level (classifier inference only).
-            `Training' and `Validation' events are used only during the trainig stage:
+            `Training' and `Validation' events are used only during the training stage:
             Those events marked as `Training' are used for training of the classifier and those
             marked as `Validation' are used to evaluate the network performance metrics throughout
             the training process.
-            $a$ is the percentage of the sample used for training and vaidation, $b$ the percentage used
-            in the analysis, $c$ is the precentage of the Training data used for network training, and $d$ is the percentage
+            $a$ is the percentage of the sample used for training and validation, $b$ the percentage used
+            in the analysis, $c$ is the percentage of the Training data used for network training, and $d$ is the percentage
             of the Training data used for evaluating performance metrics.
             This gives $a\% + b\% = 100\%$ and $c\% + d\% = a\%$.
         }
@@ -356,9 +347,6 @@ The standardization described above and used in the present analysis is illustra
     $\mtbb$ & \mttwo using the leading two $b$-tagged jets as the visible inputs and \ptmiss as invisible input\\ [0.1cm]
     $\httwo$ & Numerator appearing in Equation~\ref{eq:ht2ratio_def}, \htnum \\
     $\htratio$ & As defined in Equation~\ref{eq:ht2ratio_def} \\
-    %$\htratio$ & Ratio of \htnum and scalar sum of the transverse momenta of the $H$ decay products, \\
-    %                        & \multicolumn{1}{c}{$\htratio = \htnum / (\met + |\ptvec{\ell}{,0}| + | \ptvec{\ell}{,1}| + |    \ptvec{b}{,0}| + |\ptvec{b}{,1}|)$,} \\
-    %                        & where \ptvec{\ell(b)\,}{,0 \{1\}} are the transverse momenta of the leading \{subleading\} lepton ($b$-tagged jet) \\ [0.1cm]
     \hline
     \bottomrule
     \end{tabularx}
@@ -371,7 +359,7 @@ The standardization described above and used in the present analysis is illustra
         \includegraphics[width=0.45\textwidth]{figures/search_hh/mva/nn_feature_illdefined}
         \raisebox{0.5cm}{\includegraphics[width=0.54\textwidth]{figures/search_hh/mva/nn_feature_okdefined}}
         \caption{
-            Illustration of setting events with ill-defined observables to the mean of those observalbes
+            Illustration of setting events with ill-defined observables to the mean of those observables
             as measured in events in which the observables are properly defined.
             \textit{\textbf{Left}}: A counter-example in which ill-defined events' observables are set to a fixed default
                 value outside of the physical range (a common practice).
@@ -391,7 +379,7 @@ The standardization described above and used in the present analysis is illustra
         \includegraphics[width=0.48\textwidth]{figures/search_hh/mva/feature_standard_1}
         \includegraphics[width=0.48\textwidth]{figures/search_hh/mva/feature_standard_2}
         \caption{
-            Illustration of the input feature standardization that occurrs for all input features,
+            Illustration of the input feature standardization that occurs for all input features,
             for all events, prior to the features being fed into the neural network classifier
             (for both training and testing).
             \textit{\textbf{Left}}: Two different observables (overlaid for comparison) that have quite
@@ -508,7 +496,6 @@ allows the network to maximize its learning before effects of overtraining begin
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\FloatBarrier
 \subsection{Classifier Discriminants}
 \label{sec:nn_discriminants}
 
@@ -580,7 +567,7 @@ in the present analysis.
 \subsection{Signal Region Definition}
 \label{sec:hh_sr_def}
 
-The definitions of the SRs, SR-SF and SR-DF, targetting the dilepton $hh \rightarrow \bbww$ signal process are tabulated
+The definitions of the SRs, SR-SF and SR-DF, targeting the dilepton $hh \rightarrow \bbww$ signal process are tabulated
 in Table~\ref{tab:hh_sr_def} and are as follows.
 The dominant expected backgrounds in the analysis are those for which separate output labels
 have been defined in the construction of the neural network classifier described in the previous sections:
@@ -591,7 +578,7 @@ final state due to the leptonic $\tau$ decays in the $Z\rightarrow \tau \tau$ pr
 For this reason, we define two classes of SR: one requiring SF dilepton events and the
 other requiring DF dilepton events.
 The SR events are additionally required to have at least two $b$-tagged jets, with
-the invariant mass of the two leading $b$-tagged jets having an invariant mass consisent with the
+the invariant mass of the two leading $b$-tagged jets having an invariant mass consistent with the
 mass of the Higgs boson, $m_{bb} \in [110, 140]$ GeV.
 Taking advantage of the lepton correlations, illustrated by Figure~\ref{fig:hh_kin_1},
 we further require that the dilepton invariant mass of the SR events be relatively low: $m_{\ell \ell} < 60$ GeV.
@@ -602,7 +589,7 @@ The SR definitions further rely on placing a cut on the $d_{hh}$ discriminant.
 The specific choice of cut, in both SR-SF and SR-DF, are determined by computing the expected 95\% CL cross-section upper-limit
 with the selections described in the previous paragraph applied while scanning over varying selections
 made on the $d_{hh}$ discriminant.
-The cut thresholds on the $d_{hh}$ discriminant in both SR-SF and SR-DF that minimize the the cross-section
+The cut thresholds on the $d_{hh}$ discriminant in both SR-SF and SR-DF that minimize the cross-section
 upper-limit value are chosen as the final values to define SR-SF and SR-DF, and are indicated in Table~\ref{tab:hh_sr_def}.
 
 

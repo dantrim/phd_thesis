@@ -1,7 +1,6 @@
 \chapter{Simulation of $pp$ Collision Events}
 \label{chap:simulation}
 
-
 %from: http://imaginaryinstruments.org/lovelace-analytical-engine/
 \epigraph{\textit{[The Analytical Engine] might act upon other things besides number, were objects found whose
 fundamental relations could be expressed by those of the abstract science of operations, and which should be also susceptible
@@ -42,35 +41,21 @@ are put on the same footing as the recorded data via the accurate simulation of 
 detector and its response to the $pp$ collision products.
 Section~\ref{sec:pileup_sim} briefly describes how the simulation of pileup events is performed.
 
-%construct a reliable \textit{background-only} model with which the compatibility of data
-%and the \textit{background-plus-signal} model, in which a BSM physics process is additionally simulated,
-%can be tested {\color{red}{NEEDS RE-WORDING}}.
-%In addition to computing overall rates and kinematics of specific physics processes, an accurate
-%simulation of the response of the ATLAS detector to these physics events must also be performed which
-%requires accurate knowledge of the detector material as well as its read-out such that these, too,
-%may be simulated.
-
-%Physics analyses at ATLAS generally rely on simulations of $pp$ collisions,
-%and of particular procecesses such as the production of $W$ bosons, in order to build
-%a model of how the known SM processes behave.
-%By 
-
 \section{QCD Factorization and Fragmentation}
 \label{sec:fact_frag}
 
 \begin{figure}[!htb]
     \begin{center}
         \includegraphics[width=0.75\textwidth]{figures/event_simulation/pp_sim_cartoonPDF}
-        %\includegraphics[width=0.6\textwidth]{figures/event_simulation/pp_simulation_steps}
         \caption{
             Cartoon illustration of the Monte-Carlo $pp$ event simulation process.
-            The observable color-neutral hadrons at the end result of hardonisation are shown at the
+            The observable color-neutral hadrons at the end result of hardonization are shown at the
             top, indicated by arrows.
             Example resonance decays could be $K_S \rightarrow \pi^0\,\pi^0$, $\Lambda^+ \rightarrow \pi^+\,n$, or a
             $B$-hadron decay chain.
             The gluons emitted from the incident partons constitute the starting point of the initial state radiation (ISR).
-            In order to avoid clutter, the hadronisation of the ISR-emitted gluons and quarks is omitted.
-            The blue ovals indicate the location of hadronisation, simulated by phenomenological models as discussed in the text.
+            In order to avoid clutter, the hadronization of the ISR-emitted gluons and quarks is omitted.
+            The blue ovals indicate the location of hadronization, simulated by phenomenological models as discussed in the text.
         }
         \label{fig:pp_sim_steps}
     \end{center}
@@ -83,8 +68,8 @@ The breakdown of steps illustrated in Figure~\ref{fig:pp_sim_steps} represent th
 of QCD, namely: 
 \begin{itemize}
     \item Asymptotic freedom (confinement)
-    \item Renormalisation group equations (running of scales / scale dependence)
-    \item Factorisation (separation of high- and low-energy (perturbative and non-perturbative) regimes)
+    \item Renormalization group equations (running of scales / scale dependence)
+    \item Factorization (separation of high- and low-energy (perturbative and non-perturbative) regimes)
 \end{itemize}
 
 The asymptotic freedom and confinement of QCD state that the strength of the strong coupling, $\alpha_s$, becomes weak at
@@ -94,26 +79,20 @@ reactions in QCD. Additionally, asymptotic freedom makes the color force depende
 making it necessary to perform computations with respect to a reference scale.
 This forces the introduction of arbitrary scales, $\mu$, that are the reference scales enabling the pQCD computations
 to proceed but on which physical observables should not depend.
-This last requirement leads to the renormalisation group equations that relate pQCD expressions at a given
+This last requirement leads to the renormalization group equations that relate pQCD expressions at a given
 scale, $\mu$, to physical observables.
 
-The factorisation implied by the above allows us to separate hard-scatter processes from the soft (low energy) parts
+The factorization implied by the above allows us to separate hard-scatter processes from the soft (low energy) parts
 of QCD that cannot be calculated perturbatively.
-These nonperturbative regimes occur at the characteristic scales of confinment onset, at $Q \sim \Lambda$ ($\sim 200\,\MeV$).
+These nonperturbative regimes occur at the characteristic scales of confinement onset, at $Q \sim \Lambda$ ($\sim 200\,\MeV$).
 At scales above $m_{\text{hadron}} \sim 1\,\GeV$, the perturbative treatment becomes viable.
-%In $pp$ collisions, the parton distribution functions (PDFs) absorb the non-perturbative aspects of the process
-%computation and parameterise the probability to find a given parton in the proton holding some fraction of its momentum.
-%Being incalculable, the PDFs must be measured in data in separate experiments and are taken
-%as input to pQCD calculation, providing the initial conditions of the participating partons at some scale $\mu$ {\color{red}{to which it is evolved using DGLAP}}.
-%The remaining computation of the hard-scatter of the initial partons can then be performed using the machinery
-%of pQCD.
 \begin{align}
     \sigma_{pp \rightarrow X} = \sum\limits_{A,B} \int\limits_0^1 \mathrm{d}x_A \int\limits_0^1 \mathrm{d}x_B \: f_{A}(x_A, \mu_F^2) \, f_{B}(x_B, \mu_F^2) \times \hat{\sigma}_{AB \rightarrow X}(x_A p_A, x_B p_B, \mu_F^2, \mu_R^2)
     \label{eq:pp_xsec}
 \end{align}
-This factorisation of QCD implies that calculations of $pp$ collision processes take the form of Equation~\ref{eq:pp_xsec},
+This factorization of QCD implies that calculations of $pp$ collision processes take the form of Equation~\ref{eq:pp_xsec},
 where the sum runs over the partons of types $A$ and $B$ that exist in the incident protons and that contribute to the hard-scatter process.
-The PDFs, $f_{i}(x_i, \mu_F^2)$, absorb the non-perturbabitve aspects of the computation and parameterise the probability
+The PDFs, $f_{i}(x_i, \mu_F^2)$, absorb the non-perturbative aspects of the computation and parameterise the probability
 to find a given parton in the proton carrying a fraction of the proton's momentum, $x_i$, evaluated at a given energy scale
 $Q^2 = \mu_F^2$.
 As the PDFs describe the non-perturbative initial conditions of the partons initiating the hard-scatter processes,
@@ -125,11 +104,11 @@ This extrapolation is governed by the Dokshitser-Gribov-Lipatov-Altarelli-Parisi
 evolution equations which evolve the PDFs from one scale to another~\cite{Altarelli:1977zs,Gribov:1972ri,Dokshitzer:1977sg}.
 The parton-level cross-section, $\hat{\sigma}_{AB \rightarrow X}$, describes the hard-scatter between the initiating partons
 and can be calculated using the machinery of perturbation theory.
-Both the PDFs and parton-level cross-section are dependent on the \textit{factorisation scale}, $\mu_F$,
+Both the PDFs and parton-level cross-section are dependent on the \textit{factorization scale}, $\mu_F$,
 which defines the cut-off scale below which phenomena are absorbed in the PDFs and above which phenomena contribute to the
 hard-scatter. 
 As with all calculations involving the perturbation theory of QFT, the parton-level cross-section also depends on the
-renormalisation scale, $\mu_R$, defining the ultra-violet cut-off scale.
+renormalization scale, $\mu_R$, defining the ultra-violet cut-off scale.
 Examples of proton PDFs, measured using data inclusive of $14\,\TeV$ data from the LHC, are provided in Figure~\ref{fig:pdfs_lhc}.
 
 \begin{figure}
@@ -146,10 +125,10 @@ Examples of proton PDFs, measured using data inclusive of $14\,\TeV$ data from t
 \end{figure}
 
 The remaining elements of the $pp$ event simulation described by Figure~\ref{fig:pp_sim_steps} are the parton shower (PS)
-and hadronisation steps, the latter being non-perturbative and treated with phenomenological models.
+and hadronization steps, the latter being non-perturbative and treated with phenomenological models.
 The PS simulates the successive emission of quarks and gluons from the partons in the final (initial) state of the
 simulated process.
-In the collinear factorisation limit, the $n+1$-parton (post-emission) cross-section is related to the $n$-parton (pre-emission) cross-section
+In the collinear factorization limit, the $n+1$-parton (post-emission) cross-section is related to the $n$-parton (pre-emission) cross-section
 as:
 \begin{align}
     \mathrm{d}\sigma_{n+1} \approx \mathrm{d}\sigma_n \mathrm{d}P_a(z, q^2) \approx \mathrm{d}\sigma_n \frac{\alpha_s}{2\pi} \frac{\mathrm{d}q^2}{q^2} \mathrm{d}z \, \mathcal{P}_{ab}(z),
@@ -159,15 +138,13 @@ where $\mathrm{d}P_a(z,q^2)$ is the probability that parton $a$ will split into 
 fraction $z$ of the momentum of the initial parton $a$.
 The $\mathcal{P}_{ab}(z)$ are Altarelli-Parisi splitting functions~\cite{Altarelli:1977zs} describing the possible parton branchings: $q \rightarrow gq$, $g \rightarrow gg$, 
 or $g \rightarrow q\bar{q}$.
-%There are three possible splittings describe by the $P_i$ in QCD: $q \rightarrow gq$, $g \rightarrow gg$, and $g \rightarrow q \bar{q}$.
 The PS evolution follows by repeated implmentation of Equation~\ref{eq:np1_parton_split}, leading to arbitrarily many
 parton splittings and therefore potentially arbitrarily many particles in the final state.
 The basic idea, then, is to evolve the partons as above until they are below a certain energy scale, $q^2 = Q_0^2$, which is the scale
-below which the hadronisation process takes place.
+below which the hadronization process takes place.
 In typical PS MC programs, the PS evolution is performed via the construction of the Sudakov form factor,
 \begin{align}
     \Delta_{a}(q_1^2, q_2^2) = \exp \left ( - \sum\limits_{b\, \in \{q,g\}} \, \int\limits_{q_2^2}^{q_1^2} \int\limits_{z_{\text{min}}}^{z_{\text{max}}} \frac{\alpha_s}{2\pi} \frac{\mathrm{d}q^2}{q^2} \mathrm{d}z \, \mathcal{P}_{ab}(z) \right),
-    %\Delta_{a}(q_1^2, q_2^2) = \exp \left ( - \sum\limits_{b\, \in \{q,g\}} \, \int\limits_{q_2^2}^{q_1^2} \int\limits_{z_{\text{min}}}^{z_{\text{max}}} \mathrm{d}P_{ab}(z,q^2) \right),
     \label{eq:sudakov_form_factor}
 \end{align}
 which represents the probability that a parton evolves from energy scale $q_1$ to the lower scale $q_2$ \textit{without} splitting.
@@ -175,28 +152,28 @@ which represents the probability that a parton evolves from energy scale $q_1$ t
 The PS simulation of the final-state radiation (FSR) operates by following a \textit{forward evolution} whereby partons initially at scale $Q^2$
 emit radiation at the scale $q_2$ determined by sampling Equation~\ref{eq:sudakov_form_factor}. This process is repeated and if,
 for any of the partons in the final state, the $q_2^2$ value is below $Q_0^2 \approx 1\,\GeV^2$, the shower development is terminated
-and hadronisation takes place.
+and hadronization takes place.
 For the simulation of initial-state radiation (ISR), a \textit{backward evolution} occurs wherein the radiation is emitted
 by the initiating partons. In this case the final low-energy scale is that of the ancestor partons fragmenting from the PDFs, gaining energy to take part
 in the hard-scatter, and the initial energy scale is the high-energy scale of the hard-scatter.
-As the ISR shower evolution is sensitive to the PDFs, it is dependent on the factorisation scale $\mu_F$ since the
+As the ISR shower evolution is sensitive to the PDFs, it is dependent on the factorization scale $\mu_F$ since the
 value of the PDF is scale-dependent.
 
-As the partons reach the hadronisation scale, the confining nature of QCD takes over and the non-perturbative regime of QCD is reached
+As the partons reach the hadronization scale, the confining nature of QCD takes over and the non-perturbative regime of QCD is reached
 once again.
 At this stage, the color-neutral hadrons that are observable within the detector take form.
 This formation process is described by phenomenological models that capture the general
 features of QCD.
-The main hadronisation models used in the MC simulation relevant to the current analysis are the
-Lund string model~\cite{Andersson:1983ia} and cluster hadronisation model~\cite{Webber:1983if}.
-Unstable particles produced as a result of the hadronisation process are also decayed at this point;
+The main hadronization models used in the MC simulation relevant to the current analysis are the
+Lund string model~\cite{Andersson:1983ia} and cluster hadronization model~\cite{Webber:1983if}.
+Unstable particles produced as a result of the hadronization process are also decayed at this point;
 in some cases relying on the use of dedicated programs such as \textsc{EvtGen} in the case of $b$-hadron decays~\cite{Lange:2001uf}.
 
 The so-called \textit{spectator partons}, indicated by the outgoing lines from the PDFs in Figure~\ref{fig:pp_sim_steps},
 are those partons not directly involved in the $pp$ hard-scatter sub-process.
 They may undergo soft interactions, resulting in the underlying event (UE).
 The physics processes underlying the UE are driven by low-energy phenomena and must therefore
-be simulated using phenomenological modes, in much the same way as the hadronisation simulation.
+be simulated using phenomenological modes, in much the same way as the hadronization simulation.
 These models are characterised by tuneable parameters which are optimised by dedicated measurements
 and comparisons to observed data in the experiments~\cite{UESim}.
 There is also processes of multiple-parton interactions (MPI) in which there are additional,
@@ -267,12 +244,12 @@ as well as handling the fragmentation and UE modelling.
 
 There exist several so-called MC-generator \textit{afterburners} which are run
 after one of the steps detailed in Figure~\ref{fig:pp_sim_steps}, typically after the matrix-element
-computation prior to running the PS algorithms or at the end, supplementing the hadronisation step in order
+computation prior to running the PS algorithms or at the end, supplementing the hadronization step in order
 to improve the specific description of physics processes therein.
 
 \begin{description}
     \item[] \underline{\textsc{EvtGen}} \cite{EVTGEN} is an MC generator that is interfaced to and runs after
-        the PS and hadronisation step. It implements a detailed description of the physics of $b$-hadron
+        the PS and hadronization step. It implements a detailed description of the physics of $b$-hadron
         decays, including models of their semi-leptonic decays, CP-violating effects, and accurate
         modelling of the angular distributions and correlations relevant to sequential decays of $b$-hadrons.
     \item[] \underline{\textsc{MadSpin}} \cite{MADSPIN1} is a tool based on the formalism of Ref.~\cite{MADSPIN2}
@@ -296,7 +273,7 @@ to improve the specific description of physics processes therein.
 \label{sec:detector_sim}
 
 The end result of the steps discussed above and outlined in Figure~\ref{fig:pp_sim_steps}
-is a collection of four-vectors of all stable particles after hadronisation.
+is a collection of four-vectors of all stable particles after hadronization.
 By itself, this collection of particle four-vectors is useful for studying physics processes at
 the so-called \textit{truth}- or \textit{particle}-level, allowing one to understand specific
 processes without the effects of the ATLAS detector's geometric acceptance and response folded in.
@@ -305,9 +282,6 @@ Ultimately, however, one wishes to use the MC simulation to make predictions on 
 processes being simulated.
 To use the MC simulated events in this way, they need to be compared to the recorded data and therefore must be analyzed after
 the full ATLAS reconstruction process, described in Section~\ref{chap:objects}, so as to ensure meaningful comparisons are made.
-%To compare the MC simulation to data, so that one can make meaningful predictions for specific
-%physics processes, the output of the MC simulated event generation must be analyzed after the
-%full ATLAS reconstruction described in Section~\ref{chap:objects} takes place.
 To accomplish this, a detailed \textsc{GEANT4}~\cite{GEANT4} model of the ATLAS detector is used
 which includes not only the sensing elements of each of the subdetectors but also includes
 simulation of inactive material such as support structures, cabling, and services~\cite{ATLASSim}.
@@ -348,10 +322,10 @@ The former mainly consists of soft QCD interactions and is modelled similarly to
 The out-of-time pileup is modelled by separately generating a large sample of minimum-bias $pp$ collision events
 using the \textsc{Pythia} MC event generator.
 For each generated hard-scatter process of interest, a given number of these minimum-bias events' detector hits
-are overlaid onto those from the simulated hard-scatter event prior to digitisation and reconstruction.
+are overlaid onto those from the simulated hard-scatter event prior to digitization and reconstruction.
 The number of overlaid minimum-bias events is based on a sampling of the pileup distribution for a given
 data-taking period, corresponding to the $\langle \mu \rangle$ profile shown in Figure~\ref{fig:int_lumi_multiyear}.
-Overlaying the simulated events in this way, at the hit level and prior to digitisation, allows for a precise
+Overlaying the simulated events in this way, at the hit level and prior to digitization, allows for a precise
 simulation of the effects of pileup on the detector response.
 This process is illustrated in Figure~\ref{fig:pileup_gen}.
 
@@ -366,7 +340,7 @@ This process is illustrated in Figure~\ref{fig:pileup_gen}.
             For each generated hard-scatter process, the number of overlaid simulated minimum-bias events is
             determined by sampling the expected pileup profile for the given data-taking period (Figure~\ref{fig:int_lumi_multiyear}).
             The simulated detector hits from both the main hard-scatter process and from
-            the overlaid pileup events are combined prior to the remaining digitisation and reconstruction
+            the overlaid pileup events are combined prior to the remaining digitization and reconstruction
             steps of the ATLAS detector simulation chain (Figure~\ref{fig:atlas_sim_structure}).
         }
         \label{fig:pileup_gen}
