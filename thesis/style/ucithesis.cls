@@ -215,7 +215,7 @@
 	%\signaturepage  %% not for electronic submission
         \ifx\Dedications\undefined
 	\else
-	  \dedicationpage
+	  %\dedicationpage
 	\fi
 	\tableofcontents
 	\clearpage

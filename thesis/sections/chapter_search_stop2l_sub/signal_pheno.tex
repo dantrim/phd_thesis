@@ -43,25 +43,25 @@ Each point in a SUSY signal grid allows, rather, an analysis to make general sta
 an \textit{extended}, but still local, region of parameter space under the assumed simplified model.
 
 
-\subsection{Simulation of the Three-body Decay of the Stop Quark}
-\label{sec:stop_sim}
-
-The MC simulation of the three-body decay of the \stopone, used in the analysis discussed in 
-this chapter, is performed using \textsc{MadGraph5\_AMC@NLO}, including diagrams with up to
-two additional partons.
-In the three-body region of phase space of the \stopone decays, proceeding via off-shell
-intermediate SM top-quarks, the preservation of the \stopone left-right polarisation information
-must be handled with care.\footnote{The
-\stopone is of course a scalar particle, so it not chiral.
-The \stopL and \stopR  states that make up the \stopone and \stoptwo mass eigenstates refer, instead, 
-to their corresponding SM superpartner counterparts.
-}
-For this reason, produced \stop sparticles provided by \textsc{MadGraph5\_AMC@NLO} are decayed
-via \textsc{MadSpin}, described in Section~\ref{sec:mc_gen_afterburner}, which properly
-propagates the polarisation information of the massive \stopone particle into the
-off-shell and intermediate SM top-quark to which it decays, such that the kinematics of the
-$W$-boson ($\ell \nu$ system) and $b$-quark are correct.
-\textsc{Pythia} is used for the showering and fragmentation.
+%\subsection{Simulation of the Three-body Decay of the Stop Quark}
+%\label{sec:stop_sim}
+%
+%The MC simulation of the three-body decay of the \stopone, used in the analysis discussed in 
+%this chapter, is performed using \textsc{MadGraph5\_AMC@NLO}, including diagrams with up to
+%two additional partons.
+%In the three-body region of phase space of the \stopone decays, proceeding via off-shell
+%intermediate SM top-quarks, the preservation of the \stopone left-right polarisation information
+%must be handled with care.\footnote{The
+%\stopone is of course a scalar particle, so it not chiral.
+%The \stopL and \stopR  states that make up the \stopone and \stoptwo mass eigenstates refer, instead, 
+%to their corresponding SM superpartner counterparts.
+%}
+%For this reason, produced \stop sparticles provided by \textsc{MadGraph5\_AMC@NLO} are decayed
+%via \textsc{MadSpin}, described in Section~\ref{sec:mc_gen_afterburner}, which properly
+%propagates the polarisation information of the massive \stopone particle into the
+%off-shell and intermediate SM top-quark to which it decays, such that the kinematics of the
+%$W$-boson ($\ell \nu$ system) and $b$-quark are correct.
+%\textsc{Pythia} is used for the showering and fragmentation.
 
 \subsection{Description of the Three-body Decay Final State}
 \label{sec:stop_final_state}
